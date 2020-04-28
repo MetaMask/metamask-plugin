@@ -60,6 +60,7 @@ import seedPhraseVerifier from './lib/seed-phrase-verifier'
 import log from 'loglevel'
 import TrezorKeyring from 'eth-trezor-keyring'
 import LedgerBridgeKeyring from '@metamask/eth-ledger-bridge-keyring'
+import CoolWalletKeyring from 'eth-cws-keyring'
 import EthQuery from 'eth-query'
 import nanoid from 'nanoid'
 import contractMap from 'eth-contract-metadata'
@@ -200,7 +201,12 @@ export default class MetamaskController extends EventEmitter {
       this.accountTracker._updateAccounts()
     })
 
-    const additionalKeyrings = [TrezorKeyring, LedgerBridgeKeyring]
+    // key mgmt
+    const additionalKeyrings = [
+      TrezorKeyring,
+      LedgerBridgeKeyring,
+      CoolWalletKeyring,
+    ]
     this.keyringController = new KeyringController({
       keyringTypes: additionalKeyrings,
       initState: initState.KeyringController,
@@ -741,6 +747,7 @@ export default class MetamaskController extends EventEmitter {
       simpleKeyPair: [],
       ledger: [],
       trezor: [],
+      coolwallet: [],
     }
 
     // transactions
@@ -826,6 +833,9 @@ export default class MetamaskController extends EventEmitter {
         break
       case 'ledger':
         keyringName = LedgerBridgeKeyring.type
+        break
+      case 'coolwallet':
+        keyringName = CoolWalletKeyring.type
         break
       default:
         throw new Error('MetamaskController:getKeyringForDevice - Unknown device')

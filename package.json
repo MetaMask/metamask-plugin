@@ -97,6 +97,7 @@
     "end-of-stream": "^1.4.4",
     "eth-block-tracker": "^4.4.2",
     "eth-contract-metadata": "^1.12.1",
+    "eth-cws-keyring": "1.2.0",
     "eth-ens-namehash": "^2.0.8",
     "eth-json-rpc-errors": "^2.0.2",
     "eth-json-rpc-filters": "^4.1.1",
