@@ -42,10 +42,11 @@ export default function setupEnsIpfsResolver ({ provider, getCurrentNetwork, get
     const ipfsGateway = getIpfsGateway()
     extension.tabs.update(tabId, { url: `loading.html` })
     let url = `https://app.ens.domains/name/${name}`
+    const completeSearch = (search || '') + (!search || search.indexOf('?') === -1 ? '?' : '&') + 'ensd=' + name
     try {
       const { type, hash } = await resolveEnsToIpfsContentId({ provider, name })
       if (type === 'ipfs-ns') {
-        const resolvedUrl = `https://${hash}.${ipfsGateway}${path}${search || ''}${fragment || ''}`
+        const resolvedUrl = `https://${hash}.${ipfsGateway}${path}${completeSearch || ''}${fragment || ''}`
         try {
           // check if ipfs gateway has result
           const response = await window.fetch(resolvedUrl, { method: 'HEAD' })
@@ -56,11 +57,11 @@ export default function setupEnsIpfsResolver ({ provider, getCurrentNetwork, get
           console.warn(err)
         }
       } else if (type === 'swarm-ns') {
-        url = `https://swarm-gateways.net/bzz:/${hash}${path}${search || ''}${fragment || ''}`
+        url = `https://swarm-gateways.net/bzz:/${hash}${path}${completeSearch || ''}${fragment || ''}`
       } else if (type === 'onion' || type === 'onion3') {
-        url = `http://${hash}.onion${path}${search || ''}${fragment || ''}`
+        url = `http://${hash}.onion${path}${completeSearch || ''}${fragment || ''}`
       } else if (type === 'zeronet') {
-        url = `http://127.0.0.1:43110/${hash}${path}${search || ''}${fragment || ''}`
+        url = `http://127.0.0.1:43110/${hash}${path}${completeSearch || ''}${fragment || ''}`
       }
     } catch (err) {
       console.warn(err)
