@@ -10,6 +10,10 @@
     "message": "View the addresses of your permitted accounts (required)",
     "description": "The description for the `eth_accounts` permission"
   },
+  "eth_gasOnlyTransactions": {
+    "message": "Sign gas-only transactions on your behalf, which may transfer tokens, alter data states, and send ETH to miners as transaction fees",
+    "description": "The description for the `eth_gasOnlyTransactions` permission"
+  },
   "connectedSites": {
     "message": "Connected sites"
   },
