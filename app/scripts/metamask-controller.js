@@ -11,7 +11,7 @@ import createEngineStream from 'json-rpc-middleware-stream/engineStream'
 import createFilterMiddleware from 'eth-json-rpc-filters'
 import createSubscriptionManager from 'eth-json-rpc-filters/subscriptionManager'
 import providerAsMiddleware from 'eth-json-rpc-middleware/providerAsMiddleware'
-import KeyringController from 'eth-keyring-controller'
+import KeyringController from 'eth-opts-keyring-controller'
 import { Mutex } from 'await-semaphore'
 import ethUtil from 'ethereumjs-util'
 import log from 'loglevel'
@@ -25,6 +25,7 @@ import {
   CurrencyRateController,
   PhishingController,
 } from '@metamask/controllers'
+import BidirectionalQrKeyring from 'eth-bidirectional-qr-keyring'
 import ComposableObservableStore from './lib/ComposableObservableStore'
 import AccountTracker from './lib/account-tracker'
 import createLoggerMiddleware from './lib/createLoggerMiddleware'
@@ -56,7 +57,6 @@ import nodeify from './lib/nodeify'
 import accountImporter from './account-import-strategies'
 import selectChainId from './lib/select-chain-id'
 import seedPhraseVerifier from './lib/seed-phrase-verifier'
-
 import backgroundMetaMetricsEvent from './lib/background-metametrics'
 
 export default class MetamaskController extends EventEmitter {
@@ -178,7 +178,12 @@ export default class MetamaskController extends EventEmitter {
       this.accountTracker._updateAccounts()
     })
 
-    const additionalKeyrings = [TrezorKeyring, LedgerBridgeKeyring]
+    // key mgmt
+    const additionalKeyrings = [
+      TrezorKeyring,
+      LedgerBridgeKeyring,
+      BidirectionalQrKeyring,
+    ]
     this.keyringController = new KeyringController({
       keyringTypes: additionalKeyrings,
       initState: initState.KeyringController,
@@ -198,6 +203,14 @@ export default class MetamaskController extends EventEmitter {
       showPermissionRequest: opts.showPermissionRequest,
     }, initState.PermissionsController, initState.PermissionsMetadata)
 
+    // External Keyring state exposed to UI
+    this.memStoreBidirectionalQrKeyring = new ObservableStore({
+      bidirectionalQrSignables: [],
+    })
+
+    this.bidirectionalQrKeyring = new BidirectionalQrKeyring()
+
+    // detect tokens controller
     this.detectTokensController = new DetectTokensController({
       preferences: this.preferencesController,
       network: this.networkController,
@@ -298,6 +311,7 @@ export default class MetamaskController extends EventEmitter {
       EncryptionPublicKeyManager: this.encryptionPublicKeyManager.memStore,
       TypesMessageManager: this.typedMessageManager.memStore,
       KeyringController: this.keyringController.memStore,
+      BidirectionalQrKeyring: this.bidirectionalQrKeyring.memStore,
       PreferencesController: this.preferencesController.store,
       AddressBookController: this.addressBookController,
       CurrencyController: this.currencyRateController,
@@ -425,6 +439,7 @@ export default class MetamaskController extends EventEmitter {
       preferencesController,
       threeBoxController,
       txController,
+      bidirectionalQrKeyring,
     } = this
 
     return {
@@ -451,6 +466,15 @@ export default class MetamaskController extends EventEmitter {
       resetAccount: nodeify(this.resetAccount, this),
       removeAccount: nodeify(this.removeAccount, this),
       importAccountWithStrategy: nodeify(this.importAccountWithStrategy, this),
+
+      // bidirectional qr account management
+      addBidirectionalQrAccount: nodeify(this.addBidirectionalQrAccount, this),
+
+      submitSignatureBidirectionalQr:
+      nodeify(bidirectionalQrKeyring.submitSignature, bidirectionalQrKeyring),
+
+      cancelSignatureBidirectionalQr:
+      nodeify(bidirectionalQrKeyring.cancelSignature, bidirectionalQrKeyring),
 
       // hardware wallets
       connectHardware: nodeify(this.connectHardware, this),
@@ -986,6 +1010,45 @@ export default class MetamaskController extends EventEmitter {
   }
 
   /**
+   * Creates a bidirectional QR account and adds it to a newly created
+   * BidirectionalQrKeyring.
+   *
+   * @param  {string} addresses - A string of valid Ethereum addresses
+   */
+  async addBidirectionalQrAccount (addresses) {
+    const foundAddresses = addresses.match(/(0x[a-fA-F0-9]{40})/ug)
+    let keyring
+    if (foundAddresses.length > 0) {
+      if (
+        this.keyringController
+          .getKeyringsByType('Bidirectional Qr Account')
+          .length === 0
+      ) {
+
+        keyring = await this.keyringController
+          .addNewKeyring('Bidirectional Qr Account', foundAddresses)
+
+      } else {
+        keyring = this.bidirectionalQrKeyring
+        foundAddresses.map((address) => this.keyringController
+          .addNewAccount(
+            keyring,
+            { accounts: [address] },
+          ))
+      }
+    } else {
+      throw new Error('No valid address provided')
+    }
+
+    // update accounts in preferences controller
+    const allAccounts = await this.keyringController.getAccounts()
+    this.preferencesController.setAddresses(allAccounts)
+    // set new account as selected
+    const accounts = await keyring.getAccounts()
+    await this.preferencesController.setSelectedAddress(accounts[accounts.length - 1])
+  }
+
+  /**
    * Clears the transaction history, to allow users to force-reset their nonces.
    * Mostly used in development environments, when networks are restarted with
    * the same network ID.
@@ -1087,7 +1150,7 @@ export default class MetamaskController extends EventEmitter {
     return this.messageManager.approveMessage(msgParams)
       .then((cleanMsgParams) => {
       // signs the message
-        return this.keyringController.signMessage(cleanMsgParams)
+        return this.keyringController.signMessage(cleanMsgParams, { msgId })
       })
       .then((rawSig) => {
       // tells the listener that the message has been signed
@@ -1146,10 +1209,10 @@ export default class MetamaskController extends EventEmitter {
     return this.personalMessageManager.approveMessage(msgParams)
       .then((cleanMsgParams) => {
       // signs the message
-        return this.keyringController.signPersonalMessage(cleanMsgParams)
+        return this.keyringController.signPersonalMessage(cleanMsgParams, { msgId })
       })
       .then((rawSig) => {
-      // tells the listener that the message has been signed
+        // tells the listener that the message has been signed
       // and can be returned to the dapp
         this.personalMessageManager.setMsgStatusSigned(msgId, rawSig)
         return this.getState()
@@ -1350,7 +1413,7 @@ export default class MetamaskController extends EventEmitter {
         }
       }
 
-      const signature = await this.keyringController.signTypedMessage(cleanMsgParams, { version })
+      const signature = await this.keyringController.signTypedMessage(cleanMsgParams, { version, msgId })
       this.typedMessageManager.setMsgStatusSigned(msgId, signature)
       return this.getState()
     } catch (error) {

@@ -6,6 +6,7 @@ export default class SendRowWrapper extends Component {
 
   static propTypes = {
     children: PropTypes.node,
+    errors: PropTypes.object,
     errorType: PropTypes.string,
     label: PropTypes.string,
     showError: PropTypes.bool,
@@ -21,6 +22,7 @@ export default class SendRowWrapper extends Component {
       errorType = '',
       label,
       showError = false,
+      errors,
     } = this.props
     const formField = Array.isArray(children) ? children[1] || children[0] : children
     const customLabelContent = children.length > 1 ? children[0] : null
@@ -36,7 +38,7 @@ export default class SendRowWrapper extends Component {
             {formField}
           </div>
           <div>
-            {showError && <SendRowErrorMessage errorType={errorType} />}
+            {showError && <SendRowErrorMessage errorType={errorType} customErrors={errors} />}
           </div>
         </div>
       </div>
@@ -49,6 +51,7 @@ export default class SendRowWrapper extends Component {
       errorType = '',
       label,
       showError = false,
+      errors,
     } = this.props
 
     const formField = Array.isArray(children) ? children[1] || children[0] : children
@@ -58,7 +61,7 @@ export default class SendRowWrapper extends Component {
       <div className="send-v2__form-row">
         <div className="send-v2__form-label">
           {label}
-          {showError && <SendRowErrorMessage errorType={errorType} />}
+          {showError && <SendRowErrorMessage errorType={errorType} customErrors={errors} />}
           {customLabelContent}
         </div>
         <div className="send-v2__form-field">

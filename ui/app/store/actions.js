@@ -293,6 +293,99 @@ export function removeAccount (address) {
   }
 }
 
+export function addNewKeyring (type, opts) {
+  return (dispatch) => {
+    dispatch(showLoadingIndication())
+    log.debug(`background.addNewKeyring`)
+    background.addNewKeyring(type, opts, (err) => {
+      dispatch(hideLoadingIndication())
+      if (err) {
+        return dispatch(displayWarning(err.message))
+      }
+      dispatch(showAccountsPage())
+      return null
+    })
+  }
+}
+
+export function addBidirectionalQrAccount (addresses) {
+  return async (dispatch) => {
+    let newState
+    dispatch(showLoadingIndication('This may take a while, please be patient.'))
+    try {
+      log.debug(`background.addBidirectionalQrAccount`)
+      await pify(background.addBidirectionalQrAccount).call(background, addresses)
+      log.debug(`background.getState`)
+      newState = await pify(background.getState).call(background)
+    } catch (err) {
+      dispatch(hideLoadingIndication())
+      dispatch(displayWarning(err.message))
+      throw err
+    }
+    dispatch(hideLoadingIndication())
+    dispatch(updateMetamaskState(newState))
+    if (newState.selectedAddress) {
+      dispatch({
+        type: actionConstants.SHOW_ACCOUNT_DETAIL,
+        value: newState.selectedAddress,
+      })
+    }
+    return newState
+  }
+}
+
+export function submitSignatureBidirectionalQr (id, r, s, v) {
+  return async (dispatch) => {
+    let newState
+    dispatch(showLoadingIndication('This may take a while, please be patient.'))
+    try {
+      log.debug(`background.submitSignatureBidirectionalQr`)
+      await pify(background.submitSignatureBidirectionalQr).call(background, id, r, s, v)
+      log.debug(`background.getState`)
+      newState = await pify(background.getState).call(background)
+    } catch (err) {
+      dispatch(hideLoadingIndication())
+      dispatch(displayWarning(err.message))
+      throw err
+    }
+    dispatch(hideLoadingIndication())
+    dispatch(updateMetamaskState(newState))
+    if (newState.selectedAddress) {
+      dispatch({
+        type: actionConstants.SHOW_ACCOUNT_DETAIL,
+        value: newState.selectedAddress,
+      })
+    }
+    return newState
+  }
+}
+
+export function cancelSignatureBidirectionalQr (id) {
+  return async (dispatch) => {
+    let newState
+    dispatch(showLoadingIndication('This may take a while, please be patient.'))
+    try {
+      log.debug(`background.cancelSignatureBidirectionalQr`)
+      await pify(background.cancelSignatureBidirectionalQr).call(background, id)
+      log.debug(`background.getState`)
+      newState = await pify(background.getState).call(background)
+    } catch (err) {
+      dispatch(hideLoadingIndication())
+      dispatch(displayWarning(err.message))
+      throw err
+    }
+    dispatch(hideLoadingIndication())
+    dispatch(updateMetamaskState(newState))
+    if (newState.selectedAddress) {
+      dispatch({
+        type: actionConstants.SHOW_ACCOUNT_DETAIL,
+        value: newState.selectedAddress,
+      })
+    }
+    return newState
+  }
+}
+
 export function importNewAccount (strategy, args) {
   return async (dispatch) => {
     let newState
@@ -417,10 +510,12 @@ export function unlockHardwareWalletAccount (index, deviceName, hdPath) {
   }
 }
 
-export function showQrScanner () {
+export function showQrScanner (ROUTE, props = {}) {
   return (dispatch) => {
+    props.route = ROUTE
     dispatch(showModal({
       name: 'QR_SCANNER',
+      ...props,
     }))
   }
 }
@@ -888,6 +983,13 @@ export function updateTransactionParams (id, txParams) {
     type: actionConstants.UPDATE_TRANSACTION_PARAMS,
     id,
     value: txParams,
+  }
+}
+
+export function updateSignature (newSignature) {
+  return {
+    type: actionConstants.UPDATE_SIGNATURE,
+    value: newSignature,
   }
 }
 
@@ -2212,6 +2314,12 @@ export function setAlertEnabledness (alertId, enabledness) {
 
 export async function setUnconnectedAccountAlertShown (origin) {
   await promisifiedBackground.setUnconnectedAccountAlertShown(origin)
+}
+
+export function updateExternalSign (payload) {
+  return (_) => {
+    background.updateExternalSign(payload)
+  }
 }
 
 export function loadingMethodDataStarted () {

@@ -242,6 +242,9 @@ export default class AccountMenu extends Component {
       case 'Simple Key Pair':
         label = t('imported')
         break
+      case 'Bidirectional Qr Account':
+        label = t('bidirectionalQr')
+        break
       default:
         return null
     }

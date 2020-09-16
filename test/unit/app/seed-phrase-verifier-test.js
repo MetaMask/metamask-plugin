@@ -1,6 +1,6 @@
 import assert from 'assert'
 import { cloneDeep } from 'lodash'
-import KeyringController from 'eth-keyring-controller'
+import KeyringController from 'eth-opts-keyring-controller'
 import firstTimeState from '../../../app/scripts/first-time-state'
 import seedPhraseVerifier from '../../../app/scripts/lib/seed-phrase-verifier'
 import mockEncryptor from '../../lib/mock-encryptor'

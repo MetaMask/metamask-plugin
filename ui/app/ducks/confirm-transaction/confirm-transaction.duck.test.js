@@ -25,6 +25,7 @@ const initialState = {
   nonce: '',
   toSmartContract: false,
   fetchingData: false,
+  signature: '',
 }
 
 const UPDATE_TX_DATA = 'metamask/confirm-transaction/UPDATE_TX_DATA'

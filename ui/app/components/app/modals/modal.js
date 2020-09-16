@@ -29,6 +29,7 @@ import ConfirmDeleteNetwork from './confirm-delete-network'
 import AddToAddressBookModal from './add-to-addressbook-modal'
 import EditApprovalPermission from './edit-approval-permission'
 import NewAccountModal from './new-account-modal'
+import BidirectionalQrSignModal from './bidirectional-qr-sign-modal'
 
 const modalContainerBaseStyle = {
   transform: 'translate3d(-50%, 0, 0px)',
@@ -169,6 +170,28 @@ const MODALS = {
   ACCOUNT_DETAILS: {
     contents: <AccountDetailsModal />,
     ...accountModalStyle,
+  },
+
+  BIDIRECTIONAL_QR_SIGN: {
+    contents: <BidirectionalQrSignModal />,
+    mobileModalStyle: {
+      width: '100vw',
+      height: '100vh',
+      top: '0',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '0 auto',
+    },
+    laptopModalStyle: {
+      width: '600px',
+      height: '640px',
+      top: '20px',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '0 auto',
+    },
   },
 
   EXPORT_PRIVATE_KEY: {
@@ -390,6 +413,9 @@ function mapStateToProps (state) {
   return {
     active: state.appState.modal.open,
     modalState: state.appState.modal.modalState,
+    bidirectionalQrSignables: state.metamask.bidirectionalQrSignables,
+    txData: state.confirmTransaction ? state.confirmTransaction.txData : null,
+    isLoading: state.appState.isLoading,
   }
 }
 
@@ -404,7 +430,9 @@ function mapDispatchToProps (dispatch) {
     hideWarning: () => {
       dispatch(actions.hideWarning())
     },
-
+    showModal: (payload) => {
+      dispatch(actions.showModal(payload))
+    },
   }
 }
 
@@ -414,6 +442,8 @@ class Modal extends Component {
     hideModal: PropTypes.func.isRequired,
     hideWarning: PropTypes.func.isRequired,
     modalState: PropTypes.object.isRequired,
+    bidirectionalQrSignables: PropTypes.array,
+    showModal: PropTypes.func,
   }
 
   hide () {
@@ -425,6 +455,29 @@ class Modal extends Component {
   }
 
   UNSAFE_componentWillReceiveProps (nextProps, _) {
+    if (nextProps.bidirectionalQrSignables &&
+      nextProps.bidirectionalQrSignables.length > 0) {
+
+      const nextBidirectionalQrSignable = nextProps
+        .bidirectionalQrSignables[nextProps.bidirectionalQrSignables.length - 1]
+      if (
+        (
+          !this.props.bidirectionalQrSignables ||
+          nextProps.bidirectionalQrSignables.length >
+          this.props.bidirectionalQrSignables.length
+        ) &&
+        !(
+          this.props.modalState.name === 'BIDIRECTIONAL_QR_SIGN' &&
+          this.props.modalState.open
+        )
+      ) {
+        this.props.showModal({
+          name: 'BIDIRECTIONAL_QR_SIGN',
+          signable: nextBidirectionalQrSignable || {},
+          updateMetamask: true,
+        })
+      }
+    }
     if (nextProps.active) {
       this.show()
     } else if (this.props.active) {

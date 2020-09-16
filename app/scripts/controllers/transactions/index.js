@@ -468,7 +468,11 @@ export default class TransactionController extends EventEmitter {
     } catch (err) {
       // this is try-catch wrapped so that we can guarantee that the nonceLock is released
       try {
-        this.txStateManager.setTxStatusFailed(txId, err)
+        if (err.message === 'Cancel pressed') {
+          this.txStateManager.setTxStatusUnapproved(txId)
+        } else {
+          this.txStateManager.setTxStatusFailed(txId, err)
+        }
       } catch (err2) {
         log.error(err2)
       }
@@ -477,7 +481,9 @@ export default class TransactionController extends EventEmitter {
         nonceLock.releaseLock()
       }
       // continue with error chain
-      throw err
+      if (err.message !== 'Cancel pressed') {
+        throw err
+      }
     } finally {
       this.inProcessOfSigning.delete(txId)
     }
@@ -496,7 +502,7 @@ export default class TransactionController extends EventEmitter {
     // sign tx
     const fromAddress = txParams.from
     const ethTx = new Transaction(txParams)
-    await this.signEthTx(ethTx, fromAddress)
+    await this.signEthTx(ethTx, fromAddress, { txId })
 
     // add r,s,v values for provider request purposes see createMetamaskMiddleware
     // and JSON rpc standard for further explanation

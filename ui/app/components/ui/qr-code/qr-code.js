@@ -3,6 +3,7 @@ import React from 'react'
 import qrCode from 'qrcode-generator'
 import { connect } from 'react-redux'
 import { isHexPrefixed } from 'ethereumjs-util'
+import QRCode from 'qrcode.react'
 import ReadOnlyInput from '../readonly-input/readonly-input'
 import { checksumAddress } from '../../../helpers/utils/util'
 
@@ -17,11 +18,15 @@ function mapStateToProps (state) {
 }
 
 function QrCodeView (props) {
-  const { message, data } = props.Qr
-  const address = `${isHexPrefixed(data) ? 'ethereum:' : ''}${checksumAddress(data)}`
-  const qrImage = qrCode(4, 'M')
-  qrImage.addData(address)
-  qrImage.make()
+  const { message, data, network, isDataAddress, width } = props.Qr
+  const isAddress = isDataAddress !== false
+  let qrImage
+  if (isAddress) {
+    const address = `${isHexPrefixed(data) ? 'ethereum:' : ''}${checksumAddress(data, network)}`
+    qrImage = qrCode(4, 'M')
+    qrImage.addData(address)
+    qrImage.make()
+  }
 
   return (
     <div className="qr-code">
@@ -51,15 +56,29 @@ function QrCodeView (props) {
           ))
           : null
       }
-      <div
-        className="qr-code__wrapper"
-        dangerouslySetInnerHTML={{
-          __html: qrImage.createTableTag(4),
-        }}
-      />
+      {
+        isAddress
+          ? (
+            <div
+              className="qr-code__wrapper"
+              dangerouslySetInnerHTML={{
+                __html: qrImage.createTableTag(4),
+              }}
+            />
+          )
+          : (
+            <div className="qr-code__wrapper" >
+              <QRCode
+                value={data}
+                size={width || 480}
+              />
+            </div>
+          )
+      }
       <ReadOnlyInput
         wrapperClass="ellip-address-wrapper"
-        value={checksumAddress(data)}
+        inputClass="qr-ellip-address"
+        value={isDataAddress ? checksumAddress(data) : data}
       />
     </div>
   )
@@ -73,5 +92,8 @@ QrCodeView.propTypes = {
       PropTypes.node,
     ]),
     data: PropTypes.string.isRequired,
+    network: PropTypes.string,
+    isDataAddress: PropTypes.bool,
+    width: PropTypes.number,
   }).isRequired,
 }

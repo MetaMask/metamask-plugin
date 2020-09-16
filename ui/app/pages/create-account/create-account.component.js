@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import { Switch, Route, matchPath } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+
 import {
   NEW_ACCOUNT_ROUTE,
   IMPORT_ACCOUNT_ROUTE,
   CONNECT_HARDWARE_ROUTE,
+  BIDIRECTIONAL_QR_ROUTE,
 } from '../../helpers/constants/routes'
 import NewAccountCreateForm from './new-account.container'
 import NewAccountImportForm from './import-account'
 import ConnectHardwareForm from './connect-hardware'
+import BidirectionalQrForm from './bidirectional-qr'
 
 export default class CreateAccountPage extends Component {
   renderTabs () {
@@ -31,6 +34,9 @@ export default class CreateAccountPage extends Component {
         </div>
         <div className={getClassNames(CONNECT_HARDWARE_ROUTE)} onClick={() => history.push(CONNECT_HARDWARE_ROUTE)}>
           {this.context.t('hardware')}
+        </div>
+        <div className={getClassNames(BIDIRECTIONAL_QR_ROUTE)} onClick={() => history.push(BIDIRECTIONAL_QR_ROUTE)}>
+          {this.context.t('bidirectionalQrAcc')}
         </div>
       </div>
     )
@@ -60,6 +66,11 @@ export default class CreateAccountPage extends Component {
               exact
               path={CONNECT_HARDWARE_ROUTE}
               component={ConnectHardwareForm}
+            />
+            <Route
+              exact
+              path={BIDIRECTIONAL_QR_ROUTE}
+              component={BidirectionalQrForm}
             />
           </Switch>
         </div>

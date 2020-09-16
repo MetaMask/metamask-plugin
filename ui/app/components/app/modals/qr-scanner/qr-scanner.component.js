@@ -17,7 +17,15 @@ const READY_STATE = {
 export default class QrScanner extends Component {
   static propTypes = {
     hideModal: PropTypes.func.isRequired,
-    qrCodeDetected: PropTypes.func.isRequired,
+    showModal: PropTypes.func.isRequired,
+    qrCodeDetected: PropTypes.func,
+    // scanQrCode: PropTypes.func,
+    // error: PropTypes.bool,
+    // errorType: PropTypes.string,
+    showNext: PropTypes.string,
+    nextProps: PropTypes.object,
+    // route: PropTypes.string,
+    // updateBidirectionalQrSign: PropTypes.func,
   }
 
   static contextTypes = {
@@ -26,7 +34,6 @@ export default class QrScanner extends Component {
 
   constructor (props) {
     super(props)
-
     this.state = this.getInitialState()
     this.codeReader = null
     this.permissionChecker = null
@@ -57,6 +64,7 @@ export default class QrScanner extends Component {
     return {
       ready: READY_STATE.ACCESSING_CAMERA,
       error: null,
+      showNextModal: true,
     }
   }
 
@@ -107,6 +115,7 @@ export default class QrScanner extends Component {
     if (this.codeReader) {
       this.codeReader.reset()
     }
+    this.showNextOrHide()
   }
 
   initCamera = async () => {
@@ -139,6 +148,7 @@ export default class QrScanner extends Component {
   parseContent (content) {
     let type = 'unknown'
     let values = {}
+    let matching = []
 
     // Here we could add more cases
     // To parse other type of links
@@ -151,20 +161,41 @@ export default class QrScanner extends Component {
       values = { 'address': content.split('ethereum:')[1] }
 
     // Regular ethereum addresses - fox ex. 0x.....1111
-    } else if (content.substring(0, 2).toLowerCase() === '0x') {
+    } else if (content.match(/^\s*0x[a-f0-9]{40}\s*$/ui)) {
 
       type = 'address'
       values = { 'address': content }
-
+    // all other type of message is probably a signature
+    } else {
+      matching = content.match(/^\s(\S+):(.*?)\s*$/ui)
+      if (matching) {
+        type = matching[1]
+        values = matching[2]
+      }
     }
     return { type, values }
+  }
+
+  showNextOrHide = () => {
+    if (this.state.showNextModal && this.props.showNext) {
+      clearInterval(this.keepAlive)
+      setTimeout((_) => {
+        this.props.showModal({
+          name: this.props.showNext,
+          ...this.props.nextProps,
+        })
+      }, 300)
+    } else {
+      this.props.hideModal()
+    }
   }
 
   stopAndClose = () => {
     if (this.codeReader) {
       this.codeReader.reset()
     }
-    this.props.hideModal()
+    this.setState({ ready: READY_STATE.ACCESSING_CAMERA })
+    this.showNextOrHide()
   }
 
   tryAgain = () => {

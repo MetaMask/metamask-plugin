@@ -1,6 +1,7 @@
 # Changelog
 
 ## Current Develop Branch
+- [#9228](https://github.com/MetaMask/metamask-extension/pull/6267): Feature: Bidirectional QR code accounts
 
 ## 8.0.9 Wed Aug 19 2020
 - [#9228](https://github.com/MetaMask/metamask-extension/pull/9228): Move transaction confirmation footer buttons to scrollable area

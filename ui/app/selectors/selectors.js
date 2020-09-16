@@ -41,6 +41,8 @@ export function getAccountType (state) {
       return 'hardware'
     case 'Simple Key Pair':
       return 'imported'
+    case 'External Account':
+      return 'external'
     default:
       return 'default'
   }

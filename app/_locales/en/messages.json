@@ -79,6 +79,16 @@
   "connecting": {
     "message": "Connecting..."
   },
+  "bidirectionalQr": {
+    "message": "QR"
+  },
+  "bidirectionalQrAcc": {
+    "message": "QR",
+    "description": "Select this for entering Bidirectional QR account without password"
+  },
+  "bidirectionalQrMsg": {
+    "message": "Bidirectional QR accounts do not store private key locally, instead upon transaction confirmation, Metamask will display a QR code with transaction details and expects a signature from a cold wallet. Bidirectional QR accounts can not be recovered with your originally created MetaMask account seedphrase."
+  },
   "connectWithMetaMask": {
     "message": "Connect With MetaMask"
   },
@@ -104,6 +114,9 @@
   },
   "contractInteraction": {
     "message": "Contract Interaction"
+  },
+  "airsign": {
+    "message": "AirSign"
   },
   "reject": {
     "message": "Reject"
@@ -854,6 +867,15 @@
   "forbiddenIpfsGateway": {
     "message": "Forbidden IPFS Gateway: Please specify a CID gateway"
   },
+  "invalidSignature": {
+    "message": "Invalid signature"
+  },
+  "invalidSignatureLength": {
+    "message": "Length should be 130 chars."
+  },
+  "invalidSignatureChar": {
+    "message": "Invalid character in signature."
+  },
   "jsonFile": {
     "message": "JSON File",
     "description": "format for importing an account"
@@ -1068,6 +1090,9 @@
   "parameters": {
     "message": "Parameters"
   },
+  "originalTotal": {
+    "message": "Original Total"
+  },
   "participateInMetaMetrics": {
     "message": "Participate in MetaMetrics"
   },
@@ -1086,6 +1111,13 @@
   "pastePrivateKey": {
     "message": "Paste your private key string here:",
     "description": "For importing an account from a private key"
+  },
+  "pasteBidirectionalQr": {
+    "message": "Paste your Bidirectional QR account addresses here (more than one allowed):",
+    "description": "To import a Bidirectional QR account provide account numbers"
+  },
+  "pasteSeed": {
+    "message": "Paste your seed phrase here!"
   },
   "pending": {
     "message": "Pending"
@@ -1148,6 +1180,18 @@
   },
   "recipientAddressPlaceholder": {
     "message": "Search, public address (0x), or ENS"
+  },
+  "signature": {
+    "message": "Signature:"
+  },
+  "signerDoesNotSupport": {
+    "message": "Not supported by signer"
+  },
+  "signWith": {
+    "message": "Sign with:"
+  },
+  "refundAddress": {
+    "message": "Your Refund Address"
   },
   "rejectAll": {
     "message": "Reject All"

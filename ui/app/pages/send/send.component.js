@@ -68,6 +68,21 @@ export default class SendTransactionScreen extends Component {
     this.dValidate = debounce(this.validate, 1000)
   }
 
+  UNSAFE_componentWillReceiveProps (nextProps) {
+    if (nextProps.qrCodeData) {
+      if (nextProps.qrCodeData.match(/^ethereum:(0x){0,1}[0-9a-f]{40}/iu)) {
+        const scannedAddress = nextProps.qrCodeData.replace(/^ethereum:/u, '').toLowerCase()
+        const currentAddress = this.props.to && this.props.to.toLowerCase()
+        if (currentAddress !== scannedAddress) {
+          this.props.updateSendTo(scannedAddress)
+          this.updateGas({ to: scannedAddress })
+          // Clean up QR code data after handling
+          this.props.qrCodeDetected(null)
+        }
+      }
+    }
+  }
+
   componentDidUpdate (prevProps) {
     const {
       amount,
