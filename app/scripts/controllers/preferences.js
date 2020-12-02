@@ -48,6 +48,7 @@ export default class PreferencesController {
       featureFlags: {
         showIncomingTransactions: true,
         transactionTime: false,
+        speedUpAnyTransaction: false,
       },
       knownMethodData: {},
       firstTimeFlowType: null,

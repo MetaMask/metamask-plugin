@@ -21,7 +21,12 @@ export const mapStateToProps = (state) => {
     metamask,
   } = state
   const {
-    featureFlags: { sendHexData, transactionTime, advancedInlineGas } = {},
+    featureFlags: {
+      sendHexData,
+      transactionTime,
+      speedUpAnyTransaction,
+      advancedInlineGas,
+    } = {},
     threeBoxSyncingAllowed,
     threeBoxDisabled,
     useNonceField,
@@ -34,6 +39,7 @@ export const mapStateToProps = (state) => {
     sendHexData,
     advancedInlineGas,
     transactionTime,
+    speedUpAnyTransaction,
     showFiatInTestnets,
     autoLockTimeLimit,
     threeBoxSyncingAllowed,
@@ -54,6 +60,9 @@ export const mapDispatchToProps = (dispatch) => {
       dispatch(setFeatureFlag('advancedInlineGas', shouldShow)),
     setTransactionTimeFeatureFlag: (shouldShow) =>
       dispatch(setFeatureFlag('transactionTime', shouldShow)),
+    setSpeedUpAnyTransaction: (shouldShow) => {
+      dispatch(setFeatureFlag('speedUpAnyTransaction', shouldShow))
+    },
     setUseNonceField: (value) => dispatch(setUseNonceField(value)),
     setShowFiatConversionOnTestnetsPreference: (value) => {
       return dispatch(setShowFiatConversionOnTestnetsPreference(value))

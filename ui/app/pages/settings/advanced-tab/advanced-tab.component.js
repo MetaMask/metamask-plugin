@@ -26,6 +26,8 @@ export default class AdvancedTab extends PureComponent {
     advancedInlineGas: PropTypes.bool,
     setTransactionTimeFeatureFlag: PropTypes.func,
     transactionTime: PropTypes.bool,
+    speedUpAnyTransaction: PropTypes.bool,
+    setSpeedUpAnyTransaction: PropTypes.bool,
     showFiatInTestnets: PropTypes.bool,
     autoLockTimeLimit: PropTypes.number,
     setAutoLockTimeLimit: PropTypes.func.isRequired,
@@ -231,6 +233,35 @@ export default class AdvancedTab extends PureComponent {
             <ToggleButton
               value={transactionTime}
               onToggle={(value) => setTransactionTimeFeatureFlag(!value)}
+              offLabel={t('off')}
+              onLabel={t('on')}
+            />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderAllowSpeedUpAnyTransaction() {
+    const { t } = this.context
+    const { speedUpAnyTransaction, setSpeedUpAnyTransaction } = this.props
+
+    return (
+      <div
+        className="settings-page__content-row"
+        data-testid="advanced-setting-speedup-any-transaction"
+      >
+        <div className="settings-page__content-item">
+          <span>{t('speedUpAnyTransaction')}</span>
+          <div className="settings-page__content-description">
+            {t('showSpeedUpAnyTransactionDescription')}
+          </div>
+        </div>
+        <div className="settings-page__content-item">
+          <div className="settings-page__content-item-col">
+            <ToggleButton
+              value={speedUpAnyTransaction}
+              onToggle={(value) => setSpeedUpAnyTransaction(!value)}
               offLabel={t('off')}
               onLabel={t('on')}
             />
@@ -504,6 +535,7 @@ export default class AdvancedTab extends PureComponent {
         {this.renderResetAccount()}
         {this.renderAdvancedGasInputInline()}
         {this.renderTransactionTimeEstimates()}
+        {this.renderAllowSpeedUpAnyTransaction()}
         {this.renderHexDataOptIn()}
         {this.renderShowConversionInTestnets()}
         {this.renderUseNonceOptIn()}

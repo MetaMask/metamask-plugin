@@ -1491,6 +1491,9 @@
   "showSeedPhrase": {
     "message": "Show seed phrase"
   },
+  "showSpeedUpAnyTransactionDescription": {
+    "message": "Select this to allow resubmit transaction with any nonce."
+  },
   "showTransactionTimeDescription": {
     "message": "Select this to display pending transaction time estimates in the activity tab while on the Ethereum Mainnet. Note: estimates are approximations based on network conditions."
   },
@@ -1523,6 +1526,9 @@
   },
   "speedUp": {
     "message": "Speed Up"
+  },
+  "speedUpAnyTransaction": {
+    "message": "Speed up any transaction"
   },
   "speedUpCancellation": {
     "message": "Speed up this cancellation"

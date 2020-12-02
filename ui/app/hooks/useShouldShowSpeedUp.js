@@ -6,8 +6,13 @@ import { useEffect, useState } from 'react'
  * of queue time.
  * @param {Object} transactionGroup - the transaction group to check against
  * @param {boolean} isEarliestNonce - Whether this group is currently the earliest nonce
+ * @param {boolean} speedUpAnyTransactionActive - Whether user allowed to speed up transaction with any nonce
  */
-export function useShouldShowSpeedUp(transactionGroup, isEarliestNonce) {
+export function useShouldShowSpeedUp(
+  transactionGroup,
+  isEarliestNonce,
+  speedUpAnyTransactionActive,
+) {
   const { transactions, hasRetried } = transactionGroup
   const [earliestTransaction = {}] = transactions
   const { submittedTime } = earliestTransaction
@@ -23,14 +28,16 @@ export function useShouldShowSpeedUp(transactionGroup, isEarliestNonce) {
     // condition is already met. This effect will run anytime the variables
     // for determining enabled status change
     let timeoutId
-    if (!hasRetried && isEarliestNonce && !speedUpEnabled) {
-      if (Date.now() - submittedTime > 5000) {
-        setSpeedUpEnabled(true)
-      } else {
-        timeoutId = setTimeout(() => {
+    if (!hasRetried && !speedUpEnabled) {
+      if (isEarliestNonce || speedUpAnyTransactionActive) {
+        if (Date.now() - submittedTime > 5000) {
           setSpeedUpEnabled(true)
-          clearTimeout(timeoutId)
-        }, 5001 - (Date.now() - submittedTime))
+        } else {
+          timeoutId = setTimeout(() => {
+            setSpeedUpEnabled(true)
+            clearTimeout(timeoutId)
+          }, 5001 - (Date.now() - submittedTime))
+        }
       }
     }
     // Anytime the effect is re-ran, make sure to remove a previously set timeout
@@ -40,7 +47,13 @@ export function useShouldShowSpeedUp(transactionGroup, isEarliestNonce) {
         clearTimeout(timeoutId)
       }
     }
-  }, [submittedTime, speedUpEnabled, hasRetried, isEarliestNonce])
+  }, [
+    submittedTime,
+    speedUpEnabled,
+    hasRetried,
+    isEarliestNonce,
+    speedUpAnyTransactionActive,
+  ])
 
   return speedUpEnabled
 }

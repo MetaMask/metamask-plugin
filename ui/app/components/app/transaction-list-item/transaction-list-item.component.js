@@ -2,6 +2,8 @@ import React, { useMemo, useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getFeatureFlags } from '../../../selectors'
 import ListItem from '../../ui/list-item'
 import { useTransactionDisplayData } from '../../../hooks/useTransactionDisplayData'
 import Preloader from '../../ui/icon/preloader'
@@ -39,9 +41,13 @@ export default function TransactionListItem({
     transactionGroup,
   )
   const retryTransaction = useRetryTransaction(transactionGroup)
+  const { speedUpAnyTransaction: speedUpAnyTransactionActive } = useSelector(
+    getFeatureFlags,
+  )
   const shouldShowSpeedUp = useShouldShowSpeedUp(
     transactionGroup,
     isEarliestNonce,
+    speedUpAnyTransactionActive,
   )
 
   const {
