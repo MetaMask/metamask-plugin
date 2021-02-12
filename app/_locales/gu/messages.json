@@ -2,24 +2,263 @@
   "about": {
     "message": "વિશે"
   },
+  "aboutSettingsDescription": {
+    "message": "વર્ઝન, સપોર્ટ સેન્ટર અને સંપર્ક માહિતી"
+  },
+  "acceleratingATransaction": {
+    "message": "* ગેસનો ભાવ વધારીને ટ્રાન્સેકશનને વેગ આપવાથી નેટવર્ક દ્વારા તેની પ્રક્રિયા ઝડપથી થવાની શક્યતા વધી જાય છે, પરંતુ તે હંમેશાં બાંહેધરી આપતું નથી."
+  },
+  "acceptTermsOfUse": {
+    "message": "મેં $1 વાંચ્યું છે અને તેનાથી સંમત છું",
+    "description": "$1 is the `terms` message"
+  },
+  "accessAndSpendNotice": {
+    "message": "$1 આ મહત્તમ રકમ સુધી ઉપયોગ કરી શકે છે અને ખર્ચ કરી શકે છે",
+    "description": "$1 is the url of the site requesting ability to spend"
+  },
+  "accessingYourCamera": {
+    "message": "તમારા કૅમેરા નો ઉપયોગ કરી રહ્યાં છે..."
+  },
   "account": {
     "message": "એકાઉન્ટ"
   },
+  "accountDetails": {
+    "message": "એકાઉન્ટની માહિતી"
+  },
+  "accountName": {
+    "message": "એકાઉન્ટનું નામ"
+  },
+  "accountOptions": {
+    "message": "એકાઉન્ટના વિકલ્પો"
+  },
+  "accountSelectionRequired": {
+    "message": "તમારે એકાઉન્ટ પસંદ કરવાની જરૂર છે!"
+  },
+  "active": {
+    "message": "સક્રિય"
+  },
+  "activity": {
+    "message": "પ્રવૃત્તિ"
+  },
+  "activityLog": {
+    "message": "પ્રવૃત્તિની નોંધણી"
+  },
+  "addAccount": {
+    "message": "એકાઉન્ટ ઉમેરો"
+  },
+  "addAcquiredTokens": {
+    "message": "મેટામાસ્કનો ઉપયોગ કરીને તમે પ્રાપ્ત કરેલ ટોકન ઉમેરો"
+  },
+  "addAlias": {
+    "message": "ઉપનામ ઉમેરો"
+  },
+  "addNetwork": {
+    "message": "નેટવર્ક ઉમેરો"
+  },
+  "addRecipient": {
+    "message": "પ્રાપ્તકર્તા ઉમેરો"
+  },
+  "addSuggestedTokens": {
+    "message": "સૂચવેલ ટોકન્સ ઉમેરો"
+  },
+  "addToAddressBook": {
+    "message": "એડ્રેસ બુકમાં ઉમેરો"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "દા.ત. મોનાર્થ"
+  },
+  "addToken": {
+    "message": "ટોકન ઉમેરો"
+  },
+  "addTokens": {
+    "message": "ટોકન્સ ઉમેરો"
+  },
   "advanced": {
-    "message": "વિગતવાર"
+    "message": "અદ્યતન"
+  },
+  "advancedOptions": {
+    "message": "અદ્યતન વિકલ્પો"
+  },
+  "advancedSettingsDescription": {
+    "message": "ડેવલપર સુવિધાઓનો ઉપયોગ કરો, સ્ટેટ લોગ ડાઉનલોડ કરો, ખાતું ફરીથી સેટ કરો, ટેસ્ટનેટ અને કસ્ટમ RPC સેટઅપ કરો"
+  },
+  "affirmAgree": {
+    "message": "હું સહમત છુ"
+  },
+  "aggregatorFeeCost": {
+    "message": "એકંદર નેટવર્ક ફી"
+  },
+  "alertDisableTooltip": {
+    "message": "આ \"સેટિંગ્સ > ચેતવણીઓ\" માં બદલી શકાય છે"
+  },
+  "alertSettingsUnconnectedAccount": {
+    "message": "કોઈ જોડાણ વગરના એકાઉન્ટ સાથે વેબસાઇટ બ્રાઉઝ કરવાનું પસંદ કરેલ છે"
+  },
+  "alertSettingsUnconnectedAccountDescription": {
+    "message": "આ ચેતવણી ત્યારે બતાવવામાં આવશે જ્યારે તમે web3 કનેક્ટેડ સાઇટને બ્રાઉઝ કરી રહ્યાં હોઈ, પરંતુ હાલમાં પસંદ કરેલું એકાઉન્ટ કનેક્ટેડ ના હોઈ."
+  },
+  "alertSettingsWeb3ShimUsage": {
+    "message": "જ્યારે વેબસાઇટ કાઢી નાખેલી window.web3 API નો ઉપયોગ કરવાનો પ્રયાસ કરે છે"
+  },
+  "alertSettingsWeb3ShimUsageDescription": {
+    "message": "જ્યારે તમે કોઈ સાઇટને બ્રાઉઝ કરી રહ્યાં હોવ જે દૂર કરેલી window.web3 AP નો ઉપયોગ કરવાનો પ્રયાસ કરે છે ત્યારે આ ચેતવણી પોપઅપમાં બતાવવામાં આવે છે, અને પરિણામે તે તૂટી શકે છે."
+  },
+  "alerts": {
+    "message": "ચેતવણીઓ"
+  },
+  "alertsSettingsDescription": {
+    "message": "દરેક ચેતવણીને ચાલું અથવા બંધ કરો"
+  },
+  "allowExternalExtensionTo": {
+    "message": "આ બાહ્ય એક્સ્ટેંશનને આની મંજૂરી આપો:"
+  },
+  "allowOriginSpendToken": {
+    "message": "$1 ને તમારા $2 ખર્ચવાની મંજૂરી આપવી છે?",
+    "description": "$1 is the url of the site and $2 is the symbol of the token they are requesting to spend"
+  },
+  "allowThisSiteTo": {
+    "message": "આ સાઇટને આની મંજૂરી આપો:"
+  },
+  "allowWithdrawAndSpend": {
+    "message": "નીચેની રકમ સુધી ઉપાડવા અને ખર્ચ કરવા $1 ને મંજૂરી આપો:",
+    "description": "The url of the site that requested permission to 'withdraw and spend'"
+  },
+  "amount": {
+    "message": "રકમ"
+  },
+  "amountInEth": {
+    "message": "$1 ETH",
+    "description": "Displays an eth amount to the user. $1 is a decimal number"
+  },
+  "amountWithColon": {
+    "message": "રકમ:"
+  },
+  "appDescription": {
+    "message": "તમારા બ્રાઉઝરમાં એક ઇથેરિયમ વૉલેટ",
+    "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "મેટામાસ્ક",
     "description": "The name of the application"
   },
+  "approvalAndAggregatorTxFeeCost": {
+    "message": "મંજૂરી અને એગ્રીગેટર નેટવર્ક ફી"
+  },
+  "approvalTxGasCost": {
+    "message": "મંજૂરી Tx ગેસ કિંમત"
+  },
+  "approve": {
+    "message": "ખર્ચ મર્યાદા મંજૂર કરો"
+  },
+  "approveSpendLimit": {
+    "message": "$1 ખર્ચ મર્યાદા મંજૂર કરો",
+    "description": "The token symbol that is being approved"
+  },
+  "approved": {
+    "message": "મંજુર"
+  },
+  "asset": {
+    "message": "એસેટ"
+  },
+  "assets": {
+    "message": "એસેટ્સ"
+  },
+  "attemptToCancel": {
+    "message": "રદ કરવાનો પ્રયાસ કરવો છે?"
+  },
+  "attemptToCancelDescription": {
+    "message": "આ પ્રયાસ સબમિટ કરવાથી ગેરંટી નથી આપતું કે તમારું મૂળ ટ્રાન્સેકશન રદ કરવામાં આવશે. જો રદ કરવાનો પ્રયાસ સફળ થાય છે, તો તમારી પાસેથી ટ્રાન્સેકશન ફી લેવામાં આવશે."
+  },
+  "attemptingConnect": {
+    "message": "બ્લોકચેનથી કનેક્ટ થવાનો પ્રયાસ કરી રહ્યાં છે."
+  },
+  "attributions": {
+    "message": "લક્ષણો"
+  },
+  "authorizedPermissions": {
+    "message": "તમે નીચેની પરવાનગીને અધિકૃત કરી છે"
+  },
+  "autoLockTimeLimit": {
+    "message": "ઓટો-લોક ટાઈમર (મિનિટ્સ)"
+  },
+  "autoLockTimeLimitDescription": {
+    "message": "મેટામાસ્ક લોક થઈ જાય તે પહેલાં મિનિટમાં નિષ્ક્રિય સમય સેટ કરો."
+  },
+  "average": {
+    "message": "સરેરાશ"
+  },
   "back": {
-    "message": "પાછળ"
+    "message": "પાછા જાઓ"
+  },
+  "backToAll": {
+    "message": "પાછા બધા પર"
+  },
+  "backupApprovalInfo": {
+    "message": "જો તમે તમારું ડિવાઇસ ગુમાવશો, તમારો પાસવર્ડ ભૂલી જશો, મેટામેસ્કને ફરીથી ઇન્સ્ટોલ કરશો, અથવા બીજા ડિવાઇસ પર તમારા વૉલેટને એકસેસ કરવા માંગતા હો તો આ ગુપ્ત કોડ તમારા વૉલેટને પુનર્પ્રાપ્ત કરવા માટે જરૂરી છે."
+  },
+  "backupApprovalNotice": {
+    "message": "તમારા વૉલેટ અને ફંડ્સને સુરક્ષિત રાખવા માટે તમારા સિક્રેટ રિકવરી કોડનું બેકઅપ લો."
+  },
+  "backupNow": {
+    "message": "અત્યારે બૅકઅપ લો"
+  },
+  "balance": {
+    "message": "બેલેન્સ"
+  },
+  "balanceOutdated": {
+    "message": "બેલેન્સ જૂનું હોઈ શકે છે"
   },
   "basic": {
     "message": "મૂળભૂત"
   },
+  "blockExplorerUrl": {
+    "message": "બ્લોક એક્સપ્લોરર"
+  },
+  "blockExplorerView": {
+    "message": "$1 પર એકાઉન્ટ જુઓ",
+    "description": "$1 replaced by URL for custom block explorer"
+  },
+  "blockiesIdenticon": {
+    "message": "Blockies Identicon નો ઉપયોગ કરો"
+  },
+  "browserNotSupported": {
+    "message": "તમારું બ્રાઉઝર સપોર્ટેડ નથી..."
+  },
+  "builtInCalifornia": {
+    "message": "મેટામેસ્ક કેલિફોર્નિયામાં ડિઝાઇન અને બનાવવામાં કરવામાં આવ્યું છે."
+  },
+  "buy": {
+    "message": "ખરીદો"
+  },
+  "buyWithWyre": {
+    "message": "Wyre સાથે ETH ખરીદો"
+  },
+  "buyWithWyreDescription": {
+    "message": "Wyre તમને તમારા મેટામાસ્ક એકાઉન્ટમાં ETH જમા કરાવવા માટે ડેબિટ કાર્ડનો ઉપયોગ કરવા દે છે."
+  },
+  "bytes": {
+    "message": "બાઇટ્સ"
+  },
+  "canToggleInSettings": {
+    "message": "તમે સેટિંગ્સ -> ચેતવણીઓ માં આ સૂચનાને ફરીથી ચાલું શકો છો."
+  },
   "cancel": {
     "message": "રદ કરો"
+  },
+  "cancellationGasFee": {
+    "message": "રદ કરવાની ગેસ ફી"
+  },
+  "cancelled": {
+    "message": "રદ કરેલું"
+  },
+  "chainId": {
+    "message": "Chain ID"
+  },
+  "chromeRequiredForHardwareWallets": {
+    "message": "તમારા હાર્ડવેર વૉલેટથી કનેક્ટ થવા માટે તમારે ગૂગલ ક્રોમ પર મેટામાસ્કનો ઉપયોગ કરવાની જરૂર છે."
+  },
+  "clickToRevealSeed": {
+    "message": "ગુપ્ત શબ્દો જાહેર કરવા અહીં ક્લિક કરો"
   },
   "close": {
     "message": "બંધ કરો"
@@ -27,117 +266,1900 @@
   "confirm": {
     "message": "પુષ્ટિ કરો"
   },
+  "confirmPassword": {
+    "message": "પાસવર્ડની ખાતરી કરો"
+  },
+  "confirmSecretBackupPhrase": {
+    "message": "તમારા સિક્રેટ બેકઅપ શબ્દોની ખાતરી કરો"
+  },
+  "confirmed": {
+    "message": "ખાતરી થઇ ગઈ"
+  },
+  "congratulations": {
+    "message": "અભિનંદન"
+  },
   "connect": {
-    "message": "કનેક્ટ કરો"
+    "message": "કનેક્ટ"
+  },
+  "connectAccountOrCreate": {
+    "message": "એકાઉન્ટ કનેક્ટ કરો અથવા નવું બનાવો"
+  },
+  "connectHardwareWallet": {
+    "message": "હાર્ડવેર વૉલેટને કનેક્ટ કરો"
+  },
+  "connectManually": {
+    "message": "વર્તમાન સાઇટથી મેન્યુઅલી કનેક્ટ કરો"
+  },
+  "connectTo": {
+    "message": "$1 સાથે કનેક્ટ કરો",
+    "description": "$1 is the name/origin of a web3 site/application that the user can connect to metamask"
+  },
+  "connectToAll": {
+    "message": "તમારા બધા $1 થી કનેક્ટ કરો",
+    "description": "$1 will be replaced by the translation of connectToAllAccounts"
+  },
+  "connectToAllAccounts": {
+    "message": "એકાઉન્ટ્સ",
+    "description": "will replace $1 in connectToAll, completing the sentence 'connect to all of your accounts', will be text that shows list of accounts on hover"
+  },
+  "connectToMultiple": {
+    "message": "$1 થી કનેક્ટ કરો",
+    "description": "$1 will be replaced by the translation of connectToMultipleNumberOfAccounts"
+  },
+  "connectToMultipleNumberOfAccounts": {
+    "message": "$1 એકાઉન્ટ્સ",
+    "description": "$1 is the number of accounts to which the web3 site/application is asking to connect; this will substitute $1 in connectToMultiple"
+  },
+  "connectWithMetaMask": {
+    "message": "મેટામાસ્ક સાથે કનેક્ટ કરો"
+  },
+  "connectedAccountsDescriptionPlural": {
+    "message": "તમારા $1 એકાઉન્ટ્સ આ સાઇટથી કનેક્ટ થયેલ છે.",
+    "description": "$1 is the number of accounts"
+  },
+  "connectedAccountsDescriptionSingular": {
+    "message": "તમારૂ $1 એકાઉન્ટ આ સાઇટથી કનેક્ટ થયેલ છે."
+  },
+  "connectedAccountsEmptyDescription": {
+    "message": "મેટામાસ્ક આ સાઇટ સાથે કનેક્ટેડ નથી. web3 સાઇટથી કનેક્ટ થવા માટે, તેમની સાઇટ પર કનેક્ટ બટન શોધો."
+  },
+  "connectedSites": {
+    "message": "કનેક્ટેડ સાઇટ્સ"
+  },
+  "connectedSitesDescription": {
+    "message": "$1 આ સાઇટ્સ સાથે કનેક્ટ થયેલ છે. તેઓ તમારું એકાઉન્ટ એડ્રેસ જોઈ શકે છે.",
+    "description": "$1 is the account name"
+  },
+  "connectedSitesEmptyDescription": {
+    "message": "$1 કોઈપણ સાઇટથી કનેક્ટ થયેલ નથી.",
+    "description": "$1 is the account name"
+  },
+  "connecting": {
+    "message": "કનેક્ટ થઈ રહ્યું છે..."
+  },
+  "connectingTo": {
+    "message": "$1 સાથે કનેક્ટ થઈ રહ્યું છે"
+  },
+  "connectingToGoerli": {
+    "message": "ગોઅર્લી ટેસ્ટ નેટવર્ક સાથે કનેક્ટ થઈ રહ્યું છે"
+  },
+  "connectingToKovan": {
+    "message": "કોવાન ટેસ્ટ નેટવર્ક સાથે કનેક્ટ થઈ રહ્યું છે"
+  },
+  "connectingToMainnet": {
+    "message": "ઇથેરિયમ મેઈનનેટ સાથે કનેક્ટ થઈ રહ્યું છે"
+  },
+  "connectingToRinkeby": {
+    "message": "રિંકીબી ટેસ્ટ નેટવર્ક સાથે કનેક્ટ થઈ રહ્યું છે"
+  },
+  "connectingToRopsten": {
+    "message": "રોપસ્ટન ટેસ્ટ નેટવર્ક સાથે કનેક્ટ થઈ રહ્યું છે"
+  },
+  "contactUs": {
+    "message": "અમારો સંપર્ક કરો"
+  },
+  "contacts": {
+    "message": "સંપર્કો"
+  },
+  "contactsSettingsDescription": {
+    "message": "તમારા સંપર્કોને ઉમેરો, સંપાદિત કરો, દૂર કરો અને મેનેજ કરો"
+  },
+  "continue": {
+    "message": "ચાલુ રાખો"
+  },
+  "continueToWyre": {
+    "message": "Wyre પર જાઓ"
+  },
+  "contractDeployment": {
+    "message": "કોન્ટ્રાક્ટ ડિપ્લોયમેન્ટ"
+  },
+  "contractInteraction": {
+    "message": "કોન્ટ્રાક્ટ ઈન્ટરેકશન"
+  },
+  "copiedExclamation": {
+    "message": "કોપી થઇ ગઈ!"
+  },
+  "copiedTransactionId": {
+    "message": "ટ્રાન્સેકશન ID ની કોપી થઇ ગઈ"
+  },
+  "copyAddress": {
+    "message": "ક્લિપબોર્ડ પર એડ્રેસની કોપી કરો"
+  },
+  "copyPrivateKey": {
+    "message": "આ તમારી પ્રાઇવેટ કી છે (કોપી કરવા માટે ક્લિક કરો)"
   },
   "copyToClipboard": {
     "message": "ક્લિપબોર્ડ પર કૉપિ કરો"
   },
+  "copyTransactionId": {
+    "message": "ટ્રાન્સેકશન ID કોપી કરો"
+  },
   "create": {
     "message": "બનાવો"
+  },
+  "createAWallet": {
+    "message": "વૉલેટ બનાવો"
+  },
+  "createAccount": {
+    "message": "એકાઉન્ટ બનાવો"
+  },
+  "createPassword": {
+    "message": "પાસવર્ડ બનાવો"
+  },
+  "currencyConversion": {
+    "message": "ચલણ રૂપાંતર"
+  },
+  "currentAccountNotConnected": {
+    "message": "તમારું વર્તમાન એકાઉન્ટ કનેક્ટેડ નથી"
+  },
+  "currentExtension": {
+    "message": "વર્તમાન એક્સ્ટેંશન પૃષ્ઠ"
+  },
+  "currentLanguage": {
+    "message": "વર્તમાન ભાષા"
+  },
+  "customGas": {
+    "message": "ગેસને કસ્ટમાઇઝ કરો"
+  },
+  "customGasSubTitle": {
+    "message": "ફી વધારવાથી પ્રક્રિયાના સમયમાં ઘટાડો થઇ શકે છે, પરંતુ તેની ખાતરી આપવામાં આવતી નથી."
+  },
+  "customRPC": {
+    "message": "કસ્ટમ RPC"
+  },
+  "customSpendLimit": {
+    "message": "કસ્ટમ ખર્ચ મર્યાદા"
+  },
+  "customToken": {
+    "message": "કસ્ટમ ટોકન"
+  },
+  "dataBackupFoundInfo": {
+    "message": "તમારા કેટલાક એકાઉન્ટનો ડેટા મેટામાસ્કના પાછલા ઇન્સ્ટોલેશન દરમિયાન બેક અપ લેવામાં આવ્યો હતો. આમાં તમારી સેટિંગ્સ, સંપર્કો અને ટોકન્સ શામેલ હોઈ શકે છે. શું તમે હવે આ ડેટાને રીસ્ટોર કરવા માંગો છો?"
+  },
+  "decimal": {
+    "message": "દશાંશિકતા"
+  },
+  "decimalsMustZerotoTen": {
+    "message": "દશાંશ ઓછામાં ઓછું 0 હોવું જોઈએ, અને 36 થી વધુ નહીં."
+  },
+  "decrypt": {
+    "message": "ડિક્રિપ્ટ"
+  },
+  "decryptCopy": {
+    "message": "એન્ક્રિપ્ટેડ મેસેજની ક કોપી કરો"
+  },
+  "decryptInlineError": {
+    "message": "આ મેસેજ ભૂલને લીધે ડિક્રિપ્ટ કરી શકાતો નથી: $1",
+    "description": "$1 is error message"
+  },
+  "decryptMessageNotice": {
+    "message": "$1 તમારી ક્રિયા પૂર્ણ કરવા માટે આ મેસેજ વાંચવા માંગે છે",
+    "description": "$1 is the web3 site name"
+  },
+  "decryptMetamask": {
+    "message": "મેસેજ ડિક્રિપ્ટ કરો"
+  },
+  "decryptRequest": {
+    "message": "ડિક્રિપ્ટ કરવા માટે વિનંતી"
+  },
+  "defaultNetwork": {
+    "message": "ઇથર ટ્રાન્સેકશન માટેનું મૂળભૂત નેટવર્ક મેઈન નેટ છે."
   },
   "delete": {
     "message": "કાઢી નાખો"
   },
+  "deleteAccount": {
+    "message": "એકાઉન્ટ કાઢી નાખો"
+  },
+  "deleteNetwork": {
+    "message": "નેટવર્ક કાઢી નાખો?"
+  },
+  "deleteNetworkDescription": {
+    "message": "શું તમે ખરેખર આ નેટવર્કને કાઢી નાખવા માંગો છો?"
+  },
+  "depositEther": {
+    "message": "ઇથર જમા કરો"
+  },
   "details": {
     "message": "વિગતો"
   },
+  "directDepositEther": {
+    "message": "સીધું ઇથર જમા કરો"
+  },
+  "directDepositEtherExplainer": {
+    "message": "જો તમારી પાસે પહેલેથી જ કેટલાક ઇથર છે, તો તમારા નવા વૉલેટમાં ઇથર મેળવવાની સૌથી ઝડપી રીત ડાયરેક્ટ ડિપોઝિટ છે."
+  },
+  "disconnect": {
+    "message": "ડિસ્કનેક્ટ કરો"
+  },
+  "disconnectAllAccounts": {
+    "message": "બધા એકાઉન્ટ્સને ડિસ્કનેક્ટ કરો"
+  },
+  "disconnectAllAccountsConfirmationDescription": {
+    "message": "શું તમે ખરેખર ડિસ્કનેક્ટ કરવા માંગો છો? તમે સાઇટની કાર્યક્ષમતા ગુમાવી શકો છો."
+  },
+  "disconnectPrompt": {
+    "message": "$1 ને ડિસ્કનેક્ટ કરો"
+  },
+  "disconnectThisAccount": {
+    "message": "આ એકાઉન્ટને ડિસ્કનેક્ટ કરો"
+  },
+  "dismiss": {
+    "message": "કાઢી નાખો"
+  },
   "done": {
-    "message": "થઈ ગયું"
+    "message": "પૂર્ણ"
+  },
+  "dontHaveAHardwareWallet": {
+    "message": "હાર્ડવેર વૉલેટ નથી?"
+  },
+  "dontShowThisAgain": {
+    "message": "આ ફરીથી દર્શાવશો નહીં"
+  },
+  "downloadGoogleChrome": {
+    "message": "ગૂગલ ક્રોમ ડાઉનલોડ કરો"
+  },
+  "downloadSecretBackup": {
+    "message": "આ સિક્રેટ બેકઅપ શબ્દોને ડાઉનલોડ કરો અને તેને બાહ્ય એન્ક્રિપ્ટેડ હાર્ડ ડ્રાઇવ અથવા સ્ટોરેજ માધ્યમમાં સુરક્ષિત રૂપે સંગ્રહિત રાખો."
+  },
+  "downloadStateLogs": {
+    "message": "સ્ટેટ લોગ્સ ડાઉનલોડ કરો"
+  },
+  "dropped": {
+    "message": "છોડી દીધેલું"
   },
   "edit": {
-    "message": "સંપાદન"
+    "message": "એડિટ કરો"
+  },
+  "editContact": {
+    "message": "સંપર્ક એડિટ કરો"
+  },
+  "editPermission": {
+    "message": "પરવાનગી એડિટ કરો"
+  },
+  "encryptionPublicKeyNotice": {
+    "message": "$1 ને તમારી પબ્લિક એન્ક્રિપ્શન કી ગમશે. સંમતિથી, આ સાઇટ તમને એન્ક્રિપ્ટેડ મેસેજ કંપોઝ કરવામાં સમર્થ હશે.",
+    "description": "$1 is the web3 site name"
+  },
+  "encryptionPublicKeyRequest": {
+    "message": "એન્ક્રિપ્શન પબ્લિક કી ની વિનંતી કરો"
+  },
+  "endOfFlowMessage1": {
+    "message": "તમે પરીક્ષણ પાસ કર્યું - તમારા સીડફ્રેઝને સુરક્ષિત રાખો, તે તમારી જવાબદારી છે!"
+  },
+  "endOfFlowMessage10": {
+    "message": "બધું થઈ ગયું"
+  },
+  "endOfFlowMessage2": {
+    "message": "તેને સુરક્ષિત રૂપે સંગ્રહિત કરવા માટેની ટિપ્સ"
+  },
+  "endOfFlowMessage3": {
+    "message": "અલગ-અલગ સ્થળોએ બેકઅપ સાચવો."
+  },
+  "endOfFlowMessage4": {
+    "message": "કોઈની સાથે આ શબ્દો ક્યારેય શેર કરશો નહીં."
+  },
+  "endOfFlowMessage5": {
+    "message": "ફિશિંગથી સાવચેત રહો! મેટામાસ્ક ક્યારેય તમારા સીડફ્રેઝ માટે આપમેળે પૂછશે નહીં."
+  },
+  "endOfFlowMessage6": {
+    "message": "જો તમારે ફરીથી તમારા સીડફ્રેઝનું બેકઅપ લેવાની જરૂર હોય, તો તમે તેને સેટિંગ્સ -> સુરક્ષા માં શોધી શકો છો."
+  },
+  "endOfFlowMessage7": {
+    "message": "જો તમને ક્યારેય પ્રશ્નો હોય અથવા કંઇક વિચિત્ર દેખાય, તો support@metamask.io પર ઇ-મેઇલ કરો."
+  },
+  "endOfFlowMessage8": {
+    "message": "મેટામાસ્ક તમારા સીડફ્રેઝને ફરીથી પ્રાપ્ત કરી શકશે નહીં."
+  },
+  "endOfFlowMessage9": {
+    "message": "વધુ શીખો."
+  },
+  "endpointReturnedDifferentChainId": {
+    "message": "એન્ડપોઇંટએ અલગ chain ID પરત કર્યું",
+    "description": "$1 is the return value of eth_chainId from an RPC endpoint"
+  },
+  "ensNotFoundOnCurrentNetwork": {
+    "message": "વર્તમાન નેટવર્ક પર ENS નામ મળ્યું નથી. ઇથેરિયમ મેઈનનેટ પર સ્વિચ કરવાનો પ્રયાસ કરો."
+  },
+  "ensRegistrationError": {
+    "message": "ENS નામ નોંધણીમાં ભૂલ"
+  },
+  "enterAnAlias": {
+    "message": "ઉપનામ દાખલ કરો"
+  },
+  "enterMaxSpendLimit": {
+    "message": "મહત્તમ ખર્ચ મર્યાદા દાખલ કરો"
+  },
+  "enterPassword": {
+    "message": "પાસવર્ડ દાખલ કરો"
+  },
+  "enterPasswordContinue": {
+    "message": "ચાલુ રાખવા માટે પાસવર્ડ દાખલ કરો"
+  },
+  "errorCode": {
+    "message": "કોડ: $1",
+    "description": "Displayed error code for debugging purposes. $1 is the error code"
+  },
+  "errorDetails": {
+    "message": "ભૂલની વિગતો",
+    "description": "Title for collapsible section that displays error details for debugging purposes"
+  },
+  "errorMessage": {
+    "message": "મેસેજ: $1",
+    "description": "Displayed error message for debugging purposes. $1 is the error message"
+  },
+  "errorName": {
+    "message": "કોડ: $1",
+    "description": "Displayed error name for debugging purposes. $1 is the error name"
+  },
+  "errorPageMessage": {
+    "message": "પૃષ્ઠ ફરીથી લોડ કરીને ફરીથી પ્રયાસ કરો, અથવા સંપર્ક કરો support@metamask.io પર",
+    "description": "Message displayed on generic error page in the fullscreen or notification UI"
+  },
+  "errorPagePopupMessage": {
+    "message": "પૉપઅપને બંધ કરો અને ખોલીને ફરીથી પ્રયાસ કરો અથવા સંપર્ક કરો support@metamask.io પર",
+    "description": "Message displayed on generic error page in the popup UI"
+  },
+  "errorPageTitle": {
+    "message": "મેટામાસ્કમાં એક ભૂલ આવી",
+    "description": "Title of generic error page"
+  },
+  "errorStack": {
+    "message": "સ્ટેક:",
+    "description": "Title for error stack, which is displayed for debugging purposes"
+  },
+  "estimatedProcessingTimes": {
+    "message": "અંદાજિત પ્રક્રિયા સમય"
+  },
+  "eth_accounts": {
+    "message": "તમારા માન્ય એકાઉન્ટના એડ્રેસ જુઓ (જરૂરી)",
+    "description": "The description for the `eth_accounts` permission"
+  },
+  "ethereumPublicAddress": {
+    "message": "ઇથેરિયમ પબ્લિક એડ્રેસ"
+  },
+  "etherscan": {
+    "message": "ઇથરસ્કેન"
+  },
+  "etherscanView": {
+    "message": "ઇથરસ્કેન પર એકાઉન્ટ જુઓ"
+  },
+  "expandView": {
+    "message": "દૃશ્ય વિસ્તૃત કરો"
+  },
+  "exportPrivateKey": {
+    "message": "પ્રાઇવેટ કી નિકાસ કરો"
+  },
+  "externalExtension": {
+    "message": "બાહ્ય એક્સટેન્શન"
+  },
+  "extraApprovalGas": {
+    "message": "+$1 મંજૂરી ગેસ",
+    "description": "Expresses an additional gas amount the user will have to pay, on top of some other displayed amount. $1 is a decimal amount of gas"
+  },
+  "failed": {
+    "message": "નિષ્ફળ"
+  },
+  "failedToFetchChainId": {
+    "message": "ચેઇન ID લાવી શકાયું નહીં. શું તમારી RPC URL સાચી છે?"
+  },
+  "failureMessage": {
+    "message": "કંઈક ખોટું થયું, અને અમે ક્રિયા પૂર્ણ કરવામાં અક્ષમ છીએ"
   },
   "fast": {
     "message": "ઝડપી"
   },
+  "fastest": {
+    "message": "સૌથી ઝડપી"
+  },
+  "feeAssociatedRequest": {
+    "message": "આ વિનંતી સાથે ફી સંકળાયેલ છે."
+  },
+  "fiat": {
+    "message": "ફિયાટ",
+    "description": "Exchange type"
+  },
+  "fileImportFail": {
+    "message": "ફાઇલ ઈમ્પોર્ટ કામ કરી રહ્યું નથી? અહીં ક્લિક કરો!",
+    "description": "Helps user import their account from a JSON file"
+  },
+  "forbiddenIpfsGateway": {
+    "message": "પ્રતિબંધિત IPFS ગેટવે: કૃપા કરીને CID ગેટવેનો ઉલ્લેખ કરો"
+  },
   "forgetDevice": {
-    "message": "આ ઉપકરણને ભૂલી જાઓ"
+    "message": "આ ઉપકરણ ભૂલી જાઓ"
+  },
+  "from": {
+    "message": "થી"
+  },
+  "fromAddress": {
+    "message": "$1: થી",
+    "description": "$1 is the address to include in the From label. It is typically shortened first using shortenAddress"
+  },
+  "functionApprove": {
+    "message": "ફંકશન: માન્ય કરો"
+  },
+  "functionType": {
+    "message": "ફંકશનનો પ્રકાર"
+  },
+  "gasLimit": {
+    "message": "ગેસ મર્યાદા"
+  },
+  "gasLimitInfoTooltipContent": {
+    "message": "ગેસ મર્યાદા એ ગેસના યુનિટ્સની મહત્તમ રકમ છે જે તમે ખર્ચવા તૈયાર છો."
+  },
+  "gasLimitTooLow": {
+    "message": "ગેસ મર્યાદા ઓછામાં ઓછી 21000 હોવી આવશ્યક છે"
+  },
+  "gasLimitTooLowWithDynamicFee": {
+    "message": "ગેસ મર્યાદા ઓછામાં ઓછી $1 હોવી આવશ્યક છે",
+    "description": "$1 is the custom gas limit, in decimal."
+  },
+  "gasPrice": {
+    "message": "ગેસની કિંમત (GWEI)"
+  },
+  "gasPriceExtremelyLow": {
+    "message": "ગેસની કિંમત ખૂબ ઓછી છે"
+  },
+  "gasPriceInfoTooltipContent": {
+    "message": "ગેસની કિંમત ઇથર ની રકમ સ્પષ્ટ કરે છે જે તમે ગેસના દરેક યુનિટ માટે ચૂકવણી કરવા તૈયાર છો."
+  },
+  "gasUsed": {
+    "message": "વપરાયેલ ગેસ"
+  },
+  "gdprMessage": {
+    "message": "આ ડેટા એકત્રિત કરવામાં આવ્યો છે અને તેથી જનરલ ડેટા પ્રોટેક્શન રેગ્યુલેશન (EU) 2016/679 ના હેતુ માટે અનામી છે. અમારી ગોપનીયતા પ્રથાઓના સંબંધમાં વધુ માહિતી માટે, કૃપા કરીને અમારું $1 જુઓ.",
+    "description": "$1 refers to the gdprMessagePrivacyPolicy message, the translation of which is meant to be used exclusively in the context of gdprMessage"
+  },
+  "gdprMessagePrivacyPolicy": {
+    "message": "ગોપનીયતા નીતિ અહીં છે",
+    "description": "this translation is intended to be exclusively used as the replacement for the $1 in the gdprMessage translation"
+  },
+  "general": {
+    "message": "જનરલ"
+  },
+  "generalSettingsDescription": {
+    "message": "ચલણ રૂપાંતર, પ્રાથમિક ચલણ, ભાષા, બ્લોકીઝ સમાન"
+  },
+  "getEther": {
+    "message": "ઇથર મેળવો"
+  },
+  "getEtherFromFaucet": {
+    "message": "$1 માટે ફોસેટ માંથી ઇથર મેળવો",
+    "description": "Displays network name for Ether faucet"
+  },
+  "getHelp": {
+    "message": "સહાય મેળવો."
   },
   "getStarted": {
-    "message": "પ્રારંભ કરો"
+    "message": "શરૂ કરો"
+  },
+  "goerli": {
+    "message": "ગોઅર્લી ટેસ્ટ નેટવર્ક"
+  },
+  "happyToSeeYou": {
+    "message": "અમે તમને જોઈને ખુશ છીએ."
+  },
+  "hardware": {
+    "message": "હાર્ડવેર"
+  },
+  "hardwareWalletConnected": {
+    "message": "હાર્ડવેર વૉલેટ કનેક્ટ થયેલ છે"
+  },
+  "hardwareWallets": {
+    "message": "હાર્ડવેર વૉલેટને કનેક્ટ કરો"
+  },
+  "hardwareWalletsMsg": {
+    "message": "તમે મેટામાસ્ક સાથે વાપરવા માંગતા હાર્ડવેર વૉલેટને પસંદ કરો"
+  },
+  "havingTroubleConnecting": {
+    "message": "કનેક્ટ કરવામાં મુશ્કેલી આવી રહી છે?"
+  },
+  "here": {
+    "message": "અહીં",
+    "description": "as in -click here- for more information (goes with troubleTokenBalances)"
+  },
+  "hexData": {
+    "message": "હેક્સ ડેટા"
   },
   "hide": {
     "message": "છુપાવો"
   },
+  "hideTokenPrompt": {
+    "message": "ટોકન છુપાવો?"
+  },
+  "hideTokenSymbol": {
+    "message": "છુપાવો $1",
+    "description": "$1 is the symbol for a token (e.g. 'DAI')"
+  },
   "history": {
-    "message": "ઇતિહાસ"
+    "message": "હીસ્ટરી"
   },
   "import": {
-    "message": "આયાત કરો",
+    "message": "ઈમ્પોર્ટ",
     "description": "Button to import an account from a selected file"
   },
+  "importAccount": {
+    "message": "એકાઉન્ટ ઈમ્પોર્ટ કરો"
+  },
+  "importAccountMsg": {
+    "message": "ઈમ્પોર્ટ કરેલા એકાઉન્ટ્સ તમારા મૂળમાં બનાવેલા મેટામાસ્ક એકાઉન્ટ સીડફ્રેઝ સાથે સંકળાયેલા નહીં હોય. ઈમ્પોર્ટ કરેલા એકાઉન્ટ્સ વિશે વધુ જાણો"
+  },
+  "importAccountSeedPhrase": {
+    "message": "સીડફ્રેઝ સાથે એકાઉન્ટ ઈમ્પોર્ટ કરો"
+  },
+  "importUsingSeed": {
+    "message": "એકાઉન્ટ સીડફ્રેઝની મદદથી આયાત કરો"
+  },
+  "importWallet": {
+    "message": "વૉલેટ ઈમ્પોર્ટ કરો"
+  },
+  "importYourExisting": {
+    "message": "12 શબ્દના સીડફ્રેઝનો ઉપયોગ કરીને તમારું હાલનું વૉલેટ ઈમ્પોર્ટ કરો"
+  },
   "imported": {
-    "message": "આયાત કરેલા",
+    "message": "ઈમ્પોર્ટ કરેલ",
     "description": "status showing that an account has been fully loaded into the keyring"
+  },
+  "infoHelp": {
+    "message": "માહિતી અને સહાય"
+  },
+  "initialTransactionConfirmed": {
+    "message": "નેટવર્ક દ્વારા તમારા પ્રારંભિક ટ્રાન્સેકશનની પુષ્ટિ કરવામાં આવી હતી. પાછા જવા માટે ઓકે પર ક્લિક કરો."
+  },
+  "insufficientBalance": {
+    "message": "અપર્યાપ્ત બેલેન્સ."
+  },
+  "insufficientFunds": {
+    "message": "અપર્યાપ્ત ફંડ્સ."
+  },
+  "insufficientTokens": {
+    "message": "અપર્યાપ્ત ટોકન્સ."
+  },
+  "invalidAddress": {
+    "message": "અમાન્ય એડ્રેસ"
+  },
+  "invalidAddressRecipient": {
+    "message": "પ્રાપ્તકર્તાનું એડ્રેસ અમાન્ય છે"
+  },
+  "invalidAddressRecipientNotEthNetwork": {
+    "message": "ETH નેટવર્ક નથી, નાના અક્ષરો પર સેટ કરો"
+  },
+  "invalidBlockExplorerURL": {
+    "message": "અમાન્ય બ્લોક એક્સપ્લોરર URL"
+  },
+  "invalidChainIdTooBig": {
+    "message": "અમાન્ય chain ID. chain ID ખૂબ મોટી છે."
+  },
+  "invalidCustomNetworkAlertContent1": {
+    "message": "કસ્ટમ નેટવર્ક '$1' માટેની chain ID ફરીથી દાખલ કરવાની રહેશે.",
+    "description": "$1 is the name/identifier of the network."
+  },
+  "invalidCustomNetworkAlertContent2": {
+    "message": "દૂષિત અથવા ખામીયુક્ત નેટવર્ક પ્રદાતાઓથી તમારું રક્ષણ કરવા માટે, હવે બધા કસ્ટમ નેટવર્ક્સ માટે chain ID આવશ્યક છે."
+  },
+  "invalidCustomNetworkAlertContent3": {
+    "message": "સેટિંગ્સ > નેટવર્ક પર જાઓ અને chain ID દાખલ કરો. તમે $1 પર સૌથી વધુ લોકપ્રિય નેટવર્ક્સની chain ID શોધી શકો છો.",
+    "description": "$1 is a link to https://chainid.network"
+  },
+  "invalidCustomNetworkAlertTitle": {
+    "message": "અમાન્ય કસ્ટમ નેટવર્ક"
+  },
+  "invalidHexNumber": {
+    "message": "અમાન્ય હેક્સાડેસિમલ નંબર."
+  },
+  "invalidHexNumberLeadingZeros": {
+    "message": "અમાન્ય હેક્સાડેસિમલ નંબર. કોઈપણ આગળનાં ઝીરો દૂર કરો."
+  },
+  "invalidIpfsGateway": {
+    "message": "અમાન્ય IPFS ગેટવે: ઇનપુટ માન્ય URL હોવું આવશ્યક છે"
+  },
+  "invalidNumber": {
+    "message": "અમાન્ય નંબર. દશાંશ અથવા '0x'- થી ચાલુ થતો હેક્સાડેસિમલ નંબર દાખલ કરો."
+  },
+  "invalidNumberLeadingZeros": {
+    "message": "અમાન્ય નંબર. કોઈપણ આગળનાં ઝીરો દૂર કરો."
+  },
+  "invalidRPC": {
+    "message": "અમાન્ય RPC URL"
+  },
+  "invalidSeedPhrase": {
+    "message": "અમાન્ય સીડફ્રેઝ"
+  },
+  "ipfsGateway": {
+    "message": "IPFS ગેટવે"
+  },
+  "ipfsGatewayDescription": {
+    "message": "ENS કન્ટેન્ટ રીઝોલ્યુશન વાપરવા માટે IPFS CID ગેટવેની URL દાખલ કરો."
+  },
+  "jsonFile": {
+    "message": "JSON ફાઇલ",
+    "description": "format for importing an account"
+  },
+  "knownAddressRecipient": {
+    "message": "જાણીતું કોન્ટ્રાક્ટ એડ્રેસ."
+  },
+  "knownTokenWarning": {
+    "message": "આ ક્રિયા તમારા વૉલેટમાં પહેલેથી સૂચિબદ્ધ ટોકન્સને એડિટ કરશે, જેનો ઉપયોગ તમને ફિશ કરવા માટે થઈ શકે છે. ફક્ત ત્યારે જ મંજૂરી આપો જો તમને ખાતરી હોય કે આ ટોકન્સ જે રજૂ કરે છે તેને તમે બદલવા માંગો છો."
+  },
+  "kovan": {
+    "message": "કોવાન ટેસ્ટ નેટવર્ક"
+  },
+  "lastConnected": {
+    "message": "છેલ્લું કનેક્ટેડ"
+  },
+  "learnMore": {
+    "message": "વધુ શીખો"
+  },
+  "ledgerAccountRestriction": {
+    "message": "તમે નવું એકાઉન્ટ ઉમેરી શકો તે પહેલાં તમારે તમારા છેલ્લા એકાઉન્ટનો ઉપયોગ કરવાની જરૂર છે."
+  },
+  "letsGoSetUp": {
+    "message": "હા, ચાલો સેટ કરીએ!"
+  },
+  "likeToAddTokens": {
+    "message": "શું તમે આ ટોકન્સ ઉમેરવા માંગો છો?"
+  },
+  "links": {
+    "message": "લિંક્સ"
+  },
+  "loadMore": {
+    "message": "વધુ બતાવો"
   },
   "loading": {
     "message": "લોડ કરી રહ્યું છે..."
   },
+  "loadingTokens": {
+    "message": "ટોકન્સ લોડ કરી રહ્યું છે..."
+  },
+  "localhost": {
+    "message": "Localhost 8545"
+  },
+  "lock": {
+    "message": "લોક"
+  },
+  "lockTimeTooGreat": {
+    "message": "લોક સમય ખૂબ મહાન છે"
+  },
+  "mainnet": {
+    "message": "ઇથેરિયમ મેઈનનેટ"
+  },
+  "max": {
+    "message": "મહત્તમ"
+  },
+  "memo": {
+    "message": "યાદી"
+  },
+  "memorizePhrase": {
+    "message": "આ શબ્દો યાદ રાખો."
+  },
+  "message": {
+    "message": "સંદેશ"
+  },
+  "metaMaskConnectStatusParagraphOne": {
+    "message": "મેટામાસ્કમાં તમારા એકાઉન્ટના કનેક્શન્સ પર હવે તમારું નિયંત્રણ વધુ છે."
+  },
+  "metaMaskConnectStatusParagraphThree": {
+    "message": "તમારા કનેક્ટેડ એકાઉન્ટ્સનું સંચાલન કરવા માટે તેના પર ક્લિક કરો."
+  },
+  "metaMaskConnectStatusParagraphTwo": {
+    "message": "કનેક્શન સ્ટેટસ બટન બતાવે છે કે તમે જે વેબસાઇટની મુલાકાત લઈ રહ્યાં છો તે તમારા હાલમાં પસંદ કરેલા એકાઉન્ટથી કનેક્ટ થયેલ છે."
+  },
+  "metamaskDescription": {
+    "message": "તમને ઇથેરિયમ અને વિકેન્દ્રિત વેબથી કનેક્ટ કરી રહ્યું છે."
+  },
+  "metamaskSwapsOfflineDescription": {
+    "message": "મેટામાસ્ક સ્વેપ્સનું સંચાલન ચાલી રહ્યું છે. કૃપા કરીને પછીથી તપાસો."
+  },
+  "metamaskVersion": {
+    "message": "મેટામાસ્ક વર્ઝન"
+  },
+  "metametricsCommitmentsAllowOptOut": {
+    "message": "સેટિંગ્સ દ્વારા તમને હંમેશાં છોડવાની મંજૂરી આપે છે"
+  },
+  "metametricsCommitmentsBoldNever": {
+    "message": "ક્યારેય નહીં",
+    "description": "This string is localized separately from some of the commitments so that we can bold it"
+  },
+  "metametricsCommitmentsIntro": {
+    "message": "મેટામાસ્ક કરશે.."
+  },
+  "metametricsCommitmentsNeverCollectIP": {
+    "message": "$1 તમારું સંપૂર્ણ IP એડ્રેસ એકત્રિત કરો",
+    "description": "The $1 is the bolded word 'Never', from 'metametricsCommitmentsBoldNever'"
+  },
+  "metametricsCommitmentsNeverCollectKeysEtc": {
+    "message": "$1 કીઓ, એડ્રેસિસ, ટ્રાન્સેકશન્સ, બેલેન્સ, હેશીસ અથવા કોઈપણ વ્યક્તિગત માહિતી એકત્રિત કરો",
+    "description": "The $1 is the bolded word 'Never', from 'metametricsCommitmentsBoldNever'"
+  },
+  "metametricsCommitmentsNeverSellDataForProfit": {
+    "message": "$1 ફાયદા માટે ડેટા વેચે છે. હંમેશા!",
+    "description": "The $1 is the bolded word 'Never', from 'metametricsCommitmentsBoldNever'"
+  },
+  "metametricsCommitmentsSendAnonymizedEvents": {
+    "message": "અનામી ક્લિક અને પૃષ્ઠ દૃશ્ય ઇવેન્ટ્સ મોકલો"
+  },
+  "metametricsHelpImproveMetaMask": {
+    "message": "મેટામાસ્કને સુધારવામાં અમારી સહાય કરો"
+  },
+  "metametricsOptInDescription": {
+    "message": "અમારા વપરાશકર્તાઓ એક્સ્ટેંશન સાથે કેવી રીતે સંપર્ક કરે છે તે વધુ સારી રીતે સમજવા માટે મેટામાસ્ક વપરાશ ડેટા એકત્રિત કરવા માંગે છે. આ ડેટાનો ઉપયોગ અમારા ઉત્પાદન અને ઇથેરિયમ ઇકોસિસ્ટમના ઉપયોગીતા અને વપરાશકર્તા અનુભવને સતત વધારવા માટે કરવામાં આવશે."
+  },
+  "mobileSyncText": {
+    "message": "કૃપા કરીને તમારો પાસવર્ડ દાખલ કરો ખાતરી કરવા માટે તમે જ છો!"
+  },
+  "mustSelectOne": {
+    "message": "ઓછામાં ઓછું 1 ટોકન પસંદ કરવું આવશ્યક છે."
+  },
+  "myAccounts": {
+    "message": "મારા એકાઉન્ટ્સ"
+  },
+  "myWalletAccounts": {
+    "message": "મારા વૉલેટ એકાઉન્ટ્સ"
+  },
+  "myWalletAccountsDescription": {
+    "message": "તમારા બધા મેટામાસ્ક દ્વારા બનાવેલા એકાઉન્ટ્સ આપમેળે આ વિભાગમાં ઉમેરવામાં આવશે."
+  },
+  "needEtherInWallet": {
+    "message": "મેટામાસ્કનો ઉપયોગ કરીને વિકેન્દ્રિત એપ્લિકેશનો સાથે વાતચીત કરવા માટે, તમારે તમારા વૉલેટમાં ઇથરની જરૂર પડશે."
+  },
+  "needImportFile": {
+    "message": "ઈમ્પોર્ટ કરવા માટે તમારે ફાઇલ પસંદ કરવી આવશ્યક છે.",
+    "description": "User is important an account and needs to add a file to continue"
+  },
+  "negativeETH": {
+    "message": "નકારાત્મક પ્રમાણમાં ETH મોકલી શકતા નથી."
+  },
+  "networkName": {
+    "message": "નેટવર્કનું નામ"
+  },
+  "networkSettingsChainIdDescription": {
+    "message": "Chain ID નો ઉપયોગ ટ્રાન્સેકશન સાઈન કરવા માટે થાય છે. તે નેટવર્ક દ્વારા પરત કરવામાં આવેલી chain ID સાથે મેળ ખાતું હોવું જોઈએ. તમે દશાંશ અથવા '0x'-ઉપસર્ગ હેક્સાડેસિમલ નંબર દાખલ કરી શકો છો, પરંતુ અમે દશાંશમાં સંખ્યા પ્રદર્શિત કરીશું."
+  },
+  "networkSettingsDescription": {
+    "message": "કસ્ટમ RPC નેટવર્ક્સ ઉમેરો અને સંપાદિત કરો"
+  },
+  "networks": {
+    "message": "નેટવર્ક્સ"
+  },
+  "nevermind": {
+    "message": "કંઈ વાંધો નહીં"
+  },
+  "newAccount": {
+    "message": "નવું એકાઉન્ટ"
+  },
+  "newAccountDetectedDialogMessage": {
+    "message": "નવું એડ્રેસ મળ્યું! તમારી એડ્રેસ બુકમાં ઉમેરવા અહીં ક્લિક કરો."
+  },
+  "newAccountNumberName": {
+    "message": "એકાઉન્ટ $1",
+    "description": "Default name of next account to be created on create account screen"
+  },
+  "newContact": {
+    "message": "નવો સંપર્ક"
+  },
+  "newContract": {
+    "message": "નવો કોન્ટ્રાક્ટ"
+  },
+  "newNetwork": {
+    "message": "નવું નેટવ"
+  },
+  "newPassword": {
+    "message": "નવો પાસવર્ડ (ઓછામાં ઓછા 8 અક્ષરો)"
+  },
+  "newToMetaMask": {
+    "message": "મેટામાસ્કમાં નવા છો?"
+  },
+  "newTotal": {
+    "message": "નવો ટોટલ"
+  },
+  "newTransactionFee": {
+    "message": "નવી ટ્રાન્સેકશન ફી"
+  },
   "next": {
-    "message": "આગલું"
+    "message": "આગળ"
+  },
+  "nextNonceWarning": {
+    "message": "નન્સ $1 ની સૂચવેલ નન્સ કરતા વધારે છે",
+    "description": "The next nonce according to MetaMask's internal logic"
+  },
+  "noAccountsFound": {
+    "message": "આપેલી શોધ પૂછપરછ માટે કોઈ એકાઉન્ટ્સ મળ્યાં નથી"
+  },
+  "noAddressForName": {
+    "message": "આ નામ માટે કોઈ એડ્રેસ સેટ કરવામાં આવ્યું નથી."
+  },
+  "noAlreadyHaveSeed": {
+    "message": "ના, મારી પાસે પહેલેથી જ સીડ ફ્રેસિસ છે"
+  },
+  "noConversionRateAvailable": {
+    "message": "કોઈ રૂપાંતર દર ઉપલબ્ધ નથી"
+  },
+  "noThanks": {
+    "message": "ના આભાર"
+  },
+  "noTransactions": {
+    "message": "તમારા કોઈ ટ્રાન્સેકશન્સ નથી"
+  },
+  "noWebcamFound": {
+    "message": "તમારા કમ્પ્યુટરનો વેબકેમ મળ્યો નથી. મહેરબાની કરીને ફરીથી પ્રયાસ કરો."
+  },
+  "noWebcamFoundTitle": {
+    "message": "વેબકેમ મળ્યો નથી"
+  },
+  "nonceField": {
+    "message": "ટ્રાન્સેકશન નન્સને કસ્ટમાઇઝ કરો"
+  },
+  "nonceFieldDescription": {
+    "message": "પુષ્ટિ સ્ક્રીન પર નન્સ (ટ્રાન્સેકશન નંબર) બદલવા માટે આ ચાલુ કરો. આ એક અદ્યતન સુવિધા છે, સાવધાનીપૂર્વક ઉપયોગ કરો."
+  },
+  "nonceFieldHeading": {
+    "message": "કસ્ટમ નન્સ"
+  },
+  "notCurrentAccount": {
+    "message": "શું આ સાચું એકાઉન્ટ છે? તે તમારા હાલમાં પસંદ કરેલા વૉલેટના એકાઉન્ટથી અલગ છે"
+  },
+  "notEnoughGas": {
+    "message": "પર્યાપ્ત ગેસ નથી"
+  },
+  "ofTextNofM": {
+    "message": "ના"
   },
   "off": {
     "message": "બંધ"
   },
+  "offlineForMaintenance": {
+    "message": "જાળવણી માટે ઓફલાઈન"
+  },
   "ok": {
-    "message": "બરાબર, સમજાઇ ગયું"
+    "message": "બરાબર"
   },
   "on": {
     "message": "ચાલુ"
   },
+  "onboardingReturnNotice": {
+    "message": "\"$1\" આ ટેબને બંધ કરશે અને $2 પર પાછા લાવશે",
+    "description": "Return the user to the site that initiated onboarding"
+  },
+  "onlyAddTrustedNetworks": {
+    "message": "દૂષિત ઇથેરિયમ નેટવર્ક પ્રદાતા બ્લોકચેનની સ્થિતિ વિશે ખોટું બોલી શકે છે અને તમારી નેટવર્ક પ્રવૃત્તિને રેકોર્ડ કરી શકે છે. ફક્ત વિશ્વાસ કરો છો તેવા કસ્ટમ નેટવર્ક્સને ઉમેરો."
+  },
+  "onlyAvailableOnMainnet": {
+    "message": "ફક્ત મેઈનનેટ પર ઉપલબ્ધ છે"
+  },
+  "onlyConnectTrust": {
+    "message": "ફક્ત તે સાઈટ સાથે કનેક્ટ કરો જેના પર તમને વિશ્વાસ હોઈ."
+  },
+  "optionalBlockExplorerUrl": {
+    "message": "બ્લોક એક્સપ્લોરર URL (વૈકલ્પિક)"
+  },
+  "optionalCurrencySymbol": {
+    "message": "ચલણ સિમ્બોલ (વૈકલ્પિક)"
+  },
+  "orderOneHere": {
+    "message": "ટ્રેઝર અથવા લેજરનો ઓર્ડર આપો અને તમારા ફંડ્સને કોલ્ડ સ્ટોરેજમાં રાખો"
+  },
   "origin": {
     "message": "મૂળ"
+  },
+  "parameters": {
+    "message": "પેરામીટર્સ"
+  },
+  "participateInMetaMetrics": {
+    "message": "મેટામેટ્રિક્સમાં ભાગ લો"
+  },
+  "participateInMetaMetricsDescription": {
+    "message": "મેટામાસ્કને વધુ સારું બનાવવામાં સહાય માટે મેટામેટ્રિક્સમાં ભાગ લો"
   },
   "password": {
     "message": "પાસવર્ડ"
   },
+  "passwordNotLongEnough": {
+    "message": "પાસવર્ડ પૂરતો લાંબો નથી"
+  },
+  "passwordsDontMatch": {
+    "message": "પાસવર્ડ મેળ ખાતાં નથી"
+  },
+  "pastePrivateKey": {
+    "message": "તમારી પ્રાઇવેટ કી અહીં પેસ્ટ કરો:",
+    "description": "For importing an account from a private key"
+  },
+  "pending": {
+    "message": "બાકી"
+  },
+  "permissionCheckedIconDescription": {
+    "message": "તમે આ પરવાનગીને મંજૂરી આપી છે"
+  },
+  "permissionUncheckedIconDescription": {
+    "message": "તમે આ પરવાનગીને મંજૂરી આપી નથી"
+  },
+  "permissions": {
+    "message": "પરવાનગી"
+  },
+  "personalAddressDetected": {
+    "message": "પર્સનલ એડ્રેસ મળ્યું. ટોકન કોન્ટ્રાક્ટ એડ્રેસ નાખો."
+  },
+  "plusXMore": {
+    "message": "+ $1 વધુ",
+    "description": "$1 is a number of additional but unshown items in a list- this message will be shown in place of those items"
+  },
+  "prev": {
+    "message": "પહેલાંનું"
+  },
+  "primaryCurrencySetting": {
+    "message": "પ્રાથમિક ચલણ"
+  },
+  "primaryCurrencySettingDescription": {
+    "message": "Chain ના મૂળ ચલણ (દા.ત. ETH) માં પ્રદર્શિત મૂલ્યોને પ્રાધાન્ય આપવા માટે મૂળ પસંદ કરો. તમારી પસંદ કરેલી ફિયાટ ચલણમાં પ્રદર્શિત મૂલ્યોને પ્રાધાન્ય આપવા માટે ફિયાટ પસંદ કરો."
+  },
+  "privacyMsg": {
+    "message": "ગોપનીયતા નીતિ"
+  },
+  "privateKey": {
+    "message": "પ્રાઇવેટ કી",
+    "description": "select this type of file to use to import an account"
+  },
+  "privateKeyWarning": {
+    "message": "ચેતવણી: આ કી ક્યારેય જાહેર કરશો નહીં. તમારી પ્રાઇવેટ કી સાથે કોઈપણ તમારા એકાઉન્ટમાં રાખેલા કોઈપણ એસેટ્સ ચોરી શકે છે."
+  },
+  "privateNetwork": {
+    "message": "પ્રાઇવેટ નેટવર્ક"
+  },
+  "proposedApprovalLimit": {
+    "message": "સૂચિત મંજૂરી મર્યાદા"
+  },
+  "protectYourKeys": {
+    "message": "તમારી કી સુરક્ષિત રાખો!"
+  },
+  "protectYourKeysMessage1": {
+    "message": "તમારા સીડફ્રેઝથી સાવચેત રહો - એવી વેબસાઇટ્સના અહેવાલો આવ્યા છે કે જે મેમેટામાસ્કનું અનુકરણ કરવાનો પ્રયાસ કરે છે. મેટામાસ્ક ક્યારેય તમારા સીડફ્રેઝ માંગશે નહીં!"
+  },
+  "protectYourKeysMessage2": {
+    "message": "તમારા શબ્દો સુરક્ષિત રાખો. જો તમે કંઇક વિચિત્ર જોવો, અથવા તમે કોઈ વેબસાઇટ વિશે અસ્પષ્ટ છો, તો support@metamask.io પર ઇ-મેઇલ કરો"
+  },
+  "provide": {
+    "message": "પ્રદાન કરો"
+  },
   "queue": {
-    "message": "કતારમાં"
+    "message": "કતાર"
+  },
+  "queued": {
+    "message": "કતારબદ્ધ"
+  },
+  "readdToken": {
+    "message": "તમે તમારા એકાઉન્ટ્સ વિકલ્પો મેનૂમાં \"ટોકન ઉમેરો\" પર જઈને ભવિષ્યમાં આ ટોકન ફરીથી ઉમેરી શકો છો."
+  },
+  "readyToConnect": {
+    "message": "કનેક્ટ કરવા માટે તૈયાર છો?"
+  },
+  "receive": {
+    "message": "પ્રાપ્ત કરો"
+  },
+  "recents": {
+    "message": "તાજેતરના"
+  },
+  "recipientAddress": {
+    "message": "પ્રાપ્તકર્તા નું સરનામું"
+  },
+  "recipientAddressPlaceholder": {
+    "message": "શોધો, પબ્લિક એડ્રેસ (0x) અથવા ENS"
   },
   "reject": {
-    "message": "નકારો"
+    "message": "અસ્વીકાર"
+  },
+  "rejectAll": {
+    "message": "બધાને અસ્વીકારો"
+  },
+  "rejectTxsDescription": {
+    "message": "તમે લગભગ $1 ટ્રાન્સેકશન્સને નકારી નાખવાના છો."
+  },
+  "rejectTxsN": {
+    "message": "$1 ટ્રાન્સેકશન્સને નકારો"
+  },
+  "rejected": {
+    "message": "નકાર્યું"
+  },
+  "remindMeLater": {
+    "message": "મને પછી યાદ કરાવો"
   },
   "remove": {
-    "message": "દૂર કરો"
+    "message": "કાઢી નાખો"
   },
   "removeAccount": {
-    "message": "એકાઉન્ટ દૂર કરો"
+    "message": "એકાઉન્ટ કાઢી નાખો"
+  },
+  "removeAccountDescription": {
+    "message": "આ એકાઉન્ટ તમારા વૉલેટમાંથી દૂર કરવામાં આવશે. કૃપા કરીને આગળ વધતા પહેલા ખાતરી કરો કે તમારી પાસે આ ઈમ્પોર્ટ કરેલા એકાઉન્ટ માટે મૂળ સીડફ્રેઝ અથવા પ્રાઇવેટ કી છે. તમે ફરીથી એકાઉન્ટ ડ્રોપ-ડાઉનમાંથી એકાઉન્ટ્સ ઈમ્પોર્ટ કરી શકો છો અથવા બનાવી શકો છો."
+  },
+  "requestsAwaitingAcknowledgement": {
+    "message": "વિનંતીઓ સ્વીકારવાની રાહ જોઈ રહી છે"
+  },
+  "required": {
+    "message": "જરૂરી"
   },
   "reset": {
-    "message": "રીસેટ કરો"
+    "message": "રીસેટ"
+  },
+  "resetAccount": {
+    "message": "એકાઉન્ટ રીસેટ કરો"
+  },
+  "resetAccountDescription": {
+    "message": "તમારું એકાઉન્ટ રીસેટ કરવાથી તમારા ટ્રાન્સેકશન નો ડેટા સાફ થઇ જશે. આ તમારા એકાઉન્ટ્સમાં બેલેન્સ બદલશે નહીં અથવા તમારે તમારા સીડફ્રેઝને ફરીથી દાખલ કરવાની જરૂર રહેશે નહીં."
   },
   "restore": {
-    "message": "પુનઃસ્થાપિત કરો"
+    "message": "રીસ્ટોર"
+  },
+  "restoreAccountWithSeed": {
+    "message": "સીડફ્રેઝથી તમારું એકાઉન્ટ રીસ્ટોર કરો"
+  },
+  "restoreFromSeed": {
+    "message": "એકાઉન્ટ રીસ્ટોર કરો?"
+  },
+  "restoreWalletPreferences": {
+    "message": "$1 માંથી તમારા ડેટાનું બેકઅપ મળ્યું છે. શું તમે તમારી વૉલેટ પસંદગીઓને રીસ્ટોર કરવા માંગો છો?",
+    "description": "$1 is the date at which the data was backed up"
+  },
+  "retryTransaction": {
+    "message": "ટ્રાન્સેકશનનો ફરીથી પ્રયાસ કરો"
+  },
+  "reusedTokenNameWarning": {
+    "message": "અહીં ટોકન તમે જુઓ છો તે બીજા ટોકનનાં સિમ્બોલનો ફરીથી ઉપયોગ કરે છે, આ મૂંઝવણભર્યું અથવા ભ્રામક હોઈ શકે છે."
+  },
+  "revealSeedWords": {
+    "message": "સીડફ્રેઝ જણાવો"
+  },
+  "revealSeedWordsDescription": {
+    "message": "જો તમે ક્યારેય બ્રાઉઝર્સ અથવા કમ્પ્યુટર બદલો, તો તમારે તમારા એકાઉન્ટ્સને એકસેસ કરવા માટે આ સીડફ્રેઝની જરૂર પડશે. તેમને ક્યાંક સલામત અને ગુપ્ત સાચવો."
+  },
+  "revealSeedWordsTitle": {
+    "message": "સીડફ્રેઝ"
+  },
+  "revealSeedWordsWarning": {
+    "message": "આ શબ્દો તમારા બધા એકાઉન્ટ્સની ચોરી કરવા માટે વાપરી શકાય છે."
+  },
+  "revealSeedWordsWarningTitle": {
+    "message": "કોઈની સાથે આ શબ્દો ક્યારેય શેર કરશો નહીં!"
+  },
+  "rinkeby": {
+    "message": "રિંકીબી ટેસ્ટ નેટવર્ક"
+  },
+  "ropsten": {
+    "message": "રોપસ્ટન ટેસ્ટ નેટવર્ક"
+  },
+  "rpcUrl": {
+    "message": "નવી RPC URL"
   },
   "save": {
     "message": "સાચવો"
   },
+  "saveAsCsvFile": {
+    "message": "CSV ફાઇલ તરીકે સાચવો"
+  },
+  "scanInstructions": {
+    "message": "તમારા કેમેરાની સામે QR કોડ મૂકો"
+  },
+  "scanQrCode": {
+    "message": "QR કોડ સ્કેન કરો"
+  },
+  "scrollDown": {
+    "message": "સરકાવો"
+  },
   "search": {
     "message": "શોધો"
+  },
+  "searchAccounts": {
+    "message": "એકાઉન્ટ્સ શોધો"
+  },
+  "searchResults": {
+    "message": "શોધ ના પરિણામો"
+  },
+  "searchTokens": {
+    "message": "ટોકન્સ શોધો"
+  },
+  "secretBackupPhrase": {
+    "message": "ગુપ્ત બેકઅપ શબ્દો"
+  },
+  "secretBackupPhraseDescription": {
+    "message": "તમારા ગુપ્ત બેકઅપ સીડફ્રેઝ તમારા એકાઉન્ટનું બેક અપ લેવાનું અને રીસ્ટોર કરવાનું સરળ બનાવે છે."
+  },
+  "secretBackupPhraseWarning": {
+    "message": "ચેતવણી: તમારા બેકઅપ શબ્દોને ક્યારેય જાહેર કરશો નહીં. આ શબ્દો સાથે કોઈપણ તમારા ઇથરને કાયમ માટે લઈ શકે છે."
+  },
+  "secretPhrase": {
+    "message": "તમારી તિજોરીને રીસ્ટોર કરવા માટે અહીં તમારા સિક્રેટ બાર શબ્દો દાખલ કરો."
+  },
+  "securityAndPrivacy": {
+    "message": "સુરક્ષા અને ગોપનીયતા"
+  },
+  "securitySettingsDescription": {
+    "message": "ગોપનીયતા સેટિંગ્સ અને વૉલેટ સીડફ્રેઝ"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "દરેક શબ્દ વચ્ચે એક જગ્યા મુકીને અલગ કરો"
+  },
+  "seedPhrasePlaceholderPaste": {
+    "message": "ક્લિપબોર્ડથી સીડફ્રેઝ પેસ્ટ કરો"
+  },
+  "seedPhraseReq": {
+    "message": "સીડફ્રેઝમાં 12, 15, 18, 21 અથવા 24 શબ્દો હોય છે"
+  },
+  "selectAHigherGasFee": {
+    "message": "તમારા ટ્રાન્સેકશનની પ્રક્રિયાને વેગ આપવા માટે ઉચ્ચ ગેસ ફી પસંદ કરો. *"
+  },
+  "selectAccounts": {
+    "message": "એકાઉન્ટ(ઓ) પસંદ કરો"
+  },
+  "selectAll": {
+    "message": "બધા પસંદ કરો"
+  },
+  "selectAnAccount": {
+    "message": "એકાઉન્ટ પસંદ કરો"
+  },
+  "selectAnAccountHelp": {
+    "message": "મેટામાસ્કમાં જોવા માટે એકાઉન્ટ પસંદ કરો"
+  },
+  "selectCurrency": {
+    "message": "ચલણ પસંદ કરો"
+  },
+  "selectEachPhrase": {
+    "message": "તે યોગ્ય છે તેની ખાતરી કરવા માટે કૃપા કરીને દરેક શબ્દ પસંદ કરો."
+  },
+  "selectHdPath": {
+    "message": "HD Path પસંદ કરો"
+  },
+  "selectLocale": {
+    "message": "સ્થાન પસંદ કરો"
+  },
+  "selectPathHelp": {
+    "message": "જો તમને નીચે તમારા અસ્તિત્વમાં રહેલા લેજર એકાઉન્ટ્સ દેખાતા નથી, તો \"Legacy (MEW / MyCrypto)\" તરફ સ્વિચ કરવાનો પ્રયાસ કરો"
+  },
+  "selectType": {
+    "message": "પ્રકાર પસંદ કરો"
+  },
+  "selectingAllWillAllow": {
+    "message": "બધાને પસંદ કરવાથી આ સાઇટને તમારા બધા વર્તમાન એકાઉન્ટ્સ જોવાની મંજૂરી મળશે. ખાતરી કરો કે તમને આ સાઇટ પર વિશ્વાસ છે."
   },
   "send": {
     "message": "મોકલો"
   },
+  "sendAmount": {
+    "message": "રકમ મોકલો"
+  },
+  "sendETH": {
+    "message": "ETH મોકલો"
+  },
+  "sendSpecifiedTokens": {
+    "message": "$1 મોકલો",
+    "description": "Symbol of the specified token"
+  },
+  "sendTokens": {
+    "message": "ટોકન્સ મોકલો"
+  },
+  "sentEther": {
+    "message": "ઈથર મોકલ્યો"
+  },
+  "separateEachWord": {
+    "message": "દરેક શબ્દ વચ્ચે એક જગ્યા મુકીને અલગ કરો"
+  },
   "settings": {
     "message": "સેટિંગ્સ"
+  },
+  "showAdvancedGasInline": {
+    "message": "અદ્યતન ગેસ નિયંત્રણ"
+  },
+  "showAdvancedGasInlineDescription": {
+    "message": "ગેસના ભાવ અને મર્યાદા નિયંત્રણ દર્શાવવા માટે સીધા મોકલો અને પુષ્ટિ કરો સ્ક્રીન પર આ પસંદ કરો."
+  },
+  "showFiatConversionInTestnets": {
+    "message": "ટેસ્ટનેટ પર રૂપાંતર બતાવો"
+  },
+  "showFiatConversionInTestnetsDescription": {
+    "message": "ટેસ્ટનેટ પર ફિયાટ રૂપાંતર બતાવવા માટે આ પસંદ કરો"
+  },
+  "showHexData": {
+    "message": "હેક્સ ડેટા બતાવો"
+  },
+  "showHexDataDescription": {
+    "message": "મોકલો સ્ક્રીન પર હેક્સ ડેટા ફીલ્ડ બતાવવા માટે આ પસંદ કરો"
+  },
+  "showIncomingTransactions": {
+    "message": "આવનારા ટ્રાન્સેકશન્સ બતાવો"
+  },
+  "showIncomingTransactionsDescription": {
+    "message": "ટ્રાન્સેકશન્સ સૂચિમાં આવતા ટ્રાન્સેકશન્સ બતાવવા માટે ઇથરસ્કેનનો ઉપયોગ કરવા માટે આ પસંદ કરો"
+  },
+  "showPermissions": {
+    "message": "પરવાનગી બતાવો"
+  },
+  "showPrivateKeys": {
+    "message": "પ્રાઇવેટ કી બતાવો"
+  },
+  "showSeedPhrase": {
+    "message": "સીડફ્રેઝ બતાવો"
+  },
+  "sigRequest": {
+    "message": "સાઈન માટે વિનંતી"
+  },
+  "sign": {
+    "message": "સાઈન"
+  },
+  "signNotice": {
+    "message": "મેસેજ સાઈન કરવાથી ખતરનાક આડઅસર થઇ શકે છે. એ જ સાઇટ્સ પર મેસેજ સાઈન કરો જેના પર તમે તમારા સંપૂર્ણ એકાઉન્ટ સાથે સંપૂર્ણ વિશ્વાસ કરો છો. આ ખતરનાક પદ્ધતિ ભવિષ્યના વર્ઝનમાં દૂર કરવામાં આવશે. "
+  },
+  "signatureRequest": {
+    "message": "સાઈન માટે વિનંતી"
+  },
+  "signatureRequest1": {
+    "message": "મેસેજ"
+  },
+  "signed": {
+    "message": "સાઈન કરેલું"
   },
   "slow": {
     "message": "ધીમું"
   },
+  "somethingWentWrong": {
+    "message": "અરેરે! કંઈક ખોટું થયું."
+  },
+  "speedUp": {
+    "message": "ઝડપી બનાવો"
+  },
+  "speedUpCancellation": {
+    "message": "આ રદને ઝડપી બનાવો"
+  },
+  "speedUpTransaction": {
+    "message": "આ ટ્રાન્સેકશનને ઝડપી બનાવો"
+  },
+  "spendLimitAmount": {
+    "message": "ખર્ચ મર્યાદા રકમ"
+  },
+  "spendLimitInsufficient": {
+    "message": "ખર્ચ મર્યાદા અપૂરતી"
+  },
+  "spendLimitInvalid": {
+    "message": "અમાન્ય ખર્ચની મર્યાદા; સકારાત્મક સંખ્યા હોવી જોઈએ"
+  },
+  "spendLimitPermission": {
+    "message": "ખર્ચ મર્યાદા પરવાનગી"
+  },
+  "spendLimitRequestedBy": {
+    "message": "$1 દ્વારા ખર્ચ મર્યાદાની વિનંતિ",
+    "description": "Origin of the site requesting the spend limit"
+  },
+  "spendLimitTooLarge": {
+    "message": "ખર્ચ મર્યાદા ખૂબ મોટી છે"
+  },
+  "stateLogError": {
+    "message": "સ્ટેટ લોગ્સ પ્રાપ્ત કરવામાં ભૂલ."
+  },
+  "stateLogFileName": {
+    "message": "મેટામાસ્ક સ્ટેટ લોગ્સ"
+  },
+  "stateLogs": {
+    "message": "સ્ટેટ લોગ્સ"
+  },
+  "stateLogsDescription": {
+    "message": "સ્ટેટ લોગ્સમાં તમારા પબ્લિક એકાઉન્ટના એડ્રેસ અને મોકલેલા ટ્રાન્સેકશન શામેલ છે."
+  },
+  "statusConnected": {
+    "message": "કનેક્ટેડ"
+  },
+  "statusNotConnected": {
+    "message": "કનેક્ટેડ નથી"
+  },
+  "step1HardwareWallet": {
+    "message": "1. હાર્ડવેર વૉલેટને કનેક્ટ કરો"
+  },
+  "step1HardwareWalletMsg": {
+    "message": "તમારા હાર્ડવેર વૉલેટને સીધા તમારા કમ્પ્યુટરથી કનેક્ટ કરો."
+  },
+  "step2HardwareWallet": {
+    "message": "2. એકાઉન્ટ પસંદ કરો"
+  },
+  "step2HardwareWalletMsg": {
+    "message": "તમે જે એકાઉન્ટ જોવા માંગો છો તે પસંદ કરો. તમે એક સમયે ફક્ત એક જ પસંદ કરી શકો છો."
+  },
+  "step3HardwareWallet": {
+    "message": "3. web3 સાઇટ્સ અને બીજાનો ઉપયોગ પ્રારંભ કરો!"
+  },
+  "step3HardwareWalletMsg": {
+    "message": "તમારા હાર્ડવેર એકાઉન્ટનો એવી રીતે ઉપયોગ કરો જેમ તમે કોઈપણ ઇથેરિયમ એકાઉન્ટ સાથે કરો છો. web3 સાઇટ્સથી કનેક્ટ થાઓ, ETH મોકલો, ERC20 ટોકન્સ અને CryptoKitties જેવા non-fungible ટોકન્સ ખરીદો અને સ્ટોર કરો."
+  },
+  "storePhrase": {
+    "message": "આ વાક્ય 1Password જેવા પાસવર્ડ મેનેજરમાં સ્ટોર કરો."
+  },
+  "submit": {
+    "message": "સબમિટ કરો"
+  },
+  "submitted": {
+    "message": "સબમિટ કર્યું"
+  },
+  "supportCenter": {
+    "message": "અમારા સપોર્ટ સેન્ટરની મુલાકાત લો"
+  },
+  "swap": {
+    "message": "સ્વેપ"
+  },
+  "swapAdvancedSlippageInfo": {
+    "message": "જો તમારો ઓર્ડર મૂકવામાં આવે છે અને પુષ્ટિ કરવામાં આવે છે તેની વચ્ચેના ભાવમાં ફેરફાર થાય છે, તો તેને \"સ્લિપેજ\" કહેવામાં આવે છે. જો સ્લિપેજ તમારી \"મેક્સ સ્લિપેજ\" સેટિંગથી વધી જાય તો તમારું સ્વેપ આપમેળે રદ થશે."
+  },
+  "swapAggregator": {
+    "message": "એગ્રેગિએટર"
+  },
+  "swapAmountReceived": {
+    "message": "ગેરંટીડ રકમ"
+  },
+  "swapAmountReceivedInfo": {
+    "message": "આ ન્યૂનતમ રકમ તમને પ્રાપ્ત થશે તે છે. તમને સ્લિપેજના આધારે વધુ પ્રાપ્ત થઈ શકે છે."
+  },
+  "swapApproval": {
+    "message": "સ્વેપ્સ માટે $1 મંજૂર કરો",
+    "description": "Used in the transaction display list to describe a transaction that is an approve call on a token that is to be swapped.. $1 is the symbol of a token that has been approved."
+  },
+  "swapApproveNeedMoreTokens": {
+    "message": "આ સ્વેપને પૂર્ણ કરવા માટે તમારે $1 વધુ $2 ની જરૂર છે",
+    "description": "Tells the user how many more of a given token they need for a specific swap. $1 is an amount of tokens and $2 is the token symbol."
+  },
+  "swapBetterQuoteAvailable": {
+    "message": "વધુ સારો ભાવ ઉપલબ્ધ છે"
+  },
+  "swapBuildQuotePlaceHolderText": {
+    "message": "$1 સાથે મેળ ખાતા કોઈ ટોકન્સ ઉપલબ્ધ નથી",
+    "description": "Tells the user that a given search string does not match any tokens in our token lists. $1 can be any string of text"
+  },
+  "swapCheckingQuote": {
+    "message": "$1 તપાસી રહ્યું છે",
+    "description": "Shown to the user during quote loading. $1 is the name of an aggregator. The message indicates that metamask is currently checking if that aggregator has a trade/quote for their requested swap."
+  },
+  "swapCustom": {
+    "message": "કસ્ટમ"
+  },
+  "swapDecentralizedExchange": {
+    "message": "ડિસેન્ટ્રલાઇઝ એક્સચેન્જ"
+  },
+  "swapEditLimit": {
+    "message": "લિમિટ એડિટ કરો"
+  },
+  "swapEnableDescription": {
+    "message": "આ આવશ્યક છે અને તમારા $1 ને અદલાબદલ કરવા માટે મેટામાસ્કને પરવાનગી આપે છે.",
+    "description": "Gives the user info about the required approval transaction for swaps. $1 will be the symbol of a token being approved for swaps."
+  },
+  "swapEstimatedNetworkFee": {
+    "message": "અંદાજિત નેટવર્ક ફી"
+  },
+  "swapEstimatedNetworkFeeSummary": {
+    "message": "\"$1\" તે જ છે જે આપણે વાસ્તવિક ફીની અપેક્ષા રાખીએ છીએ. ચોક્કસ રકમ નેટવર્કની સ્થિતિ પર આધારિત છે.",
+    "description": "$1 will be the translation of swapEstimatedNetworkFee, with the font bolded"
+  },
+  "swapEstimatedNetworkFees": {
+    "message": "અંદાજિત નેટવર્ક ફી"
+  },
+  "swapEstimatedNetworkFeesInfo": {
+    "message": "આ નેટવર્ક ફીનો અંદાજ છે જેનો ઉપયોગ તમારા સ્વેપને પૂર્ણ કરવા માટે કરવામાં આવશે. નેટવર્કની સ્થિતિ અનુસાર વાસ્તવિક રકમ બદલાઈ શકે છે."
+  },
+  "swapFailedErrorDescription": {
+    "message": "તમારા ફંડ્સ સલામત છે અને હજી પણ તમારા વૉલેટમાં ઉપલબ્ધ છે."
+  },
+  "swapFailedErrorTitle": {
+    "message": "સ્વેપ નિષ્ફળ"
+  },
+  "swapFetchingQuotesErrorDescription": {
+    "message": "હમ્મ... કંઈક ખોટું થયું. ફરીથી પ્રયાસ કરો, અથવા જો ભૂલો ચાલુ રહે છે, તો ગ્રાહક સપોર્ટનો સંપર્ક કરો."
+  },
+  "swapFetchingQuotesErrorTitle": {
+    "message": "ભાવ મેળવવામાં ભૂલ"
+  },
+  "swapFetchingTokens": {
+    "message": "ટોકન્સ મેળવી રહ્યું છે..."
+  },
+  "swapFinalizing": {
+    "message": "અંતિમ સ્વરૂપ આપી રહ્યું છે..."
+  },
+  "swapHighSlippageWarning": {
+    "message": "સ્લિપેજ રકમ ખૂબ વધારે છે. ખાતરી કરો કે તમે જાણો છો કે તમે શું કરી રહ્યા છો!"
+  },
+  "swapIntroLearnMoreHeader": {
+    "message": "વધુ શીખવા માંગો છો?"
+  },
+  "swapIntroLearnMoreLink": {
+    "message": "મેટામાસ્ક સ્વેપ્સ વિશે વધુ જાણો"
+  },
+  "swapIntroLiquiditySourcesLabel": {
+    "message": "લિક્વિડિટી સ્રોતો શામેલ છે:"
+  },
+  "swapIntroPopupSubTitle": {
+    "message": "હવે તમે સીધા તમારા મેટામાસ્ક વૉલેટમાં ટોકન્સ બદલી શકો છો. મેટામાસ્ક સ્વેપ્સ ઘણાબધા ડિસેન્ટ્રલાઇઝ એક્સચેન્જ એગ્રિગ્રેટર્સ, વ્યાવસાયિક બજાર ઉત્પાદકો અને વ્યક્તિગત DEXs ને જોડે છે તેની ખાતરી કરવા માટે મેટામાસ્ક વપરાશકર્તાઓને હંમેશાં સૌથી ઓછી નેટવર્ક ફી સાથે શ્રેષ્ઠ ભાવ મળે છે."
+  },
+  "swapIntroPopupTitle": {
+    "message": "ટોકન અદલાબદલ અહીં છે!"
+  },
+  "swapLearnMoreContractsAuditReview": {
+    "message": "અમારા સત્તાવાર કોન્ટ્રાક્ટના ઓડિટની સમીક્ષા કરો"
+  },
+  "swapLowSlippageError": {
+    "message": "ટ્રાન્સેકશન નિષ્ફળ થઈ શકે છે, મહત્તમ સ્લિપેજ ઓછો છે."
+  },
+  "swapMaxNetworkFeeInfo": {
+    "message": "“$1” એ તમે સૌથી વધુ ખર્ચ કરશો. જ્યારે નેટવર્ક અસ્થિર હોય ત્યારે આ મોટી માત્રામાં હોઈ શકે છે.",
+    "description": "$1 will be the translation of swapMaxNetworkFees, with the font bolded"
+  },
+  "swapMaxNetworkFees": {
+    "message": "મહત્તમ નેટવર્ક ફી"
+  },
+  "swapMaxSlippage": {
+    "message": "મહત્તમ સ્લિપેજ"
+  },
+  "swapMetaMaskFee": {
+    "message": "મેટામાસ્ક ફી"
+  },
+  "swapMetaMaskFeeDescription": {
+    "message": "અમે દરેક સમયે, ટોચના લિક્વિડિટી સ્રોતોમાંથી શ્રેષ્ઠ ભાવ મેળવીએ છીએ. આ ભાવમાં $1% ની ફી આપમેળે ગણવામાં આવે છે.",
+    "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
+  },
+  "swapNQuotes": {
+    "message": "$1 ભાવ",
+    "description": "$1 is the number of quotes that the user can select from when opening the list of quotes on the 'view quote' screen"
+  },
+  "swapNetworkFeeSummary": {
+    "message": "નેટવર્ક ફી તમારા સ્વેપ પર પ્રક્રિયા કરવા અને તેને ઇથેરિયમ નેટવર્ક પર સ્ટોર કરવાની કિંમતને આવરી લે છે. મેટામાસ્ક આ ફી થી નફો કરતું નથી."
+  },
+  "swapNewQuoteIn": {
+    "message": "$1 માં નવા ભાવ",
+    "description": "Tells the user the amount of time until the currently displayed quotes are update. $1 is a time that is counting down from 1:00 to 0:00"
+  },
+  "swapOnceTransactionHasProcess": {
+    "message": "એકવાર આ ટ્રાન્સેકશનની પ્રક્રિયા થઈ ગયા પછી તમારું $1 તમારા એકાઉન્ટમાં ઉમેરવામાં આવશે.",
+    "description": "This message communicates the token that is being transferred. It is shown on the awaiting swap screen. The $1 will be a token symbol."
+  },
+  "swapPriceDifference": {
+    "message": "તમે $4 $5 (~$6) માટે $1 $2 (~$3) ને અદલાબદલ કરી રહ્યાં છો.",
+    "description": "This message represents the price slippage for the swap.  $1 and $4 are a number (ex: 2.89), $2 and $5 are symbols (ex: ETH), and $3 and $6 are fiat currency amounts."
+  },
+  "swapPriceDifferenceAcknowledgement": {
+    "message": "હું જાગૃત છું"
+  },
+  "swapPriceDifferenceTitle": {
+    "message": "$1% નો ભાવ તફાવત",
+    "description": "$1 is a number (ex: 1.23) that represents the price difference."
+  },
+  "swapPriceDifferenceTooltip": {
+    "message": "મધ્યસ્થીઓ દ્વારા લેવામાં આવતી ફી, બજારનું કદ, વેપારનું કદ અથવા બજારની અકાર્યતાને લીધે બજારના ભાવોના તફાવતને અસર થઈ શકે છે."
+  },
+  "swapPriceDifferenceUnavailable": {
+    "message": "બજાર કિંમત અનુપલબ્ધ છે. ખાતરી કરો કે આગળ વધતા પહેલાં પરત રકમથી તમને અનુકૂળ લાગે છે."
+  },
+  "swapProcessing": {
+    "message": "પ્રક્રિયા કરી રહ્યું છે"
+  },
+  "swapQuoteDetails": {
+    "message": "ભાવ ની વિગતો"
+  },
+  "swapQuoteDetailsSlippageInfo": {
+    "message": "જો તમારો ઓર્ડર મૂકવામાં આવે છે અને પુષ્ટિ કરવામાં આવે છે ત્યારે તેની વચ્ચે ભાવમાં ફેરફાર થાય છે, તો તેને \"સ્લિપેજ\" કહેવામાં આવે છે. જો સ્લિપેજ તમારી \"સ્લિપેજ સહિષ્ણુતા\" સેટિંગથી વધી જાય તો તમારું સ્વેપ આપમેળે રદ થશે."
+  },
+  "swapQuoteIncludesRate": {
+    "message": "ભાવમાં $1% મેટામાસ્ક ફી શામેલ છે",
+    "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
+  },
+  "swapQuoteNofN": {
+    "message": "$2 નો $1 ભાવ",
+    "description": "A count of loaded quotes shown to the user while they are waiting for quotes to be fetched. $1 is the number of quotes already loaded, and $2 is the total number of quotes to load."
+  },
+  "swapQuoteSource": {
+    "message": "ભાવ સ્રોત"
+  },
+  "swapQuotesAreRefreshed": {
+    "message": "વર્તમાન બજારની સ્થિતિને પ્રતિબિંબિત કરવા માટે ભાવ વારંવાર તાજા કરવામાં આવે છે."
+  },
+  "swapQuotesExpiredErrorDescription": {
+    "message": "કૃપા કરીને નવીનતમ દર મેળવવા માટે નવા ભાવની વિનંતી કરો."
+  },
+  "swapQuotesExpiredErrorTitle": {
+    "message": "ભાવ સમયસમાપ્તિ"
+  },
+  "swapQuotesNotAvailableErrorDescription": {
+    "message": "રકમ અથવા સ્લિપેજ સેટિંગ્સને સમાયોજિત કરવાનો પ્રયાસ કરો અને ફરીથી પ્રયાસ કરો."
+  },
+  "swapQuotesNotAvailableErrorTitle": {
+    "message": "કોઈ ભાવ ઉપલબ્ધ નથી"
+  },
+  "swapRate": {
+    "message": "દર"
+  },
+  "swapReceiving": {
+    "message": "પ્રાપ્ત કરી રહ્યા છીએ"
+  },
+  "swapReceivingInfoTooltip": {
+    "message": "આ એક અંદાજ છે. ચોક્કસ રકમ સ્લિપેજ પર આધાર રાખે છે."
+  },
+  "swapRequestForQuotation": {
+    "message": "ભાવ માટે વિનંતી"
+  },
+  "swapReviewSwap": {
+    "message": "સ્વેપ ની સમીક્ષા"
+  },
+  "swapSearchForAToken": {
+    "message": "ટોકન શોધો"
+  },
+  "swapSelect": {
+    "message": "પસંદ"
+  },
+  "swapSelectAQuote": {
+    "message": "ભાવ પસંદ કરો"
+  },
+  "swapSelectAToken": {
+    "message": "ટોકન પસંદ કરો"
+  },
+  "swapSelectQuotePopoverDescription": {
+    "message": "નીચે ઘણાબધા લિક્વિડિટી સ્રોતમાંથી એકત્રિત બધા ભાવ છે."
+  },
+  "swapSlippageTooLow": {
+    "message": "સ્લિપેજ શૂન્યથી વધારે હોવો જોઈએ"
+  },
+  "swapSource": {
+    "message": "લિક્વિડિટી સ્રોત"
+  },
+  "swapSourceInfo": {
+    "message": "અમે શ્રેષ્ઠ દરો અને ન્યૂનતમ નેટવર્ક ફી શોધવા માટે ઘણાબધા લિક્વિડિટી સ્રોત (એક્સચેન્જો, એગ્રિગ્રેટર્સ અને વ્યાવસાયિક બજાર ઉત્પાદકો) શોધીએ છીએ."
+  },
+  "swapStartSwapping": {
+    "message": "અદલાબદલ શરૂ કરો"
+  },
+  "swapSwapFrom": {
+    "message": "સ્વેપ ફ્રોમ"
+  },
+  "swapSwapSwitch": {
+    "message": "ફ્રોમ અને ટુ ટોકન્સ સ્વિચ કરો"
+  },
+  "swapSwapTo": {
+    "message": "સ્વેપ ટુ"
+  },
+  "swapThisWillAllowApprove": {
+    "message": "આ $1 ને અદલાબદલ કરવાની મંજૂરી આપશે."
+  },
+  "swapTokenAvailable": {
+    "message": "તમારા એકાઉન્ટમાં તમારું $1 ઉમેરવામાં આવ્યું છે.",
+    "description": "This message is shown after a swap is successful and communicates the exact amount of tokens the user has received for a swap. The $1 is a decimal number of tokens followed by the token symbol."
+  },
+  "swapTokenToToken": {
+    "message": "$1 થી $2 સ્વેપ કરો",
+    "description": "Used in the transaction display list to describe a swap. $1 and $2 are the symbols of tokens in involved in a swap."
+  },
+  "swapTokenVerificationMessage": {
+    "message": "હંમેશાં $1 પર ટોકન એડ્રેસની પુષ્ટિ કરો.",
+    "description": "Points the user to Etherscan as a place they can verify information about a token. $1 is replaced with the translation for \"Etherscan\" followed by an info icon that shows more info on hover."
+  },
+  "swapTokenVerificationOnlyOneSource": {
+    "message": "ફક્ત 1 સ્રોત પર ચકાસાયેલ છે."
+  },
+  "swapTokenVerificationSources": {
+    "message": "$1 સ્રોતો પર ચકાસાયેલ છે.",
+    "description": "Indicates the number of token information sources that recognize the symbol + address. $1 is a decimal number."
+  },
+  "swapTransactionComplete": {
+    "message": "ટ્રાન્સેકશન પૂર્ણ"
+  },
+  "swapUnknown": {
+    "message": "અજાણ્યું"
+  },
+  "swapUsingBestQuote": {
+    "message": "શ્રેષ્ઠ ભાવનો ઉપયોગ કરીને"
+  },
+  "swapVerifyTokenExplanation": {
+    "message": "ઘણાબધા ટોકન્સ સમાન નામ અને સિમ્બોલનો ઉપયોગ કરી શકે છે. તમે શોધી રહ્યાં છો તે ટોકન છે તે ચકાસવા માટે ઇથરસ્કેનને તપાસો."
+  },
+  "swapViewToken": {
+    "message": "$1 જુઓ"
+  },
+  "swapYourTokenBalance": {
+    "message": "$1 $2 અદલાબદલ કરવા માટે ઉપલબ્ધ છે",
+    "description": "Tells the user how much of a token they have in their balance. $1 is a decimal number amount of tokens, and $2 is a token symbol"
+  },
+  "swapZeroSlippage": {
+    "message": "0% સ્લિપેજ"
+  },
+  "swapsAdvancedOptions": {
+    "message": "અદ્યતન વિકલ્પો"
+  },
+  "swapsExcessiveSlippageWarning": {
+    "message": "સ્લિપેજ રકમ ખૂબ વધારે છે અને ખરાબ દરમાં પરિણમશે. કૃપા કરીને તમારી સ્લિપેજ સહિષ્ણુતાને 15% ની નીચેના મૂલ્યમાં ઘટાડો."
+  },
+  "swapsMaxSlippage": {
+    "message": "સ્લિપેજ સહનશીલતા"
+  },
+  "swapsNotEnoughForTx": {
+    "message": "આ વ્યવહાર પૂર્ણ કરવા માટે $1 પર્યાપ્ત નથી",
+    "description": "Tells the user that they don't have enough of a token for a proposed swap. $1 is a token symbol"
+  },
+  "swapsViewInActivity": {
+    "message": "પ્રવૃત્તિમાં જુઓ"
+  },
+  "switchNetworks": {
+    "message": "નેટવર્ક સ્વિચ કરો"
+  },
+  "switchToThisAccount": {
+    "message": "આ એકાઉન્ટ પર સ્વિચ કરો"
+  },
+  "symbol": {
+    "message": "સિમ્બોલ"
+  },
+  "symbolBetweenZeroTwelve": {
+    "message": "સિમ્બોલ 11 અક્ષરો અથવા ઓછા ના હોવા જોઈએ."
+  },
+  "syncWithMobile": {
+    "message": "મોબાઇલ સાથે સિંક કરો"
+  },
+  "syncWithMobileBeCareful": {
+    "message": "ખાતરી કરો કે જ્યારે તમે આ કોડને સ્કેન કરો છો ત્યારે બીજું કોઈ તમારી સ્ક્રીન તરફ જોતું નથી"
+  },
+  "syncWithMobileComplete": {
+    "message": "તમારો ડેટા સફળતાપૂર્વક સિંક થયો છે. મેટામાસ્ક મોબાઇલ એપ્લિકેશનનો આનંદ માણો!"
+  },
+  "syncWithMobileDesc": {
+    "message": "તમે તમારા એકાઉન્ટ્સ અને માહિતીને તમારા મોબાઇલ ઉપકરણ સાથે સિંક કરી શકો છો. મેટામાસ્ક મોબાઇલ એપ્લિકેશન ખોલો, \"સેટિંગ્સ\" પર જાઓ અને \"બ્રાઉઝર એક્સ્ટેંશનમાંથી સિંક\" પર ટેપ કરો"
+  },
+  "syncWithMobileDescNewUsers": {
+    "message": "જો તમે પહેલીવાર મેટામાસ્ક મોબાઇલ એપ્લિકેશન ખોલો છો, તો તમારા ફોનમાં પગલાંઓ અનુસરો."
+  },
+  "syncWithMobileScanThisCode": {
+    "message": "તમારી મેટામાસ્ક મોબાઇલ એપ્લિકેશનથી આ કોડ સ્કેન કરો"
+  },
+  "syncWithMobileTitle": {
+    "message": "મોબાઇલ સાથે સિંક કરો"
+  },
+  "syncWithThreeBox": {
+    "message": "3Box (પ્રાયોગિક) સાથે ડેટાને સિંક કરો"
+  },
+  "syncWithThreeBoxDescription": {
+    "message": "તમારી સેટિંગ્સને 3Box સાથે બેકઅપ લેવાનું ચાલુ કરો. આ સુવિધા હાલમાં પ્રાયોગિક છે; તમારા પોતાના જોખમે વાપરો."
+  },
+  "syncWithThreeBoxDisabled": {
+    "message": "પ્રારંભિક સુમેળ દરમિયાન ભૂલ હોવાને કારણે 3Box ને બંધ કરવામાં આવ્યું છે"
+  },
+  "terms": {
+    "message": "ઉપયોગની શરતો"
+  },
+  "termsOfService": {
+    "message": "સેવાની શરતો"
+  },
+  "testFaucet": {
+    "message": "ટેસ્ટ ફોસેટ"
+  },
+  "thisWillCreate": {
+    "message": "આ એક નવું વૉલેટ અને સીડફ્રેઝ બનાવશે"
+  },
+  "tips": {
+    "message": "ટિપ્સ"
+  },
+  "to": {
+    "message": "ટુ"
+  },
+  "toAddress": {
+    "message": "ટુ: $1",
+    "description": "$1 is the address to include in the To label. It is typically shortened first using shortenAddress"
+  },
+  "toWithColon": {
+    "message": "ટુ:"
+  },
+  "token": {
+    "message": "ટોકન"
+  },
+  "tokenAlreadyAdded": {
+    "message": "ટોકન પહેલેથી જ ઉમેરેલું છે."
+  },
+  "tokenContractAddress": {
+    "message": "ટોકન નું કોન્ટ્રાક્ટ એડ્રેસ"
+  },
+  "tokenOptions": {
+    "message": "ટોકન ના વિકલ્પો"
+  },
+  "tokenSymbol": {
+    "message": "ટોકન નો સિમ્બોલ"
+  },
+  "total": {
+    "message": "કુલ"
+  },
+  "transaction": {
+    "message": "ટ્રાન્સેકશન"
+  },
+  "transactionCancelAttempted": {
+    "message": "ટ્રાન્સેકશન રદ કરવાનો પ્રયાસ ગેસ $1 ની ગેસ ફી સાથે $2 પર કર્યો"
+  },
+  "transactionCancelSuccess": {
+    "message": "ટ્રાન્સેકશન સફળતાપૂર્વક $2 પર રદ કરાયું"
+  },
+  "transactionConfirmed": {
+    "message": "ટ્રાન્સેકશનની $2 પર પુષ્ટિ થઈ."
+  },
+  "transactionCreated": {
+    "message": "ટ્રાન્ઝેક્શન $1 ની કિંમત સાથે $2 પર બનાવ્યું."
+  },
+  "transactionDropped": {
+    "message": "ટ્રાન્ઝેક્શન $2 પર રદ કર્યું."
+  },
+  "transactionError": {
+    "message": "ટ્રાન્સેકશનમાં ભૂલ. ભૂલ કોન્ટ્રાક્ટ કોડમાં આવી."
+  },
+  "transactionErrorNoContract": {
+    "message": "બિન-કોન્ટ્રાક્ટ એડ્રેસ પર ફંક્શનને ક કોલ કરવાનો પ્રયાસ કરી રહ્યાં છે."
+  },
+  "transactionErrored": {
+    "message": "ટ્રાન્સેકશનમાં ભૂલ આવી."
+  },
+  "transactionFee": {
+    "message": "ટ્રાન્સેકશન ફી"
+  },
+  "transactionResubmitted": {
+    "message": "$1ની ગેસ ફી વધારી $2 પર ટ્રાન્સેકશન ફરીથી સબમિટ કર્યું"
+  },
+  "transactionSubmitted": {
+    "message": "$1 ની ગેસ ફી સાથે $2 પર ટ્રાન્ઝેક્શન સબમિટ કર્યું."
+  },
+  "transactionUpdated": {
+    "message": "ટ્રાન્ઝેક્શન $2 પર અપડેટ થયું."
+  },
+  "transfer": {
+    "message": "ટ્રાન્સફર"
+  },
+  "transferBetweenAccounts": {
+    "message": "મારા એકાઉન્ટ્સ વચ્ચે ટ્રાન્સફર કરો"
+  },
+  "transferFrom": {
+    "message": "ટ્રાન્સફર ફ્રોમ"
+  },
+  "troubleConnectingToWallet": {
+    "message": "અમને તમારા $1 થી કનેક્ટ કરવામાં મુશ્કેલી આવી, $2 ને તપાસો અને ફરી પ્રયાસ કરો.",
+    "description": "$1 is the wallet device name; $2 is a link to wallet connection guide"
+  },
+  "troubleTokenBalances": {
+    "message": "અમને તમારા ટોકન બેલેન્સ લોડ કરવામાં મુશ્કેલી આવી. તમે તેમને જોઈ શકો છો",
+    "description": "Followed by a link (here) to view token balances"
+  },
+  "trustSiteApprovePermission": {
+    "message": "શું તમને આ સાઇટ પર વિશ્વાસ છે? આ પરવાનગી આપીને, તમે $1 ને તમારા $2 પાછા ખેંચવાની અને ઑટોમેટ ટ્રાન્સેકશન કરવાની અનુમતિ આપો છો.",
+    "description": "$1 is the url requesting permission and $2 is the symbol of the currency that the request is for"
+  },
   "tryAgain": {
     "message": "ફરી પ્રયાસ કરો"
   },
+  "typePassword": {
+    "message": "તમારો મેટામાસ્ક પાસવર્ડ લખો"
+  },
+  "unapproved": {
+    "message": "અસ્વીકૃત"
+  },
+  "units": {
+    "message": "યુનિટ્સ"
+  },
   "unknown": {
-    "message": "અજાણ"
+    "message": "અજાણ્યું"
+  },
+  "unknownCameraError": {
+    "message": "તમારા કેમેરાને toક્સેસ કરવાનો પ્રયાસ કરતી વખતે એક ભૂલ આવી. મહેરબાની કરીને ફરીથી પ્રયતન કરો..."
+  },
+  "unknownCameraErrorTitle": {
+    "message": "અરેરે! કંઈક ખોટું થયું...."
+  },
+  "unknownNetwork": {
+    "message": "અજાણ્યું પ્રાઇવેટ નેટવર્ક"
+  },
+  "unknownQrCode": {
+    "message": "ભૂલ: અમે તે QR કોડને ઓળખી શક્યા નહીં"
+  },
+  "unlimited": {
+    "message": "અમર્યાદિત"
   },
   "unlock": {
     "message": "અનલોક કરો"
   },
+  "unlockMessage": {
+    "message": "વિકેન્દ્રિત વેબ રાહ જુએ છે"
+  },
+  "updatedWithDate": {
+    "message": "$1 અપડેટ કર્યું"
+  },
+  "urlErrorMsg": {
+    "message": "URL ને યોગ્ય HTTP / HTTPS ઉપસર્ગની જરૂર છે."
+  },
+  "urlExistsErrorMsg": {
+    "message": "URL પહેલાથી જ વર્તમાન નેટવર્ક્સની સૂચિમાં હાજર છે"
+  },
+  "usePhishingDetection": {
+    "message": "ફિશિંગ ડિટેક્શનનો ઉપયોગ કરો"
+  },
+  "usePhishingDetectionDescription": {
+    "message": "ઇથેરિયમ વપરાશકર્તાઓને લક્ષ્યાંકિત કરતા ફિશિંગ ડોમેન્સ માટે ચેતવણી દર્શાવો"
+  },
+  "usedByClients": {
+    "message": "વિવિધ પ્રકાર ના કલાયંટ્સ દ્વારા વપરાય છે"
+  },
   "userName": {
-    "message": "વપરાશકર્તાનામ"
+    "message": "વપરાશકર્તા નું નામ"
+  },
+  "verifyThisTokenOn": {
+    "message": "આ ટોકનને $1 પર ચકાસો",
+    "description": "Points the user to etherscan as a place they can verify information about a token. $1 is replaced with the translation for \"etherscan\""
   },
   "viewAccount": {
     "message": "એકાઉન્ટ જુઓ"
+  },
+  "viewAllDetails": {
+    "message": "બધી વિગતો જુઓ"
+  },
+  "viewContact": {
+    "message": "સંપર્ક જુઓ"
+  },
+  "viewOnCustomBlockExplorer": {
+    "message": "$1 પર જુઓ"
+  },
+  "viewOnEtherscan": {
+    "message": "ઇથરસ્કેન પર જુઓ"
+  },
+  "viewinExplorer": {
+    "message": "એક્સપ્લોરરમાં જુઓ"
+  },
+  "visitWebSite": {
+    "message": "અમારી વેબ સાઇટ ની મુલાકાત લો"
+  },
+  "walletConnectionGuide": {
+    "message": "અમારી હાર્ડવેર વૉલેટ ની કનેક્શન માર્ગદર્શિકા"
+  },
+  "walletSeed": {
+    "message": "સીડ ફ્રેસિસ"
+  },
+  "web3ShimUsageNotification": {
+    "message": "અમે નોંધ્યું છે કે વર્તમાન વેબસાઇટએ દૂર કરેલી window.web3 API નો ઉપયોગ કરવાનો પ્રયાસ કર્યો છે. જો સાઇટ તૂટેલી હોય તેવું લાગે છે, તો કૃપા કરીને વધુ માહિતી માટે $1 પર ક્લિક કરો.",
+    "description": "$1 is a clickable link."
+  },
+  "welcome": {
+    "message": "મેટામાસ્કમાં આપનું સ્વાગત છે"
+  },
+  "welcomeBack": {
+    "message": "સ્વાગત છે!"
+  },
+  "whatsThis": {
+    "message": "આ શું છે?"
+  },
+  "writePhrase": {
+    "message": "આ શબ્દો કાગળના ટુકડા પર લખો અને સુરક્ષિત સ્થાન પર સ્ટોર કરો. જો તમને વધારે સુરક્ષા જોઈએ છે, તો તેને કાગળનાં ઘણાબધા ટુકડાઓ પર લખો અને દરેકને 2 - 3 જુદા જુદા સ્થળોએ સ્ટોર કરો."
+  },
+  "xOfY": {
+    "message": "$2 નું $1",
+    "description": "$1 and $2 are intended to be two numbers, where $2 is a total, and $1 is a count towards that total"
+  },
+  "yesLetsTry": {
+    "message": "હા, ચાલો પ્રયત્ન કરીએ"
+  },
+  "youNeedToAllowCameraAccess": {
+    "message": "તમારે આ સુવિધાનો ઉપયોગ કરવા માટે કેમેરા ઍક્સેસને મંજૂરી આપવાની જરૂર છે."
+  },
+  "youSign": {
+    "message": "તમે સાઈન કરી રહ્યા છો"
+  },
+  "yourPrivateSeedPhrase": {
+    "message": "તમારા પ્રાઇવેટ સીડફ્રેઝ"
+  },
+  "zeroGasPriceOnSpeedUpError": {
+    "message": "ઝડપી બનાવવા પર ઝીરો ગેસ ભાવ"
   }
 }
