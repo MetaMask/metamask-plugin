@@ -65,6 +65,7 @@ yarn dist
 
 - [How to add custom build to Chrome](./docs/add-to-chrome.md)
 - [How to add custom build to Firefox](./docs/add-to-firefox.md)
+- [How to build for Safari](./docs/build-for-safari.md)
 - [How to add a new translation to MetaMask](./docs/translating-guide.md)
 - [Publishing Guide](./docs/publishing.md)
 - [How to use the TREZOR emulator](./docs/trezor-emulator.md)

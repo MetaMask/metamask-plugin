@@ -43,6 +43,7 @@
     "verify-locales": "node ./development/verify-locale-strings.js",
     "verify-locales:fix": "node ./development/verify-locale-strings.js --fix",
     "mozilla-lint": "addons-linter dist/firefox",
+    "safari-extension-convert": "echo yes | xcrun safari-web-extension-converter --swift --no-open --bundle-identifier io.metamask.MetaMask --project-location ./safari/ ./dist/chrome",
     "watch": "mocha --watch --require test/env.js --require test/setup.js --reporter min --recursive \"test/unit/**/*.js\" \"ui/app/**/*.test.js\"",
     "devtools:react": "react-devtools",
     "devtools:redux": "remotedev --hostname=localhost --port=8000",
