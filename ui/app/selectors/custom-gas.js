@@ -7,6 +7,7 @@ import { formatCurrency } from '../helpers/utils/confirm-tx.util';
 import { decEthToConvertedCurrency as ethTotalToConvertedCurrency } from '../helpers/utils/conversions.util';
 import { formatETHFee } from '../helpers/utils/formatters';
 import { calcGasTotal } from '../pages/send/send.utils';
+import { getCurrentLocale } from '../ducks/metamask/metamask';
 
 import { GAS_ESTIMATE_TYPES } from '../helpers/constants/common';
 import { getCurrentCurrency, getIsMainnet, getPreferences } from '.';
@@ -108,6 +109,7 @@ export function getRenderableConvertedCurrencyFee(
   gasLimit,
   convertedCurrency,
   conversionRate,
+  currentLocale,
 ) {
   const value = conversionUtil(estimate, {
     fromNumericBase: 'dec',
@@ -119,7 +121,7 @@ export function getRenderableConvertedCurrencyFee(
     convertedCurrency,
     conversionRate,
   );
-  return formatCurrency(feeInCurrency, convertedCurrency);
+  return formatCurrency(feeInCurrency, convertedCurrency, currentLocale);
 }
 
 export function priceEstimateToWei(priceEstimate) {
@@ -146,6 +148,7 @@ export function getRenderableGasButtonData(
   showFiat,
   conversionRate,
   currentCurrency,
+  currentLocale,
 ) {
   const { safeLow, average, fast } = estimates;
 
@@ -158,6 +161,7 @@ export function getRenderableGasButtonData(
           gasLimit,
           currentCurrency,
           conversionRate,
+          currentLocale,
         )
       : '',
     priceInHexWei: getGasPriceInHexWei(safeLow),
@@ -171,6 +175,7 @@ export function getRenderableGasButtonData(
           gasLimit,
           currentCurrency,
           conversionRate,
+          currentLocale,
         )
       : '',
     priceInHexWei: getGasPriceInHexWei(average),
@@ -184,6 +189,7 @@ export function getRenderableGasButtonData(
           gasLimit,
           currentCurrency,
           conversionRate,
+          currentLocale,
         )
       : '',
     priceInHexWei: getGasPriceInHexWei(fast),
@@ -206,7 +212,7 @@ export function getRenderableBasicEstimateData(state, gasLimit) {
   const showFiat = isMainnet || Boolean(showFiatInTestnets);
   const { conversionRate } = state.metamask;
   const currentCurrency = getCurrentCurrency(state);
-
+  const currentLocale = getCurrentLocale(state);
   const {
     slowEstimateData,
     averageEstimateData,
@@ -217,6 +223,7 @@ export function getRenderableBasicEstimateData(state, gasLimit) {
     showFiat,
     conversionRate,
     currentCurrency,
+    currentLocale,
   );
 
   return [slowEstimateData, averageEstimateData, fastEstimateData];
@@ -234,6 +241,7 @@ export function getRenderableEstimateDataForSmallButtonsFromGWEI(state) {
     state.metamask.send.gasLimit || getCustomGasLimit(state) || '0x5208';
   const { conversionRate } = state.metamask;
   const currentCurrency = getCurrentCurrency(state);
+  const currentLocale = getCurrentLocale(state);
   const {
     gas: {
       basicEstimates: { safeLow, average, fast },
@@ -249,6 +257,7 @@ export function getRenderableEstimateDataForSmallButtonsFromGWEI(state) {
             gasLimit,
             currentCurrency,
             conversionRate,
+            currentLocale,
           )
         : '',
       feeInPrimaryCurrency: getRenderableEthFee(
@@ -267,6 +276,7 @@ export function getRenderableEstimateDataForSmallButtonsFromGWEI(state) {
             gasLimit,
             currentCurrency,
             conversionRate,
+            currentLocale,
           )
         : '',
       feeInPrimaryCurrency: getRenderableEthFee(
@@ -285,6 +295,7 @@ export function getRenderableEstimateDataForSmallButtonsFromGWEI(state) {
             gasLimit,
             currentCurrency,
             conversionRate,
+            currentLocale,
           )
         : '',
       feeInPrimaryCurrency: getRenderableEthFee(

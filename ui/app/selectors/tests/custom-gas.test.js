@@ -89,6 +89,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 255.71,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             preferences: {
               showFiatInTestnets: false,
             },
@@ -137,6 +138,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -188,6 +190,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -239,6 +242,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -284,6 +288,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -346,6 +351,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 255.71,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -391,6 +397,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -442,6 +449,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -493,6 +501,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },
@@ -538,6 +547,7 @@ describe('custom-gas selectors', function () {
           metamask: {
             conversionRate: 2557.1,
             currentCurrency: 'usd',
+            currentLocale: 'en',
             send: {
               gasLimit: '0x5208',
             },

@@ -78,6 +78,7 @@
     "3box": "^1.10.2",
     "@babel/runtime": "^7.5.5",
     "@download/blockies": "^1.0.3",
+    "@formatjs/intl-numberformat": "5.5.5",
     "@formatjs/intl-relativetimeformat": "^5.2.6",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@lavamoat/preinstall-always-fail": "^1.0.0",

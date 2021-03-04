@@ -10,7 +10,7 @@ import {
   getTokenValueParam,
 } from '../../helpers/utils/token-util';
 import { useTokenTracker } from '../../hooks/useTokenTracker';
-import { getTokens } from '../../ducks/metamask/metamask';
+import { getTokens, getCurrentLocale } from '../../ducks/metamask/metamask';
 import {
   transactionFeeSelector,
   txDataSelector,
@@ -43,6 +43,8 @@ export default function ConfirmApprove() {
   const { ethTransactionTotal, fiatTransactionTotal } = useSelector((state) =>
     transactionFeeSelector(state, transaction),
   );
+
+  const currentLocale = useSelector(getCurrentLocale);
 
   const currentToken = (tokens &&
     tokens.find(({ address }) => tokenAddress === address)) || {
@@ -136,6 +138,7 @@ export default function ConfirmApprove() {
           nativeCurrency={nativeCurrency}
           ethTransactionTotal={ethTransactionTotal}
           fiatTransactionTotal={fiatTransactionTotal}
+          currentLocale={currentLocale}
         />
       }
       hideSenderToRecipient

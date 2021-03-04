@@ -197,11 +197,12 @@ export function sumHexWEIsToRenderableFiat(
   hexWEIs,
   convertedCurrency,
   conversionRate,
+  currentLocale,
 ) {
   const convertedTotal = sumHexWEIsToUnformattedFiat(
     hexWEIs,
     convertedCurrency,
     conversionRate,
   );
-  return formatCurrency(convertedTotal, convertedCurrency);
+  return formatCurrency(convertedTotal, convertedCurrency, currentLocale);
 }

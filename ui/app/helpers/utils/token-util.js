@@ -200,6 +200,7 @@ export function getTokenFiatAmount(
   currentCurrency,
   tokenAmount,
   tokenSymbol,
+  currentLocale,
   formatted = true,
   hideCurrencySymbol = false,
 ) {
@@ -231,11 +232,12 @@ export function getTokenFiatAmount(
   });
   let result;
   if (hideCurrencySymbol) {
-    result = formatCurrency(currentTokenInFiat, currentCurrency);
+    result = formatCurrency(currentTokenInFiat, currentCurrency, currentLocale);
   } else if (formatted) {
     result = `${formatCurrency(
       currentTokenInFiat,
       currentCurrency,
+      currentLocale,
     )} ${currentCurrency.toUpperCase()}`;
   } else {
     result = currentTokenInFiat;

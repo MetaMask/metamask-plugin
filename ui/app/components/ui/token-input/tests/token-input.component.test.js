@@ -18,6 +18,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -58,6 +59,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -92,6 +94,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -128,6 +131,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -165,6 +169,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -219,6 +224,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -266,6 +272,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -314,6 +321,7 @@ describe('TokenInput Component', function () {
         metamask: {
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);

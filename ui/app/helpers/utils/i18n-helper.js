@@ -108,9 +108,24 @@ export async function fetchLocale(localeCode) {
   }
 }
 
+const numberFormatLocaleData = new Set();
+
+async function loadNumberFormatLocaleData(localeCode) {
+  const languageTag = localeCode.split('_')[0];
+  if (
+    Intl.NumberFormat &&
+    typeof Intl.NumberFormat.__addLocaleData === 'function' &&
+    !numberFormatLocaleData.has(languageTag)
+  ) {
+    // eslint-disable-next-line import/no-dynamic-require,node/global-require
+    require(`./intl/${languageTag}/number-format-data`);
+    numberFormatLocaleData.add(languageTag);
+  }
+}
+
 const relativeTimeFormatLocaleData = new Set();
 
-export async function loadRelativeTimeFormatLocaleData(localeCode) {
+async function loadRelativeTimeFormatLocaleData(localeCode) {
   const languageTag = localeCode.split('_')[0];
   if (
     Intl.RelativeTimeFormat &&
@@ -119,6 +134,7 @@ export async function loadRelativeTimeFormatLocaleData(localeCode) {
   ) {
     const localeData = await fetchRelativeTimeFormatData(languageTag);
     Intl.RelativeTimeFormat.__addLocaleData(localeData);
+    relativeTimeFormatLocaleData.add(languageTag);
   }
 }
 
@@ -127,4 +143,9 @@ async function fetchRelativeTimeFormatData(languageTag) {
     `./intl/${languageTag}/relative-time-format-data.json`,
   );
   return await response.json();
+}
+
+export async function loadFormatLocaleData(localeCode) {
+  await loadNumberFormatLocaleData(localeCode);
+  await loadRelativeTimeFormatLocaleData(localeCode);
 }

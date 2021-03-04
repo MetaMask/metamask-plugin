@@ -7,7 +7,7 @@ import { checksumAddress } from '../helpers/utils/util';
 import { calcTokenBalance, estimateGasForSend } from '../pages/send/send.utils';
 import {
   fetchLocale,
-  loadRelativeTimeFormatLocaleData,
+  loadFormatLocaleData,
 } from '../helpers/utils/i18n-helper';
 import { getMethodDataAsync } from '../helpers/utils/transactions.util';
 import { fetchSymbolAndDecimals } from '../helpers/utils/token-util';
@@ -2217,7 +2217,7 @@ export function updateCurrentLocale(key) {
     dispatch(showLoadingIndication());
 
     try {
-      await loadRelativeTimeFormatLocaleData(key);
+      await loadFormatLocaleData(key);
       const localeMessages = await fetchLocale(key);
       const textDirection = await promisifiedBackground.setCurrentLocale(key);
       await switchDirection(textDirection);

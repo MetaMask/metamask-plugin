@@ -4,6 +4,10 @@ import Adapter from 'enzyme-adapter-react-16';
 import log from 'loglevel';
 import { JSDOM } from 'jsdom';
 
+// Intl.NumberFormat
+import '@formatjs/intl-numberformat/polyfill';
+import '@formatjs/intl-numberformat/locale-data/en';
+
 nock.disableNetConnect();
 nock.enableNetConnect('localhost');
 

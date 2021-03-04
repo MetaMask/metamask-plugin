@@ -407,6 +407,7 @@ export function getRenderableNetworkFeesForQuote(
   approveGas,
   gasPrice,
   currentCurrency,
+  currentLocale,
   conversionRate,
   tradeValue,
   sourceSymbol,
@@ -436,7 +437,11 @@ export function getRenderableNetworkFeesForQuote(
     conversionRate,
     numberOfDecimals: 2,
   });
-  const formattedNetworkFee = formatCurrency(rawNetworkFees, currentCurrency);
+  const formattedNetworkFee = formatCurrency(
+    rawNetworkFees,
+    currentCurrency,
+    currentLocale,
+  );
   return {
     rawNetworkFees,
     rawEthFee: ethFee,
@@ -451,6 +456,7 @@ export function quotesToRenderableData(
   gasPrice,
   conversionRate,
   currentCurrency,
+  currentLocale,
   approveGas,
   tokenConversionRates,
 ) {
@@ -487,6 +493,7 @@ export function quotesToRenderableData(
       approveGas,
       gasPrice,
       currentCurrency,
+      currentLocale,
       conversionRate,
       trade.value,
       sourceTokenInfo.symbol,

@@ -1,5 +1,5 @@
 import assert from 'assert';
-import currencyFormatter from 'currency-formatter';
+import { formatCurrency } from '../../ui/app/helpers/utils/confirm-tx.util';
 import availableCurrencies from '../../ui/app/helpers/constants/available-conversions.json';
 
 describe('currencyFormatting', function () {
@@ -8,7 +8,7 @@ describe('currencyFormatting', function () {
 
     availableCurrencies.forEach((conversion) => {
       const code = conversion.code.toUpperCase();
-      const result = currencyFormatter.format(number, { code });
+      const result = formatCurrency(number, code, 'en');
 
       switch (code) {
         case 'USD':

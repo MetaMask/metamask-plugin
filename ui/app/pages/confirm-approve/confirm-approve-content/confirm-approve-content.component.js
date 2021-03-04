@@ -27,6 +27,7 @@ export default class ConfirmApproveContent extends Component {
     nativeCurrency: PropTypes.string,
     fiatTransactionTotal: PropTypes.string,
     ethTransactionTotal: PropTypes.string,
+    currentLocale: PropTypes.string,
   };
 
   state = {
@@ -79,6 +80,7 @@ export default class ConfirmApproveContent extends Component {
       nativeCurrency,
       ethTransactionTotal,
       fiatTransactionTotal,
+      currentLocale,
     } = this.props;
     return (
       <div className="confirm-approve-content__transaction-details-content">
@@ -87,7 +89,11 @@ export default class ConfirmApproveContent extends Component {
         </div>
         <div className="confirm-approve-content__transaction-details-content__fee">
           <div className="confirm-approve-content__transaction-details-content__primary-fee">
-            {formatCurrency(fiatTransactionTotal, currentCurrency)}
+            {formatCurrency(
+              fiatTransactionTotal,
+              currentCurrency,
+              currentLocale,
+            )}
           </div>
           <div className="confirm-approve-content__transaction-details-content__secondary-fee">
             {`${ethTransactionTotal} ${nativeCurrency}`}

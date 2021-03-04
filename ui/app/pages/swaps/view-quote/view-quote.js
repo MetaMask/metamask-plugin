@@ -39,7 +39,7 @@ import {
   getTokenExchangeRates,
 } from '../../../selectors';
 import { toPrecisionWithoutTrailingZeros } from '../../../helpers/utils/util';
-import { getTokens } from '../../../ducks/metamask/metamask';
+import { getTokens, getCurrentLocale } from '../../../ducks/metamask/metamask';
 import {
   safeRefetchQuotes,
   setCustomApproveTxData,
@@ -116,6 +116,7 @@ export default function ViewQuote() {
   const { balance: ethBalance } = useSelector(getSelectedAccount);
   const conversionRate = useSelector(conversionRateSelector);
   const currentCurrency = useSelector(getCurrentCurrency);
+  const currentLocale = useSelector(getCurrentLocale);
   const swapsTokens = useSelector(getTokens);
   const balanceError = useSelector(getBalanceError);
   const fetchParams = useSelector(getFetchParams);
@@ -181,6 +182,7 @@ export default function ViewQuote() {
       gasPrice,
       conversionRate,
       currentCurrency,
+      currentLocale,
       approveGas,
       memoizedTokenConversionRates,
     );
@@ -189,6 +191,7 @@ export default function ViewQuote() {
     gasPrice,
     conversionRate,
     currentCurrency,
+    currentLocale,
     approveGas,
     memoizedTokenConversionRates,
   ]);
@@ -214,6 +217,7 @@ export default function ViewQuote() {
     approveGas,
     gasPrice,
     currentCurrency,
+    currentLocale,
     conversionRate,
     tradeValue,
     sourceTokenSymbol,
@@ -229,6 +233,7 @@ export default function ViewQuote() {
     approveGas,
     gasPrice,
     currentCurrency,
+    currentLocale,
     conversionRate,
     tradeValue,
     sourceTokenSymbol,

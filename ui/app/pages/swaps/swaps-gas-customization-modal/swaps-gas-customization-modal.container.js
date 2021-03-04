@@ -27,6 +27,7 @@ import {
   getValueFromWeiHex,
   sumHexWEIsToRenderableFiat,
 } from '../../../helpers/utils/conversions.util';
+import { getCurrentLocale } from '../../../ducks/metamask/metamask';
 import { formatETHFee } from '../../../helpers/utils/formatters';
 import { calcGasTotal, isBalanceSufficient } from '../../send/send.utils';
 import SwapsGasCustomizationModalComponent from './swaps-gas-customization-modal.component';
@@ -34,6 +35,7 @@ import SwapsGasCustomizationModalComponent from './swaps-gas-customization-modal
 const mapStateToProps = (state) => {
   const currentCurrency = getCurrentCurrency(state);
   const conversionRate = getConversionRate(state);
+  const currentLocale = getCurrentLocale(state);
 
   const { modalState: { props: modalProps } = {} } = state.appState.modal || {};
   const {
@@ -63,6 +65,7 @@ const mapStateToProps = (state) => {
     true,
     conversionRate,
     currentCurrency,
+    currentLocale,
   );
   const gasButtonInfo = [averageEstimateData, fastEstimateData];
 
@@ -70,6 +73,7 @@ const mapStateToProps = (state) => {
     [value, customGasTotal, customTotalSupplement],
     currentCurrency,
     conversionRate,
+    currentLocale,
   );
 
   const balance = getCurrentEthBalance(state);
@@ -111,6 +115,7 @@ const mapStateToProps = (state) => {
         [value, customGasTotal, customTotalSupplement],
         currentCurrency,
         conversionRate,
+        currentLocale,
       ),
       originalTotalEth: sumHexWEIsToRenderableEth([
         value,

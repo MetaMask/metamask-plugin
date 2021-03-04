@@ -8,6 +8,7 @@ import {
   getNativeCurrency,
   getConversionRate,
 } from '../../selectors';
+import { getCurrentLocale } from '../../ducks/metamask/metamask';
 
 const tests = [
   {
@@ -110,6 +111,8 @@ describe('useCurrencyDisplay', function () {
           return 'ETH';
         } else if (selector === getConversionRate) {
           return 280.45;
+        } else if (selector === getCurrentLocale) {
+          return 'en';
         }
         return undefined;
       });

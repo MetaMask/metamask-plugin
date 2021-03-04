@@ -24,6 +24,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -50,6 +51,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -92,6 +94,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -132,6 +135,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -190,6 +194,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -242,6 +247,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -292,6 +298,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);
@@ -336,6 +343,7 @@ describe('CurrencyInput Component', function () {
           nativeCurrency: 'ETH',
           currentCurrency: 'usd',
           conversionRate: 231.06,
+          currentLocale: 'en',
         },
       };
       const store = configureMockStore()(mockStore);

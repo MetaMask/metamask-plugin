@@ -17,6 +17,7 @@ import {
   prepareForRetryGetQuotes,
   prepareToLeaveSwaps,
 } from '../../../ducks/swaps/swaps';
+import { getCurrentLocale } from '../../../ducks/metamask/metamask';
 import Mascot from '../../../components/ui/mascot';
 import PulseLoader from '../../../components/ui/pulse-loader';
 import { getBlockExplorerUrlForTx } from '../../../helpers/utils/transactions.util';
@@ -59,6 +60,7 @@ export default function AwaitingSwap({
   const approveTxParams = useSelector(getApproveTxParams);
   const swapsGasPrice = useSelector(getUsedSwapsGasPrice);
   const currentCurrency = useSelector(getCurrentCurrency);
+  const currentLocale = useSelector(getCurrentLocale);
   const usdConversionRate = useSelector(getUSDConversionRate);
 
   const [trackedQuotesExpiredEvent, setTrackedQuotesExpiredEvent] = useState(
@@ -73,6 +75,7 @@ export default function AwaitingSwap({
       approveTxParams?.gas || '0x0',
       swapsGasPrice,
       currentCurrency,
+      currentLocale,
       usdConversionRate,
       usedQuote?.trade?.value,
       sourceTokenInfo?.symbol,

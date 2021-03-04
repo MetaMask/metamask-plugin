@@ -7,6 +7,7 @@ import {
 } from '../selectors';
 import { decEthToConvertedCurrency } from '../helpers/utils/conversions.util';
 import { formatCurrency } from '../helpers/utils/confirm-tx.util';
+import { getCurrentLocale } from '../ducks/metamask/metamask';
 
 /**
  * Get an Eth amount converted to fiat and formatted for display
@@ -25,6 +26,7 @@ export function useEthFiatAmount(
 ) {
   const conversionRate = useSelector(getConversionRate);
   const currentCurrency = useSelector(getCurrentCurrency);
+  const currentLocale = useSelector(getCurrentLocale);
   const userPrefersShownFiat = useSelector(getShouldShowFiat);
   const showFiat = overrides.showFiat ?? userPrefersShownFiat;
   const formattedFiat = useMemo(
@@ -42,9 +44,10 @@ export function useEthFiatAmount(
   }
 
   return hideCurrencySymbol
-    ? formatCurrency(formattedFiat, currentCurrency)
+    ? formatCurrency(formattedFiat, currentCurrency, currentLocale)
     : `${formatCurrency(
         formattedFiat,
         currentCurrency,
+        currentLocale,
       )} ${currentCurrency.toUpperCase()}`;
 }

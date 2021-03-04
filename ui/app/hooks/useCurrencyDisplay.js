@@ -9,6 +9,7 @@ import {
   getConversionRate,
   getNativeCurrency,
 } from '../selectors';
+import { getCurrentLocale } from '../ducks/metamask/metamask';
 
 /**
  * Defines the shape of the options parameter for useCurrencyDisplay
@@ -45,6 +46,7 @@ export function useCurrencyDisplay(
   const currentCurrency = useSelector(getCurrentCurrency);
   const nativeCurrency = useSelector(getNativeCurrency);
   const conversionRate = useSelector(getConversionRate);
+  const currentLocale = useSelector(getCurrentLocale);
 
   const toCurrency = currency || currentCurrency;
 
@@ -52,6 +54,7 @@ export function useCurrencyDisplay(
     if (displayValue) {
       return displayValue;
     }
+
     return formatCurrency(
       getValueFromWeiHex({
         value: inputValue,
@@ -62,11 +65,13 @@ export function useCurrencyDisplay(
         toDenomination: denomination,
       }),
       toCurrency,
+      currentLocale,
     );
   }, [
     inputValue,
     nativeCurrency,
     conversionRate,
+    currentLocale,
     displayValue,
     numberOfDecimals,
     denomination,

@@ -7,6 +7,7 @@ import {
   getShouldShowFiat,
 } from '../selectors';
 import { getTokenFiatAmount } from '../helpers/utils/token-util';
+import { getCurrentLocale } from '../ducks/metamask/metamask';
 
 /**
  * Get the token balance converted to fiat and formatted for display
@@ -31,6 +32,7 @@ export function useTokenFiatAmount(
   const contractExchangeRates = useSelector(getTokenExchangeRates);
   const conversionRate = useSelector(getConversionRate);
   const currentCurrency = useSelector(getCurrentCurrency);
+  const currentLocale = useSelector(getCurrentLocale);
   const userPrefersShownFiat = useSelector(getShouldShowFiat);
   const showFiat = overrides.showFiat ?? userPrefersShownFiat;
   const tokenExchangeRate =
@@ -43,6 +45,7 @@ export function useTokenFiatAmount(
         currentCurrency,
         tokenAmount,
         tokenSymbol,
+        currentLocale,
         true,
         hideCurrencySymbol,
       ),
@@ -52,6 +55,7 @@ export function useTokenFiatAmount(
       currentCurrency,
       tokenAmount,
       tokenSymbol,
+      currentLocale,
       hideCurrencySymbol,
     ],
   );

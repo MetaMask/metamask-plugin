@@ -46,6 +46,7 @@ import {
   getValueFromWeiHex,
   sumHexWEIsToRenderableFiat,
 } from '../../../../helpers/utils/conversions.util';
+import { getCurrentLocale } from '../../../../ducks/metamask/metamask';
 import { formatETHFee } from '../../../../helpers/utils/formatters';
 import {
   calcGasTotal,
@@ -92,10 +93,12 @@ const mapStateToProps = (state, ownProps) => {
 
   const currentCurrency = getCurrentCurrency(state);
   const conversionRate = getConversionRate(state);
+  const currentLocale = getCurrentLocale(state);
   const newTotalFiat = sumHexWEIsToRenderableFiat(
     [value, customGasTotal],
     currentCurrency,
     conversionRate,
+    currentLocale,
   );
 
   const { hideBasic } = state.appState.modal.modalState.props;
@@ -155,6 +158,7 @@ const mapStateToProps = (state, ownProps) => {
         [value, customGasTotal],
         currentCurrency,
         conversionRate,
+        currentLocale,
       ),
       originalTotalEth: sumHexWEIsToRenderableEth([value, customGasTotal]),
       newTotalFiat: showFiat ? newTotalFiat : '',

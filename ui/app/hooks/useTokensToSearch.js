@@ -11,6 +11,7 @@ import {
   getCurrentCurrency,
 } from '../selectors';
 import { getSwapsTokens } from '../ducks/swaps/swaps';
+import { getCurrentLocale } from '../ducks/metamask/metamask';
 import { useSwapsEthToken } from './useSwapsEthToken';
 import { useEqualityCheck } from './useEqualityCheck';
 
@@ -28,6 +29,7 @@ export function getRenderableTokenData(
   contractExchangeRates,
   conversionRate,
   currentCurrency,
+  currentLocale,
 ) {
   const { symbol, name, address, iconUrl, string, balance, decimals } = token;
 
@@ -38,6 +40,7 @@ export function getRenderableTokenData(
       currentCurrency,
       string,
       symbol,
+      currentLocale,
       true,
     ) || '';
   const rawFiat =
@@ -47,6 +50,7 @@ export function getRenderableTokenData(
       currentCurrency,
       string,
       symbol,
+      currentLocale,
       false,
     ) || '';
   const usedIconUrl =
@@ -79,6 +83,7 @@ export function useTokensToSearch({
   const tokenConversionRates = useSelector(getTokenExchangeRates, isEqual);
   const conversionRate = useSelector(getConversionRate);
   const currentCurrency = useSelector(getCurrentCurrency);
+  const currentLocale = useSelector(getCurrentLocale);
 
   const memoizedTopTokens = useEqualityCheck(topTokens);
   const memoizedUsersToken = useEqualityCheck(usersTokens);
@@ -89,6 +94,7 @@ export function useTokensToSearch({
     tokenConversionRates,
     conversionRate,
     currentCurrency,
+    currentLocale,
   );
   const memoizedEthToken = useEqualityCheck(ethToken);
 
@@ -124,6 +130,7 @@ export function useTokensToSearch({
         tokenConversionRates,
         conversionRate,
         currentCurrency,
+        currentLocale,
       );
       if (
         usersTokensAddressMap[token.address] &&
@@ -157,6 +164,7 @@ export function useTokensToSearch({
     tokenConversionRates,
     conversionRate,
     currentCurrency,
+    currentLocale,
     memoizedTopTokens,
     memoizedEthToken,
     singleToken,

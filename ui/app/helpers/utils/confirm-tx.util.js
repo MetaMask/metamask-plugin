@@ -1,4 +1,3 @@
-import currencyFormatter from 'currency-formatter';
 import currencies from 'currency-formatter/currencies';
 import BigNumber from 'bignumber.js';
 import { addHexPrefix } from '../../../../app/scripts/lib/util';
@@ -98,15 +97,25 @@ export function getTransactionFee({
   });
 }
 
-export function formatCurrency(value, currencyCode) {
+export function formatCurrency(value, currencyCode, currentLocale) {
   const upperCaseCurrencyCode = currencyCode.toUpperCase();
 
-  return currencies.find((currency) => currency.code === upperCaseCurrencyCode)
-    ? currencyFormatter.format(Number(value), {
-        code: upperCaseCurrencyCode,
-        style: 'currency',
-      })
-    : value;
+  if (currencies.find((currency) => currency.code === upperCaseCurrencyCode)) {
+    // @formatjs/intl-dateformat does not support Norway 'no' locale-data - using Norway 'nb' for Norway 'no'
+    // otherwise replace '_' in locale for '-' for consistency with browser API
+    const locale =
+      currentLocale === 'no' ? 'nb' : currentLocale.replace('_', '-');
+    const currencyOptions = {
+      style: 'currency',
+      currency: upperCaseCurrencyCode,
+      currencyDisplay: 'narrowSymbol',
+    };
+    const currencyFormatter = new Intl.NumberFormat(locale, currencyOptions);
+
+    return currencyFormatter.format(value);
+  }
+
+  return value;
 }
 
 export function convertTokenToFiat({

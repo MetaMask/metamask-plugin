@@ -1,0 +1,282 @@
+[
+  {
+    "code": "am",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "ar",
+    "formattedUSD": "١٬٢٣٤٬٥٦٧٫٨٩ US$",
+    "formattedEUR": "١٬٢٣٤٬٥٦٧٫٨٩ €"
+  },
+  {
+    "code": "bg",
+    "formattedUSD": "1234567,89 $",
+    "formattedEUR": "1234567,89 €"
+  },
+  {
+    "code": "bn",
+    "formattedUSD": "১২,৩৪,৫৬৭.৮৯$",
+    "formattedEUR": "১২,৩৪,৫৬৭.৮৯€"
+  },
+  {
+    "code": "ca",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "cs",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "da",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "de",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "el",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "en",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "es",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "es_419",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "et",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "fa",
+    "formattedUSD": "‎$۱٬۲۳۴٬۵۶۷٫۸۹",
+    "formattedEUR": "‎€۱٬۲۳۴٬۵۶۷٫۸۹"
+  },
+  {
+    "code": "fi",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "fil",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "fr",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "gu",
+    "formattedUSD": "$12,34,567.89",
+    "formattedEUR": "€12,34,567.89"
+  },
+  {
+    "code": "he",
+    "formattedUSD": "‏1,234,567.89 $",
+    "formattedEUR": "‏1,234,567.89 €"
+  },
+  {
+    "code": "hi",
+    "formattedUSD": "$12,34,567.89",
+    "formattedEUR": "€12,34,567.89"
+  },
+  {
+    "code": "hn",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "hr",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "ht",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "hu",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "id",
+    "formattedUSD": "$1.234.567,89",
+    "formattedEUR": "€1.234.567,89"
+  },
+  {
+    "code": "it",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "ja",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "kn",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "ko",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "lt",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "lv",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "ml",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "mr",
+    "formattedUSD": "$१,२३४,५६७.८९",
+    "formattedEUR": "€१,२३४,५६७.८९"
+  },
+  {
+    "code": "ms",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "nl",
+    "formattedUSD": "$ 1.234.567,89",
+    "formattedEUR": "€ 1.234.567,89"
+  },
+  {
+    "code": "no",
+    "formattedUSD": "$ 1 234 567,89",
+    "formattedEUR": "€ 1 234 567,89"
+  },
+  {
+    "code": "ph",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "pl",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "pt",
+    "formattedUSD": "$ 1.234.567,89",
+    "formattedEUR": "€ 1.234.567,89"
+  },
+  {
+    "code": "pt_BR",
+    "formattedUSD": "$ 1.234.567,89",
+    "formattedEUR": "€ 1.234.567,89"
+  },
+  {
+    "code": "pt_PT",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "ro",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "ru",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "sk",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "sl",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "sr",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "sv",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "sw",
+    "formattedUSD": "$ 1,234,567.89",
+    "formattedEUR": "€ 1,234,567.89"
+  },
+  {
+    "code": "ta",
+    "formattedUSD": "$ 12,34,567.89",
+    "formattedEUR": "€ 12,34,567.89"
+  },
+  {
+    "code": "te",
+    "formattedUSD": "$12,34,567.89",
+    "formattedEUR": "€12,34,567.89"
+  },
+  {
+    "code": "th",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "tr",
+    "formattedUSD": "$1.234.567,89",
+    "formattedEUR": "€1.234.567,89"
+  },
+  {
+    "code": "uk",
+    "formattedUSD": "1 234 567,89 $",
+    "formattedEUR": "1 234 567,89 €"
+  },
+  {
+    "code": "vi",
+    "formattedUSD": "1.234.567,89 $",
+    "formattedEUR": "1.234.567,89 €"
+  },
+  {
+    "code": "zh_CN",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  },
+  {
+    "code": "zh_TW",
+    "formattedUSD": "$1,234,567.89",
+    "formattedEUR": "€1,234,567.89"
+  }
+]

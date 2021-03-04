@@ -1,4 +1,5 @@
 import assert from 'assert';
+import fs from 'fs';
 import sinon from 'sinon';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -1666,8 +1667,23 @@ describe('Actions', function () {
 
   describe('#updateCurrentLocale', function () {
     beforeEach(function () {
-      sinon.stub(window, 'fetch').resolves({
+      const fetchStub = sinon.stub(window, 'fetch');
+      fetchStub.withArgs(`./_locales/test/messages.json`).resolves({
         json: async () => enLocale,
+      });
+      fetchStub
+        .withArgs(`./intl/test/relative-time-format-data.json`)
+        .resolves({
+          json: async () =>
+            // eslint-disable-next-line node/global-require
+            require('@formatjs/intl-relativetimeformat/dist/locale-data/en.json'),
+        });
+      fetchStub.withArgs(`./intl/test/number-format-data.js`).resolves({
+        text: async () =>
+          fs.readFileSync(
+            './node_modules/@formatjs/intl-numberformat/locale-data/en.js',
+            'utf-8',
+          ),
       });
     });
 

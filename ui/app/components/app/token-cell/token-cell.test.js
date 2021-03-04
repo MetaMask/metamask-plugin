@@ -16,6 +16,7 @@ describe('Token Cell', function () {
   const state = {
     metamask: {
       currentCurrency: 'usd',
+      currentLocale: 'en',
       selectedAddress: '0xAddress',
       contractExchangeRates: {
         '0xAnotherToken': 0.015,

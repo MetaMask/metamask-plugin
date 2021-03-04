@@ -5,7 +5,7 @@ import {
   contractExchangeRateSelector,
   transactionFeeSelector,
 } from '../../selectors';
-import { getTokens } from '../../ducks/metamask/metamask';
+import { getTokens, getCurrentLocale } from '../../ducks/metamask/metamask';
 import { getTokenData } from '../../helpers/utils/transactions.util';
 import {
   calcTokenAmount,
@@ -51,6 +51,8 @@ const mapStateToProps = (state, ownProps) => {
     tokenData && calcTokenAmount(tokenValue, decimals).toFixed();
   const contractExchangeRate = contractExchangeRateSelector(state);
 
+  const currentLocale = getCurrentLocale(state);
+
   return {
     toAddress,
     tokenAddress,
@@ -61,6 +63,7 @@ const mapStateToProps = (state, ownProps) => {
     contractExchangeRate,
     fiatTransactionTotal,
     ethTransactionTotal,
+    currentLocale,
   };
 };
 

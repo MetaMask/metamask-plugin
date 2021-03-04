@@ -13,7 +13,7 @@ import configureStore from './app/store/store';
 import txHelper from './lib/tx-helper';
 import {
   fetchLocale,
-  loadRelativeTimeFormatLocaleData,
+  loadFormatLocaleData,
 } from './app/helpers/utils/i18n-helper';
 import switchDirection from './app/helpers/utils/switch-direction';
 import {
@@ -55,9 +55,9 @@ async function startApp(metamaskState, backgroundConnection, opts) {
     : {};
   const enLocaleMessages = await fetchLocale('en');
 
-  await loadRelativeTimeFormatLocaleData('en');
+  await loadFormatLocaleData('en');
   if (metamaskState.currentLocale) {
-    await loadRelativeTimeFormatLocaleData(metamaskState.currentLocale);
+    await loadFormatLocaleData(metamaskState.currentLocale);
   }
 
   if (metamaskState.textDirection === 'rtl') {

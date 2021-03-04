@@ -23,6 +23,7 @@ export default function ConfirmTokenTransactionBase({
   contractExchangeRate,
   conversionRate,
   currentCurrency,
+  currentLocale,
 }) {
   const t = useContext(I18nContext);
 
@@ -44,7 +45,11 @@ export default function ConfirmTokenTransactionBase({
 
   const secondaryTotalTextOverride = useMemo(() => {
     if (typeof contractExchangeRate === 'undefined') {
-      return formatCurrency(fiatTransactionTotal, currentCurrency);
+      return formatCurrency(
+        fiatTransactionTotal,
+        currentCurrency,
+        currentLocale,
+      );
     }
 
     const fiatTransactionAmount = convertTokenToFiat({
@@ -55,9 +60,10 @@ export default function ConfirmTokenTransactionBase({
     });
     const fiatTotal = addFiat(fiatTransactionAmount, fiatTransactionTotal);
     const roundedFiatTotal = roundExponential(fiatTotal);
-    return formatCurrency(roundedFiatTotal, currentCurrency);
+    return formatCurrency(roundedFiatTotal, currentCurrency, currentLocale);
   }, [
     currentCurrency,
+    currentLocale,
     conversionRate,
     contractExchangeRate,
     fiatTransactionTotal,
@@ -105,4 +111,5 @@ ConfirmTokenTransactionBase.propTypes = {
   contractExchangeRate: PropTypes.number,
   conversionRate: PropTypes.number,
   currentCurrency: PropTypes.string,
+  currentLocale: PropTypes.string,
 };

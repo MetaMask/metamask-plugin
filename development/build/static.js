@@ -67,6 +67,13 @@ for (const locale of locales) {
 }
 
 for (const tag of languageTags) {
+  // use Intl.NumberFormat Norway 'nb' locale data since locale data for Norway 'no' dne
+  copyTargets.push({
+    src: `./node_modules/@formatjs/intl-numberformat/locale-data/${
+      tag === 'no' ? 'nb' : tag
+    }.js`,
+    dest: `intl/${tag}/number-format-data.js`,
+  });
   copyTargets.push({
     src: `./node_modules/@formatjs/intl-relativetimeformat/dist/locale-data/${tag}.json`,
     dest: `intl/${tag}/relative-time-format-data.json`,
