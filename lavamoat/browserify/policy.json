@@ -1,0 +1,1930 @@
+{
+  "resources": {
+    "@babel/runtime": {
+      "packages": {
+        "regenerator-runtime": true
+      }
+    },
+    "@download/blockies": {
+      "globals": {
+        "document.createElement": true
+      }
+    },
+    "@ethersproject/abi": {
+      "globals": {
+        "console.log": true
+      },
+      "packages": {
+        "@ethersproject/address": true,
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/constants": true,
+        "@ethersproject/hash": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/strings": true
+      }
+    },
+    "@ethersproject/abstract-provider": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true
+      }
+    },
+    "@ethersproject/abstract-signer": {
+      "packages": {
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true
+      }
+    },
+    "@ethersproject/address": {
+      "packages": {
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/rlp": true
+      }
+    },
+    "@ethersproject/base64": {
+      "globals": {
+        "atob": true,
+        "btoa": true
+      },
+      "packages": {
+        "@ethersproject/bytes": true
+      }
+    },
+    "@ethersproject/basex": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/properties": true
+      }
+    },
+    "@ethersproject/bignumber": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true,
+        "bn.js": true
+      }
+    },
+    "@ethersproject/bytes": {
+      "packages": {
+        "@ethersproject/logger": true
+      }
+    },
+    "@ethersproject/constants": {
+      "packages": {
+        "@ethersproject/bignumber": true
+      }
+    },
+    "@ethersproject/contracts": {
+      "globals": {
+        "name": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@ethersproject/abi": true,
+        "@ethersproject/abstract-provider": true,
+        "@ethersproject/abstract-signer": true,
+        "@ethersproject/address": true,
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true
+      }
+    },
+    "@ethersproject/hash": {
+      "packages": {
+        "@ethersproject/address": true,
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/strings": true
+      }
+    },
+    "@ethersproject/hdnode": {
+      "packages": {
+        "@ethersproject/basex": true,
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/pbkdf2": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/sha2": true,
+        "@ethersproject/signing-key": true,
+        "@ethersproject/strings": true,
+        "@ethersproject/transactions": true,
+        "@ethersproject/wordlists": true
+      }
+    },
+    "@ethersproject/json-wallets": {
+      "packages": {
+        "@ethersproject/address": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/hdnode": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/pbkdf2": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/random": true,
+        "@ethersproject/strings": true,
+        "@ethersproject/transactions": true,
+        "aes-js": true,
+        "scrypt-js": true
+      }
+    },
+    "@ethersproject/keccak256": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "js-sha3": true
+      }
+    },
+    "@ethersproject/logger": {
+      "globals": {
+        "console": true
+      }
+    },
+    "@ethersproject/networks": {
+      "packages": {
+        "@ethersproject/logger": true
+      }
+    },
+    "@ethersproject/pbkdf2": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/sha2": true
+      }
+    },
+    "@ethersproject/properties": {
+      "packages": {
+        "@ethersproject/logger": true
+      }
+    },
+    "@ethersproject/providers": {
+      "globals": {
+        "WebSocket": true,
+        "clearInterval": true,
+        "clearTimeout": true,
+        "console.log": true,
+        "console.warn": true,
+        "setInterval": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@ethersproject/abstract-provider": true,
+        "@ethersproject/abstract-signer": true,
+        "@ethersproject/address": true,
+        "@ethersproject/basex": true,
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/constants": true,
+        "@ethersproject/hash": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/networks": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/random": true,
+        "@ethersproject/sha2": true,
+        "@ethersproject/strings": true,
+        "@ethersproject/transactions": true,
+        "@ethersproject/web": true,
+        "bech32": true
+      }
+    },
+    "@ethersproject/random": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true
+      }
+    },
+    "@ethersproject/rlp": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true
+      }
+    },
+    "@ethersproject/sha2": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true,
+        "hash.js": true
+      }
+    },
+    "@ethersproject/signing-key": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "elliptic": true
+      }
+    },
+    "@ethersproject/solidity": {
+      "packages": {
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/sha2": true,
+        "@ethersproject/strings": true
+      }
+    },
+    "@ethersproject/strings": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/constants": true,
+        "@ethersproject/logger": true
+      }
+    },
+    "@ethersproject/transactions": {
+      "globals": {
+        "console.log": true
+      },
+      "packages": {
+        "@ethersproject/address": true,
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/constants": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/rlp": true,
+        "@ethersproject/signing-key": true
+      }
+    },
+    "@ethersproject/units": {
+      "packages": {
+        "@ethersproject/bignumber": true,
+        "@ethersproject/logger": true
+      }
+    },
+    "@ethersproject/wallet": {
+      "packages": {
+        "@ethersproject/abstract-provider": true,
+        "@ethersproject/abstract-signer": true,
+        "@ethersproject/address": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/hash": true,
+        "@ethersproject/hdnode": true,
+        "@ethersproject/json-wallets": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/random": true,
+        "@ethersproject/signing-key": true,
+        "@ethersproject/transactions": true
+      }
+    },
+    "@ethersproject/web": {
+      "globals": {
+        "clearTimeout": true,
+        "fetch": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@ethersproject/base64": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/strings": true
+      }
+    },
+    "@ethersproject/wordlists": {
+      "packages": {
+        "@ethersproject/bytes": true,
+        "@ethersproject/hash": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/strings": true
+      }
+    },
+    "@formatjs/intl-relativetimeformat": {
+      "globals": {
+        "Intl": true
+      },
+      "packages": {
+        "@formatjs/intl-utils": true
+      }
+    },
+    "@formatjs/intl-utils": {
+      "globals": {
+        "Intl.getCanonicalLocales": true
+      }
+    },
+    "@material-ui/core": {
+      "globals": {
+        "_formatMuiErrorMessage": true,
+        "addEventListener": true,
+        "clearInterval": true,
+        "clearTimeout": true,
+        "console.error": true,
+        "console.warn": true,
+        "document": true,
+        "getComputedStyle": true,
+        "getSelection": true,
+        "performance.now": true,
+        "removeEventListener": true,
+        "setInterval": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/styles": true,
+        "@material-ui/system": true,
+        "@material-ui/utils": true,
+        "clsx": true,
+        "prop-types": true,
+        "react": true,
+        "react-dom": true,
+        "react-is": true,
+        "react-transition-group": true
+      }
+    },
+    "@material-ui/styles": {
+      "globals": {
+        "console.error": true,
+        "console.warn": true,
+        "document.createComment": true,
+        "document.head": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/utils": true,
+        "clsx": true,
+        "hoist-non-react-statics": true,
+        "jss": true,
+        "jss-plugin-camel-case": true,
+        "jss-plugin-default-unit": true,
+        "jss-plugin-global": true,
+        "jss-plugin-nested": true,
+        "jss-plugin-props-sort": true,
+        "jss-plugin-rule-value-function": true,
+        "jss-plugin-vendor-prefixer": true,
+        "prop-types": true,
+        "react": true
+      }
+    },
+    "@material-ui/system": {
+      "globals": {
+        "console.error": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/utils": true,
+        "prop-types": true
+      }
+    },
+    "@material-ui/utils": {
+      "packages": {
+        "@babel/runtime": true,
+        "prop-types": true,
+        "react-is": true
+      }
+    },
+    "@metamask/eth-token-tracker": {
+      "globals": {
+        "console.warn": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "deep-equal": true,
+        "eth-block-tracker": true,
+        "ethjs": true,
+        "ethjs-contract": true,
+        "ethjs-query": true,
+        "human-standard-token-abi": true,
+        "safe-event-emitter": true
+      }
+    },
+    "@metamask/jazzicon": {
+      "globals": {
+        "document.createElement": true,
+        "document.createElementNS": true
+      },
+      "packages": {
+        "color": true,
+        "mersenne-twister": true
+      }
+    },
+    "@metamask/logo": {
+      "globals": {
+        "addEventListener": true,
+        "document.body.appendChild": true,
+        "document.createElementNS": true,
+        "innerHeight": true,
+        "innerWidth": true,
+        "requestAnimationFrame": true
+      },
+      "packages": {
+        "gl-mat4": true,
+        "gl-vec3": true
+      }
+    },
+    "@popperjs/core": {
+      "globals": {
+        "Element": true,
+        "HTMLElement": true,
+        "ShadowRoot": true,
+        "console.error": true,
+        "console.warn": true,
+        "document": true,
+        "navigator.userAgent": true
+      }
+    },
+    "@reduxjs/toolkit": {
+      "globals": {
+        "AbortController": true,
+        "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__": true,
+        "console.error": true,
+        "console.info": true,
+        "console.warn": true
+      },
+      "packages": {
+        "immer": true,
+        "redux": true,
+        "redux-thunk": true,
+        "reselect": true
+      }
+    },
+    "@sentry/browser": {
+      "globals": {
+        "XMLHttpRequest": true,
+        "document.body": true,
+        "document.createElement": true,
+        "document.head": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@sentry/core": true,
+        "@sentry/types": true,
+        "@sentry/utils": true,
+        "tslib": true
+      }
+    },
+    "@sentry/core": {
+      "globals": {
+        "clearInterval": true,
+        "setInterval": true
+      },
+      "packages": {
+        "@sentry/hub": true,
+        "@sentry/minimal": true,
+        "@sentry/types": true,
+        "@sentry/utils": true,
+        "tslib": true
+      }
+    },
+    "@sentry/hub": {
+      "globals": {
+        "setTimeout": true
+      },
+      "packages": {
+        "@sentry/utils": true,
+        "tslib": true
+      }
+    },
+    "@sentry/integrations": {
+      "globals": {
+        "clearTimeout": true,
+        "console.error": true,
+        "console.log": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@sentry/types": true,
+        "@sentry/utils": true,
+        "localforage": true,
+        "tslib": true
+      }
+    },
+    "@sentry/minimal": {
+      "packages": {
+        "@sentry/hub": true,
+        "tslib": true
+      }
+    },
+    "@sentry/utils": {
+      "globals": {
+        "CustomEvent": true,
+        "DOMError": true,
+        "DOMException": true,
+        "Element": true,
+        "ErrorEvent": true,
+        "Event": true,
+        "Headers": true,
+        "Request": true,
+        "Response": true,
+        "XMLHttpRequest.prototype": true,
+        "clearTimeout": true,
+        "console.error": true,
+        "document": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "process": true,
+        "tslib": true
+      }
+    },
+    "@zxing/library": {
+      "globals": {
+        "TextDecoder": true,
+        "TextEncoder": true,
+        "btoa": true,
+        "clearTimeout": true,
+        "define": true,
+        "document.createElement": true,
+        "document.createElementNS": true,
+        "document.getElementById": true,
+        "navigator.mediaDevices.enumerateDevices": true,
+        "navigator.mediaDevices.getUserMedia": true,
+        "setTimeout": true
+      }
+    },
+    "abortcontroller-polyfill": {
+      "globals": {
+        "DOMException": true,
+        "Event": true,
+        "console.log": true,
+        "console.warn": true,
+        "define": true,
+        "document": true,
+        "setTimeout": true
+      }
+    },
+    "accounting": {
+      "globals": {
+        "define": true
+      }
+    },
+    "aes-js": {
+      "globals": {
+        "define": true
+      }
+    },
+    "asap": {
+      "globals": {
+        "clearInterval": true,
+        "clearTimeout": true,
+        "document.createTextNode": true,
+        "setInterval": true,
+        "setTimeout": true
+      }
+    },
+    "assert": {
+      "globals": {
+        "Buffer": true
+      },
+      "packages": {
+        "object-assign": true,
+        "util": true
+      }
+    },
+    "available-typed-arrays": {
+      "packages": {
+        "array-filter": true
+      }
+    },
+    "babel-runtime": {
+      "packages": {
+        "core-js": true,
+        "regenerator-runtime": true
+      }
+    },
+    "bignumber.js": {
+      "globals": {
+        "crypto": true,
+        "define": true
+      }
+    },
+    "bip66": {
+      "packages": {
+        "safe-buffer": true
+      }
+    },
+    "bn.js": {
+      "packages": {
+        "browser-resolve": true
+      }
+    },
+    "brorand": {
+      "globals": {
+        "crypto": true,
+        "msCrypto": true
+      },
+      "packages": {
+        "browser-resolve": true
+      }
+    },
+    "buffer": {
+      "globals": {
+        "console": true
+      },
+      "packages": {
+        "base64-js": true,
+        "ieee754": true
+      }
+    },
+    "call-bind": {
+      "packages": {
+        "function-bind": true,
+        "get-intrinsic": true
+      }
+    },
+    "cipher-base": {
+      "packages": {
+        "inherits": true,
+        "safe-buffer": true,
+        "stream-browserify": true,
+        "string_decoder": true
+      }
+    },
+    "classnames": {
+      "globals": {
+        "classNames": "write",
+        "define": true
+      }
+    },
+    "clone": {
+      "packages": {
+        "buffer": true
+      }
+    },
+    "color": {
+      "packages": {
+        "clone": true,
+        "color-convert": true,
+        "color-string": true
+      }
+    },
+    "color-convert": {
+      "packages": {
+        "color-name": true
+      }
+    },
+    "color-string": {
+      "packages": {
+        "color-name": true
+      }
+    },
+    "copy-to-clipboard": {
+      "globals": {
+        "clipboardData.setData": true,
+        "console.error": true,
+        "console.warn": true,
+        "document.body.appendChild": true,
+        "document.body.removeChild": true,
+        "document.createElement": true,
+        "document.createRange": true,
+        "document.execCommand": true,
+        "document.getSelection": true,
+        "navigator.userAgent": true,
+        "prompt": true
+      },
+      "packages": {
+        "toggle-selection": true
+      }
+    },
+    "core-js": {
+      "globals": {
+        "PromiseRejectionEvent": true,
+        "__e": "write",
+        "__g": "write",
+        "document.createTextNode": true,
+        "postMessage": true,
+        "setTimeout": true
+      }
+    },
+    "core-util-is": {
+      "packages": {
+        "is-buffer": true
+      }
+    },
+    "create-hash": {
+      "packages": {
+        "cipher-base": true,
+        "inherits": true,
+        "md5.js": true,
+        "ripemd160": true,
+        "sha.js": true
+      }
+    },
+    "css-vendor": {
+      "globals": {
+        "document.createElement": true,
+        "document.documentElement": true,
+        "getComputedStyle": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "is-in-browser": true
+      }
+    },
+    "currency-formatter": {
+      "packages": {
+        "accounting": true,
+        "locale-currency": true,
+        "object-assign": true
+      }
+    },
+    "deep-equal": {
+      "packages": {
+        "is-arguments": true,
+        "is-date-object": true,
+        "is-regex": true,
+        "object-is": true,
+        "object-keys": true,
+        "regexp.prototype.flags": true
+      }
+    },
+    "define-properties": {
+      "packages": {
+        "object-keys": true
+      }
+    },
+    "dnd-core": {
+      "packages": {
+        "asap": true,
+        "invariant": true,
+        "lodash": true,
+        "redux": true
+      }
+    },
+    "dom-helpers": {
+      "globals": {
+        "document": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@babel/runtime": true
+      }
+    },
+    "elliptic": {
+      "packages": {
+        "bn.js": true,
+        "brorand": true,
+        "hash.js": true,
+        "hmac-drbg": true,
+        "inherits": true,
+        "minimalistic-assert": true,
+        "minimalistic-crypto-utils": true
+      }
+    },
+    "end-of-stream": {
+      "packages": {
+        "once": true,
+        "process": true
+      }
+    },
+    "es-abstract": {
+      "packages": {
+        "get-intrinsic": true
+      }
+    },
+    "eth-block-tracker": {
+      "globals": {
+        "clearTimeout": true,
+        "console.error": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "eth-query": true,
+        "pify": true,
+        "safe-event-emitter": true
+      }
+    },
+    "eth-ens-namehash": {
+      "globals": {
+        "name": "write"
+      },
+      "packages": {
+        "buffer": true,
+        "idna-uts46": true,
+        "js-sha3": true
+      }
+    },
+    "eth-method-registry": {
+      "packages": {
+        "ethjs": true
+      }
+    },
+    "eth-query": {
+      "packages": {
+        "json-rpc-random-id": true,
+        "xtend": true
+      }
+    },
+    "eth-rpc-errors": {
+      "packages": {
+        "fast-safe-stringify": true
+      }
+    },
+    "ethereum-cryptography": {
+      "packages": {
+        "buffer": true,
+        "keccak": true,
+        "randombytes": true,
+        "secp256k1": true
+      }
+    },
+    "ethereumjs-abi": {
+      "packages": {
+        "bn.js": true,
+        "buffer": true,
+        "ethereumjs-util": true
+      }
+    },
+    "ethereumjs-util": {
+      "packages": {
+        "assert": true,
+        "bn.js": true,
+        "buffer": true,
+        "create-hash": true,
+        "elliptic": true,
+        "ethereum-cryptography": true,
+        "ethjs-util": true,
+        "keccak": true,
+        "rlp": true,
+        "secp256k1": true
+      }
+    },
+    "ethers": {
+      "packages": {
+        "@ethersproject/abi": true,
+        "@ethersproject/abstract-signer": true,
+        "@ethersproject/address": true,
+        "@ethersproject/base64": true,
+        "@ethersproject/basex": true,
+        "@ethersproject/bignumber": true,
+        "@ethersproject/bytes": true,
+        "@ethersproject/constants": true,
+        "@ethersproject/contracts": true,
+        "@ethersproject/hash": true,
+        "@ethersproject/hdnode": true,
+        "@ethersproject/json-wallets": true,
+        "@ethersproject/keccak256": true,
+        "@ethersproject/logger": true,
+        "@ethersproject/properties": true,
+        "@ethersproject/providers": true,
+        "@ethersproject/random": true,
+        "@ethersproject/rlp": true,
+        "@ethersproject/sha2": true,
+        "@ethersproject/signing-key": true,
+        "@ethersproject/solidity": true,
+        "@ethersproject/strings": true,
+        "@ethersproject/transactions": true,
+        "@ethersproject/units": true,
+        "@ethersproject/wallet": true,
+        "@ethersproject/web": true,
+        "@ethersproject/wordlists": true
+      }
+    },
+    "ethjs": {
+      "globals": {
+        "clearInterval": true,
+        "setInterval": true
+      },
+      "packages": {
+        "bn.js": true,
+        "buffer": true,
+        "ethjs-abi": true,
+        "ethjs-contract": true,
+        "ethjs-filter": true,
+        "ethjs-provider-http": true,
+        "ethjs-query": true,
+        "ethjs-unit": true,
+        "ethjs-util": true,
+        "js-sha3": true,
+        "number-to-bn": true
+      }
+    },
+    "ethjs-abi": {
+      "packages": {
+        "bn.js": true,
+        "buffer": true,
+        "js-sha3": true,
+        "number-to-bn": true
+      }
+    },
+    "ethjs-contract": {
+      "packages": {
+        "babel-runtime": true,
+        "ethjs-abi": true,
+        "ethjs-filter": true,
+        "ethjs-util": true,
+        "js-sha3": true,
+        "promise-to-callback": true
+      }
+    },
+    "ethjs-ens": {
+      "packages": {
+        "eth-ens-namehash": true,
+        "ethereum-ens-network-map": true,
+        "ethjs-contract": true,
+        "ethjs-query": true
+      }
+    },
+    "ethjs-filter": {
+      "globals": {
+        "clearInterval": true,
+        "setInterval": true
+      }
+    },
+    "ethjs-format": {
+      "packages": {
+        "ethjs-schema": true,
+        "ethjs-util": true,
+        "number-to-bn": true,
+        "strip-hex-prefix": true
+      }
+    },
+    "ethjs-provider-http": {
+      "packages": {
+        "xhr2": true
+      }
+    },
+    "ethjs-query": {
+      "globals": {
+        "console": true
+      },
+      "packages": {
+        "babel-runtime": true,
+        "ethjs-format": true,
+        "ethjs-rpc": true,
+        "promise-to-callback": true
+      }
+    },
+    "ethjs-rpc": {
+      "packages": {
+        "promise-to-callback": true
+      }
+    },
+    "ethjs-unit": {
+      "packages": {
+        "bn.js": true,
+        "number-to-bn": true
+      }
+    },
+    "ethjs-util": {
+      "packages": {
+        "buffer": true,
+        "is-hex-prefixed": true,
+        "strip-hex-prefix": true
+      }
+    },
+    "events": {
+      "globals": {
+        "console": true
+      }
+    },
+    "extension-port-stream": {
+      "packages": {
+        "buffer": true,
+        "stream-browserify": true
+      }
+    },
+    "extensionizer": {
+      "globals": {
+        "browser": true,
+        "chrome": true
+      }
+    },
+    "fuse.js": {
+      "globals": {
+        "console": true,
+        "define": true
+      }
+    },
+    "get-intrinsic": {
+      "globals": {
+        "AggregateError": true,
+        "FinalizationRegistry": true,
+        "WeakRef": true
+      },
+      "packages": {
+        "function-bind": true,
+        "has": true,
+        "has-symbols": true
+      }
+    },
+    "get-params": {
+      "globals": {
+        "GetParams": "write"
+      }
+    },
+    "has": {
+      "packages": {
+        "function-bind": true
+      }
+    },
+    "hash-base": {
+      "packages": {
+        "inherits": true,
+        "safe-buffer": true,
+        "stream-browserify": true
+      }
+    },
+    "hash.js": {
+      "packages": {
+        "inherits": true,
+        "minimalistic-assert": true
+      }
+    },
+    "history": {
+      "globals": {
+        "addEventListener": true,
+        "confirm": true,
+        "document": true,
+        "history": true,
+        "location": true,
+        "navigator.userAgent": true,
+        "removeEventListener": true
+      },
+      "packages": {
+        "resolve-pathname": true,
+        "tiny-invariant": true,
+        "tiny-warning": true,
+        "value-equal": true
+      }
+    },
+    "hmac-drbg": {
+      "packages": {
+        "hash.js": true,
+        "minimalistic-assert": true,
+        "minimalistic-crypto-utils": true
+      }
+    },
+    "hoist-non-react-statics": {
+      "packages": {
+        "react-is": true
+      }
+    },
+    "idna-uts46": {
+      "globals": {
+        "define": true
+      },
+      "packages": {
+        "punycode": true
+      }
+    },
+    "is-arguments": {
+      "packages": {
+        "call-bind": true
+      }
+    },
+    "is-dom": {
+      "globals": {
+        "Node": true
+      },
+      "packages": {
+        "is-object": true,
+        "is-window": true
+      }
+    },
+    "is-in-browser": {
+      "globals": {
+        "document": true
+      }
+    },
+    "is-regex": {
+      "packages": {
+        "call-bind": true,
+        "has-symbols": true
+      }
+    },
+    "is-typed-array": {
+      "packages": {
+        "available-typed-arrays": true,
+        "call-bind": true,
+        "es-abstract": true,
+        "foreach": true,
+        "has-symbols": true
+      }
+    },
+    "js-sha3": {
+      "packages": {
+        "process": true
+      }
+    },
+    "jsan": {
+      "globals": {
+        "console.warn": true
+      }
+    },
+    "jss": {
+      "globals": {
+        "CSS": true,
+        "document.createElement": true,
+        "document.querySelector": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "is-in-browser": true,
+        "tiny-warning": true
+      }
+    },
+    "jss-plugin-camel-case": {
+      "packages": {
+        "hyphenate-style-name": true
+      }
+    },
+    "jss-plugin-default-unit": {
+      "globals": {
+        "CSS": true
+      },
+      "packages": {
+        "jss": true
+      }
+    },
+    "jss-plugin-global": {
+      "packages": {
+        "@babel/runtime": true,
+        "jss": true
+      }
+    },
+    "jss-plugin-nested": {
+      "packages": {
+        "@babel/runtime": true,
+        "tiny-warning": true
+      }
+    },
+    "jss-plugin-rule-value-function": {
+      "packages": {
+        "jss": true,
+        "tiny-warning": true
+      }
+    },
+    "jss-plugin-vendor-prefixer": {
+      "packages": {
+        "css-vendor": true,
+        "jss": true
+      }
+    },
+    "keccak": {
+      "packages": {
+        "buffer": true,
+        "inherits": true,
+        "safe-buffer": true,
+        "stream-browserify": true
+      }
+    },
+    "locale-currency": {
+      "globals": {
+        "countryCode": true
+      }
+    },
+    "localforage": {
+      "globals": {
+        "Blob": true,
+        "BlobBuilder": true,
+        "FileReader": true,
+        "IDBKeyRange": true,
+        "MSBlobBuilder": true,
+        "MozBlobBuilder": true,
+        "OIndexedDB": true,
+        "WebKitBlobBuilder": true,
+        "atob": true,
+        "btoa": true,
+        "console.error": true,
+        "console.info": true,
+        "console.warn": true,
+        "define": true,
+        "fetch": true,
+        "indexedDB": true,
+        "localStorage": true,
+        "mozIndexedDB": true,
+        "msIndexedDB": true,
+        "navigator.platform": true,
+        "navigator.userAgent": true,
+        "openDatabase": true,
+        "setTimeout": true,
+        "webkitIndexedDB": true
+      }
+    },
+    "lodash": {
+      "globals": {
+        "define": true
+      }
+    },
+    "loglevel": {
+      "globals": {
+        "console": true,
+        "define": true,
+        "document.cookie": true,
+        "localStorage": true,
+        "log": "write"
+      }
+    },
+    "luxon": {
+      "globals": {
+        "Intl": true
+      }
+    },
+    "md5.js": {
+      "packages": {
+        "hash-base": true,
+        "inherits": true,
+        "safe-buffer": true
+      }
+    },
+    "mini-create-react-context": {
+      "packages": {
+        "@babel/runtime": true,
+        "gud": true,
+        "prop-types": true,
+        "react": true,
+        "tiny-warning": true
+      }
+    },
+    "number-to-bn": {
+      "packages": {
+        "bn.js": true,
+        "strip-hex-prefix": true
+      }
+    },
+    "obj-multiplex": {
+      "globals": {
+        "console.warn": true
+      },
+      "packages": {
+        "end-of-stream": true,
+        "once": true,
+        "readable-stream": true
+      }
+    },
+    "object-is": {
+      "packages": {
+        "call-bind": true,
+        "define-properties": true
+      }
+    },
+    "once": {
+      "packages": {
+        "wrappy": true
+      }
+    },
+    "path-to-regexp": {
+      "packages": {
+        "isarray": true
+      }
+    },
+    "popper.js": {
+      "globals": {
+        "MSInputMethodContext": true,
+        "Node.DOCUMENT_POSITION_FOLLOWING": true,
+        "cancelAnimationFrame": true,
+        "console.warn": true,
+        "define": true,
+        "devicePixelRatio": true,
+        "document": true,
+        "getComputedStyle": true,
+        "innerHeight": true,
+        "innerWidth": true,
+        "navigator.userAgent": true,
+        "requestAnimationFrame": true,
+        "setTimeout": true
+      }
+    },
+    "process": {
+      "globals": {
+        "clearTimeout": true,
+        "setTimeout": true
+      }
+    },
+    "process-nextick-args": {
+      "packages": {
+        "process": true
+      }
+    },
+    "promise-to-callback": {
+      "packages": {
+        "is-fn": true,
+        "set-immediate-shim": true
+      }
+    },
+    "prop-types": {
+      "globals": {
+        "console": true
+      },
+      "packages": {
+        "object-assign": true,
+        "react-is": true
+      }
+    },
+    "pubnub": {
+      "globals": {
+        "ActiveXObject": true,
+        "XMLHttpRequest": true,
+        "addEventListener": true,
+        "btoa": true,
+        "clearInterval": true,
+        "clearTimeout": true,
+        "console": true,
+        "define": true,
+        "localStorage.getItem": true,
+        "localStorage.setItem": true,
+        "location": true,
+        "navigator": true,
+        "setInterval": true,
+        "setTimeout": true
+      }
+    },
+    "pump": {
+      "packages": {
+        "browser-resolve": true,
+        "end-of-stream": true,
+        "once": true,
+        "process": true
+      }
+    },
+    "punycode": {
+      "globals": {
+        "define": true
+      }
+    },
+    "qrcode-generator": {
+      "globals": {
+        "define": true
+      }
+    },
+    "randombytes": {
+      "globals": {
+        "crypto": true,
+        "msCrypto": true
+      },
+      "packages": {
+        "process": true,
+        "safe-buffer": true
+      }
+    },
+    "react": {
+      "globals": {
+        "console": true
+      },
+      "packages": {
+        "object-assign": true,
+        "prop-types": true
+      }
+    },
+    "react-devtools": {
+      "packages": {
+        "react-devtools-core": true
+      }
+    },
+    "react-devtools-core": {
+      "globals": {
+        "$attribute": "write",
+        "ClipboardEvent": true,
+        "HTMLElement": true,
+        "MessageChannel": true,
+        "Node": true,
+        "WebSocket": true,
+        "XMLSerializer": true,
+        "__REACT_DEVTOOLS_APPEND_COMPONENT_STACK__": true,
+        "__REACT_DEVTOOLS_BREAK_ON_CONSOLE_ERRORS__": true,
+        "__REACT_DEVTOOLS_COMPONENT_FILTERS__": true,
+        "__REACT_DEVTOOLS_GLOBAL_HOOK__": true,
+        "__REACT_DEVTOOLS_TARGET_WINDOW__": true,
+        "cancelAnimationFrame": true,
+        "chrome": true,
+        "clearImmediate": true,
+        "clearInterval": true,
+        "clearTimeout": true,
+        "clipboardData": true,
+        "console": true,
+        "define": true,
+        "document": true,
+        "getComputedStyle": true,
+        "getSelection": true,
+        "innerHeight": true,
+        "innerWidth": true,
+        "localStorage.getItem": true,
+        "navigator.userAgent": true,
+        "performance": true,
+        "regeneratorRuntime.mark": true,
+        "regeneratorRuntime.wrap": true,
+        "requestAnimationFrame": true,
+        "sessionStorage.getItem": true,
+        "sessionStorage.removeItem": true,
+        "sessionStorage.setItem": true,
+        "setImmediate": true,
+        "setInterval": true,
+        "setTimeout": true
+      }
+    },
+    "react-dnd": {
+      "globals": {
+        "console.error": true
+      },
+      "packages": {
+        "disposables": true,
+        "dnd-core": true,
+        "hoist-non-react-statics": true,
+        "invariant": true,
+        "lodash": true,
+        "prop-types": true,
+        "react": true,
+        "shallowequal": true
+      }
+    },
+    "react-dnd-html5-backend": {
+      "globals": {
+        "Image": true,
+        "console.warn": true,
+        "devicePixelRatio": true,
+        "document": true,
+        "navigator.userAgent": true,
+        "safari": true,
+        "setTimeout": true
+      }
+    },
+    "react-dom": {
+      "globals": {
+        "MSApp": true,
+        "__REACT_DEVTOOLS_GLOBAL_HOOK__": true,
+        "addEventListener": true,
+        "clearTimeout": true,
+        "clipboardData": true,
+        "console": true,
+        "dispatchEvent": true,
+        "document": true,
+        "event": "write",
+        "jest": true,
+        "location.protocol": true,
+        "navigator.userAgent.indexOf": true,
+        "performance": true,
+        "removeEventListener": true,
+        "self": true,
+        "setTimeout": true,
+        "top": true,
+        "trustedTypes": true
+      },
+      "packages": {
+        "object-assign": true,
+        "prop-types": true,
+        "react": true,
+        "scheduler": true
+      }
+    },
+    "react-fast-compare": {
+      "globals": {
+        "Element": true,
+        "console.warn": true
+      }
+    },
+    "react-idle-timer": {
+      "globals": {
+        "clearTimeout": true,
+        "document": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "prop-types": true,
+        "react": true
+      }
+    },
+    "react-inspector": {
+      "globals": {
+        "Node.CDATA_SECTION_NODE": true,
+        "Node.COMMENT_NODE": true,
+        "Node.DOCUMENT_FRAGMENT_NODE": true,
+        "Node.DOCUMENT_NODE": true,
+        "Node.DOCUMENT_TYPE_NODE": true,
+        "Node.ELEMENT_NODE": true,
+        "Node.PROCESSING_INSTRUCTION_NODE": true,
+        "Node.TEXT_NODE": true
+      },
+      "packages": {
+        "babel-runtime": true,
+        "is-dom": true,
+        "prop-types": true,
+        "react": true
+      }
+    },
+    "react-is": {
+      "globals": {
+        "console": true
+      }
+    },
+    "react-popper": {
+      "globals": {
+        "document": true
+      },
+      "packages": {
+        "@popperjs/core": true,
+        "react": true,
+        "react-fast-compare": true,
+        "warning": true
+      }
+    },
+    "react-redux": {
+      "globals": {
+        "console": true,
+        "document": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "hoist-non-react-statics": true,
+        "prop-types": true,
+        "react": true,
+        "react-dom": true,
+        "react-is": true,
+        "redux": true
+      }
+    },
+    "react-router": {
+      "packages": {
+        "history": true,
+        "hoist-non-react-statics": true,
+        "mini-create-react-context": true,
+        "path-to-regexp": true,
+        "prop-types": true,
+        "react": true,
+        "react-is": true,
+        "tiny-invariant": true,
+        "tiny-warning": true
+      }
+    },
+    "react-router-dom": {
+      "packages": {
+        "history": true,
+        "prop-types": true,
+        "react": true,
+        "react-router": true,
+        "tiny-invariant": true,
+        "tiny-warning": true
+      }
+    },
+    "react-simple-file-input": {
+      "globals": {
+        "File": true,
+        "FileReader": true,
+        "console.warn": true
+      },
+      "packages": {
+        "prop-types": true,
+        "react": true
+      }
+    },
+    "react-tippy": {
+      "globals": {
+        "Element": true,
+        "MSStream": true,
+        "MutationObserver": true,
+        "addEventListener": true,
+        "clearTimeout": true,
+        "console.error": true,
+        "console.warn": true,
+        "define": true,
+        "document": true,
+        "getComputedStyle": true,
+        "innerHeight": true,
+        "innerWidth": true,
+        "navigator.maxTouchPoints": true,
+        "navigator.msMaxTouchPoints": true,
+        "navigator.userAgent": true,
+        "performance": true,
+        "requestAnimationFrame": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "popper.js": true,
+        "react": true,
+        "react-dom": true
+      }
+    },
+    "react-toggle-button": {
+      "globals": {
+        "clearTimeout": true,
+        "console.warn": true,
+        "define": true,
+        "performance": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "react": true
+      }
+    },
+    "react-transition-group": {
+      "globals": {
+        "Element": true,
+        "clearTimeout": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "chain-function": true,
+        "dom-helpers": true,
+        "prop-types": true,
+        "react": true,
+        "react-dom": true,
+        "warning": true
+      }
+    },
+    "readable-stream": {
+      "packages": {
+        "browser-resolve": true,
+        "buffer": true,
+        "core-util-is": true,
+        "events": true,
+        "inherits": true,
+        "isarray": true,
+        "process": true,
+        "process-nextick-args": true,
+        "safe-buffer": true,
+        "string_decoder": true,
+        "timers-browserify": true,
+        "util-deprecate": true
+      }
+    },
+    "redux": {
+      "globals": {
+        "console": true
+      },
+      "packages": {
+        "symbol-observable": true
+      }
+    },
+    "redux-devtools-core": {
+      "globals": {
+        "ErrorUtils": true,
+        "console": true,
+        "devToolsOptions": true,
+        "onerror": "write",
+        "serializeState": true
+      },
+      "packages": {
+        "get-params": true,
+        "jsan": true,
+        "lodash": true,
+        "nanoid": true,
+        "remotedev-serialize": true
+      }
+    },
+    "redux-devtools-instrument": {
+      "globals": {
+        "chrome": true,
+        "console.error": true,
+        "process": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "lodash": true,
+        "process": true,
+        "symbol-observable": true
+      }
+    },
+    "regenerator-runtime": {
+      "globals": {
+        "regeneratorRuntime": "write"
+      }
+    },
+    "regexp.prototype.flags": {
+      "packages": {
+        "call-bind": true,
+        "define-properties": true
+      }
+    },
+    "remote-redux-devtools": {
+      "globals": {
+        "console.log": true,
+        "console.warn": true,
+        "fetch": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "jsan": true,
+        "redux-devtools-core": true,
+        "redux-devtools-instrument": true,
+        "rn-host-detect": true,
+        "socketcluster-client": true
+      }
+    },
+    "ripemd160": {
+      "packages": {
+        "buffer": true,
+        "hash-base": true,
+        "inherits": true
+      }
+    },
+    "rlp": {
+      "packages": {
+        "bn.js": true,
+        "buffer": true
+      }
+    },
+    "rn-host-detect": {
+      "globals": {
+        "__DEV__": true,
+        "__fbBatchedBridgeConfig": true,
+        "console": true
+      }
+    },
+    "safe-buffer": {
+      "packages": {
+        "buffer": true
+      }
+    },
+    "safe-event-emitter": {
+      "globals": {
+        "setTimeout": true
+      },
+      "packages": {
+        "events": true,
+        "util": true
+      }
+    },
+    "sc-channel": {
+      "packages": {
+        "component-emitter": true
+      }
+    },
+    "sc-formatter": {
+      "globals": {
+        "Buffer": true
+      }
+    },
+    "scheduler": {
+      "globals": {
+        "MessageChannel": true,
+        "cancelAnimationFrame": true,
+        "clearTimeout": true,
+        "console": true,
+        "navigator": true,
+        "performance": true,
+        "requestAnimationFrame": true,
+        "setTimeout": true
+      }
+    },
+    "scrypt-js": {
+      "globals": {
+        "define": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "timers-browserify": true
+      }
+    },
+    "secp256k1": {
+      "packages": {
+        "bip66": true,
+        "bn.js": true,
+        "create-hash": true,
+        "elliptic": true,
+        "is-buffer": true,
+        "safe-buffer": true
+      }
+    },
+    "set-immediate-shim": {
+      "globals": {
+        "setTimeout.apply": true
+      },
+      "packages": {
+        "timers-browserify": true
+      }
+    },
+    "sha.js": {
+      "packages": {
+        "inherits": true,
+        "safe-buffer": true
+      }
+    },
+    "socketcluster-client": {
+      "globals": {
+        "WebSocket": true,
+        "WorkerGlobalScope": true,
+        "addEventListener": true,
+        "clearTimeout": true,
+        "localStorage": true,
+        "location": true,
+        "removeEventListener": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "buffer": true,
+        "clone": true,
+        "component-emitter": true,
+        "linked-list": true,
+        "querystring-es3": true,
+        "sc-channel": true,
+        "sc-errors": true,
+        "sc-formatter": true,
+        "uuid": true
+      }
+    },
+    "stream-browserify": {
+      "packages": {
+        "events": true,
+        "inherits": true,
+        "readable-stream": true
+      }
+    },
+    "string_decoder": {
+      "packages": {
+        "safe-buffer": true
+      }
+    },
+    "strip-hex-prefix": {
+      "packages": {
+        "is-hex-prefixed": true
+      }
+    },
+    "textarea-caret": {
+      "globals": {
+        "document.body.appendChild": true,
+        "document.body.removeChild": true,
+        "document.createElement": true,
+        "document.querySelector": true,
+        "getCaretCoordinates": "write",
+        "getComputedStyle": true,
+        "mozInnerScreenX": true
+      }
+    },
+    "timers-browserify": {
+      "globals": {
+        "clearInterval": true,
+        "clearTimeout": true,
+        "setInterval": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "process": true
+      }
+    },
+    "tiny-warning": {
+      "globals": {
+        "console": true
+      }
+    },
+    "toggle-selection": {
+      "globals": {
+        "document.activeElement": true,
+        "document.getSelection": true
+      }
+    },
+    "tslib": {
+      "globals": {
+        "define": true
+      }
+    },
+    "util": {
+      "globals": {
+        "console.error": true,
+        "console.log": true,
+        "console.trace": true,
+        "process": true
+      },
+      "packages": {
+        "inherits": true,
+        "is-arguments": true,
+        "is-generator-function": true,
+        "is-typed-array": true,
+        "process": true,
+        "which-typed-array": true
+      }
+    },
+    "util-deprecate": {
+      "globals": {
+        "console.trace": true,
+        "console.warn": true,
+        "localStorage": true
+      }
+    },
+    "uuid": {
+      "globals": {
+        "crypto": true,
+        "msCrypto": true
+      }
+    },
+    "warning": {
+      "globals": {
+        "console": true
+      }
+    },
+    "web3-stream-provider": {
+      "globals": {
+        "setTimeout": true
+      },
+      "packages": {
+        "readable-stream": true,
+        "util": true,
+        "uuid": true
+      }
+    },
+    "which-typed-array": {
+      "packages": {
+        "available-typed-arrays": true,
+        "call-bind": true,
+        "es-abstract": true,
+        "foreach": true,
+        "has-symbols": true,
+        "is-typed-array": true
+      }
+    },
+    "xhr2": {
+      "globals": {
+        "XMLHttpRequest": true
+      }
+    }
+  }
+}

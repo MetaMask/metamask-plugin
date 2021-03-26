@@ -135,16 +135,20 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-v1-{{ checksum "yarn.lock" }}
       - run:
           name: Install deps
           command: |
             .circleci/scripts/deps-install.sh
       - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-v1-{{ checksum "yarn.lock" }}
           paths:
             - node_modules/
             - build-artifacts/yarn-install-har/
+      - run:
+          name: Postinstall
+          command: |
+            yarn setup:postinstall
       - persist_to_workspace:
           root: .
           paths:

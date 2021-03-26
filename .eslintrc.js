@@ -27,6 +27,7 @@ module.exports = {
     'docs/**',
     'coverage/',
     'app/scripts/chromereload.js',
+    'app/scripts/lockdown.umd.js',
     'app/vendor/**',
     'test/e2e/send-eth-with-private-key-test/**',
     'nyc_output/**',

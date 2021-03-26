@@ -6,6 +6,7 @@ try {
     errorTaming: 'unsafe',
     mathTaming: 'unsafe',
     dateTaming: 'unsafe',
+    overrideTaming: 'severe',
   });
 } catch (error) {
   // If the `lockdown` call throws an exception, it interferes with the

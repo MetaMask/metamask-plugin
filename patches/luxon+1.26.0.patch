@@ -1,0 +1,20 @@
+diff --git a/node_modules/luxon/build/cjs-browser/luxon.js b/node_modules/luxon/build/cjs-browser/luxon.js
+index 206a47a..5556d1d 100644
+--- a/node_modules/luxon/build/cjs-browser/luxon.js
++++ b/node_modules/luxon/build/cjs-browser/luxon.js
+@@ -7243,13 +7243,13 @@ var DateTime = /*#__PURE__*/function () {
+    */
+   ;
+ 
+-  _proto.toLocaleString = function toLocaleString(opts) {
++  Reflect.defineProperty(_proto, 'toLocaleString', { value: function toLocaleString(opts) {
+     if (opts === void 0) {
+       opts = DATE_SHORT;
+     }
+ 
+     return this.isValid ? Formatter.create(this.loc.clone(opts), opts).formatDateTime(this) : INVALID$2;
+-  }
++  }})
+   /**
+    * Returns an array of format "parts", meaning individual tokens along with metadata. This is allows callers to post-process individual sections of the formatted output.
+    * Defaults to the system's locale if no locale has been specified

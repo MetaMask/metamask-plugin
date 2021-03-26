@@ -1,0 +1,13 @@
+diff --git a/node_modules/fast-json-patch/lib/helpers.js b/node_modules/fast-json-patch/lib/helpers.js
+index 0ac28b4..d048c0a 100644
+--- a/node_modules/fast-json-patch/lib/helpers.js
++++ b/node_modules/fast-json-patch/lib/helpers.js
+@@ -21,7 +21,7 @@ var _hasOwnProperty = Object.prototype.hasOwnProperty;
+ function hasOwnProperty(obj, key) {
+     return _hasOwnProperty.call(obj, key);
+ }
+-exports.hasOwnProperty = hasOwnProperty;
++Object.defineProperty(exports, "hasOwnProperty", { value: hasOwnProperty });
+ function _objectKeys(obj) {
+     if (Array.isArray(obj)) {
+         var keys = new Array(obj.length);

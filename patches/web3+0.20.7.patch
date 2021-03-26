@@ -1,0 +1,39 @@
+diff --git a/node_modules/web3/dist/web3.js b/node_modules/web3/dist/web3.js
+index 6eb151c..6aa4516 100644
+--- a/node_modules/web3/dist/web3.js
++++ b/node_modules/web3/dist/web3.js
+@@ -5072,7 +5072,7 @@ Method.prototype.toPayload = function (args) {
+ 
+ Method.prototype.attachToObject = function (obj) {
+     var func = this.buildCall();
+-    func.call = this.call; // TODO!!! that's ugly. filter.js uses it
++    Reflect.defineProperty(func, 'call', { value: this.call })
+     var name = this.name.split('.');
+     if (name.length > 1) {
+         obj[name[0]] = obj[name[0]] || {};
+diff --git a/node_modules/web3/lib/web3/function.js b/node_modules/web3/lib/web3/function.js
+index 863a10a..ffcd23c 100644
+--- a/node_modules/web3/lib/web3/function.js
++++ b/node_modules/web3/lib/web3/function.js
+@@ -269,7 +269,7 @@ SolidityFunction.prototype.execute = function () {
+ SolidityFunction.prototype.attachToContract = function (contract) {
+     var execute = this.execute.bind(this);
+     execute.request = this.request.bind(this);
+-    execute.call = this.call.bind(this);
++    Reflect.defineProperty(execute, 'call', this.call.bind(this));
+     execute.sendTransaction = this.sendTransaction.bind(this);
+     execute.estimateGas = this.estimateGas.bind(this);
+     execute.getData = this.getData.bind(this);
+diff --git a/node_modules/web3/lib/web3/method.js b/node_modules/web3/lib/web3/method.js
+index 2e3c796..be0b663 100644
+--- a/node_modules/web3/lib/web3/method.js
++++ b/node_modules/web3/lib/web3/method.js
+@@ -123,7 +123,7 @@ Method.prototype.toPayload = function (args) {
+ 
+ Method.prototype.attachToObject = function (obj) {
+     var func = this.buildCall();
+-    func.call = this.call; // TODO!!! that's ugly. filter.js uses it
++    Reflect.defineProperty(func, 'call', { value: this.call })
+     var name = this.name.split('.');
+     if (name.length > 1) {
+         obj[name[0]] = obj[name[0]] || {};
