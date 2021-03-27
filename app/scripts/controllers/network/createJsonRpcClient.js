@@ -1,10 +1,12 @@
 import { createAsyncMiddleware, mergeMiddleware } from 'json-rpc-engine';
-import createFetchMiddleware from 'eth-json-rpc-middleware/fetch';
-import createBlockRefRewriteMiddleware from 'eth-json-rpc-middleware/block-ref-rewrite';
-import createBlockCacheMiddleware from 'eth-json-rpc-middleware/block-cache';
-import createInflightMiddleware from 'eth-json-rpc-middleware/inflight-cache';
-import createBlockTrackerInspectorMiddleware from 'eth-json-rpc-middleware/block-tracker-inspector';
-import providerFromMiddleware from 'eth-json-rpc-middleware/providerFromMiddleware';
+import {
+  createFetchMiddleware,
+  createBlockRefRewriteMiddleware,
+  createBlockCacheMiddleware,
+  createInflightCacheMiddleware,
+  createBlockTrackerInspectorMiddleware,
+  providerFromMiddleware,
+} from 'eth-json-rpc-middleware';
 import { PollingBlockTracker } from 'eth-block-tracker';
 
 const inTest = process.env.IN_TEST === 'true';
@@ -26,7 +28,7 @@ export default function createJsonRpcClient({ rpcUrl, chainId }) {
     createChainIdMiddleware(chainId),
     createBlockRefRewriteMiddleware({ blockTracker }),
     createBlockCacheMiddleware({ blockTracker }),
-    createInflightMiddleware(),
+    createInflightCacheMiddleware(),
     createBlockTrackerInspectorMiddleware({ blockTracker }),
     fetchMiddleware,
   ]);

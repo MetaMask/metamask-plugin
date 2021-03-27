@@ -113,7 +113,7 @@
     "eth-ens-namehash": "^2.0.8",
     "eth-json-rpc-filters": "^4.2.1",
     "eth-json-rpc-infura": "^5.1.0",
-    "eth-json-rpc-middleware": "^6.0.0",
+    "eth-json-rpc-middleware": "^7.0.1",
     "eth-keyring-controller": "^6.1.0",
     "eth-method-registry": "^2.0.0",
     "eth-phishing-detect": "^1.1.14",

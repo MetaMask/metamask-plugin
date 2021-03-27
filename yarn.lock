@@ -9725,6 +9725,21 @@ eth-json-rpc-middleware@^6.0.0:
     pify "^3.0.0"
     safe-event-emitter "^1.0.1"
 
+eth-json-rpc-middleware@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/eth-json-rpc-middleware/-/eth-json-rpc-middleware-7.0.1.tgz#3b9d7f61ea8d86b112add1558432a51efa413f56"
+  integrity sha512-Z0Fg5spBzayjfLf7aTTaSZnzUhXE6wLWOWgdtX01LMigbttjSUbJxp23Z2jw5CavCnG8yEz9yQNHFQV2p2o/hQ==
+  dependencies:
+    "@metamask/safe-event-emitter" "^2.0.0"
+    btoa "^1.2.1"
+    clone "^2.1.1"
+    eth-rpc-errors "^4.0.3"
+    eth-sig-util "^1.4.2"
+    json-rpc-engine "^6.1.0"
+    json-stable-stringify "^1.0.1"
+    node-fetch "^2.6.1"
+    pify "^3.0.0"
+
 eth-keyring-controller@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/eth-keyring-controller/-/eth-keyring-controller-6.1.0.tgz#dc9313d0b793e085dc1badf84dd4f5e3004e127e"
@@ -9802,6 +9817,13 @@ eth-rpc-errors@^4.0.0, eth-rpc-errors@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/eth-rpc-errors/-/eth-rpc-errors-4.0.2.tgz#11bc164e25237a679061ac05b7da7537b673d3b7"
   integrity sha512-n+Re6Gu8XGyfFy1it0AwbD1x0MUzspQs0D5UiPs1fFPCr6WAwZM+vbIhXheBFrpgosqN9bs5PqlB4Q61U/QytQ==
+  dependencies:
+    fast-safe-stringify "^2.0.6"
+
+eth-rpc-errors@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/eth-rpc-errors/-/eth-rpc-errors-4.0.3.tgz#6ddb6190a4bf360afda82790bb7d9d5e724f423a"
+  integrity sha512-Z3ymjopaoft7JDoxZcEb3pwdGh7yiYMhOwm2doUt6ASXlMavpNlK6Cre0+IMl2VSGyEU9rkiperQhp5iRxn5Pg==
   dependencies:
     fast-safe-stringify "^2.0.6"
 

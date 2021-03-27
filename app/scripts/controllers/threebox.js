@@ -8,7 +8,7 @@ const Box = process.env.IN_TEST
 
 import log from 'loglevel';
 import { JsonRpcEngine } from 'json-rpc-engine';
-import providerFromEngine from 'eth-json-rpc-middleware/providerFromEngine';
+import { providerFromEngine } from 'eth-json-rpc-middleware';
 import Migrator from '../lib/migrator';
 import migrations from '../migrations';
 import createOriginMiddleware from '../lib/createOriginMiddleware';

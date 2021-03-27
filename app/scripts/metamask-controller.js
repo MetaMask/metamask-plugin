@@ -7,7 +7,7 @@ import { debounce } from 'lodash';
 import createEngineStream from 'json-rpc-middleware-stream/engineStream';
 import createFilterMiddleware from 'eth-json-rpc-filters';
 import createSubscriptionManager from 'eth-json-rpc-filters/subscriptionManager';
-import providerAsMiddleware from 'eth-json-rpc-middleware/providerAsMiddleware';
+import { providerAsMiddleware } from 'eth-json-rpc-middleware';
 import KeyringController from 'eth-keyring-controller';
 import { Mutex } from 'await-semaphore';
 import ethUtil from 'ethereumjs-util';

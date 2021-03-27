@@ -1,5 +1,5 @@
 import { createScaffoldMiddleware, mergeMiddleware } from 'json-rpc-engine';
-import createWalletSubprovider from 'eth-json-rpc-middleware/wallet';
+import { createWalletMiddleware } from 'eth-json-rpc-middleware';
 import {
   createPendingNonceMiddleware,
   createPendingTxMiddleware,
@@ -21,11 +21,10 @@ export default function createMetamaskMiddleware({
 }) {
   const metamaskMiddleware = mergeMiddleware([
     createScaffoldMiddleware({
-      // staticSubprovider
       eth_syncing: false,
       web3_clientVersion: `MetaMask/v${version}`,
     }),
-    createWalletSubprovider({
+    createWalletMiddleware({
       getAccounts,
       processTransaction,
       processEthSignMessage,

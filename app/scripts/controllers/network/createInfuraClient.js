@@ -1,10 +1,13 @@
 import { createScaffoldMiddleware, mergeMiddleware } from 'json-rpc-engine';
-import createBlockReRefMiddleware from 'eth-json-rpc-middleware/block-ref';
-import createRetryOnEmptyMiddleware from 'eth-json-rpc-middleware/retryOnEmpty';
-import createBlockCacheMiddleware from 'eth-json-rpc-middleware/block-cache';
-import createInflightMiddleware from 'eth-json-rpc-middleware/inflight-cache';
-import createBlockTrackerInspectorMiddleware from 'eth-json-rpc-middleware/block-tracker-inspector';
-import providerFromMiddleware from 'eth-json-rpc-middleware/providerFromMiddleware';
+import {
+  createBlockRefMiddleware,
+  createRetryOnEmptyMiddleware,
+  createBlockCacheMiddleware,
+  createInflightCacheMiddleware,
+  createBlockTrackerInspectorMiddleware,
+  providerFromMiddleware,
+} from 'eth-json-rpc-middleware';
+
 import createInfuraMiddleware from 'eth-json-rpc-infura';
 import { PollingBlockTracker } from 'eth-block-tracker';
 
@@ -23,8 +26,8 @@ export default function createInfuraClient({ network, projectId }) {
   const networkMiddleware = mergeMiddleware([
     createNetworkAndChainIdMiddleware({ network }),
     createBlockCacheMiddleware({ blockTracker }),
-    createInflightMiddleware(),
-    createBlockReRefMiddleware({ blockTracker, provider: infuraProvider }),
+    createInflightCacheMiddleware(),
+    createBlockRefMiddleware({ blockTracker, provider: infuraProvider }),
     createRetryOnEmptyMiddleware({ blockTracker, provider: infuraProvider }),
     createBlockTrackerInspectorMiddleware({ blockTracker }),
     infuraMiddleware,
