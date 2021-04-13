@@ -37,6 +37,8 @@ import {
   getUseNonceField,
   getPreferences,
   transactionFeeSelector,
+  getIsLedgerHardwareDevice,
+  getIsTrezorHardwareDevice,
 } from '../../selectors';
 import { getMostRecentOverviewPage } from '../../ducks/history/history';
 import { transactionMatchesNetwork } from '../../../../shared/modules/transaction.utils';
@@ -188,6 +190,8 @@ const mapStateToProps = (state, ownProps) => {
     nextNonce,
     mostRecentOverviewPage: getMostRecentOverviewPage(state),
     isMainnet,
+    isLedgerHardwareDevice: getIsLedgerHardwareDevice(state),
+    isTrezorHardwareDevice: getIsTrezorHardwareDevice(state),
   };
 };
 

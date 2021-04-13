@@ -813,9 +813,15 @@
   "hardwareWalletConnected": {
     "message": "Hardware wallet connected"
   },
+  "hardwareWalletLedgerConnectReminder": {
+    "message": "Please ensure that your Ledger device is connected, unlocked, and the Ethereum app is open before confirming."
+  },
   "hardwareWalletLegacyDescription": {
     "message": "(legacy)",
     "description": "Text representing the MEW path"
+  },
+  "hardwareWalletTrezorConnectReminder": {
+    "message": "Please ensure that your Trezor device is connected and unlocked before confirming."
   },
   "hardwareWallets": {
     "message": "Connect a hardware wallet"

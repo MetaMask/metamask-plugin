@@ -27,6 +27,9 @@ import { TEMPLATED_CONFIRMATION_MESSAGE_TYPES } from '../pages/confirmation/temp
 
 import { getNativeCurrency } from './send';
 
+const TREZOR_HARDWARE_KEY = 'Trezor Hardware';
+const LEDGER_HARDWARE_KEY = 'Ledger Hardware';
+
 /**
  * One of the only remaining valid uses of selecting the network subkey of the
  * metamask state tree is to determine if the network is currently 'loading'.
@@ -83,14 +86,28 @@ export function getAccountType(state) {
   const type = currentKeyring && currentKeyring.type;
 
   switch (type) {
-    case 'Trezor Hardware':
-    case 'Ledger Hardware':
+    case TREZOR_HARDWARE_KEY:
+    case LEDGER_HARDWARE_KEY:
       return 'hardware';
     case 'Simple Key Pair':
       return 'imported';
     default:
       return 'default';
   }
+}
+
+export function getIsLedgerHardwareDevice(state) {
+  const currentKeyring = getCurrentKeyring(state);
+  const type = currentKeyring && currentKeyring.type;
+
+  return type === LEDGER_HARDWARE_KEY;
+}
+
+export function getIsTrezorHardwareDevice(state) {
+  const currentKeyring = getCurrentKeyring(state);
+  const type = currentKeyring && currentKeyring.type;
+
+  return type === TREZOR_HARDWARE_KEY;
 }
 
 /**

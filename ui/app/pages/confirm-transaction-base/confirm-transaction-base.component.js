@@ -6,6 +6,7 @@ import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import ConfirmPageContainer, {
   ConfirmDetailRow,
 } from '../../components/app/confirm-page-container';
+import Callout from '../../components/ui/callout';
 import { isBalanceSufficient } from '../send/send.utils';
 import { CONFIRM_TRANSACTION_ROUTE } from '../../helpers/constants/routes';
 import {
@@ -23,6 +24,7 @@ import {
   TRANSACTION_STATUSES,
 } from '../../../../shared/constants/transaction';
 import { getTransactionTypeTitle } from '../../helpers/utils/transactions.util';
+import { SEVERITIES } from '../../helpers/constants/design-system';
 
 export default class ConfirmTransactionBase extends Component {
   static contextTypes = {
@@ -95,6 +97,8 @@ export default class ConfirmTransactionBase extends Component {
     showAccountInHeader: PropTypes.bool,
     mostRecentOverviewPage: PropTypes.string.isRequired,
     isMainnet: PropTypes.bool,
+    isLedgerHardwareDevice: PropTypes.bool,
+    isTrezorHardwareDevice: PropTypes.bool,
   };
 
   state = {
@@ -243,7 +247,11 @@ export default class ConfirmTransactionBase extends Component {
       nextNonce,
       getNextNonce,
       isMainnet,
+      isLedgerHardwareDevice,
+      isTrezorHardwareDevice,
     } = this.props;
+
+    console.log('This props: ', this.props);
 
     const notMainnetOrTest = !(isMainnet || process.env.IN_TEST);
 
@@ -328,6 +336,18 @@ export default class ConfirmTransactionBase extends Component {
             </div>
           </div>
         ) : null}
+        {(isLedgerHardwareDevice || isTrezorHardwareDevice) && (
+          <div className="confirm-detail-row confirm-detail-row__info">
+            <Callout severity={SEVERITIES.INFO} />
+            <>
+              {this.context.t(
+                isLedgerHardwareDevice
+                  ? 'hardwareWalletLedgerConnectReminder'
+                  : 'hardwareWalletTrezorConnectReminder',
+              )}
+            </>
+          </div>
+        )}
       </div>
     );
   }
