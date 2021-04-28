@@ -1404,12 +1404,6 @@
   "showHexDataDescription": {
     "message": "请选择该选项，在发送页面显示十六进制数据字域"
   },
-  "showIncomingTransactions": {
-    "message": "显示收到的交易"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "选择该选项可使用 Etherscan（以太坊浏览器）（以太坊浏览器）在交易列表中显示收到的交易。"
-  },
   "showPermissions": {
     "message": "显示权限"
   },

@@ -9,6 +9,7 @@
  * @property {'approve'} TOKEN_METHOD_APPROVE - A token transaction requesting an
  *  allowance of the token to spend on behalf of the user
  * @property {'incoming'} INCOMING - An incoming (deposit) transaction
+ * @property {'sent'} SENT - A transaction sent from external source (other than MetaMask)
  * @property {'sentEther'} SENT_ETHER - A transaction sending ether to a recipient
  * @property {'contractInteraction'} CONTRACT_INTERACTION - A transaction that is
  *  interacting with a smart contract's methods that we have not treated as a special
@@ -46,6 +47,7 @@ export const TRANSACTION_TYPES = {
   TOKEN_METHOD_TRANSFER_FROM: 'transferfrom',
   TOKEN_METHOD_APPROVE: 'approve',
   INCOMING: 'incoming',
+  SENT: 'sent',
   SENT_ETHER: 'sentEther',
   CONTRACT_INTERACTION: 'contractInteraction',
   DEPLOY_CONTRACT: 'contractDeployment',

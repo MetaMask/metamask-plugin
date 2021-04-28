@@ -15,9 +15,9 @@
       "currentCurrency": "php",
       "nativeCurrency": "ETH"
     },
-    "IncomingTransactionsController": {
-      "incomingTransactions": {},
-      "incomingTxLastFetchedBlocksByNetwork": {
+    "ExternalTransactionsController": {
+      "externalTransactions": {},
+      "externalTxLastFetchedBlocksByNetwork": {
         "goerli": null,
         "kovan": null,
         "mainnet": null,
@@ -84,7 +84,7 @@
       "completedOnboarding": true,
       "currentLocale": "en",
       "featureFlags": {
-        "showIncomingTransactions": true,
+        "showExternalTransactions": true,
         "transactionTime": false
       },
       "firstTimeFlowType": "create",

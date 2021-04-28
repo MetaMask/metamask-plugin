@@ -1395,12 +1395,6 @@
   "showHexDataDescription": {
     "message": "Выберите эту опцию, чтобы отобразить поле шестнадцатеричных данных на экране отправки"
   },
-  "showIncomingTransactions": {
-    "message": "Показать входящие транзакции"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "Выберите это, чтобы использовать Etherscan для отображения входящих транзакций в списке транзакций"
-  },
   "showPermissions": {
     "message": "Показать разрешения"
   },

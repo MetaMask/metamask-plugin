@@ -11,8 +11,8 @@ describe('Security Tab', () => {
     showClearApprovalModal: sinon.spy(),
     setParticipateInMetaMetrics: sinon.spy(),
     displayWarning: sinon.spy(),
-    showIncomingTransactions: false,
-    setShowIncomingTransactionsFeatureFlag: sinon.spy(),
+    showExternalTransactions: false,
+    setShowExternalTransactionsFeatureFlag: sinon.spy(),
     history: {
       push: sinon.spy(),
     },
@@ -40,11 +40,11 @@ describe('Security Tab', () => {
     expect(props.history.push.getCall(0).args[0]).toStrictEqual('/seed');
   });
 
-  it('toggles incoming txs', () => {
-    const incomingTxs = wrapper.find({ type: 'checkbox' }).at(0);
-    incomingTxs.simulate('click');
+  it('toggles external txs', () => {
+    const externalTxs = wrapper.find({ type: 'checkbox' }).at(0);
+    externalTxs.simulate('click');
     expect(
-      props.setShowIncomingTransactionsFeatureFlag.calledOnce,
+      props.setShowExternalTransactionsFeatureFlag.calledOnce,
     ).toStrictEqual(true);
   });
 

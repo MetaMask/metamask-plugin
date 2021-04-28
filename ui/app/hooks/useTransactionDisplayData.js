@@ -210,6 +210,10 @@ export function useTransactionDisplayData(transactionGroup) {
     category = TRANSACTION_GROUP_CATEGORIES.SEND;
     title = t('send');
     subtitle = t('toAddress', [shortenAddress(recipientAddress)]);
+  } else if (type === TRANSACTION_TYPES.SENT) {
+    category = TRANSACTION_GROUP_CATEGORIES.SEND;
+    title = t('externalSend');
+    subtitle = t('toAddress', [shortenAddress(recipientAddress)]);
   }
 
   const primaryCurrencyPreferences = useUserPreferencedCurrency(PRIMARY);

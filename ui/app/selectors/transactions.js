@@ -13,9 +13,9 @@ import { transactionMatchesNetwork } from '../../../shared/modules/transaction.u
 import { getCurrentChainId, deprecatedGetCurrentNetworkId } from './selectors';
 import { getSelectedAddress } from '.';
 
-export const incomingTxListSelector = (state) => {
-  const { showIncomingTransactions } = state.metamask.featureFlags;
-  if (!showIncomingTransactions) {
+export const externalTxListSelector = (state) => {
+  const { showExternalTransactions } = state.metamask.featureFlags;
+  if (!showExternalTransactions) {
     return [];
   }
 
@@ -24,9 +24,10 @@ export const incomingTxListSelector = (state) => {
     provider: { chainId },
   } = state.metamask;
   const selectedAddress = getSelectedAddress(state);
-  return Object.values(state.metamask.incomingTransactions).filter(
+  return Object.values(state.metamask.externalTransactions).filter(
     (tx) =>
-      tx.txParams.to === selectedAddress &&
+      (tx.txParams.to === selectedAddress ||
+        tx.txParams.from === selectedAddress) &&
       transactionMatchesNetwork(tx, chainId, network),
   );
 };
@@ -83,9 +84,9 @@ export const unapprovedMessagesSelector = createSelector(
 
 export const transactionSubSelector = createSelector(
   unapprovedMessagesSelector,
-  incomingTxListSelector,
-  (unapprovedMessages = [], incomingTxList = []) => {
-    return unapprovedMessages.concat(incomingTxList);
+  externalTxListSelector,
+  (unapprovedMessages = [], externalTxList = []) => {
+    return unapprovedMessages.concat(externalTxList);
   },
 );
 
@@ -94,8 +95,11 @@ export const transactionsSelector = createSelector(
   selectedAddressTxListSelector,
   (subSelectorTxList = [], selectedAddressTxList = []) => {
     const txsToRender = selectedAddressTxList.concat(subSelectorTxList);
+    const txsHashes = txsToRender.map((item) => item.hash);
 
-    return txsToRender.sort((a, b) => b.time - a.time);
+    return txsToRender
+      .filter((item, idx) => txsHashes.indexOf(item.hash) === idx) // deduplicate (outgoing transactions)
+      .sort((a, b) => b.time - a.time);
   },
 );
 

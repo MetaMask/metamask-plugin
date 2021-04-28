@@ -9,7 +9,7 @@
   },
   "metamask": {
     "featureFlags": {
-      "showIncomingTransactions": true
+      "showExternalTransactions": true
     },
     "network": "4",
     "provider": {
@@ -26,7 +26,7 @@
       }
     },
     "cachedBalances": {},
-    "incomingTransactions": {},
+    "externalTransactions": {},
     "unapprovedTxs": {
       "8393540981007587": {
         "id": 8393540981007587,

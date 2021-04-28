@@ -18,9 +18,9 @@
       "currentCurrency": "usd",
       "nativeCurrency": "ETH"
     },
-    "IncomingTransactionsController": {
-      "incomingTransactions": {},
-      "incomingTxLastFetchedBlocksByNetwork": {
+    "ExternalTransactionsController": {
+      "externalTransactions": {},
+      "externalTxLastFetchedBlocksByNetwork": {
         "goerli": null,
         "kovan": null,
         "mainnet": null,
@@ -103,7 +103,7 @@
       "useNonceField": false,
       "usePhishDetect": true,
       "featureFlags": {
-        "showIncomingTransactions": true,
+        "showExternalTransactions": true,
         "transactionTime": false
       },
       "knownMethodData": {},

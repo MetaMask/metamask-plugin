@@ -44,11 +44,11 @@ const fetchWithTimeout = getFetchWithTimeout(30000);
  */
 
 /**
- * This controller is responsible for retrieving incoming transactions. Etherscan is polled once every block to check
- * for new incoming transactions for the current selected account on the current network
+ * This controller is responsible for retrieving external transactions. Etherscan is polled once every block to check
+ * for new external transactions for the current selected account on the current network
  *
  * Note that only the built-in Infura networks are supported (i.e. anything in `INFURA_PROVIDER_TYPES`). We will not
- * attempt to retrieve incoming transactions on any custom RPC endpoints.
+ * attempt to retrieve external transactions on any custom RPC endpoints.
  */
 const etherscanSupportedNetworks = [
   GOERLI_CHAIN_ID,
@@ -58,7 +58,7 @@ const etherscanSupportedNetworks = [
   ROPSTEN_CHAIN_ID,
 ];
 
-export default class IncomingTransactionsController {
+export default class ExternalTransactionsController {
   constructor(opts = {}) {
     const {
       blockTracker,
@@ -77,8 +77,8 @@ export default class IncomingTransactionsController {
     };
 
     const initState = {
-      incomingTransactions: {},
-      incomingTxLastFetchedBlockByChainId: {
+      externalTransactions: {},
+      externalTxLastFetchedBlockByChainId: {
         [GOERLI_CHAIN_ID]: null,
         [KOVAN_CHAIN_ID]: null,
         [MAINNET_CHAIN_ID]: null,
@@ -93,20 +93,20 @@ export default class IncomingTransactionsController {
       previousValueComparator((prevState, currState) => {
         const {
           featureFlags: {
-            showIncomingTransactions: prevShowIncomingTransactions,
+            showExternalTransactions: prevShowExternalTransactions,
           } = {},
         } = prevState;
         const {
           featureFlags: {
-            showIncomingTransactions: currShowIncomingTransactions,
+            showExternalTransactions: currShowExternalTransactions,
           } = {},
         } = currState;
 
-        if (currShowIncomingTransactions === prevShowIncomingTransactions) {
+        if (currShowExternalTransactions === prevShowExternalTransactions) {
           return;
         }
 
-        if (prevShowIncomingTransactions && !currShowIncomingTransactions) {
+        if (prevShowExternalTransactions && !currShowExternalTransactions) {
           this.stop();
           return;
         }
@@ -135,9 +135,9 @@ export default class IncomingTransactionsController {
 
   start() {
     const { featureFlags = {} } = this.preferencesController.store.getState();
-    const { showIncomingTransactions } = featureFlags;
+    const { showExternalTransactions } = featureFlags;
 
-    if (!showIncomingTransactions) {
+    if (!showExternalTransactions) {
       return;
     }
 
@@ -169,11 +169,11 @@ export default class IncomingTransactionsController {
       const currentBlock = parseInt(this.blockTracker.getCurrentBlock(), 16);
 
       const mostRecentlyFetchedBlock =
-        currentState.incomingTxLastFetchedBlockByChainId[chainId];
+        currentState.externalTxLastFetchedBlockByChainId[chainId];
       const blockToFetchFrom =
         mostRecentlyFetchedBlock ?? newBlockNumberDec ?? currentBlock;
 
-      const newIncomingTxs = await this._getNewIncomingTransactions(
+      const newExternalTxs = await this._getNewExternalTransactions(
         address,
         blockToFetchFrom,
         chainId,
@@ -181,7 +181,7 @@ export default class IncomingTransactionsController {
 
       let newMostRecentlyFetchedBlock = blockToFetchFrom;
 
-      newIncomingTxs.forEach((tx) => {
+      newExternalTxs.forEach((tx) => {
         if (
           tx.blockNumber &&
           parseInt(newMostRecentlyFetchedBlock, 10) <
@@ -192,17 +192,17 @@ export default class IncomingTransactionsController {
       });
 
       this.store.updateState({
-        incomingTxLastFetchedBlockByChainId: {
-          ...currentState.incomingTxLastFetchedBlockByChainId,
+        externalTxLastFetchedBlockByChainId: {
+          ...currentState.externalTxLastFetchedBlockByChainId,
           [chainId]: newMostRecentlyFetchedBlock + 1,
         },
-        incomingTransactions: newIncomingTxs.reduce(
+        externalTransactions: newExternalTxs.reduce(
           (transactions, tx) => {
             transactions[tx.hash] = tx;
             return transactions;
           },
           {
-            ...currentState.incomingTransactions,
+            ...currentState.externalTransactions,
           },
         ),
       });
@@ -221,7 +221,7 @@ export default class IncomingTransactionsController {
    * @param {string} [chainId] - The chainId for the current network
    * @returns {TransactionMeta[]}
    */
-  async _getNewIncomingTransactions(address, fromBlock, chainId) {
+  async _getNewExternalTransactions(address, fromBlock, chainId) {
     const etherscanSubdomain =
       chainId === MAINNET_CHAIN_ID
         ? 'api'
@@ -235,32 +235,31 @@ export default class IncomingTransactionsController {
     }
     const response = await fetchWithTimeout(url);
     const { status, result } = await response.json();
-    let newIncomingTxs = [];
+    const newExternalTxs = [];
     if (status === '1' && Array.isArray(result) && result.length > 0) {
-      const remoteTxList = {};
-      const remoteTxs = [];
+      const externalTxList = {};
       result.forEach((tx) => {
-        if (!remoteTxList[tx.hash]) {
-          remoteTxs.push(this._normalizeTxFromEtherscan(tx, chainId));
-          remoteTxList[tx.hash] = 1;
+        if (!externalTxList[tx.hash]) {
+          newExternalTxs.push(
+            this._normalizeTxFromEtherscan(tx, chainId, address),
+          );
+          externalTxList[tx.hash] = 1;
         }
       });
 
-      newIncomingTxs = remoteTxs.filter(
-        (tx) => tx.txParams?.to?.toLowerCase() === address.toLowerCase(),
-      );
-      newIncomingTxs.sort((a, b) => (a.time < b.time ? -1 : 1));
+      newExternalTxs.sort((a, b) => (a.time < b.time ? -1 : 1));
     }
-    return newIncomingTxs;
+    return newExternalTxs;
   }
 
   /**
    * Transmutes a EtherscanTransaction into a TransactionMeta
    * @param {EtherscanTransaction} etherscanTransaction - the transaction to normalize
    * @param {string} chainId - The chainId of the current network
+   * @param {string} address - Selected address
    * @returns {TransactionMeta}
    */
-  _normalizeTxFromEtherscan(etherscanTransaction, chainId) {
+  _normalizeTxFromEtherscan(etherscanTransaction, chainId, address) {
     const time = parseInt(etherscanTransaction.timeStamp, 10) * 1000;
     const status =
       etherscanTransaction.isError === '0'
@@ -282,7 +281,10 @@ export default class IncomingTransactionsController {
         value: bnToHex(new BN(etherscanTransaction.value)),
       },
       hash: etherscanTransaction.hash,
-      type: TRANSACTION_TYPES.INCOMING,
+      type:
+        etherscanTransaction.from.toLowerCase() === address?.toLowerCase()
+          ? TRANSACTION_TYPES.SENT
+          : TRANSACTION_TYPES.INCOMING,
     };
   }
 }

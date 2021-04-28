@@ -115,13 +115,14 @@ describe('Transaction Selectors', () => {
             chainId: MAINNET_CHAIN_ID,
           },
           featureFlags: {
-            showIncomingTransactions: false,
+            showExternalTransactions: false,
           },
           selectedAddress: '0xAddress',
           currentNetworkTxList: [
             {
               id: 0,
               time: 0,
+              hash: '0',
               txParams: {
                 from: '0xAddress',
                 to: '0xRecipient',
@@ -130,6 +131,7 @@ describe('Transaction Selectors', () => {
             {
               id: 1,
               time: 1,
+              hash: '1',
               txParams: {
                 from: '0xAddress',
                 to: '0xRecipient',
@@ -155,6 +157,7 @@ describe('Transaction Selectors', () => {
       const tx1 = {
         id: 0,
         time: 0,
+        hash: '0',
         txParams: {
           from: '0xAddress',
           to: '0xRecipient',
@@ -165,6 +168,7 @@ describe('Transaction Selectors', () => {
       const tx2 = {
         id: 1,
         time: 1,
+        hash: '1',
         txParams: {
           from: '0xAddress',
           to: '0xRecipient',
@@ -180,7 +184,7 @@ describe('Transaction Selectors', () => {
           },
           selectedAddress: '0xAddress',
           featureFlags: {
-            showIncomingTransactions: false,
+            showExternalTransactions: false,
           },
           currentNetworkTxList: [tx1, tx2],
         },
@@ -215,6 +219,7 @@ describe('Transaction Selectors', () => {
     const submittedTx = {
       id: 0,
       time: 0,
+      hash: '0',
       txParams: {
         from: '0xAddress',
         to: '0xRecipient',
@@ -226,6 +231,7 @@ describe('Transaction Selectors', () => {
     const unapprovedTx = {
       id: 1,
       time: 1,
+      hash: '1',
       txParams: {
         from: '0xAddress',
         to: '0xRecipient',
@@ -237,6 +243,7 @@ describe('Transaction Selectors', () => {
     const approvedTx = {
       id: 2,
       time: 2,
+      hash: '2',
       txParams: {
         from: '0xAddress',
         to: '0xRecipient',
@@ -248,6 +255,7 @@ describe('Transaction Selectors', () => {
     const confirmedTx = {
       id: 3,
       time: 3,
+      hash: '3',
       txParams: {
         from: '0xAddress',
         to: '0xRecipient',
@@ -264,7 +272,7 @@ describe('Transaction Selectors', () => {
         },
         selectedAddress: '0xAddress',
         featureFlags: {
-          showIncomingTransactions: false,
+          showExternalTransactions: false,
         },
         currentNetworkTxList: [
           submittedTx,

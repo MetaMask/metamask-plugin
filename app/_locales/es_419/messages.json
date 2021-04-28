@@ -1404,12 +1404,6 @@
   "showHexDataDescription": {
     "message": "Selecciona esto para mostrar el campo de datos hexadecimales en la pantalla de envío"
   },
-  "showIncomingTransactions": {
-    "message": "Mostrar transacciones entrantes"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "Seleccione esto para usar Etherscan para mostrar las transacciones entrantes en la lista de transacciones"
-  },
   "showPermissions": {
     "message": "Mostrar permisos"
   },

@@ -20,7 +20,7 @@ import {
   TRANSACTION_STATUSES,
 } from '../../../shared/constants/transaction';
 
-const IncomingTransactionsController = proxyquire('./incoming-transactions', {
+const ExternalTransactionsController = proxyquire('./external-transactions', {
   '../../../shared/modules/random-id': { default: () => 54321 },
 }).default;
 
@@ -49,15 +49,15 @@ const EMPTY_BLOCKS_BY_NETWORK = {
 
 function getEmptyInitState() {
   return {
-    incomingTransactions: {},
-    incomingTxLastFetchedBlockByChainId: EMPTY_BLOCKS_BY_NETWORK,
+    externalTransactions: {},
+    externalTxLastFetchedBlockByChainId: EMPTY_BLOCKS_BY_NETWORK,
   };
 }
 
 function getNonEmptyInitState() {
   return {
-    incomingTransactions: PREPOPULATED_INCOMING_TXS_BY_HASH,
-    incomingTxLastFetchedBlockByChainId: PREPOPULATED_BLOCKS_BY_NETWORK,
+    externalTransactions: PREPOPULATED_INCOMING_TXS_BY_HASH,
+    externalTxLastFetchedBlockByChainId: PREPOPULATED_BLOCKS_BY_NETWORK,
   };
 }
 
@@ -69,14 +69,14 @@ function getMockNetworkControllerMethods(chainId = FAKE_CHAIN_ID) {
 }
 
 function getMockPreferencesController({
-  showIncomingTransactions = true,
+  showExternalTransactions = true,
 } = {}) {
   return {
     getSelectedAddress: sinon.stub().returns(MOCK_SELECTED_ADDRESS),
     store: {
       getState: sinon.stub().returns({
         featureFlags: {
-          showIncomingTransactions,
+          showExternalTransactions,
         },
       }),
       subscribe: sinon.spy(),
@@ -95,7 +95,7 @@ function getMockBlockTracker() {
 
 /**
  * @typedef {import(
- *  '../../../../app/scripts/controllers/incoming-transactions'
+ *  '../../../../app/scripts/controllers/external-transactions'
  * ).EtherscanTransaction} EtherscanTransaction
  */
 
@@ -125,6 +125,32 @@ const getFakeEtherscanTransaction = (
   };
 };
 
+/**
+ * Returns a transaction object matching the expected format returned
+ * by the Etherscan API
+ *
+ * @param {string} [fromAddress] - The hex-prefixed address of the sender
+ * @param {number} [blockNumber] - The block number for the transaction
+ *  @returns {EtherscanTransaction}
+ */
+const getFakeEtherscanSendTransaction = (
+  fromAddress = MOCK_SELECTED_ADDRESS,
+  blockNumber = 10,
+) => {
+  return {
+    blockNumber: blockNumber.toString(),
+    from: fromAddress,
+    gas: '0',
+    gasPrice: '0',
+    hash: '0xfakeSend',
+    isError: '0',
+    nonce: '100',
+    timeStamp: '16000000000000',
+    to: '0xfake',
+    value: '0',
+  };
+};
+
 function nockEtherscanApiForAllChains(mockResponse) {
   for (const chainId of [
     GOERLI_CHAIN_ID,
@@ -144,7 +170,7 @@ function nockEtherscanApiForAllChains(mockResponse) {
   }
 }
 
-describe('IncomingTransactionsController', function () {
+describe('ExternalTransactionsController', function () {
   afterEach(function () {
     sinon.restore();
     nock.cleanAll();
@@ -153,7 +179,7 @@ describe('IncomingTransactionsController', function () {
   describe('constructor', function () {
     it('should set up correct store, listeners and properties in the constructor', function () {
       const mockedNetworkMethods = getMockNetworkControllerMethods();
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...mockedNetworkMethods,
@@ -161,10 +187,10 @@ describe('IncomingTransactionsController', function () {
           initState: {},
         },
       );
-      sinon.spy(incomingTransactionsController, '_update');
+      sinon.spy(externalTransactionsController, '_update');
 
       assert.deepStrictEqual(
-        incomingTransactionsController.store.getState(),
+        externalTransactionsController.store.getState(),
         getEmptyInitState(),
       );
 
@@ -172,19 +198,19 @@ describe('IncomingTransactionsController', function () {
       const networkControllerListenerCallback = mockedNetworkMethods.onNetworkDidChange.getCall(
         0,
       ).args[0];
-      assert.strictEqual(incomingTransactionsController._update.callCount, 0);
+      assert.strictEqual(externalTransactionsController._update.callCount, 0);
       networkControllerListenerCallback('testNetworkType');
-      assert.strictEqual(incomingTransactionsController._update.callCount, 1);
+      assert.strictEqual(externalTransactionsController._update.callCount, 1);
       assert.deepStrictEqual(
-        incomingTransactionsController._update.getCall(0).args[0],
+        externalTransactionsController._update.getCall(0).args[0],
         '0x0101',
       );
 
-      incomingTransactionsController._update.resetHistory();
+      externalTransactionsController._update.resetHistory();
     });
 
     it('should set the store to a provided initial state', function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(),
@@ -194,7 +220,7 @@ describe('IncomingTransactionsController', function () {
       );
 
       assert.deepStrictEqual(
-        incomingTransactionsController.store.getState(),
+        externalTransactionsController.store.getState(),
         getNonEmptyInitState(),
       );
     });
@@ -202,7 +228,7 @@ describe('IncomingTransactionsController', function () {
 
   describe('update events', function () {
     it('should set up a listener for the latest block', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(),
@@ -211,20 +237,20 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      incomingTransactionsController.start();
+      externalTransactionsController.start();
 
       assert(
-        incomingTransactionsController.blockTracker.addListener.calledOnce,
+        externalTransactionsController.blockTracker.addListener.calledOnce,
       );
       assert.strictEqual(
-        incomingTransactionsController.blockTracker.addListener.getCall(0)
+        externalTransactionsController.blockTracker.addListener.getCall(0)
           .args[0],
         'latest',
       );
     });
 
     it('should update upon latest block when started and on supported network', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -233,7 +259,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
       const startBlock = getNonEmptyInitState()
-        .incomingTxLastFetchedBlockByChainId[ROPSTEN_CHAIN_ID];
+        .externalTxLastFetchedBlockByChainId[ROPSTEN_CHAIN_ID];
       nock('https://api-ropsten.etherscan.io')
         .get(
           `/api?module=account&action=txlist&address=${MOCK_SELECTED_ADDRESS}&tag=latest&page=1&startBlock=${startBlock}`,
@@ -246,22 +272,22 @@ describe('IncomingTransactionsController', function () {
           }),
         );
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
-      incomingTransactionsController.start();
+      externalTransactionsController.start();
       await updateStateCalled();
 
-      const actualState = incomingTransactionsController.store.getState();
-      const generatedTxId = actualState?.incomingTransactions?.['0xfake']?.id;
+      const actualState = externalTransactionsController.store.getState();
+      const generatedTxId = actualState?.externalTransactions?.['0xfake']?.id;
 
       const actualStateWithoutGenerated = cloneDeep(actualState);
-      delete actualStateWithoutGenerated?.incomingTransactions?.['0xfake']?.id;
+      delete actualStateWithoutGenerated?.externalTransactions?.['0xfake']?.id;
 
       assert.ok(
         typeof generatedTxId === 'number' && generatedTxId > 0,
@@ -270,8 +296,8 @@ describe('IncomingTransactionsController', function () {
       assert.deepStrictEqual(
         actualStateWithoutGenerated,
         {
-          incomingTransactions: {
-            ...getNonEmptyInitState().incomingTransactions,
+          externalTransactions: {
+            ...getNonEmptyInitState().externalTransactions,
             '0xfake': {
               blockNumber: '10',
               hash: '0xfake',
@@ -290,8 +316,8 @@ describe('IncomingTransactionsController', function () {
               },
             },
           },
-          incomingTxLastFetchedBlockByChainId: {
-            ...getNonEmptyInitState().incomingTxLastFetchedBlockByChainId,
+          externalTxLastFetchedBlockByChainId: {
+            ...getNonEmptyInitState().externalTxLastFetchedBlockByChainId,
             [ROPSTEN_CHAIN_ID]: 11,
           },
         },
@@ -300,7 +326,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should not update upon latest block when started and not on supported network', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(),
@@ -315,23 +341,23 @@ describe('IncomingTransactionsController', function () {
       });
 
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
       const putStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'putState',
       );
       const putStateCalled = waitUntilCalled(
         putStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
-      incomingTransactionsController.start();
+      externalTransactionsController.start();
 
       try {
         await Promise.race([
@@ -347,13 +373,13 @@ describe('IncomingTransactionsController', function () {
       }
     });
 
-    it('should not update upon latest block when started and incoming transactions disabled', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+    it('should not update upon latest block when started and external transactions disabled', async function () {
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(),
           preferencesController: getMockPreferencesController({
-            showIncomingTransactions: false,
+            showExternalTransactions: false,
           }),
           initState: getNonEmptyInitState(),
         },
@@ -364,23 +390,23 @@ describe('IncomingTransactionsController', function () {
         result: [getFakeEtherscanTransaction()],
       });
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
       const putStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'putState',
       );
       const putStateCalled = waitUntilCalled(
         putStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
-      incomingTransactionsController.start();
+      externalTransactionsController.start();
 
       try {
         await Promise.race([
@@ -397,7 +423,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should not update upon latest block when not started', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -411,20 +437,20 @@ describe('IncomingTransactionsController', function () {
         result: [getFakeEtherscanTransaction()],
       });
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
       const putStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'putState',
       );
       const putStateCalled = waitUntilCalled(
         putStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
       try {
@@ -442,7 +468,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should not update upon latest block when stopped', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -456,23 +482,23 @@ describe('IncomingTransactionsController', function () {
         result: [getFakeEtherscanTransaction()],
       });
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
       const putStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'putState',
       );
       const putStateCalled = waitUntilCalled(
         putStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
-      incomingTransactionsController.stop();
+      externalTransactionsController.stop();
 
       try {
         await Promise.race([
@@ -489,7 +515,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should update when the selected address changes and on supported network', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -499,7 +525,7 @@ describe('IncomingTransactionsController', function () {
       );
       const NEW_MOCK_SELECTED_ADDRESS = `${MOCK_SELECTED_ADDRESS}9`;
       const startBlock = getNonEmptyInitState()
-        .incomingTxLastFetchedBlockByChainId[ROPSTEN_CHAIN_ID];
+        .externalTxLastFetchedBlockByChainId[ROPSTEN_CHAIN_ID];
       nock('https://api-ropsten.etherscan.io')
         .get(
           `/api?module=account&action=txlist&address=${NEW_MOCK_SELECTED_ADDRESS}&tag=latest&page=1&startBlock=${startBlock}`,
@@ -512,29 +538,29 @@ describe('IncomingTransactionsController', function () {
           }),
         );
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
-      const subscription = incomingTransactionsController.preferencesController.store.subscribe.getCall(
+      const subscription = externalTransactionsController.preferencesController.store.subscribe.getCall(
         1,
       ).args[0];
-      // The incoming transactions controller will always skip the first event
+      // The external transactions controller will always skip the first event
       // We need to call subscription twice to test the event handling
       // TODO: stop skipping the first event
       await subscription({ selectedAddress: MOCK_SELECTED_ADDRESS });
       await subscription({ selectedAddress: NEW_MOCK_SELECTED_ADDRESS });
       await updateStateCalled();
 
-      const actualState = incomingTransactionsController.store.getState();
-      const generatedTxId = actualState?.incomingTransactions?.['0xfake']?.id;
+      const actualState = externalTransactionsController.store.getState();
+      const generatedTxId = actualState?.externalTransactions?.['0xfake']?.id;
 
       const actualStateWithoutGenerated = cloneDeep(actualState);
-      delete actualStateWithoutGenerated?.incomingTransactions?.['0xfake']?.id;
+      delete actualStateWithoutGenerated?.externalTransactions?.['0xfake']?.id;
 
       assert.ok(
         typeof generatedTxId === 'number' && generatedTxId > 0,
@@ -543,8 +569,8 @@ describe('IncomingTransactionsController', function () {
       assert.deepStrictEqual(
         actualStateWithoutGenerated,
         {
-          incomingTransactions: {
-            ...getNonEmptyInitState().incomingTransactions,
+          externalTransactions: {
+            ...getNonEmptyInitState().externalTransactions,
             '0xfake': {
               blockNumber: '10',
               hash: '0xfake',
@@ -563,8 +589,8 @@ describe('IncomingTransactionsController', function () {
               },
             },
           },
-          incomingTxLastFetchedBlockByChainId: {
-            ...getNonEmptyInitState().incomingTxLastFetchedBlockByChainId,
+          externalTxLastFetchedBlockByChainId: {
+            ...getNonEmptyInitState().externalTxLastFetchedBlockByChainId,
             [ROPSTEN_CHAIN_ID]: 11,
           },
         },
@@ -573,7 +599,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should not update when the selected address changes and not on supported network', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: { ...getMockBlockTracker() },
           ...getMockNetworkControllerMethods(),
@@ -588,26 +614,26 @@ describe('IncomingTransactionsController', function () {
         result: [getFakeEtherscanTransaction(NEW_MOCK_SELECTED_ADDRESS)],
       });
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
       const putStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'putState',
       );
       const putStateCalled = waitUntilCalled(
         putStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
-      const subscription = incomingTransactionsController.preferencesController.store.subscribe.getCall(
+      const subscription = externalTransactionsController.preferencesController.store.subscribe.getCall(
         1,
       ).args[0];
-      // The incoming transactions controller will always skip the first event
+      // The external transactions controller will always skip the first event
       // We need to call subscription twice to test the event handling
       // TODO: stop skipping the first event
       await subscription({ selectedAddress: MOCK_SELECTED_ADDRESS });
@@ -631,7 +657,7 @@ describe('IncomingTransactionsController', function () {
       const mockedNetworkMethods = getMockNetworkControllerMethods(
         ROPSTEN_CHAIN_ID,
       );
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...mockedNetworkMethods,
@@ -640,7 +666,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
       const startBlock = getNonEmptyInitState()
-        .incomingTxLastFetchedBlockByChainId[ROPSTEN_CHAIN_ID];
+        .externalTxLastFetchedBlockByChainId[ROPSTEN_CHAIN_ID];
       nock('https://api-ropsten.etherscan.io')
         .get(
           `/api?module=account&action=txlist&address=${MOCK_SELECTED_ADDRESS}&tag=latest&page=1&startBlock=${startBlock}`,
@@ -653,12 +679,12 @@ describe('IncomingTransactionsController', function () {
           }),
         );
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
       const subscription = mockedNetworkMethods.onNetworkDidChange.getCall(0)
@@ -666,11 +692,11 @@ describe('IncomingTransactionsController', function () {
       await subscription(ROPSTEN_CHAIN_ID);
       await updateStateCalled();
 
-      const actualState = incomingTransactionsController.store.getState();
-      const generatedTxId = actualState?.incomingTransactions?.['0xfake']?.id;
+      const actualState = externalTransactionsController.store.getState();
+      const generatedTxId = actualState?.externalTransactions?.['0xfake']?.id;
 
       const actualStateWithoutGenerated = cloneDeep(actualState);
-      delete actualStateWithoutGenerated?.incomingTransactions?.['0xfake']?.id;
+      delete actualStateWithoutGenerated?.externalTransactions?.['0xfake']?.id;
 
       assert.ok(
         typeof generatedTxId === 'number' && generatedTxId > 0,
@@ -679,8 +705,8 @@ describe('IncomingTransactionsController', function () {
       assert.deepStrictEqual(
         actualStateWithoutGenerated,
         {
-          incomingTransactions: {
-            ...getNonEmptyInitState().incomingTransactions,
+          externalTransactions: {
+            ...getNonEmptyInitState().externalTransactions,
             '0xfake': {
               blockNumber: '10',
               hash: '0xfake',
@@ -699,8 +725,8 @@ describe('IncomingTransactionsController', function () {
               },
             },
           },
-          incomingTxLastFetchedBlockByChainId: {
-            ...getNonEmptyInitState().incomingTxLastFetchedBlockByChainId,
+          externalTxLastFetchedBlockByChainId: {
+            ...getNonEmptyInitState().externalTxLastFetchedBlockByChainId,
             [ROPSTEN_CHAIN_ID]: 11,
           },
         },
@@ -712,7 +738,7 @@ describe('IncomingTransactionsController', function () {
       const mockedNetworkMethods = getMockNetworkControllerMethods(
         ROPSTEN_CHAIN_ID,
       );
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...mockedNetworkMethods,
@@ -726,26 +752,26 @@ describe('IncomingTransactionsController', function () {
         result: [getFakeEtherscanTransaction()],
       });
       const updateStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'updateState',
       );
       const updateStateCalled = waitUntilCalled(
         updateStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
       const putStateStub = sinon.stub(
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
         'putState',
       );
       const putStateCalled = waitUntilCalled(
         putStateStub,
-        incomingTransactionsController.store,
+        externalTransactionsController.store,
       );
 
       const subscription = mockedNetworkMethods.onNetworkDidChange.getCall(0)
         .args[0];
 
-      incomingTransactionsController.getCurrentChainId = () => FAKE_CHAIN_ID;
+      externalTransactionsController.getCurrentChainId = () => FAKE_CHAIN_ID;
       await subscription();
 
       try {
@@ -766,7 +792,7 @@ describe('IncomingTransactionsController', function () {
   describe('_update', function () {
     describe('when state is empty (initialized)', function () {
       it('should use provided block number and update the latest block seen', async function () {
-        const incomingTransactionsController = new IncomingTransactionsController(
+        const externalTransactionsController = new ExternalTransactionsController(
           {
             blockTracker: getMockBlockTracker(),
             ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -775,35 +801,35 @@ describe('IncomingTransactionsController', function () {
             getCurrentChainId: () => ROPSTEN_CHAIN_ID,
           },
         );
-        sinon.spy(incomingTransactionsController.store, 'updateState');
+        sinon.spy(externalTransactionsController.store, 'updateState');
 
-        incomingTransactionsController._getNewIncomingTransactions = sinon
+        externalTransactionsController._getNewExternalTransactions = sinon
           .stub()
           .returns([]);
 
-        await incomingTransactionsController._update('fakeAddress', 999);
+        await externalTransactionsController._update('fakeAddress', 999);
         assert(
-          incomingTransactionsController._getNewIncomingTransactions.calledOnce,
+          externalTransactionsController._getNewExternalTransactions.calledOnce,
         );
         assert.deepStrictEqual(
-          incomingTransactionsController._getNewIncomingTransactions.getCall(0)
+          externalTransactionsController._getNewExternalTransactions.getCall(0)
             .args,
           ['fakeAddress', 999, ROPSTEN_CHAIN_ID],
         );
         assert.deepStrictEqual(
-          incomingTransactionsController.store.updateState.getCall(0).args[0],
+          externalTransactionsController.store.updateState.getCall(0).args[0],
           {
-            incomingTxLastFetchedBlockByChainId: {
+            externalTxLastFetchedBlockByChainId: {
               ...EMPTY_BLOCKS_BY_NETWORK,
               [ROPSTEN_CHAIN_ID]: 1000,
             },
-            incomingTransactions: {},
+            externalTransactions: {},
           },
         );
       });
 
-      it('should update the last fetched block for network to highest block seen in incoming txs', async function () {
-        const incomingTransactionsController = new IncomingTransactionsController(
+      it('should update the last fetched block for network to highest block seen in external txs', async function () {
+        const externalTransactionsController = new ExternalTransactionsController(
           {
             blockTracker: getMockBlockTracker(),
             ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -824,29 +850,29 @@ describe('IncomingTransactionsController', function () {
           blockNumber: 443,
         };
 
-        sinon.spy(incomingTransactionsController.store, 'updateState');
+        sinon.spy(externalTransactionsController.store, 'updateState');
 
-        incomingTransactionsController._getNewIncomingTransactions = sinon
+        externalTransactionsController._getNewExternalTransactions = sinon
           .stub()
           .returns([NEW_TRANSACTION_ONE, NEW_TRANSACTION_TWO]);
-        await incomingTransactionsController._update('fakeAddress', 10);
+        await externalTransactionsController._update('fakeAddress', 10);
 
-        assert(incomingTransactionsController.store.updateState.calledOnce);
+        assert(externalTransactionsController.store.updateState.calledOnce);
 
         assert.deepStrictEqual(
-          incomingTransactionsController._getNewIncomingTransactions.getCall(0)
+          externalTransactionsController._getNewExternalTransactions.getCall(0)
             .args,
           ['fakeAddress', 10, ROPSTEN_CHAIN_ID],
         );
 
         assert.deepStrictEqual(
-          incomingTransactionsController.store.updateState.getCall(0).args[0],
+          externalTransactionsController.store.updateState.getCall(0).args[0],
           {
-            incomingTxLastFetchedBlockByChainId: {
+            externalTxLastFetchedBlockByChainId: {
               ...EMPTY_BLOCKS_BY_NETWORK,
               [ROPSTEN_CHAIN_ID]: 445,
             },
-            incomingTransactions: {
+            externalTransactions: {
               [NEW_TRANSACTION_ONE.hash]: NEW_TRANSACTION_ONE,
               [NEW_TRANSACTION_TWO.hash]: NEW_TRANSACTION_TWO,
             },
@@ -857,7 +883,7 @@ describe('IncomingTransactionsController', function () {
 
     describe('when state is populated with prior data for network', function () {
       it('should use the last fetched block for the current network and increment by 1 in state', async function () {
-        const incomingTransactionsController = new IncomingTransactionsController(
+        const externalTransactionsController = new ExternalTransactionsController(
           {
             blockTracker: getMockBlockTracker(),
             ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -866,39 +892,39 @@ describe('IncomingTransactionsController', function () {
             getCurrentChainId: () => ROPSTEN_CHAIN_ID,
           },
         );
-        sinon.spy(incomingTransactionsController.store, 'updateState');
-        incomingTransactionsController._getNewIncomingTransactions = sinon
+        sinon.spy(externalTransactionsController.store, 'updateState');
+        externalTransactionsController._getNewExternalTransactions = sinon
           .stub()
           .returns([]);
 
-        await incomingTransactionsController._update('fakeAddress', 999);
+        await externalTransactionsController._update('fakeAddress', 999);
 
         assert(
-          incomingTransactionsController._getNewIncomingTransactions.calledOnce,
+          externalTransactionsController._getNewExternalTransactions.calledOnce,
         );
 
         assert.deepStrictEqual(
-          incomingTransactionsController._getNewIncomingTransactions.getCall(0)
+          externalTransactionsController._getNewExternalTransactions.getCall(0)
             .args,
           ['fakeAddress', 4, ROPSTEN_CHAIN_ID],
         );
 
         assert.deepStrictEqual(
-          incomingTransactionsController.store.updateState.getCall(0).args[0],
+          externalTransactionsController.store.updateState.getCall(0).args[0],
           {
-            incomingTxLastFetchedBlockByChainId: {
+            externalTxLastFetchedBlockByChainId: {
               ...PREPOPULATED_BLOCKS_BY_NETWORK,
               [ROPSTEN_CHAIN_ID]:
                 PREPOPULATED_BLOCKS_BY_NETWORK[ROPSTEN_CHAIN_ID] + 1,
             },
-            incomingTransactions: PREPOPULATED_INCOMING_TXS_BY_HASH,
+            externalTransactions: PREPOPULATED_INCOMING_TXS_BY_HASH,
           },
         );
       });
     });
 
-    it('should update the last fetched block for network to highest block seen in incoming txs', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+    it('should update the last fetched block for network to highest block seen in external txs', async function () {
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -919,29 +945,29 @@ describe('IncomingTransactionsController', function () {
         blockNumber: 443,
       };
 
-      sinon.spy(incomingTransactionsController.store, 'updateState');
+      sinon.spy(externalTransactionsController.store, 'updateState');
 
-      incomingTransactionsController._getNewIncomingTransactions = sinon
+      externalTransactionsController._getNewExternalTransactions = sinon
         .stub()
         .returns([NEW_TRANSACTION_ONE, NEW_TRANSACTION_TWO]);
-      await incomingTransactionsController._update('fakeAddress', 10);
+      await externalTransactionsController._update('fakeAddress', 10);
 
-      assert(incomingTransactionsController.store.updateState.calledOnce);
+      assert(externalTransactionsController.store.updateState.calledOnce);
 
       assert.deepStrictEqual(
-        incomingTransactionsController._getNewIncomingTransactions.getCall(0)
+        externalTransactionsController._getNewExternalTransactions.getCall(0)
           .args,
         ['fakeAddress', 4, ROPSTEN_CHAIN_ID],
       );
 
       assert.deepStrictEqual(
-        incomingTransactionsController.store.updateState.getCall(0).args[0],
+        externalTransactionsController.store.updateState.getCall(0).args[0],
         {
-          incomingTxLastFetchedBlockByChainId: {
+          externalTxLastFetchedBlockByChainId: {
             ...PREPOPULATED_BLOCKS_BY_NETWORK,
             [ROPSTEN_CHAIN_ID]: 445,
           },
-          incomingTransactions: {
+          externalTransactions: {
             ...PREPOPULATED_INCOMING_TXS_BY_HASH,
             [NEW_TRANSACTION_ONE.hash]: NEW_TRANSACTION_ONE,
             [NEW_TRANSACTION_TWO.hash]: NEW_TRANSACTION_TWO,
@@ -951,12 +977,19 @@ describe('IncomingTransactionsController', function () {
     });
   });
 
-  describe('_getNewIncomingTransactions', function () {
+  describe('_getNewExternalTransactions', function () {
     const ADDRESS_TO_FETCH_FOR = '0xfakeaddress';
     const FETCHED_TX = getFakeEtherscanTransaction(ADDRESS_TO_FETCH_FOR);
+    const FETCHED_SEND_TX = getFakeEtherscanSendTransaction(
+      ADDRESS_TO_FETCH_FOR,
+    );
     const mockFetch = sinon.stub().returns(
       Promise.resolve({
-        json: () => Promise.resolve({ status: '1', result: [FETCHED_TX] }),
+        json: () =>
+          Promise.resolve({
+            status: '1',
+            result: [FETCHED_TX, FETCHED_SEND_TX],
+          }),
       }),
     );
     let tempFetch;
@@ -971,7 +1004,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should call fetch with the expected url when passed an address, block number and supported chainId', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -980,7 +1013,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      await incomingTransactionsController._getNewIncomingTransactions(
+      await externalTransactionsController._getNewExternalTransactions(
         ADDRESS_TO_FETCH_FOR,
         '789',
         ROPSTEN_CHAIN_ID,
@@ -994,7 +1027,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should call fetch with the expected url when passed an address, block number and MAINNET chainId', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(MAINNET_CHAIN_ID),
@@ -1003,7 +1036,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      await incomingTransactionsController._getNewIncomingTransactions(
+      await externalTransactionsController._getNewExternalTransactions(
         ADDRESS_TO_FETCH_FOR,
         '789',
         MAINNET_CHAIN_ID,
@@ -1017,7 +1050,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should call fetch with the expected url when passed an address and supported chainId, but a falsy block number', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -1026,7 +1059,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      await incomingTransactionsController._getNewIncomingTransactions(
+      await externalTransactionsController._getNewExternalTransactions(
         ADDRESS_TO_FETCH_FOR,
         null,
         ROPSTEN_CHAIN_ID,
@@ -1040,7 +1073,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should return an array of normalized transactions', async function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -1049,7 +1082,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      const result = await incomingTransactionsController._getNewIncomingTransactions(
+      const result = await externalTransactionsController._getNewExternalTransactions(
         ADDRESS_TO_FETCH_FOR,
         '789',
         ROPSTEN_CHAIN_ID,
@@ -1057,9 +1090,15 @@ describe('IncomingTransactionsController', function () {
 
       assert(mockFetch.calledOnce);
       assert.deepStrictEqual(result, [
-        incomingTransactionsController._normalizeTxFromEtherscan(
+        externalTransactionsController._normalizeTxFromEtherscan(
           FETCHED_TX,
           ROPSTEN_CHAIN_ID,
+          ADDRESS_TO_FETCH_FOR,
+        ),
+        externalTransactionsController._normalizeTxFromEtherscan(
+          FETCHED_SEND_TX,
+          ROPSTEN_CHAIN_ID,
+          ADDRESS_TO_FETCH_FOR,
         ),
       ]);
     });
@@ -1072,7 +1111,7 @@ describe('IncomingTransactionsController', function () {
       );
       const tempFetchStatusZero = window.fetch;
       window.fetch = mockFetchStatusZero;
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -1081,7 +1120,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      const result = await incomingTransactionsController._getNewIncomingTransactions(
+      const result = await externalTransactionsController._getNewExternalTransactions(
         ADDRESS_TO_FETCH_FOR,
         '789',
         ROPSTEN_CHAIN_ID,
@@ -1099,7 +1138,7 @@ describe('IncomingTransactionsController', function () {
       );
       const tempFetchEmptyResult = window.fetch;
       window.fetch = mockFetchEmptyResult;
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -1108,7 +1147,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      const result = await incomingTransactionsController._getNewIncomingTransactions(
+      const result = await externalTransactionsController._getNewExternalTransactions(
         ADDRESS_TO_FETCH_FOR,
         '789',
         ROPSTEN_CHAIN_ID,
@@ -1121,7 +1160,7 @@ describe('IncomingTransactionsController', function () {
 
   describe('_normalizeTxFromEtherscan', function () {
     it('should return the expected data when the tx is in error', function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -1130,7 +1169,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      const result = incomingTransactionsController._normalizeTxFromEtherscan(
+      const result = externalTransactionsController._normalizeTxFromEtherscan(
         {
           timeStamp: '4444',
           isError: '1',
@@ -1167,7 +1206,7 @@ describe('IncomingTransactionsController', function () {
     });
 
     it('should return the expected data when the tx is not in error', function () {
-      const incomingTransactionsController = new IncomingTransactionsController(
+      const externalTransactionsController = new ExternalTransactionsController(
         {
           blockTracker: getMockBlockTracker(),
           ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
@@ -1176,7 +1215,7 @@ describe('IncomingTransactionsController', function () {
         },
       );
 
-      const result = incomingTransactionsController._normalizeTxFromEtherscan(
+      const result = externalTransactionsController._normalizeTxFromEtherscan(
         {
           timeStamp: '4444',
           isError: '0',
@@ -1209,6 +1248,53 @@ describe('IncomingTransactionsController', function () {
         },
         hash: '0xg',
         type: TRANSACTION_TYPES.INCOMING,
+      });
+    });
+
+    it('should return the expected data when the tx is outgoing transactions', function () {
+      const externalTransactionsController = new ExternalTransactionsController(
+        {
+          blockTracker: getMockBlockTracker(),
+          ...getMockNetworkControllerMethods(ROPSTEN_CHAIN_ID),
+          preferencesController: getMockPreferencesController(),
+          initState: getNonEmptyInitState(),
+        },
+      );
+
+      const result = externalTransactionsController._normalizeTxFromEtherscan(
+        {
+          timeStamp: '4444',
+          isError: '0',
+          blockNumber: 333,
+          from: '0xa',
+          gas: '11',
+          gasPrice: '12',
+          nonce: '13',
+          to: '0xe',
+          value: '15',
+          hash: '0xg',
+        },
+        ROPSTEN_CHAIN_ID,
+        '0xa',
+      );
+
+      assert.deepStrictEqual(result, {
+        blockNumber: 333,
+        id: 54321,
+        metamaskNetworkId: ROPSTEN_NETWORK_ID,
+        chainId: ROPSTEN_CHAIN_ID,
+        status: TRANSACTION_STATUSES.CONFIRMED,
+        time: 4444000,
+        txParams: {
+          from: '0xa',
+          gas: '0xb',
+          gasPrice: '0xc',
+          nonce: '0xd',
+          to: '0xe',
+          value: '0xf',
+        },
+        hash: '0xg',
+        type: TRANSACTION_TYPES.SENT,
       });
     });
   });

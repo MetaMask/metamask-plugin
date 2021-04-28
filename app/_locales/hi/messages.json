@@ -1395,12 +1395,6 @@
   "showHexDataDescription": {
     "message": "भेजने की स्क्रीन पर हेक्स डेटा फ़ील्ड दिखाने के लिए इसका चयन करें"
   },
-  "showIncomingTransactions": {
-    "message": "आने वाले लेनदेन दिखाएँ"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "लेनदेन सूची में आने वाले लेनदेन को दिखाने के लिए Etherscan का उपयोग करने के लिए इसका चयन करें"
-  },
   "showPermissions": {
     "message": "अनुमतियाँ दिखाएँ"
   },

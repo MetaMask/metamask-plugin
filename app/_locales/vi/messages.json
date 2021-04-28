@@ -1395,12 +1395,6 @@
   "showHexDataDescription": {
     "message": "Chọn tùy chọn này để hiển thị trường dữ liệu thập lục phân trên màn hình gửi"
   },
-  "showIncomingTransactions": {
-    "message": "Hiển thị các giao dịch đến"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "Chọn tùy chọn này nếu bạn muốn dùng Etherscan để hiển thị các giao dịch đến trong danh sách giao dịch"
-  },
   "showPermissions": {
     "message": "Hiển thị quyền"
   },

@@ -1395,12 +1395,6 @@
   "showHexDataDescription": {
     "message": "이 항목을 선택하면 보내기 화면에 16진수 데이터 필드가 표시됩니다."
   },
-  "showIncomingTransactions": {
-    "message": "수신 거래 표시"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "이 항목을 선택하면 Etherscan을 사용하여 거래 목록에 수신 거래를 표시합니다."
-  },
   "showPermissions": {
     "message": "권한 표시"
   },

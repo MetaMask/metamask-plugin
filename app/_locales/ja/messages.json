@@ -1404,12 +1404,6 @@
   "showHexDataDescription": {
     "message": "オンにすると、送金画面に16進データフィールドを表示します"
   },
-  "showIncomingTransactions": {
-    "message": "着信したトランザクションの表示"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "オンにすると、Etherscanを使用して、着信トランザクションをトランザクションリストに表示します"
-  },
   "showPermissions": {
     "message": "権限の表示"
   },

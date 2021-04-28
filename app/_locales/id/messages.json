@@ -1395,12 +1395,6 @@
   "showHexDataDescription": {
     "message": "Pilih ini untuk menampilkan bidang data hex di layar kirim"
   },
-  "showIncomingTransactions": {
-    "message": "Menampilkan Transaksi yang Masuk"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "Pilih ini untuk menggunakan Etherscan untuk menampilkan transaksi yang masuk di daftar transaksi"
-  },
   "showPermissions": {
     "message": "Tampilkan Izin"
   },

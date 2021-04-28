@@ -41,7 +41,7 @@ import CachedBalancesController from './controllers/cached-balances';
 import AlertController from './controllers/alert';
 import OnboardingController from './controllers/onboarding';
 import ThreeBoxController from './controllers/threebox';
-import IncomingTransactionsController from './controllers/incoming-transactions';
+import ExternalTransactionsController from './controllers/external-transactions';
 import MessageManager from './lib/message-manager';
 import DecryptMessageManager from './lib/decrypt-message-manager';
 import EncryptionPublicKeyManager from './lib/encryption-public-key-manager';
@@ -185,7 +185,7 @@ export default class MetamaskController extends EventEmitter {
       ),
     });
 
-    this.incomingTransactionsController = new IncomingTransactionsController({
+    this.externalTransactionsController = new ExternalTransactionsController({
       blockTracker: this.blockTracker,
       onNetworkDidChange: this.networkController.on.bind(
         this.networkController,
@@ -195,7 +195,7 @@ export default class MetamaskController extends EventEmitter {
         this.networkController,
       ),
       preferencesController: this.preferencesController,
-      initState: initState.IncomingTransactionsController,
+      initState: initState.ExternalTransactionsController,
     });
 
     // account tracker watches balances, nonces, and any code at their address
@@ -211,11 +211,11 @@ export default class MetamaskController extends EventEmitter {
     this.on('controllerConnectionChanged', (activeControllerConnections) => {
       if (activeControllerConnections > 0) {
         this.accountTracker.start();
-        this.incomingTransactionsController.start();
+        this.externalTransactionsController.start();
         this.tokenRatesController.start();
       } else {
         this.accountTracker.stop();
-        this.incomingTransactionsController.stop();
+        this.externalTransactionsController.stop();
         this.tokenRatesController.stop();
       }
     });
@@ -422,7 +422,7 @@ export default class MetamaskController extends EventEmitter {
       CachedBalancesController: this.cachedBalancesController.store,
       AlertController: this.alertController.store,
       OnboardingController: this.onboardingController.store,
-      IncomingTransactionsController: this.incomingTransactionsController.store,
+      ExternalTransactionsController: this.externalTransactionsController.store,
       PermissionsController: this.permissionsController.permissions,
       PermissionsMetadata: this.permissionsController.store,
       ThreeBoxController: this.threeBoxController.store,
@@ -447,7 +447,7 @@ export default class MetamaskController extends EventEmitter {
       CurrencyController: this.currencyRateController,
       AlertController: this.alertController.store,
       OnboardingController: this.onboardingController.store,
-      IncomingTransactionsController: this.incomingTransactionsController.store,
+      ExternalTransactionsController: this.externalTransactionsController.store,
       PermissionsController: this.permissionsController.permissions,
       PermissionsMetadata: this.permissionsController.store,
       ThreeBoxController: this.threeBoxController.store,

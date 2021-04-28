@@ -14,14 +14,14 @@ const mapStateToProps = (state) => {
     metamask,
   } = state;
   const {
-    featureFlags: { showIncomingTransactions } = {},
+    featureFlags: { showExternalTransactions } = {},
     participateInMetaMetrics,
     usePhishDetect,
   } = metamask;
 
   return {
     warning,
-    showIncomingTransactions,
+    showExternalTransactions,
     participateInMetaMetrics,
     usePhishDetect,
   };
@@ -31,8 +31,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setParticipateInMetaMetrics: (val) =>
       dispatch(setParticipateInMetaMetrics(val)),
-    setShowIncomingTransactionsFeatureFlag: (shouldShow) =>
-      dispatch(setFeatureFlag('showIncomingTransactions', shouldShow)),
+    setShowExternalTransactionsFeatureFlag: (shouldShow) =>
+      dispatch(setFeatureFlag('showExternalTransactions', shouldShow)),
     setUsePhishDetect: (val) => dispatch(setUsePhishDetect(val)),
   };
 };

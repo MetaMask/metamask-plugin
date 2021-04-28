@@ -18,9 +18,9 @@
       "nativeCurrency": "ETH",
       "usdConversionRate": 2072.49
     },
-    "IncomingTransactionsController": {
-      "incomingTransactions": {},
-      "incomingTxLastFetchedBlockByChainId": {
+    "ExternalTransactionsController": {
+      "externalTransactions": {},
+      "externalTxLastFetchedBlockByChainId": {
         "0x5": null,
         "0x2a": null,
         "0x1": null,
@@ -76,7 +76,7 @@
       "useNonceField": false,
       "usePhishDetect": true,
       "featureFlags": {
-        "showIncomingTransactions": true,
+        "showExternalTransactions": true,
         "transactionTime": false
       },
       "knownMethodData": {},

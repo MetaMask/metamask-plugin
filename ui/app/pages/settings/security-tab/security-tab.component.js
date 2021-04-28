@@ -15,8 +15,8 @@ export default class SecurityTab extends PureComponent {
     history: PropTypes.object,
     participateInMetaMetrics: PropTypes.bool.isRequired,
     setParticipateInMetaMetrics: PropTypes.func.isRequired,
-    showIncomingTransactions: PropTypes.bool.isRequired,
-    setShowIncomingTransactionsFeatureFlag: PropTypes.func.isRequired,
+    showExternalTransactions: PropTypes.bool.isRequired,
+    setShowExternalTransactionsFeatureFlag: PropTypes.func.isRequired,
     setUsePhishDetect: PropTypes.func.isRequired,
     usePhishDetect: PropTypes.bool.isRequired,
   };
@@ -84,27 +84,27 @@ export default class SecurityTab extends PureComponent {
     );
   }
 
-  renderIncomingTransactionsOptIn() {
+  renderExternalTransactionsOptIn() {
     const { t } = this.context;
     const {
-      showIncomingTransactions,
-      setShowIncomingTransactionsFeatureFlag,
+      showExternalTransactions,
+      setShowExternalTransactionsFeatureFlag,
     } = this.props;
 
     return (
       <div className="settings-page__content-row">
         <div className="settings-page__content-item">
-          <span>{t('showIncomingTransactions')}</span>
+          <span>{t('showExternalTransactions')}</span>
           <div className="settings-page__content-description">
-            {t('showIncomingTransactionsDescription')}
+            {t('showExternalTransactionsDescription')}
           </div>
         </div>
         <div className="settings-page__content-item">
           <div className="settings-page__content-item-col">
             <ToggleButton
-              value={showIncomingTransactions}
+              value={showExternalTransactions}
               onToggle={(value) =>
-                setShowIncomingTransactionsFeatureFlag(!value)
+                setShowExternalTransactionsFeatureFlag(!value)
               }
               offLabel={t('off')}
               onLabel={t('on')}
@@ -148,7 +148,7 @@ export default class SecurityTab extends PureComponent {
       <div className="settings-page__body">
         {warning && <div className="settings-tab__error">{warning}</div>}
         {this.renderSeedWords()}
-        {this.renderIncomingTransactionsOptIn()}
+        {this.renderExternalTransactionsOptIn()}
         {this.renderPhishingDetectionToggle()}
         {this.renderMetaMetricsOptIn()}
       </div>
