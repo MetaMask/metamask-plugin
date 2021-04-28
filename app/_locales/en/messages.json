@@ -495,7 +495,7 @@
     "message": "Decrypt"
   },
   "decryptCopy": {
-    "message": "Copy encrypted message"
+    "message": "Copy decrypted message"
   },
   "decryptInlineError": {
     "message": "This message cannot be decrypted due to error: $1",

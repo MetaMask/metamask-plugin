@@ -180,6 +180,20 @@ function bnToHex(inputBn) {
   return addHexPrefix(inputBn.toString(16));
 }
 
+/**
+ * Excerpts a string with <keep> chars
+ * @param  {string} text    Text to be shortened
+ * @param  {int} keep       How many chars to keep
+ * @return {string}         Excerpted or full string
+ */
+function excerpts(text, keep) {
+  const kept = keep || 256;
+  if (text && text.length > kept) {
+    return `${text.slice(0, kept - 1)}...`;
+  }
+  return text;
+}
+
 export {
   getPlatform,
   getEnvironmentType,
@@ -189,4 +203,5 @@ export {
   checkForError,
   addHexPrefix,
   bnToHex,
+  excerpts,
 };

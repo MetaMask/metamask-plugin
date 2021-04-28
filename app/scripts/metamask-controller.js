@@ -10,7 +10,7 @@ import createSubscriptionManager from 'eth-json-rpc-filters/subscriptionManager'
 import providerAsMiddleware from 'eth-json-rpc-middleware/providerAsMiddleware';
 import KeyringController from 'eth-keyring-controller';
 import { Mutex } from 'await-semaphore';
-import { toChecksumAddress, stripHexPrefix } from 'ethereumjs-util';
+import { toChecksumAddress } from 'ethereumjs-util';
 import log from 'loglevel';
 import TrezorKeyring from 'eth-trezor-keyring';
 import LedgerBridgeKeyring from '@metamask/eth-ledger-bridge-keyring';
@@ -1658,9 +1658,7 @@ export default class MetamaskController extends EventEmitter {
     const msgId = msgParams.metamaskId;
     const msg = this.decryptMessageManager.getMsg(msgId);
     try {
-      const stripped = stripHexPrefix(msgParams.data);
-      const buff = Buffer.from(stripped, 'hex');
-      msgParams.data = JSON.parse(buff.toString('utf8'));
+      msgParams.data = JSON.parse(msgParams.data);
 
       msg.rawData = await this.keyringController.decryptMessage(msgParams);
     } catch (e) {
@@ -1688,9 +1686,7 @@ export default class MetamaskController extends EventEmitter {
         msgParams,
       );
 
-      const stripped = stripHexPrefix(cleanMsgParams.data);
-      const buff = Buffer.from(stripped, 'hex');
-      cleanMsgParams.data = JSON.parse(buff.toString('utf8'));
+      cleanMsgParams.data = JSON.parse(cleanMsgParams.data);
 
       // decrypt the message
       const rawMess = await this.keyringController.decryptMessage(

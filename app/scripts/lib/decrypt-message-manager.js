@@ -138,7 +138,6 @@ export default class DecryptMessageManager extends EventEmitter {
     if (req) {
       msgParams.origin = req.origin;
     }
-    msgParams.data = this.normalizeMsgData(msgParams.data);
     // create txData obj with parameters and meta data
     const time = new Date().getTime();
     const msgId = createId();

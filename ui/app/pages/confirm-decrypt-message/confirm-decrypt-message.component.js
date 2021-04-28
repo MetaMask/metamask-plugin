@@ -10,7 +10,7 @@ import Tooltip from '../../components/ui/tooltip';
 import Copy from '../../components/ui/icon/copy-icon.component';
 
 import { ENVIRONMENT_TYPE_NOTIFICATION } from '../../../../shared/constants/app';
-import { getEnvironmentType } from '../../../../app/scripts/lib/util';
+import { excerpts, getEnvironmentType } from '../../../../app/scripts/lib/util';
 import { conversionUtil } from '../../helpers/utils/conversion-util';
 
 export default class ConfirmDecryptMessage extends Component {
@@ -212,7 +212,9 @@ export default class ConfirmDecryptMessage extends Component {
         </div>
         <div className="request-decrypt-message__message">
           <div className="request-decrypt-message__message-text">
-            {!hasDecrypted && !hasError ? txData.msgParams.data : rawMessage}
+            {!hasDecrypted && !hasError
+              ? excerpts(txData.msgParams.data, 512)
+              : excerpts(rawMessage, 512)}
             {hasError ? errorMessage : ''}
           </div>
           <div
