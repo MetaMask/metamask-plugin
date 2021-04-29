@@ -28,6 +28,7 @@ import MetaMetricsOptInModal from './metametrics-opt-in-modal';
 import RejectTransactions from './reject-transactions';
 import ConfirmDeleteNetwork from './confirm-delete-network';
 import AddToAddressBookModal from './add-to-addressbook-modal';
+import AddNewContactModal from './add-new-contact-modal';
 import EditApprovalPermission from './edit-approval-permission';
 import NewAccountModal from './new-account-modal';
 import CustomizeNonceModal from './customize-nonce';
@@ -116,6 +117,33 @@ const MODALS = {
 
   ADD_TO_ADDRESSBOOK: {
     contents: <AddToAddressBookModal />,
+    mobileModalStyle: {
+      width: '95%',
+      top: '10%',
+      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '0 auto',
+      borderRadius: '10px',
+    },
+    laptopModalStyle: {
+      width: '375px',
+      top: '10%',
+      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '0 auto',
+      borderRadius: '10px',
+    },
+    contentStyle: {
+      borderRadius: '10px',
+    },
+  },
+
+  ADD_NEW_CONTACT: {
+    contents: <AddNewContactModal />,
     mobileModalStyle: {
       width: '95%',
       top: '10%',

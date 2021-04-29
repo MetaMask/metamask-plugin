@@ -1,120 +1,105 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
-import Identicon from '../../../../components/ui/identicon';
-import TextField from '../../../../components/ui/text-field';
-import { CONTACT_LIST_ROUTE } from '../../../../helpers/constants/routes';
-import { isValidDomainName } from '../../../../helpers/utils/util';
-import EnsInput from '../../../send/send-content/add-recipient/ens-input';
-import PageContainerFooter from '../../../../components/ui/page-container/page-container-footer';
+import Identicon from '../../../ui/identicon';
+import TextField from '../../../ui/text-field';
 import {
-  isBurnAddress,
-  isValidHexAddress,
-} from '../../../../../shared/modules/hexstring-utils';
-import { INVALID_RECIPIENT_ADDRESS_ERROR } from '../../../send/send.constants';
+  isValidAddress,
+  isValidDomainName,
+} from '../../../../helpers/utils/util';
+import EnsInput from '../../../../pages/send/send-content/add-recipient/ens-input';
+import PageContainerFooter from '../../../ui/page-container/page-container-footer';
 
-export default class AddContact extends PureComponent {
+export default class AddNewContactModal extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
   };
 
   static propTypes = {
+    hideModal: PropTypes.func.isRequired,
     addToAddressBook: PropTypes.func,
-    history: PropTypes.object,
     scanQrCode: PropTypes.func,
     qrCodeData:
       PropTypes.object /* eslint-disable-line react/no-unused-prop-types */,
     qrCodeDetected: PropTypes.func,
-    ensResolution: PropTypes.string,
-    ensError: PropTypes.string,
-    resetResolution: PropTypes.func,
   };
 
   state = {
     newName: '',
     ethAddress: '',
+    ensAddress: '',
     error: '',
-    input: '',
     ensError: '',
     memo: '',
   };
 
   constructor(props) {
     super(props);
-    this.dValidate = debounce(this.validate, 500);
+    this.dValidate = debounce(this.validate, 1000);
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.qrCodeData) {
-      if (nextProps.qrCodeData.type === 'address') {
-        const { ensResolution } = this.props;
-        const scannedAddress = nextProps.qrCodeData.values.address.toLowerCase();
-        const currentAddress = ensResolution || this.state.ethAddress;
-        if (currentAddress.toLowerCase() !== scannedAddress) {
-          this.setState({ input: scannedAddress });
-          this.validate(scannedAddress);
-          // Clean up QR code data after handling
-          this.props.qrCodeDetected(null);
-        }
+    if (nextProps.qrCodeData && nextProps.qrCodeData.type === 'address') {
+      const scannedAddress = nextProps.qrCodeData.values.address.toLowerCase();
+      const currentAddress = this.state.ensAddress || this.state.ethAddress;
+      if (currentAddress.toLowerCase() !== scannedAddress) {
+        this.setState({ ethAddress: scannedAddress, ensAddress: '' });
+        // Clean up QR code data after handling
+        this.props.qrCodeDetected(null);
       }
     }
   }
 
   validate = (address) => {
-    const valid =
-      !isBurnAddress(address) &&
-      isValidHexAddress(address, { mixedCaseUseChecksum: true });
+    const valid = isValidAddress(address);
     const validEnsAddress = isValidDomainName(address);
 
     if (valid || validEnsAddress || address === '') {
       this.setState({ error: '', ethAddress: address });
     } else {
-      this.setState({ error: INVALID_RECIPIENT_ADDRESS_ERROR });
+      this.setState({ error: 'Invalid Address' });
     }
-  };
-
-  onChange = (input) => {
-    this.setState({ input });
-    this.dValidate(input);
   };
 
   renderInput() {
     return (
       <EnsInput
+        className="send__to-row"
         scanQrCode={(_) => {
           this.props.scanQrCode();
         }}
-        onChange={this.onChange}
-        onPaste={(text) => {
-          this.setState({ input: text });
-          this.validate(text);
+        onChange={this.dValidate}
+        onPaste={(text) => this.setState({ ethAddress: text })}
+        onReset={() => this.setState({ ethAddress: '', ensAddress: '' })}
+        updateEnsResolution={(address) => {
+          this.setState({ ensAddress: address, error: '', ensError: '' });
         }}
-        onReset={() => {
-          this.props.resetResolution();
-          this.setState({ ethAddress: '', input: '' });
-        }}
-        userInput={this.state.input}
+        updateEnsResolutionError={(message) =>
+          this.setState({ ensError: message })
+        }
+        value={this.state.ethAddress || ''}
       />
     );
   }
 
   render() {
     const { t } = this.context;
-    const { history, addToAddressBook, ensError, ensResolution } = this.props;
+    const { addToAddressBook } = this.props;
 
-    const errorToRender = ensError || this.state.error;
+    const errorToRender = this.state.ensError || this.state.error;
 
     return (
       <div className="settings-page__content-row address-book__add-contact">
-        {ensResolution && (
+        {this.state.ensAddress && (
           <div className="address-book__view-contact__group">
-            <Identicon address={ensResolution} diameter={60} />
+            <Identicon address={this.state.ensAddress} diameter={60} />
             <div className="address-book__view-contact__group__value">
-              {ensResolution}
+              {this.state.ensAddress}
             </div>
           </div>
         )}
         <div className="address-book__add-contact__content">
+          <h2 className="address-book__header__name">{t('newContact')}</h2>
           <div className="address-book__view-contact__group">
             <div className="address-book__view-contact__group__label">
               {t('userName')}
@@ -123,6 +108,7 @@ export default class AddContact extends PureComponent {
               type="text"
               id="nickname"
               value={this.state.newName}
+              placeholder={t('addAlias')}
               onChange={(e) => this.setState({ newName: e.target.value })}
               fullWidth
               margin="dense"
@@ -136,22 +122,21 @@ export default class AddContact extends PureComponent {
             {this.renderInput()}
             {errorToRender && (
               <div className="address-book__add-contact__error">
-                {t(errorToRender)}
+                {errorToRender}
               </div>
             )}
           </div>
-          <div className="address-book__view-contact__group">
-            <div className="address-book__view-contact__group__label">
+
+          <div className="add-to-address-book-modal__content">
+            <div className="address-book__view-contact__group__label--capitalized">
               {t('memo')}
             </div>
-            <TextField
-              type="Multiline"
+            <textarea
+              className="first-time-flow__textarea"
               id="memoInput"
-              placeholder="Add memo"
-              rows={4}
+              placeholder={t('addMemo')}
               value={this.state.memo}
               onChange={(e) => this.setState({ memo: e.target.value })}
-              fullWidth
             />
           </div>
         </div>
@@ -160,13 +145,14 @@ export default class AddContact extends PureComponent {
           disabled={Boolean(this.state.error)}
           onSubmit={async () => {
             await addToAddressBook(
-              ensResolution || this.state.ethAddress,
+              this.state.ensAddress || this.state.ethAddress,
               this.state.newName,
+              this.state.memo,
             );
-            history.push(CONTACT_LIST_ROUTE);
+            this.props.hideModal();
           }}
           onCancel={() => {
-            history.push(CONTACT_LIST_ROUTE);
+            this.props.hideModal();
           }}
           submitText={this.context.t('save')}
           submitButtonType="confirm"
