@@ -62,9 +62,12 @@ export default class AddNewContactModal extends PureComponent {
   };
 
   renderInput() {
+    const { t } = this.context;
+
     return (
       <EnsInput
         className="send__to-row"
+        placeholderText={t('addAnEthereumAddress')}
         scanQrCode={(_) => {
           this.props.scanQrCode();
         }}

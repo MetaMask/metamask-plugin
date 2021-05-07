@@ -49,6 +49,9 @@
   "addAlias": {
     "message": "Add alias"
   },
+  "addAnEthereumAddress": {
+    "message": "Add an Ethereum Address"
+  },
   "addContact": {
     "message": "Add contact"
   },
