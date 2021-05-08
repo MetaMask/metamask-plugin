@@ -149,15 +149,13 @@ export default class ContactListTab extends Component {
   }
 
   render() {
-    const { addingContact, addressBook } = this.props;
-
     return (
       <div className="address-book-wrapper">
         {this.renderAddressBookContent()}
         {this.renderContactContent()}
-          <div className="address-book-add-button">
-            <AddContactButton label={this.context.t('addContact')} />
-          </div>
+        <div className="address-book-add-button">
+          <AddContactButton label={this.context.t('addContact')} />
+        </div>
       </div>
     );
   }
