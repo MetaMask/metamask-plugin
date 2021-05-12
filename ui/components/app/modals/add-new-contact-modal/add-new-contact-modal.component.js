@@ -62,12 +62,10 @@ export default class AddNewContactModal extends PureComponent {
   };
 
   renderInput() {
-    const { t } = this.context;
-
     return (
       <EnsInput
         className="send__to-row"
-        placeholderText={t('addAnEthereumAddress')}
+        placeholderText=" "
         scanQrCode={(_) => {
           this.props.scanQrCode();
         }}
@@ -111,7 +109,6 @@ export default class AddNewContactModal extends PureComponent {
               type="text"
               id="nickname"
               value={this.state.newName}
-              placeholder={t('addAlias')}
               onChange={(e) => this.setState({ newName: e.target.value })}
               fullWidth
               margin="dense"
@@ -137,7 +134,6 @@ export default class AddNewContactModal extends PureComponent {
             <textarea
               className="first-time-flow__textarea"
               id="memoInput"
-              placeholder={t('addMemo')}
               value={this.state.memo}
               onChange={(e) => this.setState({ memo: e.target.value })}
             />
