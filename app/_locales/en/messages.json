@@ -285,6 +285,9 @@
   "chainIdDefinition": {
     "message": "The chain ID used to sign transactions for this network."
   },
+  "checksumUsesChainId": {
+    "message": "Checksum uses Chain ID"
+  },
   "chromeRequiredForHardwareWallets": {
     "message": "You need to use MetaMask on Google Chrome in order to connect to your Hardware Wallet."
   },
@@ -1154,6 +1157,9 @@
   },
   "networkSettingsChainIdDescription": {
     "message": "The chain ID is used for signing transactions. It must match the chain ID returned by the network. You can enter a decimal or '0x'-prefixed hexadecimal number, but we will display the number in decimal."
+  },
+  "networkSettingsChecksumUsesChainIdDescription": {
+    "message": "When selected, calculate EIP1191 checksums using Chain ID."
   },
   "networkSettingsDescription": {
     "message": "Add and edit custom RPC networks"

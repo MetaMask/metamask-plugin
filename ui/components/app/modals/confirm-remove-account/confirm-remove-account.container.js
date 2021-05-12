@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import withModalProps from '../../../../helpers/higher-order-components/with-modal-props';
 import {
   getCurrentChainId,
+  getCurrentChecksumUsesChainId,
   getRpcPrefsForCurrentProvider,
 } from '../../../../selectors';
 import { removeAccount } from '../../../../store/actions';
@@ -11,6 +12,7 @@ import ConfirmRemoveAccount from './confirm-remove-account.component';
 const mapStateToProps = (state) => {
   return {
     chainId: getCurrentChainId(state),
+    checksumUsesChainId: getCurrentChecksumUsesChainId(state),
     rpcPrefs: getRpcPrefsForCurrentProvider(state),
   };
 };

@@ -3,18 +3,13 @@ import {
   getCurrentChainId,
   getCurrentChecksumUsesChainId,
 } from '../../../selectors';
-import Identicon from './identicon.component';
+import ConfirmApproveContent from './confirm-approve-content.component';
 
 const mapStateToProps = (state) => {
-  const {
-    metamask: { useBlockie },
-  } = state;
-
   return {
     chainId: getCurrentChainId(state),
     checksumUsesChainId: getCurrentChecksumUsesChainId(state),
-    useBlockie,
   };
 };
 
-export default connect(mapStateToProps)(Identicon);
+export default connect(mapStateToProps)(ConfirmApproveContent);

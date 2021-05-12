@@ -25,6 +25,8 @@ describe('AccountListItem Component', () => {
             name: 'mockName',
             balance: 'mockBalance',
           }}
+          chainId="0x539"
+          checksumUsesChainId
           className="mockClassName"
           displayAddress={false}
           handleClick={propsMethodSpies.handleClick}
@@ -128,6 +130,8 @@ describe('AccountListItem Component', () => {
       ).toStrictEqual('mockCheckSumAddress');
       expect(checksumAddressStub.getCall(0).args).toStrictEqual([
         'mockAddress',
+        '0x539',
+        true,
       ]);
     });
 

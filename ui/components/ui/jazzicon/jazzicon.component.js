@@ -12,6 +12,8 @@ const iconFactory = iconFactoryGenerator(jazzicon);
 export default class Jazzicon extends PureComponent {
   static propTypes = {
     address: PropTypes.string.isRequired,
+    chainId: PropTypes.string,
+    checksumUsesChainId: PropTypes.bool,
     className: PropTypes.string,
     diameter: PropTypes.number,
     style: PropTypes.object,
@@ -46,8 +48,13 @@ export default class Jazzicon extends PureComponent {
   }
 
   appendJazzicon() {
-    const { address, diameter } = this.props;
-    const image = iconFactory.iconForAddress(address, diameter);
+    const { address, chainId, checksumUsesChainId, diameter } = this.props;
+    const image = iconFactory.iconForAddress(
+      address,
+      chainId,
+      checksumUsesChainId,
+      diameter,
+    );
     this.container.current.appendChild(image);
   }
 

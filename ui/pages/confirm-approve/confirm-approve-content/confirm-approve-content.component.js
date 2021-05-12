@@ -21,6 +21,8 @@ export default class ConfirmApproveContent extends Component {
   };
 
   static propTypes = {
+    chainId: PropTypes.string,
+    checksumUsesChainId: PropTypes.bool,
     decimals: PropTypes.number,
     tokenAmount: PropTypes.string,
     customTokenAmount: PropTypes.string,
@@ -124,6 +126,8 @@ export default class ConfirmApproveContent extends Component {
   renderPermissionContent() {
     const { t } = this.context;
     const {
+      chainId,
+      checksumUsesChainId,
       customTokenAmount,
       tokenAmount,
       tokenSymbol,
@@ -149,7 +153,7 @@ export default class ConfirmApproveContent extends Component {
             {t('toWithColon')}
           </div>
           <div className="confirm-approve-content__medium-text">
-            {addressSummary(toAddress)}
+            {addressSummary(toAddress, chainId, checksumUsesChainId)}
           </div>
         </div>
       </div>

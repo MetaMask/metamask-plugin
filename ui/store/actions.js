@@ -1590,19 +1590,21 @@ export function updateProviderType(type) {
 export function updateAndSetCustomRpc(
   newRpc,
   chainId,
+  checksumUsesChainId,
   ticker = 'ETH',
   nickname,
   rpcPrefs,
 ) {
   return async (dispatch) => {
     log.debug(
-      `background.updateAndSetCustomRpc: ${newRpc} ${chainId} ${ticker} ${nickname}`,
+      `background.updateAndSetCustomRpc: ${newRpc} ${chainId} ${checksumUsesChainId} ${ticker} ${nickname}`,
     );
 
     try {
       await promisifiedBackground.updateAndSetCustomRpc(
         newRpc,
         chainId,
+        checksumUsesChainId,
         ticker,
         nickname || newRpc,
         rpcPrefs,
@@ -1624,6 +1626,7 @@ export function editRpc(
   oldRpc,
   newRpc,
   chainId,
+  checksumUsesChainId,
   ticker = 'ETH',
   nickname,
   rpcPrefs,
@@ -1642,6 +1645,7 @@ export function editRpc(
       await promisifiedBackground.updateAndSetCustomRpc(
         newRpc,
         chainId,
+        checksumUsesChainId,
         ticker,
         nickname || newRpc,
         rpcPrefs,
@@ -1659,16 +1663,23 @@ export function editRpc(
   };
 }
 
-export function setRpcTarget(newRpc, chainId, ticker = 'ETH', nickname) {
+export function setRpcTarget(
+  newRpc,
+  chainId,
+  checksumUsesChainId,
+  ticker = 'ETH',
+  nickname,
+) {
   return async (dispatch) => {
     log.debug(
-      `background.setRpcTarget: ${newRpc} ${chainId} ${ticker} ${nickname}`,
+      `background.setRpcTarget: ${newRpc} ${chainId} ${checksumUsesChainId} ${ticker} ${nickname}`,
     );
 
     try {
       await promisifiedBackground.setCustomRpc(
         newRpc,
         chainId,
+        checksumUsesChainId,
         ticker,
         nickname || newRpc,
       );

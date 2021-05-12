@@ -15,8 +15,13 @@ function IconFactory(jazzicon) {
   this.cache = {};
 }
 
-IconFactory.prototype.iconForAddress = function (address, diameter) {
-  const addr = checksumAddress(address);
+IconFactory.prototype.iconForAddress = function (
+  address,
+  chainId,
+  checksumUsesChainId,
+  diameter,
+) {
+  const addr = checksumAddress(address, chainId, checksumUsesChainId);
   if (iconExistsFor(addr)) {
     return imageElFor(addr);
   }

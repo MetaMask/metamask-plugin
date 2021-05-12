@@ -1,1 +1,1 @@
-export { default } from './account-list-item';
+export { default } from './account-list-item.container';

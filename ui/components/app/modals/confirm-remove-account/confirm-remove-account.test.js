@@ -10,7 +10,11 @@ describe('Confirm Remove Account', () => {
   let wrapper;
 
   const state = {
-    metamask: {},
+    metamask: {
+      provider: {
+        chainId: '0x539',
+      },
+    },
   };
 
   const props = {

@@ -59,6 +59,11 @@ export function getCurrentChainId(state) {
   return chainId;
 }
 
+export function getCurrentChecksumUsesChainId(state) {
+  const { checksumUsesChainId } = state.metamask.provider;
+  return checksumUsesChainId;
+}
+
 export function getCurrentKeyring(state) {
   const identity = getSelectedIdentity(state);
 
@@ -260,8 +265,12 @@ export function getAddressBook(state) {
 
 export function getAddressBookEntry(state, address) {
   const addressBook = getAddressBook(state);
+  const chainId = getCurrentChainId(state);
+  const checksumUsesChainId = getCurrentChecksumUsesChainId(state);
   const entry = addressBook.find(
-    (contact) => contact.address === checksumAddress(address),
+    (contact) =>
+      contact.address ===
+      checksumAddress(address, chainId, checksumUsesChainId),
   );
   return entry;
 }

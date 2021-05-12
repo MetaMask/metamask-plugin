@@ -17,6 +17,8 @@ export default class Identicon extends PureComponent {
   static propTypes = {
     addBorder: PropTypes.bool,
     address: PropTypes.string,
+    chainId: PropTypes.string,
+    checksumUsesChainId: PropTypes.bool,
     className: PropTypes.string,
     diameter: PropTypes.number,
     image: PropTypes.string,
@@ -78,14 +80,26 @@ export default class Identicon extends PureComponent {
   }
 
   render() {
-    const { address, image, useBlockie, addBorder, diameter } = this.props;
+    const {
+      address,
+      chainId,
+      checksumUsesChainId,
+      image,
+      useBlockie,
+      addBorder,
+      diameter,
+    } = this.props;
 
     if (image) {
       return this.renderImage();
     }
 
     if (address) {
-      const checksummedAddress = checksumAddress(address);
+      const checksummedAddress = checksumAddress(
+        address,
+        chainId,
+        checksumUsesChainId,
+      );
 
       if (contractMap[checksummedAddress]?.logo) {
         return this.renderJazzicon();

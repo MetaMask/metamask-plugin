@@ -1,1 +1,1 @@
-export { default } from './confirm-approve-content.component';
+export { default } from './confirm-approve-content.container';

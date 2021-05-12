@@ -60,6 +60,8 @@ export function valuesFor(obj) {
 
 export function addressSummary(
   address,
+  chainId,
+  checksumUsesChainId,
   firstSegLength = 10,
   lastSegLength = 4,
   includeHex = true,
@@ -67,7 +69,7 @@ export function addressSummary(
   if (!address) {
     return '';
   }
-  let checked = checksumAddress(address);
+  let checked = checksumAddress(address, chainId, checksumUsesChainId);
   if (!includeHex) {
     checked = ethUtil.stripHexPrefix(checked);
   }
@@ -226,11 +228,16 @@ export function exportAsFile(filename, data, type = 'text/csv') {
  * Safely checksumms a potentially-null address
  *
  * @param {string} [address] - address to checksum
+ * @param {string} [chainId] - chainId to use in EIP-1191 checksum
+ * @param {bool} [useChainId] - whether to generate EIP-1191 or EIP-55 checksum
  * @returns {string} checksummed address
  *
  */
-export function checksumAddress(address) {
-  const checksummed = address ? ethUtil.toChecksumAddress(address) : '';
+export function checksumAddress(address, chainId, useChainId) {
+  const chainIdParam = useChainId ? chainId : undefined;
+  const checksummed = address
+    ? ethUtil.toChecksumAddress(address, chainIdParam)
+    : '';
   return checksummed;
 }
 

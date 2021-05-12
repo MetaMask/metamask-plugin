@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import validUrl from 'valid-url';
 import log from 'loglevel';
+import Checkbox from '../../../../components/ui/check-box';
 import TextField from '../../../../components/ui/text-field';
 import Button from '../../../../components/ui/button';
 import Tooltip from '../../../../components/ui/tooltip';
@@ -14,6 +15,7 @@ import { jsonRpcRequest } from '../../../../../shared/modules/rpc.utils';
 const FORM_STATE_KEYS = [
   'rpcUrl',
   'chainId',
+  'checksumUsesChainId',
   'ticker',
   'networkName',
   'blockExplorerUrl',
@@ -30,6 +32,7 @@ export default class NetworkForm extends PureComponent {
     showConfirmDeleteNetworkModal: PropTypes.func.isRequired,
     rpcUrl: PropTypes.string,
     chainId: PropTypes.string,
+    checksumUsesChainId: PropTypes.bool,
     ticker: PropTypes.string,
     viewOnly: PropTypes.bool,
     networkName: PropTypes.string,
@@ -46,6 +49,7 @@ export default class NetworkForm extends PureComponent {
   static defaultProps = {
     rpcUrl: '',
     chainId: '',
+    checksumUsesChainId: false,
     ticker: '',
     networkName: '',
     blockExplorerUrl: '',
@@ -54,6 +58,7 @@ export default class NetworkForm extends PureComponent {
   state = {
     rpcUrl: this.props.rpcUrl,
     chainId: this.getDisplayChainId(this.props.chainId),
+    checksumUsesChainId: this.props.checksumUsesChainId,
     ticker: this.props.ticker,
     networkName: this.props.networkName,
     blockExplorerUrl: this.props.blockExplorerUrl,
@@ -69,6 +74,7 @@ export default class NetworkForm extends PureComponent {
       this.setState({
         rpcUrl: '',
         chainId: '',
+        checksumUsesChainId: false,
         ticker: '',
         networkName: '',
         blockExplorerUrl: '',
@@ -89,6 +95,7 @@ export default class NetworkForm extends PureComponent {
     this.setState({
       rpcUrl: '',
       chainId: '',
+      checksumUsesChainId: false,
       ticker: '',
       networkName: '',
       blockExplorerUrl: '',
@@ -105,6 +112,7 @@ export default class NetworkForm extends PureComponent {
     const {
       rpcUrl,
       chainId,
+      checksumUsesChainId,
       ticker,
       networkName,
       blockExplorerUrl,
@@ -113,6 +121,7 @@ export default class NetworkForm extends PureComponent {
     this.setState({
       rpcUrl,
       chainId: this.getDisplayChainId(chainId),
+      checksumUsesChainId,
       ticker,
       networkName,
       blockExplorerUrl,
@@ -171,6 +180,7 @@ export default class NetworkForm extends PureComponent {
         networkName,
         rpcUrl,
         chainId: stateChainId,
+        checksumUsesChainId,
         ticker,
         blockExplorerUrl,
       } = this.state;
@@ -187,15 +197,30 @@ export default class NetworkForm extends PureComponent {
 
       // After this point, isSubmitting will be reset in componentDidUpdate
       if (propsRpcUrl && rpcUrl !== propsRpcUrl) {
-        await editRpc(propsRpcUrl, rpcUrl, chainId, ticker, networkName, {
-          ...rpcPrefs,
-          blockExplorerUrl: blockExplorerUrl || rpcPrefs.blockExplorerUrl,
-        });
+        await editRpc(
+          propsRpcUrl,
+          rpcUrl,
+          chainId,
+          checksumUsesChainId,
+          ticker,
+          networkName,
+          {
+            ...rpcPrefs,
+            blockExplorerUrl: blockExplorerUrl || rpcPrefs.blockExplorerUrl,
+          },
+        );
       } else {
-        await setRpcTarget(rpcUrl, chainId, ticker, networkName, {
-          ...rpcPrefs,
-          blockExplorerUrl: blockExplorerUrl || rpcPrefs.blockExplorerUrl,
-        });
+        await setRpcTarget(
+          rpcUrl,
+          chainId,
+          checksumUsesChainId,
+          ticker,
+          networkName,
+          {
+            ...rpcPrefs,
+            blockExplorerUrl: blockExplorerUrl || rpcPrefs.blockExplorerUrl,
+          },
+        );
       }
 
       if (networksTabIsInAddMode) {
@@ -238,6 +263,7 @@ export default class NetworkForm extends PureComponent {
     const {
       rpcUrl,
       chainId: propsChainId,
+      checksumUsesChainId,
       ticker,
       networkName,
       blockExplorerUrl,
@@ -246,6 +272,7 @@ export default class NetworkForm extends PureComponent {
     const {
       rpcUrl: stateRpcUrl,
       chainId: stateChainId,
+      checksumUsesChainId: stateChecksumUsesChainId,
       ticker: stateTicker,
       networkName: stateNetworkName,
       blockExplorerUrl: stateBlockExplorerUrl,
@@ -262,6 +289,7 @@ export default class NetworkForm extends PureComponent {
     return (
       stateRpcUrl === rpcUrl &&
       chainIdIsUnchanged &&
+      checksumUsesChainId === stateChecksumUsesChainId &&
       stateTicker === ticker &&
       stateNetworkName === networkName &&
       stateBlockExplorerUrl === blockExplorerUrl
@@ -307,6 +335,45 @@ export default class NetworkForm extends PureComponent {
           error={errors[fieldKey]}
           autoFocus={autoFocus}
         />
+      </div>
+    );
+  }
+
+  renderFormCheckboxField({
+    fieldKey,
+    checkboxId,
+    onClick,
+    checked,
+    tooltipText,
+  }) {
+    const { viewOnly } = this.props;
+
+    return (
+      <div className="networks-tab__network-form-checkbox-wrapper">
+        <Checkbox
+          className="networks-tab__network-form-checkbox"
+          disabled={viewOnly}
+          id={checkboxId}
+          checked={checked}
+          onClick={onClick}
+        />
+        <label
+          className="networks-tab__network-form-label"
+          htmlFor={checkboxId}
+        >
+          <div className="networks-tab__network-form-label-text">
+            {this.context.t(fieldKey)}
+          </div>
+          {!viewOnly && tooltipText ? (
+            <Tooltip
+              position="top"
+              title={tooltipText}
+              wrapperClassName="networks-tab__network-form-label-tooltip"
+            >
+              <i className="fa fa-info-circle" />
+            </Tooltip>
+          ) : null}
+        </label>
       </div>
     );
   }
@@ -478,6 +545,7 @@ export default class NetworkForm extends PureComponent {
       networkName,
       rpcUrl,
       chainId = '',
+      checksumUsesChainId,
       ticker,
       blockExplorerUrl,
       errors,
@@ -518,6 +586,18 @@ export default class NetworkForm extends PureComponent {
           ),
           value: chainId,
           tooltipText: viewOnly ? null : t('networkSettingsChainIdDescription'),
+        })}
+        {this.renderFormCheckboxField({
+          fieldKey: 'checksumUsesChainId',
+          checkboxId: 'checksumUsesChainId',
+          onClick: () =>
+            this.setState((prevState) => ({
+              checksumUsesChainId: !prevState.checksumUsesChainId,
+            })),
+          checked: checksumUsesChainId,
+          tooltipText: viewOnly
+            ? null
+            : t('networkSettingsChecksumUsesChainIdDescription'),
         })}
         {this.renderFormTextField({
           fieldKey: 'symbol',

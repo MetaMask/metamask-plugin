@@ -11,6 +11,7 @@ export default class ConfirmRemoveAccount extends Component {
     removeAccount: PropTypes.func.isRequired,
     identity: PropTypes.object.isRequired,
     chainId: PropTypes.string.isRequired,
+    checksumUsesChainId: PropTypes.bool.isRequired,
     rpcPrefs: PropTypes.object.isRequired,
   };
 
@@ -29,7 +30,7 @@ export default class ConfirmRemoveAccount extends Component {
   };
 
   renderSelectedAccount() {
-    const { identity } = this.props;
+    const { chainId, checksumUsesChainId, identity } = this.props;
     return (
       <div className="confirm-remove-account__account">
         <div className="confirm-remove-account__account__identicon">
@@ -44,7 +45,13 @@ export default class ConfirmRemoveAccount extends Component {
             Public Address
           </span>
           <span className="account_value">
-            {addressSummary(identity.address, 4, 4)}
+            {addressSummary(
+              identity.address,
+              chainId,
+              checksumUsesChainId,
+              4,
+              4,
+            )}
           </span>
         </div>
         <div className="confirm-remove-account__account__link">

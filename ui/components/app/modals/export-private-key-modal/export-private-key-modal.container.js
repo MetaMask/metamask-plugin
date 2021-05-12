@@ -6,7 +6,11 @@ import {
   hideModal,
   clearAccountDetails,
 } from '../../../../store/actions';
-import { getSelectedIdentity } from '../../../../selectors';
+import {
+  getCurrentChainId,
+  getCurrentChecksumUsesChainId,
+  getSelectedIdentity,
+} from '../../../../selectors';
 import ExportPrivateKeyModal from './export-private-key-modal.component';
 
 function mapStateToPropsFactory() {
@@ -18,6 +22,8 @@ function mapStateToPropsFactory() {
     // which is the expected behavior that we are side-stepping.
     selectedIdentity = selectedIdentity || getSelectedIdentity(state);
     return {
+      chainId: getCurrentChainId(state),
+      checksumUsesChainId: getCurrentChecksumUsesChainId(state),
       warning: state.appState.warning,
       privateKey: state.appState.accountDetail.privateKey,
       selectedIdentity,

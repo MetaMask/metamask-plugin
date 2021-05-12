@@ -186,7 +186,14 @@ export default class NetworkController extends EventEmitter {
     return NETWORK_TYPE_TO_ID_MAP[type]?.chainId || configChainId;
   }
 
-  setRpcTarget(rpcUrl, chainId, ticker = 'ETH', nickname = '', rpcPrefs) {
+  setRpcTarget(
+    rpcUrl,
+    chainId,
+    checksumUsesChainId,
+    ticker = 'ETH',
+    nickname = '',
+    rpcPrefs,
+  ) {
     assert.ok(
       isPrefixedFormattedHexString(chainId),
       `Invalid chain ID "${chainId}": invalid hex string.`,
@@ -199,6 +206,7 @@ export default class NetworkController extends EventEmitter {
       type: NETWORK_TYPE_RPC,
       rpcUrl,
       chainId,
+      checksumUsesChainId,
       ticker,
       nickname,
       rpcPrefs,

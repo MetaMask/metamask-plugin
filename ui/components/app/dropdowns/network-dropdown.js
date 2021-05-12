@@ -47,8 +47,16 @@ function mapDispatchToProps(dispatch) {
     setProviderType: (type) => {
       dispatch(actions.setProviderType(type));
     },
-    setRpcTarget: (target, chainId, ticker, nickname) => {
-      dispatch(actions.setRpcTarget(target, chainId, ticker, nickname));
+    setRpcTarget: (target, chainId, checksumUsesChainId, ticker, nickname) => {
+      dispatch(
+        actions.setRpcTarget(
+          target,
+          chainId,
+          checksumUsesChainId,
+          ticker,
+          nickname,
+        ),
+      );
     },
     hideNetworkDropdown: () => dispatch(actions.hideNetworkDropdown()),
     setNetworksTabAddMode: (isInAddMode) => {
@@ -122,7 +130,13 @@ class NetworkDropdown extends Component {
     const reversedRpcListDetail = rpcListDetail.slice().reverse();
 
     return reversedRpcListDetail.map((entry) => {
-      const { rpcUrl, chainId, ticker = 'ETH', nickname = '' } = entry;
+      const {
+        rpcUrl,
+        chainId,
+        checksumUsesChainId,
+        ticker = 'ETH',
+        nickname = '',
+      } = entry;
       const isCurrentRpcTarget =
         provider.type === NETWORK_TYPE_RPC && rpcUrl === provider.rpcUrl;
 
@@ -132,7 +146,13 @@ class NetworkDropdown extends Component {
           closeMenu={() => this.props.hideNetworkDropdown()}
           onClick={() => {
             if (isPrefixedFormattedHexString(chainId)) {
-              this.props.setRpcTarget(rpcUrl, chainId, ticker, nickname);
+              this.props.setRpcTarget(
+                rpcUrl,
+                chainId,
+                checksumUsesChainId,
+                ticker,
+                nickname,
+              );
             } else {
               this.props.displayInvalidCustomNetworkAlert(nickname || rpcUrl);
             }

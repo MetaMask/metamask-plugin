@@ -2179,16 +2179,24 @@ export default class MetamaskController extends EventEmitter {
         requestUserApproval: this.approvalController.addAndShowApprovalRequest.bind(
           this.approvalController,
         ),
-        updateRpcTarget: ({ rpcUrl, chainId, ticker, nickname }) => {
+        updateRpcTarget: ({
+          rpcUrl,
+          chainId,
+          checksumUsesChainId,
+          ticker,
+          nickname,
+        }) => {
           this.networkController.setRpcTarget(
             rpcUrl,
             chainId,
+            checksumUsesChainId,
             ticker,
             nickname,
           );
         },
         addCustomRpc: async ({
           chainId,
+          checksumUsesChainId,
           blockExplorerUrl,
           ticker,
           chainName,
@@ -2197,6 +2205,7 @@ export default class MetamaskController extends EventEmitter {
           await this.preferencesController.addToFrequentRpcList(
             rpcUrl,
             chainId,
+            checksumUsesChainId,
             ticker,
             chainName,
             {
@@ -2530,6 +2539,7 @@ export default class MetamaskController extends EventEmitter {
    * A method for selecting a custom URL for an ethereum RPC provider and updating it
    * @param {string} rpcUrl - A URL for a valid Ethereum RPC API.
    * @param {string} chainId - The chainId of the selected network.
+   * @param {bool} checksumUsesChainId - If checksum calculation on the selected network uses chainId (EIP-1191).
    * @param {string} ticker - The ticker symbol of the selected network.
    * @param {string} [nickname] - Nickname of the selected network.
    * @param {Object} [rpcPrefs] - RPC preferences.
@@ -2539,6 +2549,7 @@ export default class MetamaskController extends EventEmitter {
   async updateAndSetCustomRpc(
     rpcUrl,
     chainId,
+    checksumUsesChainId,
     ticker = 'ETH',
     nickname,
     rpcPrefs,
@@ -2546,6 +2557,7 @@ export default class MetamaskController extends EventEmitter {
     this.networkController.setRpcTarget(
       rpcUrl,
       chainId,
+      checksumUsesChainId,
       ticker,
       nickname,
       rpcPrefs,
@@ -2553,6 +2565,7 @@ export default class MetamaskController extends EventEmitter {
     await this.preferencesController.updateRpc({
       rpcUrl,
       chainId,
+      checksumUsesChainId,
       ticker,
       nickname,
       rpcPrefs,
@@ -2571,6 +2584,7 @@ export default class MetamaskController extends EventEmitter {
   async setCustomRpc(
     rpcUrl,
     chainId,
+    checksumUsesChainId,
     ticker = 'ETH',
     nickname = '',
     rpcPrefs = {},
@@ -2584,6 +2598,7 @@ export default class MetamaskController extends EventEmitter {
       this.networkController.setRpcTarget(
         rpcSettings.rpcUrl,
         rpcSettings.chainId,
+        rpcSettings.checksumUsesChainId,
         rpcSettings.ticker,
         rpcSettings.nickname,
         rpcPrefs,
@@ -2592,6 +2607,7 @@ export default class MetamaskController extends EventEmitter {
       this.networkController.setRpcTarget(
         rpcUrl,
         chainId,
+        checksumUsesChainId,
         ticker,
         nickname,
         rpcPrefs,
@@ -2599,6 +2615,7 @@ export default class MetamaskController extends EventEmitter {
       await this.preferencesController.addToFrequentRpcList(
         rpcUrl,
         chainId,
+        checksumUsesChainId,
         ticker,
         nickname,
         rpcPrefs,

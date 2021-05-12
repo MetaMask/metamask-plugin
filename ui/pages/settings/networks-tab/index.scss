@@ -77,6 +77,21 @@
     }
   }
 
+  &__network-form-checkbox-wrapper {
+    @media screen and (max-width: 575px) {
+      width: 93%;
+    }
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  &__network-form-checkbox {
+    margin-right: 8px;
+  }
+
   &__network-form-label {
     display: flex;
     align-items: center;

@@ -671,6 +671,7 @@ describe('preferences controller', function () {
           {
             rpcUrl: 'rpc_url',
             chainId: '0x1',
+            checksumUsesChainId: false,
             ticker: 'ETH',
             nickname: '',
             rpcPrefs: {},
@@ -684,6 +685,7 @@ describe('preferences controller', function () {
           {
             rpcUrl: 'rpc_url',
             chainId: '0x1',
+            checksumUsesChainId: false,
             ticker: 'ETH',
             nickname: '',
             rpcPrefs: {},
@@ -706,6 +708,7 @@ describe('preferences controller', function () {
           {
             rpcUrl: 'rpc_url',
             chainId: '0x1',
+            checksumUsesChainId: false,
             ticker: 'ETH',
             nickname: '',
             rpcPrefs: {},

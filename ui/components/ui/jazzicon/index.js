@@ -1,1 +1,1 @@
-export { default } from './jazzicon.component';
+export { default } from './jazzicon.container';

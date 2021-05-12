@@ -458,6 +458,7 @@ export default class PreferencesController {
    * @param {Object} newRpcDetails - Options bag.
    * @param {string} newRpcDetails.rpcUrl - The RPC url to add to frequentRpcList.
    * @param {string} newRpcDetails.chainId - The chainId of the selected network.
+   * @param {bool} newRpcDetails.checksumUsesChainId - If checksum calculation on the selected network uses chainId (EIP-1191).
    * @param {string} [newRpcDetails.ticker] - Optional ticker symbol of the selected network.
    * @param {string} [newRpcDetails.nickname] - Optional nickname of the selected network.
    * @param {Object} [newRpcDetails.rpcPrefs] - Optional RPC preferences, such as the block explorer URL
@@ -524,11 +525,19 @@ export default class PreferencesController {
       const {
         rpcUrl,
         chainId,
+        checksumUsesChainId,
         ticker,
         nickname,
         rpcPrefs = {},
       } = newRpcDetails;
-      this.addToFrequentRpcList(rpcUrl, chainId, ticker, nickname, rpcPrefs);
+      this.addToFrequentRpcList(
+        rpcUrl,
+        chainId,
+        checksumUsesChainId,
+        ticker,
+        nickname,
+        rpcPrefs,
+      );
     }
   }
 
@@ -537,6 +546,7 @@ export default class PreferencesController {
    *
    * @param {string} rpcUrl - The RPC url to add to frequentRpcList.
    * @param {string} chainId - The chainId of the selected network.
+   * @param {bool} checksumUsesChainId - If checksum calculation on the selected network uses chainId (EIP-1191).
    * @param {string} [ticker] - Ticker symbol of the selected network.
    * @param {string} [nickname] - Nickname of the selected network.
    * @param {Object} [rpcPrefs] - Optional RPC preferences, such as the block explorer URL
@@ -545,6 +555,7 @@ export default class PreferencesController {
   addToFrequentRpcList(
     rpcUrl,
     chainId,
+    checksumUsesChainId = false,
     ticker = 'ETH',
     nickname = '',
     rpcPrefs = {},
@@ -562,7 +573,14 @@ export default class PreferencesController {
       throw new Error(`Invalid chainId: "${chainId}"`);
     }
 
-    rpcList.push({ rpcUrl, chainId, ticker, nickname, rpcPrefs });
+    rpcList.push({
+      rpcUrl,
+      chainId,
+      checksumUsesChainId,
+      ticker,
+      nickname,
+      rpcPrefs,
+    });
     this.store.updateState({ frequentRpcListDetail: rpcList });
   }
 

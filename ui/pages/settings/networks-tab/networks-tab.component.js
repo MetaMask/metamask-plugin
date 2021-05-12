@@ -183,6 +183,7 @@ export default class NetworksTab extends PureComponent {
         label,
         rpcUrl,
         chainId,
+        checksumUsesChainId,
         ticker,
         viewOnly,
         rpcPrefs,
@@ -208,6 +209,7 @@ export default class NetworksTab extends PureComponent {
             networkName={label || (labelKey && t(labelKey)) || ''}
             rpcUrl={rpcUrl}
             chainId={chainId}
+            checksumUsesChainId={checksumUsesChainId}
             ticker={ticker}
             onClear={(shouldUpdateHistory = true) => {
               setNetworksTabAddMode(false);

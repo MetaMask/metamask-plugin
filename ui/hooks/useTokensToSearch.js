@@ -11,6 +11,7 @@ import {
   getCurrentCurrency,
   getSwapsDefaultToken,
   getCurrentChainId,
+  getCurrentChecksumUsesChainId,
 } from '../selectors';
 import { getSwapsTokens } from '../ducks/swaps/swaps';
 import { isSwapsDefaultTokenSymbol } from '../../shared/modules/swaps.utils';
@@ -31,6 +32,7 @@ export function getRenderableTokenData(
   conversionRate,
   currentCurrency,
   chainId,
+  checksumUsesChainId,
 ) {
   const { symbol, name, address, iconUrl, string, balance, decimals } = token;
 
@@ -58,12 +60,16 @@ export function getRenderableTokenData(
     ) || '';
   const usedIconUrl =
     iconUrl ||
-    (contractMap[checksumAddress(address)] &&
-      `images/contract/${contractMap[checksumAddress(address)].logo}`);
+    (contractMap[checksumAddress(address, chainId, checksumUsesChainId)] &&
+      `images/contract/${
+        contractMap[checksumAddress(address, chainId, checksumUsesChainId)].logo
+      }`);
   return {
     ...token,
     primaryLabel: symbol,
-    secondaryLabel: name || contractMap[checksumAddress(address)]?.name,
+    secondaryLabel:
+      name ||
+      contractMap[checksumAddress(address, chainId, checksumUsesChainId)]?.name,
     rightPrimaryLabel:
       string && `${new BigNumber(string).round(6).toString()} ${symbol}`,
     rightSecondaryLabel: formattedFiat,
@@ -71,13 +77,16 @@ export function getRenderableTokenData(
     identiconAddress: usedIconUrl ? null : address,
     balance,
     decimals,
-    name: name || contractMap[checksumAddress(address)]?.name,
+    name:
+      name ||
+      contractMap[checksumAddress(address, chainId, checksumUsesChainId)]?.name,
     rawFiat,
   };
 }
 
 export function useTokensToSearch({ usersTokens = [], topTokens = {} }) {
   const chainId = useSelector(getCurrentChainId);
+  const checksumUsesChainId = useSelector(getCurrentChecksumUsesChainId);
   const tokenConversionRates = useSelector(getTokenExchangeRates, isEqual);
   const conversionRate = useSelector(getConversionRate);
   const currentCurrency = useSelector(getCurrentCurrency);
@@ -92,6 +101,7 @@ export function useTokensToSearch({ usersTokens = [], topTokens = {} }) {
     conversionRate,
     currentCurrency,
     chainId,
+    checksumUsesChainId,
   );
   const memoizedDefaultToken = useEqualityCheck(defaultToken);
 
@@ -126,6 +136,7 @@ export function useTokensToSearch({ usersTokens = [], topTokens = {} }) {
         conversionRate,
         currentCurrency,
         chainId,
+        checksumUsesChainId,
       );
       if (
         isSwapsDefaultTokenSymbol(renderableDataToken.symbol, chainId) ||
@@ -161,5 +172,6 @@ export function useTokensToSearch({ usersTokens = [], topTokens = {} }) {
     currentCurrency,
     memoizedTopTokens,
     chainId,
+    checksumUsesChainId,
   ]);
 }

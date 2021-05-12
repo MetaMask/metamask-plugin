@@ -36,14 +36,25 @@ describe('util', () => {
   describe('#addressSummary', () => {
     it('should add case-sensitive checksum', () => {
       const address = '0xfdea65c8e26263f6d9a1b5de9555d2931a33b825';
-      const result = util.addressSummary(address);
-      expect(result).toStrictEqual('0xFDEa65C8...b825');
+      const chainId = '0x539';
+      const checksumUsesChainId = true;
+      const result = util.addressSummary(address, chainId, checksumUsesChainId);
+      expect(result).toStrictEqual('0xfDea65C8...b825');
     });
 
     it('should accept arguments for firstseg, lastseg, and keepPrefix', () => {
       const address = '0xfdea65c8e26263f6d9a1b5de9555d2931a33b825';
-      const result = util.addressSummary(address, 4, 4, false);
-      expect(result).toStrictEqual('FDEa...b825');
+      const chainId = '0x539';
+      const checksumUsesChainId = true;
+      const result = util.addressSummary(
+        address,
+        chainId,
+        checksumUsesChainId,
+        4,
+        4,
+        false,
+      );
+      expect(result).toStrictEqual('fDea...b825');
     });
   });
 
@@ -235,6 +246,35 @@ describe('util', () => {
       const needsParse = false;
       const result = util.formatBalance(value, 2, needsParse);
       expect(result).toStrictEqual('1.24 ETH');
+    });
+  });
+
+  describe('#checksumAddress', () => {
+    it('should return EIP-55 checksum when chainId is undefined', () => {
+      const address = '0x5Fda30Bb72B8Dfe20e48A00dFc108d0915BE9Bb0';
+      const chainId = undefined;
+      const useChainId = true;
+      const result = util.checksumAddress(address, chainId, useChainId);
+      const addressChecksum = '0x5Fda30Bb72B8Dfe20e48A00dFc108d0915BE9Bb0';
+      expect(result).toStrictEqual(addressChecksum);
+    });
+
+    it('should return EIP-55 checksum when useChainId is false', () => {
+      const address = '0x5Fda30Bb72B8Dfe20e48A00dFc108d0915BE9Bb0';
+      const chainId = '0x539';
+      const useChainId = false;
+      const result = util.checksumAddress(address, chainId, useChainId);
+      const addressChecksum = '0x5Fda30Bb72B8Dfe20e48A00dFc108d0915BE9Bb0';
+      expect(result).toStrictEqual(addressChecksum);
+    });
+
+    it('should return EIP-1191 checksum', () => {
+      const address = '0x5Fda30Bb72B8Dfe20e48A00dFc108d0915BE9Bb0';
+      const chainId = '0x539';
+      const useChainId = true;
+      const result = util.checksumAddress(address, chainId, useChainId);
+      const addressChecksum = '0x5FdA30bB72B8Dfe20E48A00DfC108D0915BE9BB0';
+      expect(result).toStrictEqual(addressChecksum);
     });
   });
 

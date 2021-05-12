@@ -6,6 +6,8 @@ import AccountMismatchWarning from '../../ui/account-mismatch-warning/account-mi
 
 export default function AccountListItem({
   account,
+  chainId,
+  checksumUsesChainId,
   className,
   displayAddress = false,
   handleClick,
@@ -34,7 +36,7 @@ export default function AccountListItem({
 
       {displayAddress && name && (
         <div className="account-list-item__account-address">
-          {checksumAddress(address)}
+          {checksumAddress(address, chainId, checksumUsesChainId)}
         </div>
       )}
     </div>
@@ -43,6 +45,8 @@ export default function AccountListItem({
 
 AccountListItem.propTypes = {
   account: PropTypes.object,
+  chainId: PropTypes.string,
+  checksumUsesChainId: PropTypes.bool,
   className: PropTypes.string,
   displayAddress: PropTypes.bool,
   handleClick: PropTypes.func,

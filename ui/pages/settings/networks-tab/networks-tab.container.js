@@ -41,6 +41,7 @@ const mapStateToProps = (state, ownProps) => {
       providerType: NETWORK_TYPE_RPC,
       rpcUrl: rpc.rpcUrl,
       chainId: rpc.chainId,
+      checksumUsesChainId: rpc.checksumUsesChainId,
       ticker: rpc.ticker,
       blockExplorerUrl: rpc.rpcPrefs?.blockExplorerUrl || '',
     };
@@ -86,9 +87,23 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setSelectedSettingsRpcUrl: (newRpcUrl) =>
       dispatch(setSelectedSettingsRpcUrl(newRpcUrl)),
-    setRpcTarget: (newRpc, chainId, ticker, nickname, rpcPrefs) => {
+    setRpcTarget: (
+      newRpc,
+      chainId,
+      checksumUsesChainId,
+      ticker,
+      nickname,
+      rpcPrefs,
+    ) => {
       return dispatch(
-        updateAndSetCustomRpc(newRpc, chainId, ticker, nickname, rpcPrefs),
+        updateAndSetCustomRpc(
+          newRpc,
+          chainId,
+          checksumUsesChainId,
+          ticker,
+          nickname,
+          rpcPrefs,
+        ),
       );
     },
     showConfirmDeleteNetworkModal: ({ target, onConfirm }) => {
@@ -99,9 +114,25 @@ const mapDispatchToProps = (dispatch) => {
     displayWarning: (warning) => dispatch(displayWarning(warning)),
     setNetworksTabAddMode: (isInAddMode) =>
       dispatch(setNetworksTabAddMode(isInAddMode)),
-    editRpc: (oldRpc, newRpc, chainId, ticker, nickname, rpcPrefs) => {
+    editRpc: (
+      oldRpc,
+      newRpc,
+      chainId,
+      checksumUsesChainId,
+      ticker,
+      nickname,
+      rpcPrefs,
+    ) => {
       return dispatch(
-        editRpc(oldRpc, newRpc, chainId, ticker, nickname, rpcPrefs),
+        editRpc(
+          oldRpc,
+          newRpc,
+          chainId,
+          checksumUsesChainId,
+          ticker,
+          nickname,
+          rpcPrefs,
+        ),
       );
     },
   };

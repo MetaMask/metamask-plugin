@@ -20,6 +20,8 @@ export default class ExportPrivateKeyModal extends Component {
   };
 
   static propTypes = {
+    chainId: PropTypes.string,
+    checksumUsesChainId: PropTypes.bool,
     exportAccount: PropTypes.func.isRequired,
     selectedIdentity: PropTypes.object.isRequired,
     warning: PropTypes.node,
@@ -129,6 +131,8 @@ export default class ExportPrivateKeyModal extends Component {
 
   render() {
     const {
+      chainId,
+      checksumUsesChainId,
       selectedIdentity,
       warning,
       showAccountDetailModal,
@@ -149,7 +153,7 @@ export default class ExportPrivateKeyModal extends Component {
         <span className="export-private-key-modal__account-name">{name}</span>
         <ReadOnlyInput
           wrapperClass="ellip-address-wrapper"
-          value={checksumAddress(address)}
+          value={checksumAddress(address, chainId, checksumUsesChainId)}
         />
         <div className="export-private-key-modal__divider" />
         <span className="export-private-key-modal__body-title">

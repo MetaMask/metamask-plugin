@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import { mount } from 'enzyme';
@@ -8,6 +9,9 @@ describe('Identicon', () => {
   const state = {
     metamask: {
       useBlockie: false,
+      provider: {
+        chainId: '0x539',
+      },
     },
   };
 
@@ -16,7 +20,11 @@ describe('Identicon', () => {
   const store = mockStore(state);
 
   it('renders empty identicon with no props', () => {
-    const wrapper = mount(<Identicon store={store} />);
+    const wrapper = mount(
+      <Provider store={store}>
+        <Identicon />
+      </Provider>,
+    );
 
     expect(wrapper.find('div').prop('className')).toStrictEqual(
       'identicon__image-border',
@@ -25,7 +33,9 @@ describe('Identicon', () => {
 
   it('renders custom image and add className props', () => {
     const wrapper = mount(
-      <Identicon store={store} className="test-image" image="test-image" />,
+      <Provider store={store}>
+        <Identicon className="test-image" image="test-image" />,
+      </Provider>,
     );
 
     expect(wrapper.find('img.test-image').prop('className')).toStrictEqual(
@@ -38,7 +48,9 @@ describe('Identicon', () => {
 
   it('renders div with address prop', () => {
     const wrapper = mount(
-      <Identicon store={store} className="test-address" address="0x0" />,
+      <Provider store={store}>
+        <Identicon className="test-address" address="0x0" />,
+      </Provider>,
     );
 
     expect(wrapper.find('div.test-address').prop('className')).toStrictEqual(
