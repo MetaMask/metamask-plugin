@@ -1645,7 +1645,7 @@
     "message": "Send Tokens"
   },
   "sentEther": {
-    "message": "sent ether"
+    "message": "send ether"
   },
   "separateEachWord": {
     "message": "Separate each word with a single space"
