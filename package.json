@@ -10,10 +10,11 @@
     "setup": "yarn install && yarn setup:postinstall",
     "setup:postinstall": "yarn patch-package && yarn allow-scripts",
     "start": "node development/build/index.js dev",
-    "start:lavamoat": "yarn build dev",
+    "start:test": "yarn build testDev",
+    "start:lavamoat": "lavamoat development/build/index.js dev",
     "dist": "yarn build prod",
     "build": "lavamoat development/build/index.js",
-    "start:test": "yarn build testDev",
+    "build:dev": "node development/build/index.js",
     "benchmark:chrome": "SELENIUM_BROWSER=chrome node test/e2e/benchmark.js",
     "benchmark:firefox": "SELENIUM_BROWSER=firefox node test/e2e/benchmark.js",
     "build:test": "yarn build test",
@@ -63,8 +64,9 @@
     "storybook:deploy": "storybook-to-ghpages --existing-output-dir storybook-build --remote storybook --branch master",
     "update-changelog": "auto-changelog update",
     "generate:migration": "./development/generate-migration.sh",
-    "lavamoat:auto": "lavamoat ./development/build/index.js --writeAutoPolicy",
-    "lavamoat:debug": "lavamoat ./development/build/index.js --writeAutoPolicyDebug"
+    "lavamoat:build:auto": "lavamoat ./development/build/index.js --writeAutoPolicy",
+    "lavamoat:build:debug": "lavamoat ./development/build/index.js --writeAutoPolicyDebug",
+    "lavamoat:background:auto": "WRITE_AUTO_POLICY=1 yarn start:lavamoat"
   },
   "resolutions": {
     "**/regenerator-runtime": "^0.13.7",
@@ -274,6 +276,7 @@
     "jsdom": "^11.2.0",
     "koa": "^2.7.0",
     "lavamoat": "^5.3.1",
+    "lavamoat-browserify": "^13.1.1",
     "lavamoat-viz": "^6.0.9",
     "lockfile-lint": "^4.0.0",
     "loose-envify": "^1.4.0",

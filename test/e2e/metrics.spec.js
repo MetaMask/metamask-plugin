@@ -1,6 +1,6 @@
 const { strict: assert } = require('assert');
 const waitUntilCalled = require('../lib/wait-until-called');
-const { withFixtures } = require('./helpers');
+const { withFixtures, tinyDelayMs } = require('./helpers');
 
 /**
  * WARNING: These tests must be run using a build created with `yarn build:test:metrics`, so that it has
@@ -30,6 +30,7 @@ describe('Segment metrics', function () {
         const threeSegmentEventsReceived = waitUntilCalled(segmentStub, null, {
           callCount: 3,
         });
+        await driver.delay(tinyDelayMs);
         await driver.navigate();
 
         await driver.fill('#password', 'correct horse battery staple');

@@ -45,6 +45,7 @@
       "js": ["vendor/trezor/content-script.js"]
     }
   ],
+  "content_security_policy": "script-src 'unsafe-eval' 'self'; object-src 'self'",
   "default_locale": "en",
   "description": "__MSG_appDescription__",
   "icons": {

@@ -1,9 +1,11 @@
 const EventEmitter = require('events');
+const path = require('path');
 const gulp = require('gulp');
 const watch = require('gulp-watch');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const log = require('fancy-log');
+const lavamoat = require('lavamoat-browserify');
 const watchify = require('watchify');
 const browserify = require('browserify');
 const envify = require('loose-envify/custom');
@@ -226,6 +228,7 @@ function createScriptTasks({ browserPlatforms, livereload }) {
 }
 
 function createNormalBundle({
+  label,
   destFilepath,
   entryFilepath,
   extraEntries = [],
@@ -245,6 +248,26 @@ function createNormalBundle({
       devMode,
       envVars,
     });
+
+    const lavamoatTargets = ['background'];
+
+    if (lavamoatTargets.includes(label)) {
+      Object.assign(bundlerOpts, lavamoat.args);
+    }
+
+    const lavamoatOpts = {
+      policy: path.resolve(__dirname, '../../lavamoat/browserify/policy.json'),
+      policyOverride: path.resolve(
+        __dirname,
+        '../../lavamoat/browserify/policy-override.json',
+      ),
+      writeAutoPolicy: process.env.WRITE_AUTO_POLICY,
+    };
+
+    // apply lavamoat protections to UI
+    if (lavamoatTargets.includes(label)) {
+      bundlerOpts.plugin.push([lavamoat, lavamoatOpts]);
+    }
 
     // set bundle entries
     bundlerOpts.entries = [...extraEntries];

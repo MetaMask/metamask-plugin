@@ -1,0 +1,50 @@
+{
+  "resources": {
+    "browser-resolve": {
+      "packages": {
+        "core-js": true
+      }
+    },
+    "babel-runtime": {
+      "packages": {
+        "@babel/runtime": true
+      }
+    },
+    "node-fetch": {
+      "globals": {
+        "fetch": true
+      }
+    },
+    "lodash": {
+      "globals": {
+        "setTimeout": true,
+        "clearTimeout": true
+      }
+    },
+    "@ethersproject/random": {
+      "globals": {
+        "crypto.getRandomValues": true
+      }
+    },
+    "browser-passworder": {
+      "globals": {
+        "crypto": true
+      }
+    },
+    "randombytes": {
+      "globals": {
+        "crypto.getRandomValues": true
+      }
+    },
+    "extensionizer": {
+      "globals": {
+        "console": true
+      }
+    },
+    "web3": {
+      "globals": {
+        "XMLHttpRequest": true
+      }
+    }
+  }
+}
