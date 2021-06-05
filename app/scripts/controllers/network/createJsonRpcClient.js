@@ -1,4 +1,4 @@
-import { createAsyncMiddleware, mergeMiddleware } from 'json-rpc-engine';
+import { mergeMiddleware } from 'json-rpc-engine';
 import createFetchMiddleware from 'eth-json-rpc-middleware/fetch';
 import createBlockRefRewriteMiddleware from 'eth-json-rpc-middleware/block-ref-rewrite';
 import createBlockCacheMiddleware from 'eth-json-rpc-middleware/block-cache';
@@ -49,10 +49,10 @@ function createChainIdMiddleware(chainId) {
  * Adds a delay to `eth_estimateGas` calls.
  */
 function createEstimateGasDelayTestMiddleware() {
-  return createAsyncMiddleware(async (req, _, next) => {
+  return async (req, _, next) => {
     if (req.method === 'eth_estimateGas') {
       await new Promise((resolve) => setTimeout(resolve, 2000));
     }
     return next();
-  });
+  };
 }

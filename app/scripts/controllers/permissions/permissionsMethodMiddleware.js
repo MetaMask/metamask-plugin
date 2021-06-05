@@ -1,4 +1,3 @@
-import { createAsyncMiddleware } from 'json-rpc-engine';
 import { ethErrors } from 'eth-rpc-errors';
 
 /**
@@ -14,7 +13,7 @@ export default function createPermissionsMethodMiddleware({
 }) {
   let isProcessingRequestAccounts = false;
 
-  return createAsyncMiddleware(async (req, res, next) => {
+  return async (req, res, next, end) => {
     let responseHandler;
 
     switch (req.method) {
@@ -23,15 +22,16 @@ export default function createPermissionsMethodMiddleware({
       // an empty array in case of errors (such as 4100:unauthorized)
       case 'eth_accounts': {
         res.result = await getAccounts();
-        return;
+        return end();
       }
 
       case 'eth_requestAccounts': {
         if (isProcessingRequestAccounts) {
-          res.error = ethErrors.rpc.resourceUnavailable(
-            'Already processing eth_requestAccounts. Please wait.',
+          return end(
+            ethErrors.rpc.resourceUnavailable(
+              'Already processing eth_requestAccounts. Please wait.',
+            ),
           );
-          return;
         }
 
         if (hasPermission('eth_accounts')) {
@@ -44,15 +44,14 @@ export default function createPermissionsMethodMiddleware({
         let accounts = await getAccounts();
         if (accounts.length > 0) {
           res.result = accounts;
-          return;
+          return end();
         }
 
         // if no accounts, request the accounts permission
         try {
           await requestAccountsPermission();
-        } catch (err) {
-          res.error = err;
-          return;
+        } catch (error) {
+          return end(error);
         }
 
         // get the accounts again
@@ -68,7 +67,7 @@ export default function createPermissionsMethodMiddleware({
           );
         }
 
-        return;
+        return end();
       }
 
       // custom method for getting metadata from the requesting domain,
@@ -78,19 +77,24 @@ export default function createPermissionsMethodMiddleware({
           addDomainMetadata(req.origin, req.params);
         }
         res.result = true;
-        return;
+        return end();
       }
 
       // register return handler to send accountsChanged notification
       case 'wallet_requestPermissions': {
         if ('eth_accounts' in req.params?.[0]) {
-          responseHandler = async () => {
-            if (Array.isArray(res.result)) {
-              for (const permission of res.result) {
-                if (permission.parentCapability === 'eth_accounts') {
-                  notifyAccountsChanged(await getAccounts());
+          responseHandler = async (done) => {
+            try {
+              if (Array.isArray(res.result)) {
+                for (const permission of res.result) {
+                  if (permission.parentCapability === 'eth_accounts') {
+                    notifyAccountsChanged(await getAccounts());
+                  }
                 }
               }
+              return done();
+            } catch (error) {
+              return done(error);
             }
           };
         }
@@ -101,12 +105,6 @@ export default function createPermissionsMethodMiddleware({
         break;
     }
 
-    // when this promise resolves, the response is on its way back
-    // eslint-disable-next-line node/callback-return
-    await next();
-
-    if (responseHandler) {
-      responseHandler();
-    }
-  });
+    return next(responseHandler);
+  };
 }

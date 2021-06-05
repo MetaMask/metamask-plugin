@@ -1,35 +1,32 @@
-import { createAsyncMiddleware } from 'json-rpc-engine';
 import { formatTxMetaForRpcResult } from '../util';
 
 export function createPendingNonceMiddleware({ getPendingNonce }) {
-  return createAsyncMiddleware(async (req, res, next) => {
+  return async (req, res, next, end) => {
     const { method, params } = req;
     if (method !== 'eth_getTransactionCount') {
-      next();
-      return;
+      return next();
     }
     const [param, blockRef] = params;
     if (blockRef !== 'pending') {
-      next();
-      return;
+      return next();
     }
     res.result = await getPendingNonce(param);
-  });
+    return end();
+  };
 }
 
 export function createPendingTxMiddleware({ getPendingTransactionByHash }) {
-  return createAsyncMiddleware(async (req, res, next) => {
+  return (req, res, next, end) => {
     const { method, params } = req;
     if (method !== 'eth_getTransactionByHash') {
-      next();
-      return;
+      return next();
     }
     const [hash] = params;
     const txMeta = getPendingTransactionByHash(hash);
     if (!txMeta) {
-      next();
-      return;
+      return next();
     }
     res.result = formatTxMetaForRpcResult(txMeta);
-  });
+    return end();
+  };
 }
