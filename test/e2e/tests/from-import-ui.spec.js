@@ -109,7 +109,9 @@ describe('Metamask Import UI', function () {
         await driver.clickElement({ text: 'Create', tag: 'button' });
 
         // should show the correct account name
-        const accountName = await driver.findElement('.selected-account__name');
+        const accountName = await driver.findVisibleElement(
+          '.selected-account__name',
+        );
         assert.equal(await accountName.getText(), '2nd account');
 
         // Switch back to original account
