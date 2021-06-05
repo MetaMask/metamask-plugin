@@ -793,8 +793,8 @@
     "@gulp-sourcemaps/identity-map": {
       "packages": {
         "acorn": true,
-        "css": true,
         "normalize-path": true,
+        "postcss": true,
         "source-map": true,
         "through2": true
       }
@@ -902,15 +902,6 @@
     "ajv": {
       "packages": {
         "fast-deep-equal": true
-      }
-    },
-    "amdefine": {
-      "builtin": {
-        "path.dirname": true
-      },
-      "globals": {
-        "__filename": true,
-        "process.nextTick": true
       }
     },
     "ansi-colors": {
@@ -1427,7 +1418,7 @@
         "path.resolve": true
       },
       "globals": {
-        "Buffer": true
+        "Buffer.from": true
       },
       "packages": {
         "safe-buffer": true
@@ -1486,13 +1477,13 @@
     "css": {
       "builtin": {
         "fs.readFileSync": true,
-        "path.dirname": true
+        "path.dirname": true,
+        "path.sep": true
       },
       "packages": {
         "inherits": true,
         "source-map": true,
-        "source-map-resolve": true,
-        "urix": true
+        "source-map-resolve": true
       }
     },
     "d": {
@@ -2338,7 +2329,8 @@
         "path.sep": true
       },
       "globals": {
-        "Buffer": true
+        "Buffer.concat": true,
+        "Buffer.from": true
       },
       "packages": {
         "@gulp-sourcemaps/identity-map": true,
@@ -2527,7 +2519,7 @@
     },
     "inline-source-map": {
       "globals": {
-        "Buffer": true
+        "Buffer.from": true
       },
       "packages": {
         "source-map": true
@@ -3863,16 +3855,15 @@
         "console.time": true,
         "console.timeEnd": true,
         "fetch": true
-      },
-      "packages": {
-        "amdefine": true
       }
     },
     "source-map-resolve": {
       "builtin": {
+        "path.sep": true,
         "url.resolve": true
       },
       "globals": {
+        "TextDecoder": true,
         "setImmediate": true
       },
       "packages": {
@@ -4508,11 +4499,11 @@
         "util.inherits": true
       },
       "globals": {
-        "Buffer": true,
-        "process.version.match": true
+        "process.version": true
       },
       "packages": {
         "http-parser-js": true,
+        "safe-buffer": true,
         "websocket-extensions": true
       }
     },
