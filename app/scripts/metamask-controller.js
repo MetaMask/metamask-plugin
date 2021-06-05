@@ -1367,6 +1367,10 @@ export default class MetamaskController extends EventEmitter {
    */
   async forgetDevice(deviceName) {
     const keyring = await this.getKeyringForDevice(deviceName);
+    const accounts = await keyring.getAccounts();
+    await Promise.all(
+      accounts.map((account) => this.removeAccount(account.toLowerCase())),
+    );
     keyring.forgetDevice();
     return true;
   }
