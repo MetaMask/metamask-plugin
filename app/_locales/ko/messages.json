@@ -1731,8 +1731,8 @@
   "symbol": {
     "message": "기호"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "기호는 11자 이하여야 합니다."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "기호는 20자 이하여야 합니다."
   },
   "syncWithMobile": {
     "message": "모바일과 동기화"

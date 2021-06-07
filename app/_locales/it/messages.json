@@ -1772,8 +1772,8 @@
   "symbol": {
     "message": "Simbolo"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Il simbolo deve essere lungo tra 0 e 12 caratteri."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Il simbolo deve essere lungo tra 0 e 20 caratteri."
   },
   "syncWithMobile": {
     "message": "Sincronizza con dispositivo mobile"

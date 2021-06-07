@@ -979,8 +979,8 @@
   "switchNetworks": {
     "message": "Zmień sieci"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Symbol musi mieć maksymalnie 11 znaków."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Symbol musi mieć maksymalnie 20 znaków."
   },
   "syncWithMobile": {
     "message": "Synchronizuj z telefonem"

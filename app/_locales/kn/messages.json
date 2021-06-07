@@ -988,8 +988,8 @@
   "symbol": {
     "message": "ಚಿಹ್ನೆ"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "ಚಿಹ್ನೆಯು 0 ಮತ್ತು 12 ಅಕ್ಷರಗಳ ನಡುವೆ ಇರಬೇಕು."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "ಚಿಹ್ನೆಯು 0 ಮತ್ತು 20 ಅಕ್ಷರಗಳ ನಡುವೆ ಇರಬೇಕು."
   },
   "syncWithMobile": {
     "message": "ಮೊಬೈಲ್‌ನೊಂದಿಗೆ ಸಿಂಕ್ ಮಾಡಿ"

@@ -981,8 +981,8 @@
   "symbol": {
     "message": "رمز"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "يجب أن يكون الرمز 11 حرفًا أو أقل."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "يجب أن يكون الرمز 20 حرفًا أو أقل."
   },
   "syncWithMobile": {
     "message": "مزامنة مع الهاتف المحمول"

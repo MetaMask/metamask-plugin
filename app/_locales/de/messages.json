@@ -954,8 +954,8 @@
   "switchNetworks": {
     "message": "Netzwerk wechseln"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Das Symbol darf maximal 11 Zeichen lang sein."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Das Symbol darf maximal 20 Zeichen lang sein."
   },
   "syncWithMobile": {
     "message": "Mit Mobilgerät synchronisieren"

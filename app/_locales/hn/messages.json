@@ -354,8 +354,8 @@
   "supportCenter": {
     "message": "हमारे सहायता केंद्र पर जाएं"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "प्रतीक 11 वर्ण या उससे कम का होना चाहिए।"
+  "symbolBetweenZeroTwentyOne": {
+    "message": "प्रतीक 20 वर्ण या उससे कम का होना चाहिए।"
   },
   "terms": {
     "message": "उपयोग की शर्तें"

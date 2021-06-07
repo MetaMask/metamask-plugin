@@ -948,8 +948,8 @@
   "switchNetworks": {
     "message": "Prepnúť siete"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Symbol musí být mezi 0 a 12 znaky."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Symbol musí být mezi 0 a 20 znaky."
   },
   "syncWithMobile": {
     "message": "Synchronizácia s mobilom"

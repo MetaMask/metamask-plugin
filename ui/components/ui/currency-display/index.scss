@@ -12,5 +12,11 @@
 
   &__suffix {
     padding-left: 4px;
+    white-space: nowrap;
+    max-width: 300px;
+    min-width: 0;
+    flex: 0 1 auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }

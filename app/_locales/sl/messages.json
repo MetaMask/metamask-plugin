@@ -973,8 +973,8 @@
   "symbol": {
     "message": "Simbol"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Simbol mora biti največ 11 znakov ali manj."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Simbol mora biti največ 20 znakov ali manj."
   },
   "syncWithMobile": {
     "message": "Sinhroniziraj z mobilnimi telefonom"

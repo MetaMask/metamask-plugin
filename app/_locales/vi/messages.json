@@ -1731,8 +1731,8 @@
   "symbol": {
     "message": "Ký hiệu"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Ký hiệu không được dài quá 11 ký tự."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Ký hiệu không được dài quá 20 ký tự."
   },
   "syncWithMobile": {
     "message": "Đồng bộ hóa với thiết bị di động"

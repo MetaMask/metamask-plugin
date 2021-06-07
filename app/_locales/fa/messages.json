@@ -988,8 +988,8 @@
   "symbol": {
     "message": "سمبول"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "نماد باید 11 کاراکتر یا کمتر باشد."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "نماد باید 20 کاراکتر یا کمتر باشد."
   },
   "syncWithMobile": {
     "message": "همگام سازی با موبایل"

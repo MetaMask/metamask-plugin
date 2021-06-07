@@ -408,8 +408,8 @@
   "supportCenter": {
     "message": "Destek merkezimizi ziyaret edin"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Sembol 11 karakter veya daha az olmalıdır."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Sembol 20 karakter veya daha az olmalıdır."
   },
   "terms": {
     "message": "Kullanım şartları"

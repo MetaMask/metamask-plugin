@@ -985,8 +985,8 @@
   "symbol": {
     "message": "Σύμβολο"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Το σύμβολο πρέπει να είναι τουλάχιστον 11 χαρακτήρες."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Το σύμβολο πρέπει να είναι τουλάχιστον 20 χαρακτήρες."
   },
   "syncWithMobile": {
     "message": "Συγχρονισμός με κινητό"

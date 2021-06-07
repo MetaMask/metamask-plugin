@@ -988,8 +988,8 @@
   "symbol": {
     "message": "প্রতীক"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "প্রতীকটি 11 টি অক্ষর বা তার চেয়ে কম হতে হবে।"
+  "symbolBetweenZeroTwentyOne": {
+    "message": "প্রতীকটি 20 টি অক্ষর বা তার চেয়ে কম হতে হবে।"
   },
   "syncWithMobile": {
     "message": "মোবাইল দিয়ে সিঙ্ক করুন"

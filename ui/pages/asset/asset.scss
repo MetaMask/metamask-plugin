@@ -21,6 +21,12 @@
 
   color: $Black-100;
   background-color: inherit;
+  white-space: nowrap;
+  max-width: 100%;
+  min-width: 0;
+  flex: 0 1 auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   &__chevron {
     font-size: $font-size-paragraph;

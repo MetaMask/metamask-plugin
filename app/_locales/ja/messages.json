@@ -1761,8 +1761,8 @@
   "symbol": {
     "message": "シンボル"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "シンボルは11文字以下にする必要があります。"
+  "symbolBetweenZeroTwentyOne": {
+    "message": "シンボルは20文字以下にする必要があります。"
   },
   "syncWithMobile": {
     "message": "モバイルアプリと同期"

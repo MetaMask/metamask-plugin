@@ -970,8 +970,8 @@
   "symbol": {
     "message": "Symbole"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Le symbole doit comporter 11 caractères ou moins."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Le symbole doit comporter 20 caractères ou moins."
   },
   "syncWithMobile": {
     "message": "Synchroniser avec le mobile"

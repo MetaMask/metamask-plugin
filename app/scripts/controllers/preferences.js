@@ -856,9 +856,9 @@ export default class PreferencesController {
         `Invalid symbol "${symbol}": shorter than a character.`,
       );
     }
-    if (!(symbol.length < 12)) {
+    if (!(symbol.length < 21)) {
       throw ethErrors.rpc.invalidParams(
-        `Invalid symbol "${symbol}": longer than 11 characters.`,
+        `Invalid symbol "${symbol}": longer than 20 characters.`,
       );
     }
     const numDecimals = parseInt(decimals, 10);

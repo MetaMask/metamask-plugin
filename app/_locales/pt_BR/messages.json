@@ -991,8 +991,8 @@
   "symbol": {
     "message": "Símbolo"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "O símbolo deve ter 11 caracteres ou menos."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "O símbolo deve ter 20 caracteres ou menos."
   },
   "syncWithMobile": {
     "message": "Sincronizar com o celular"

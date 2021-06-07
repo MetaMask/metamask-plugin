@@ -1731,8 +1731,8 @@
   "symbol": {
     "message": "Символ"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Символ должен состоять из 11 или менее знаков."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Символ должен состоять из 20 или менее знаков."
   },
   "syncWithMobile": {
     "message": "Синхронизировать с мобильным приложением"

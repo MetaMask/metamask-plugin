@@ -354,8 +354,8 @@
   "supportCenter": {
     "message": "Visitar o nosso Centro de Suporte"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "O símbolo deve ter 11 caracteres ou menos."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "O símbolo deve ter 20 caracteres ou menos."
   },
   "terms": {
     "message": "Termos de Uso"

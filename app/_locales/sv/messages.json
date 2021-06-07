@@ -969,8 +969,8 @@
   "switchNetworks": {
     "message": "Växla nätverk"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Symbolen måste vara 11 tecken eller färre."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Symbolen måste vara 20 tecken eller färre."
   },
   "syncWithMobile": {
     "message": "Synka med mobil"

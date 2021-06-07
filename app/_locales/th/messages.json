@@ -474,8 +474,8 @@
   "symbol": {
     "message": "เครื่องหมาย"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "สัญลักษณ์จะต้องมีความยาว 11 ตัวอักษร"
+  "symbolBetweenZeroTwentyOne": {
+    "message": "สัญลักษณ์จะต้องมีความยาว 20 ตัวอักษร"
   },
   "syncWithMobileComplete": {
     "message": "ซิงค์ข้อมูลของคุณเรียบร้อยแล้ว ใช้แอพ MetaMask ให้สนุกนะ!"

@@ -984,8 +984,8 @@
   "symbol": {
     "message": "Символ"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Символът трябва да е 11 символа или по-малко."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Символът трябва да е 20 символа или по-малко."
   },
   "syncWithMobile": {
     "message": "Синхронизиране с мобилни устройства"

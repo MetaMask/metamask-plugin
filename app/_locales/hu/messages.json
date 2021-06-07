@@ -981,8 +981,8 @@
   "symbol": {
     "message": "Szimbólum"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "A szimbólum 0 és 12 karakter között kell legyen."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "A szimbólum 1 és 20 karakter között kell legyen."
   },
   "syncWithMobile": {
     "message": "Szinkronizálás telefonnal"

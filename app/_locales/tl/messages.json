@@ -1728,8 +1728,8 @@
   "symbol": {
     "message": "Simbolo"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Dapat ay 11 character o mas kaunti ang simbolo."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Dapat ay 20 character o mas kaunti ang simbolo."
   },
   "syncWithMobile": {
     "message": "I-sync sa mobile"

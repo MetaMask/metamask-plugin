@@ -2186,8 +2186,8 @@
   "symbol": {
     "message": "Symbol"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Symbol must be 11 characters or fewer."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Symbol must be 20 characters or fewer."
   },
   "syncWithMobile": {
     "message": "Sync with mobile"

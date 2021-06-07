@@ -1731,8 +1731,8 @@
   "symbol": {
     "message": "प्रतीक"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "प्रतीक 11 वर्ण या उससे कम का होना चाहिए।"
+  "symbolBetweenZeroTwentyOne": {
+    "message": "प्रतीक 20 वर्ण या उससे कम का होना चाहिए।"
   },
   "syncWithMobile": {
     "message": "मोबाइल के साथ सिंक करें"

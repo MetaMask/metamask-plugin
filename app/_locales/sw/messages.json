@@ -966,8 +966,8 @@
   "symbol": {
     "message": "Ishara"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Alama lazima iwe na herufi 11 au chache."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Alama lazima iwe na herufi 20 au chache."
   },
   "syncWithMobile": {
     "message": "Oanisha na simu"

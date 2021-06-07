@@ -963,8 +963,8 @@
   "switchNetworks": {
     "message": "Skift Netværk"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Symbolet skal være mindst 11 tegn."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Symbolet skal være mindst 20 tegn."
   },
   "syncWithMobile": {
     "message": "Synkronisér med mobil"

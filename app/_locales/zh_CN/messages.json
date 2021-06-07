@@ -1752,8 +1752,8 @@
   "symbol": {
     "message": "符号"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "符号不得超过 11 个字符。"
+  "symbolBetweenZeroTwentyOne": {
+    "message": "符号不得超过 20 个字符。"
   },
   "syncWithMobile": {
     "message": "使用移动设备同步"

@@ -978,8 +978,8 @@
   "symbol": {
     "message": "Sümbol"
   },
-  "symbolBetweenZeroTwelve": {
-    "message": "Sümbol peab olema 11 tähemärki või vähem."
+  "symbolBetweenZeroTwentyOne": {
+    "message": "Sümbol peab olema 20 tähemärki või vähem."
   },
   "syncWithMobile": {
     "message": "Mobiiliga sünkroonimine"
