@@ -1,4 +1,4 @@
-import { strict as assert } from 'assert';
+/* eslint-disable jest/no-conditional-expect */
 import testData from '../../../../../test/data/mock-tx-history.json';
 import {
   snapshotFromTxMeta,
@@ -7,9 +7,9 @@ import {
   generateHistoryEntry,
 } from './tx-state-history-helpers';
 
-describe('Transaction state history helper', function () {
-  describe('#snapshotFromTxMeta', function () {
-    it('should clone deep', function () {
+describe('Transaction state history helper', () => {
+  describe('#snapshotFromTxMeta', () => {
+    it('should clone deep', () => {
       const input = {
         foo: {
           bar: {
@@ -18,52 +18,40 @@ describe('Transaction state history helper', function () {
         },
       };
       const output = snapshotFromTxMeta(input);
-      assert.ok('foo' in output, 'has a foo key');
-      assert.ok('bar' in output.foo, 'has a bar key');
-      assert.ok('bam' in output.foo.bar, 'has a bar key');
-      assert.equal(output.foo.bar.bam, 'baz', 'has a baz value');
+      expect('foo' in output).toStrictEqual(true);
+      expect('bar' in output.foo).toStrictEqual(true);
+      expect('bam' in output.foo.bar).toStrictEqual(true);
+      expect(output.foo.bar.bam).toStrictEqual('baz');
     });
 
-    it('should remove the history key', function () {
+    it('should remove the history key', () => {
       const input = { foo: 'bar', history: 'remembered' };
       const output = snapshotFromTxMeta(input);
-      assert.equal(typeof output.history, 'undefined', 'should remove history');
+      expect(output.history).toBeUndefined();
     });
   });
 
-  describe('#migrateFromSnapshotsToDiffs', function () {
-    it('migrates history to diffs and can recover original values', function () {
+  describe('#migrateFromSnapshotsToDiffs', () => {
+    it('migrates history to diffs and can recover original values', () => {
       testData.TransactionsController.transactions.forEach((tx) => {
         const newHistory = migrateFromSnapshotsToDiffs(tx.history);
         newHistory.forEach((newEntry, index) => {
           if (index === 0) {
-            assert.equal(
-              Array.isArray(newEntry),
-              false,
-              'initial history item IS NOT a json patch obj',
-            );
+            expect(Array.isArray(newEntry)).toStrictEqual(false);
           } else {
-            assert.equal(
-              Array.isArray(newEntry),
-              true,
-              'non-initial history entry IS a json patch obj',
-            );
+            expect(Array.isArray(newEntry)).toStrictEqual(true);
           }
           const oldEntry = tx.history[index];
           const historySubset = newHistory.slice(0, index + 1);
           const reconstructedValue = replayHistory(historySubset);
-          assert.deepEqual(
-            oldEntry,
-            reconstructedValue,
-            'was able to reconstruct old entry from diffs',
-          );
+          expect(oldEntry).toStrictEqual(reconstructedValue);
         });
       });
     });
   });
 
-  describe('#replayHistory', function () {
-    it('replaying history does not mutate the original object', function () {
+  describe('#replayHistory', () => {
+    it('replaying history does not mutate the original object', () => {
       const initialState = { test: true, message: 'hello', value: 1 };
       const diff1 = [
         {
@@ -84,21 +72,13 @@ describe('Transaction state history helper', function () {
       const beforeStateSnapshot = JSON.stringify(initialState);
       const latestState = replayHistory(history);
       const afterStateSnapshot = JSON.stringify(initialState);
-      assert.notEqual(
-        initialState,
-        latestState,
-        'initial state is not the same obj as the latest state',
-      );
-      assert.equal(
-        beforeStateSnapshot,
-        afterStateSnapshot,
-        'initial state is not modified during run',
-      );
+      expect(initialState).not.toStrictEqual(latestState);
+      expect(beforeStateSnapshot).toStrictEqual(afterStateSnapshot);
     });
   });
 
-  describe('#generateHistoryEntry', function () {
-    function generateHistoryEntryTest(note) {
+  describe('#generateHistoryEntry', () => {
+    it('should generate history entries with new properties and timestamps', () => {
       const prevState = {
         someValue: 'value 1',
         foo: {
@@ -120,43 +100,36 @@ describe('Transaction state history helper', function () {
       };
 
       const before = new Date().getTime();
-      const result = generateHistoryEntry(prevState, nextState, note);
+      const result = generateHistoryEntry(prevState, nextState);
       const after = new Date().getTime();
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 3);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(3);
 
       const expectedEntry1 = {
         op: 'add',
         path: '/foo/newPropFirstLevel',
         value: 'new property - first level',
       };
-      assert.equal(result[0].op, expectedEntry1.op);
-      assert.equal(result[0].path, expectedEntry1.path);
-      assert.equal(result[0].value, expectedEntry1.value);
-      assert.equal(result[0].note, note);
-      assert.ok(result[0].timestamp >= before && result[0].timestamp <= after);
+      expect(result[0].op).toStrictEqual(expectedEntry1.op);
+      expect(result[0].path).toStrictEqual(expectedEntry1.path);
+      expect(result[0].value).toStrictEqual(expectedEntry1.value);
+      expect(
+        result[0].timestamp >= before && result[0].timestamp <= after,
+      ).toStrictEqual(true);
 
       const expectedEntry2 = {
         op: 'replace',
         path: '/someValue',
         value: 'value 2',
       };
-      assert.deepEqual(result[1], expectedEntry2);
+      expect(result[1]).toStrictEqual(expectedEntry2);
 
       const expectedEntry3 = {
         op: 'add',
         path: '/newPropRoot',
         value: 'new property - root',
       };
-      assert.deepEqual(result[2], expectedEntry3);
-    }
-
-    it('should generate history entries', function () {
-      generateHistoryEntryTest();
-    });
-
-    it('should add note to first entry', function () {
-      generateHistoryEntryTest('custom note');
+      expect(result[2]).toStrictEqual(expectedEntry3);
     });
   });
 });

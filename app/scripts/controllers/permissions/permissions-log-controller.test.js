@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import { ObservableStore } from '@metamask/obs-store';
 import nanoid from 'nanoid';
 import { useFakeTimers } from 'sinon';
@@ -82,7 +81,7 @@ describe('permissions log', function () {
       log = permLog.getActivityLog();
       const entry1 = log[0];
 
-      assert.equal(log.length, 1, 'log should have single entry');
+      expect(log).toHaveLength(1);
       validateActivityEntry(
         entry1,
         { ...req },
@@ -102,7 +101,7 @@ describe('permissions log', function () {
       log = permLog.getActivityLog();
       const entry2 = log[1];
 
-      assert.equal(log.length, 2, 'log should have 2 entries');
+      expect(log).toHaveLength(2);
       validateActivityEntry(
         entry2,
         { ...req },
@@ -122,7 +121,7 @@ describe('permissions log', function () {
       log = permLog.getActivityLog();
       const entry3 = log[2];
 
-      assert.equal(log.length, 3, 'log should have 3 entries');
+      expect(log).toHaveLength(3);
       validateActivityEntry(
         entry3,
         { ...req },
@@ -142,7 +141,7 @@ describe('permissions log', function () {
       log = permLog.getActivityLog();
       const entry4 = log[3];
 
-      assert.equal(log.length, 4, 'log should have 4 entries');
+      expect(log).toHaveLength(4);
       validateActivityEntry(
         entry4,
         { ...req },
@@ -153,10 +152,10 @@ describe('permissions log', function () {
 
       // validate final state
 
-      assert.equal(entry1, log[0], 'first log entry should remain');
-      assert.equal(entry2, log[1], 'second log entry should remain');
-      assert.equal(entry3, log[2], 'third log entry should remain');
-      assert.equal(entry4, log[3], 'fourth log entry should remain');
+      expect(entry1).toStrictEqual(log[0]);
+      expect(entry2).toStrictEqual(log[1]);
+      expect(entry3).toStrictEqual(log[2]);
+      expect(entry4).toStrictEqual(log[3]);
     });
 
     it('handles responses added out of order', function () {
@@ -185,19 +184,17 @@ describe('permissions log', function () {
 
       // verify log state
       log = permLog.getActivityLog();
-      assert.equal(log.length, 3, 'log should have 3 entries');
+      expect(log).toHaveLength(3);
       const entry1 = log[0];
       const entry2 = log[1];
       const entry3 = log[2];
-      assert.ok(
-        entry1.id === id1 &&
-          entry1.response === null &&
-          entry2.id === id2 &&
-          entry2.response === null &&
-          entry3.id === id3 &&
-          entry3.response === null,
-        'all entries should be in correct order and without responses',
-      );
+
+      expect(entry1.id).toStrictEqual(id1);
+      expect(entry1.response).toBeNull();
+      expect(entry2.id).toStrictEqual(id2);
+      expect(entry2.response).toBeNull();
+      expect(entry3.id).toStrictEqual(id3);
+      expect(entry3.response).toBeNull();
 
       // call response handlers
       for (const i of [1, 2, 0]) {
@@ -206,7 +203,7 @@ describe('permissions log', function () {
 
       // verify log state again
       log = permLog.getActivityLog();
-      assert.equal(log.length, 3, 'log should have 3 entries');
+      expect(log).toHaveLength(3);
 
       // verify all entries
       log = permLog.getActivityLog();
@@ -247,7 +244,7 @@ describe('permissions log', function () {
       let log = permLog.getActivityLog();
       const entry1 = log[0];
 
-      assert.equal(log.length, 1, 'log should have single entry');
+      expect(log).toHaveLength(1);
       validateActivityEntry(
         entry1,
         { ...req },
@@ -265,7 +262,7 @@ describe('permissions log', function () {
 
       log = permLog.getActivityLog();
       const entry2 = log[1];
-      assert.equal(log.length, 2, 'log should have 2 entries');
+      expect(log).toHaveLength(2);
       validateActivityEntry(
         entry2,
         { ...req },
@@ -275,13 +272,13 @@ describe('permissions log', function () {
       );
 
       // validate final state
-      assert.equal(entry1, log[0], 'first log entry remains');
-      assert.equal(entry2, log[1], 'second log entry remains');
+      expect(entry1).toStrictEqual(log[0]);
+      expect(entry2).toStrictEqual(log[1]);
     });
 
     it('ignores expected methods', function () {
       let log = permLog.getActivityLog();
-      assert.equal(log.length, 0, 'log should be empty');
+      expect(log).toHaveLength(0);
 
       const res = { foo: 'bar' };
       const req1 = RPC_REQUESTS.metamask_sendDomainMetadata(
@@ -296,7 +293,7 @@ describe('permissions log', function () {
       logMiddleware(req3, res);
 
       log = permLog.getActivityLog();
-      assert.equal(log.length, 0, 'log should still be empty');
+      expect(log).toHaveLength(0);
     });
 
     it('enforces log limit', function () {
@@ -312,11 +309,7 @@ describe('permissions log', function () {
 
       // check last entry valid
       let log = permLog.getActivityLog();
-      assert.equal(
-        log.length,
-        LOG_LIMIT,
-        'log should have LOG_LIMIT num entries',
-      );
+      expect(log).toHaveLength(LOG_LIMIT);
 
       validateActivityEntry(
         log[LOG_LIMIT - 1],
@@ -335,11 +328,7 @@ describe('permissions log', function () {
 
       // check log length
       log = permLog.getActivityLog();
-      assert.equal(
-        log.length,
-        LOG_LIMIT,
-        'log should have LOG_LIMIT num entries',
-      );
+      expect(log).toHaveLength(LOG_LIMIT);
 
       // check first and last entries
       validateActivityEntry(
@@ -386,21 +375,14 @@ describe('permissions log', function () {
       logMiddleware({ ...req }, { ...res }, noop);
 
       permHistory = permLog.getHistory();
-      assert.deepEqual(permHistory, {}, 'history should not have been updated');
+      expect(permHistory).toStrictEqual({});
 
       // response => records granted permissions
       logMiddleware({ ...req }, { ...res });
 
       permHistory = permLog.getHistory();
-      assert.equal(
-        Object.keys(permHistory).length,
-        1,
-        'history should have single origin',
-      );
-      assert.ok(
-        Boolean(permHistory[DOMAINS.a.origin]),
-        'history should have expected origin',
-      );
+      expect(Object.keys(permHistory)).toHaveLength(1);
+      expect.anything(Boolean(permHistory[DOMAINS.a.origin]));
     });
 
     it('ignores malformed permissions requests', function () {
@@ -414,11 +396,7 @@ describe('permissions log', function () {
       // no params => no response
       logMiddleware({ ...req }, { ...res });
 
-      assert.deepEqual(
-        permLog.getHistory(),
-        {},
-        'history should not have been updated',
-      );
+      expect(permLog.getHistory()).toStrictEqual({});
     });
 
     it('records and updates account history as expected', async function () {
@@ -438,11 +416,7 @@ describe('permissions log', function () {
 
       permHistory = permLog.getHistory();
 
-      assert.deepEqual(
-        permHistory,
-        EXPECTED_HISTORIES.case1[0],
-        'should have correct history',
-      );
+      expect(permHistory).toStrictEqual(EXPECTED_HISTORIES.case1[0]);
 
       // mock permission requested again, with another approved account
 
@@ -454,11 +428,7 @@ describe('permissions log', function () {
 
       permHistory = permLog.getHistory();
 
-      assert.deepEqual(
-        permHistory,
-        EXPECTED_HISTORIES.case1[1],
-        'should have correct history',
-      );
+      expect(permHistory).toStrictEqual(EXPECTED_HISTORIES.case1[1]); // should have correct history
     });
 
     it('handles eth_accounts response without caveats', async function () {
@@ -475,11 +445,7 @@ describe('permissions log', function () {
 
       // validate history
 
-      assert.deepEqual(
-        permLog.getHistory(),
-        EXPECTED_HISTORIES.case2[0],
-        'should have expected history',
-      );
+      expect(permLog.getHistory()).toStrictEqual(EXPECTED_HISTORIES.case2[0]);
     });
 
     it('handles extra caveats for eth_accounts', async function () {
@@ -496,11 +462,7 @@ describe('permissions log', function () {
 
       // validate history
 
-      assert.deepEqual(
-        permLog.getHistory(),
-        EXPECTED_HISTORIES.case1[0],
-        'should have correct history',
-      );
+      expect(permLog.getHistory()).toStrictEqual(EXPECTED_HISTORIES.case1[0]);
     });
 
     // wallet_requestPermissions returns all permissions approved for the
@@ -521,11 +483,7 @@ describe('permissions log', function () {
 
       // validate history
 
-      assert.deepEqual(
-        permLog.getHistory(),
-        EXPECTED_HISTORIES.case1[0],
-        'should have correct history',
-      );
+      expect(permLog.getHistory()).toStrictEqual(EXPECTED_HISTORIES.case1[0]);
     });
 
     it('does not update history if no new permissions are approved', async function () {
@@ -541,11 +499,7 @@ describe('permissions log', function () {
 
       // validate history
 
-      assert.deepEqual(
-        permLog.getHistory(),
-        EXPECTED_HISTORIES.case4[0],
-        'should have correct history',
-      );
+      expect(permLog.getHistory()).toStrictEqual(EXPECTED_HISTORIES.case4[0]);
 
       // new permission requested, but not approved
 
@@ -563,11 +517,7 @@ describe('permissions log', function () {
 
       // validate history
 
-      assert.deepEqual(
-        permLog.getHistory(),
-        EXPECTED_HISTORIES.case4[0],
-        'should have same history as before',
-      );
+      expect(permLog.getHistory()).toStrictEqual(EXPECTED_HISTORIES.case4[0]);
     });
 
     it('records and updates history for multiple origins, regardless of response order', async function () {
@@ -626,11 +576,7 @@ describe('permissions log', function () {
       // validate history
       permHistory = permLog.getHistory();
 
-      assert.deepEqual(
-        permHistory,
-        EXPECTED_HISTORIES.case3[0],
-        'should have expected history',
-      );
+      expect(permHistory).toStrictEqual(EXPECTED_HISTORIES.case3[0]);
 
       // make next round of requests
 
@@ -670,11 +616,7 @@ describe('permissions log', function () {
       // validate history
       permHistory = permLog.getHistory();
 
-      assert.deepEqual(
-        permHistory,
-        EXPECTED_HISTORIES.case3[1],
-        'should have expected history',
-      );
+      expect(permHistory).toStrictEqual(EXPECTED_HISTORIES.case3[1]);
     });
   });
 });

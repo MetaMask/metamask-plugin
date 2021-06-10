@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration45 from './045';
 
-describe('migration #45', function () {
-  it('should update the version metadata', function (done) {
+describe('migration #45', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 44,
@@ -10,18 +9,13 @@ describe('migration #45', function () {
       data: {},
     };
 
-    migration45
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.meta, {
-          version: 45,
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration45.migrate(oldStorage);
+    expect(newStorage.meta).toStrictEqual({
+      version: 45,
+    });
   });
 
-  it('should update ipfsGateway value if outdated', function (done) {
+  it('should update ipfsGateway value if outdated', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -33,22 +27,17 @@ describe('migration #45', function () {
       },
     };
 
-    migration45
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, {
-          PreferencesController: {
-            ipfsGateway: 'dweb.link',
-            bar: 'baz',
-          },
-          foo: 'bar',
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration45.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual({
+      PreferencesController: {
+        ipfsGateway: 'dweb.link',
+        bar: 'baz',
+      },
+      foo: 'bar',
+    });
   });
 
-  it('should not update ipfsGateway value if custom set', function (done) {
+  it('should not update ipfsGateway value if custom set', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -60,22 +49,18 @@ describe('migration #45', function () {
       },
     };
 
-    migration45
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, {
-          PreferencesController: {
-            ipfsGateway: 'blah',
-            bar: 'baz',
-          },
-          foo: 'bar',
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration45.migrate(oldStorage);
+
+    expect(newStorage.data).toStrictEqual({
+      PreferencesController: {
+        ipfsGateway: 'blah',
+        bar: 'baz',
+      },
+      foo: 'bar',
+    });
   });
 
-  it('should do nothing if no PreferencesController key', function (done) {
+  it('should do nothing if no PreferencesController key', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -83,14 +68,10 @@ describe('migration #45', function () {
       },
     };
 
-    migration45
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, {
-          foo: 'bar',
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration45.migrate(oldStorage);
+
+    expect(newStorage.data).toStrictEqual({
+      foo: 'bar',
+    });
   });
 });

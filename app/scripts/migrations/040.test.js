@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration40 from './040';
 
-describe('migration #40', function () {
-  it('should update the version metadata', function (done) {
+describe('migration #40', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 39,
@@ -10,18 +9,11 @@ describe('migration #40', function () {
       data: {},
     };
 
-    migration40
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.meta, {
-          version: 40,
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration40.migrate(oldStorage);
+    expect(newStorage.meta?.version).toStrictEqual(40);
   });
 
-  it('should delete ProviderApprovalController storage key', function (done) {
+  it('should delete ProviderApprovalController storage key', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -30,27 +22,21 @@ describe('migration #40', function () {
       },
     };
 
-    migration40
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, { foo: 'bar' });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration40.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual({
+      foo: 'bar',
+    });
   });
 
-  it('should do nothing if no ProviderApprovalController storage key', function (done) {
+  it('should do nothing if no ProviderApprovalController storage key', async () => {
     const oldStorage = {
       meta: {},
       data: { foo: 'bar' },
     };
 
-    migration40
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, { foo: 'bar' });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration40.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual({
+      foo: 'bar',
+    });
   });
 });

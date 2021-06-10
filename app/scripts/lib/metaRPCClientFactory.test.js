@@ -1,24 +1,21 @@
-import { strict as assert } from 'assert';
 import { obj as createThoughStream } from 'through2';
 import metaRPCClientFactory from './metaRPCClientFactory';
 
-describe('metaRPCClientFactory', function () {
-  it('should be able to make an rpc request with the method', function (done) {
+describe('metaRPCClientFactory', () => {
+  it('should be able to make an rpc request with the method', () => {
     const streamTest = createThoughStream((chunk) => {
-      assert.strictEqual(chunk.method, 'foo');
-      done();
+      expect(chunk.method).toStrictEqual('foo');
     });
     const metaRPCClient = metaRPCClientFactory(streamTest);
     metaRPCClient.foo();
   });
-  it('should be able to make an rpc request/response with the method and params and node-style callback', function (done) {
+  it('should be able to make an rpc request/response with the method and params and node-style callback', () => {
     const streamTest = createThoughStream();
     const metaRPCClient = metaRPCClientFactory(streamTest);
 
     // make a "foo" method call
     metaRPCClient.foo('bar', (_, result) => {
-      assert.strictEqual(result, 'foobarbaz');
-      done();
+      expect(result).toStrictEqual('foobarbaz');
     });
 
     // fake a response
@@ -30,15 +27,14 @@ describe('metaRPCClientFactory', function () {
       });
     });
   });
-  it('should be able to make an rpc request/error with the method and params and node-style callback', function (done) {
+  it('should be able to make an rpc request/error with the method and params and node-style callback', () => {
     const streamTest = createThoughStream();
     const metaRPCClient = metaRPCClientFactory(streamTest);
 
     // make a "foo" method call
     metaRPCClient.foo('bar', (err) => {
-      assert.strictEqual(err.message, 'foo-message');
-      assert.strictEqual(err.code, 1);
-      done();
+      expect(err.message).toStrictEqual('foo-message');
+      expect(err.code).toStrictEqual(1);
     });
 
     metaRPCClient.requests.forEach((_, key) => {
@@ -53,17 +49,16 @@ describe('metaRPCClientFactory', function () {
     });
   });
 
-  it('should be able to make an rpc request/response with the method and params and node-style callback with multiple instances of metaRPCClientFactory and the same connectionStream', function (done) {
+  it('should be able to make an rpc request/response with the method and params and node-style callback with multiple instances of metaRPCClientFactory and the same connectionStream', () => {
     const streamTest = createThoughStream();
     const metaRPCClient = metaRPCClientFactory(streamTest);
     const metaRPCClient2 = metaRPCClientFactory(streamTest);
 
     // make a "foo" method call, followed by "baz" call on metaRPCClient2
     metaRPCClient.foo('bar', (_, result) => {
-      assert.strictEqual(result, 'foobarbaz');
+      expect(result).toStrictEqual('foobarbaz');
       metaRPCClient2.baz('bar', (err) => {
-        assert.strictEqual(err, null);
-        done();
+        expect(err).toBeNull();
       });
     });
 
@@ -86,13 +81,12 @@ describe('metaRPCClientFactory', function () {
     });
   });
 
-  it('should be able to handle notifications', function (done) {
+  it('should be able to handle notifications', () => {
     const streamTest = createThoughStream();
     const metaRPCClient = metaRPCClientFactory(streamTest);
 
     metaRPCClient.onNotification((notification) => {
-      assert(notification.method, 'foobarbaz');
-      done();
+      expect(notification.method).toStrictEqual('foobarbaz');
     });
 
     // send a notification
@@ -103,13 +97,12 @@ describe('metaRPCClientFactory', function () {
     });
   });
 
-  it('should be able to handle errors with no id', function (done) {
+  it('should be able to handle errors with no id', () => {
     const streamTest = createThoughStream();
     const metaRPCClient = metaRPCClientFactory(streamTest);
 
     metaRPCClient.onUncaughtError((error) => {
-      assert(error.code, 1);
-      done();
+      expect(error.code).toStrictEqual(1);
     });
 
     streamTest.write({
@@ -121,13 +114,12 @@ describe('metaRPCClientFactory', function () {
     });
   });
 
-  it('should be able to handle errors with null id', function (done) {
+  it('should be able to handle errors with null id', () => {
     const streamTest = createThoughStream();
     const metaRPCClient = metaRPCClientFactory(streamTest);
 
     metaRPCClient.onUncaughtError((error) => {
-      assert(error.code, 1);
-      done();
+      expect(error.code).toStrictEqual(1);
     });
 
     streamTest.write({

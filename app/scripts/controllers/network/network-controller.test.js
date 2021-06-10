@@ -1,76 +1,68 @@
-import { strict as assert } from 'assert';
 import sinon from 'sinon';
 import { getNetworkDisplayName } from './util';
 import NetworkController from './network';
 
-describe('NetworkController', function () {
-  describe('controller', function () {
+describe('NetworkController', () => {
+  describe('controller', () => {
     let networkController;
     const noop = () => undefined;
     const networkControllerProviderConfig = {
       getAccounts: noop,
     };
 
-    beforeEach(function () {
+    beforeEach(() => {
       networkController = new NetworkController();
       networkController.setInfuraProjectId('foo');
     });
 
-    describe('#provider', function () {
-      it('provider should be updatable without reassignment', function () {
+    describe('#provider', () => {
+      it('provider should be updatable without reassignment', () => {
         networkController.initializeProvider(networkControllerProviderConfig);
         const providerProxy = networkController.getProviderAndBlockTracker()
           .provider;
-        assert.equal(providerProxy.test, undefined);
+        expect(providerProxy.test).toBeUndefined();
         providerProxy.setTarget({ test: true });
-        assert.equal(providerProxy.test, true);
+        expect(providerProxy.test).toStrictEqual(true);
       });
     });
 
-    describe('#getNetworkState', function () {
-      it('should return "loading" when new', function () {
+    describe('#getNetworkState', () => {
+      it('should return "loading" when new', () => {
         const networkState = networkController.getNetworkState();
-        assert.equal(networkState, 'loading', 'network is loading');
+        expect(networkState).toStrictEqual('loading');
       });
     });
 
-    describe('#setNetworkState', function () {
-      it('should update the network', function () {
+    describe('#setNetworkState', () => {
+      it('should update the network', () => {
         networkController.setNetworkState('1');
         const networkState = networkController.getNetworkState();
-        assert.equal(networkState, '1', 'network is 1');
+        expect(networkState).toStrictEqual('1');
       });
     });
 
-    describe('#setProviderType', function () {
-      it('should update provider.type', function () {
+    describe('#setProviderType', () => {
+      it('should update provider.type', () => {
         networkController.initializeProvider(networkControllerProviderConfig);
         networkController.setProviderType('mainnet');
         const { type } = networkController.getProviderConfig();
-        assert.equal(type, 'mainnet', 'provider type is updated');
+        expect(type).toStrictEqual('mainnet');
       });
 
-      it('should set the network to loading', function () {
+      it('should set the network to loading', () => {
         networkController.initializeProvider(networkControllerProviderConfig);
 
         const spy = sinon.spy(networkController, 'setNetworkState');
         networkController.setProviderType('mainnet');
 
-        assert.equal(
-          spy.callCount,
-          1,
-          'should have called setNetworkState 2 times',
-        );
-        assert.ok(
-          spy.calledOnceWithExactly('loading'),
-          'should have called with "loading" first',
-        );
+        expect(spy.callCount).toStrictEqual(1);
+        expect(spy.calledOnceWithExactly('loading')).toStrictEqual(true);
       });
     });
   });
 
-  describe('utils', function () {
-    it('getNetworkDisplayName should return the correct network name', function () {
+  describe('utils', () => {
+    it('getNetworkDisplayName should return the correct network name', () => {
       const tests = [
         {
           input: '3',
@@ -119,7 +111,7 @@ describe('NetworkController', function () {
       ];
 
       tests.forEach(({ input, expected }) =>
-        assert.equal(getNetworkDisplayName(input), expected),
+        expect(getNetworkDisplayName(input)).toStrictEqual(expected),
       );
     });
   });

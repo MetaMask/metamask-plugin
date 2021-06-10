@@ -1,12 +1,11 @@
-import { strict as assert } from 'assert';
 import migration56 from './056';
 
 const BAD_TOKEN_DATA = { symbol: null, decimals: null };
 const TOKEN2 = { symbol: 'TXT', address: '0x11', decimals: 18 };
 const TOKEN3 = { symbol: 'TVT', address: '0x12', decimals: 18 };
 
-describe('migration #56', function () {
-  it('should update the version metadata', async function () {
+describe('migration #56', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 55,
@@ -21,12 +20,12 @@ describe('migration #56', function () {
     };
 
     const newStorage = await migration56.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 56,
     });
   });
 
-  it(`should filter out tokens without a valid address property`, async function () {
+  it(`should filter out tokens without a valid address property`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -39,13 +38,13 @@ describe('migration #56', function () {
     };
 
     const newStorage = await migration56.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data.PreferencesController.tokens, [
+    expect(newStorage.data.PreferencesController.tokens).toStrictEqual([
       TOKEN2,
       TOKEN3,
     ]);
   });
 
-  it(`should not filter any tokens when all token information is valid`, async function () {
+  it(`should not filter any tokens when all token information is valid`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -58,13 +57,13 @@ describe('migration #56', function () {
     };
 
     const newStorage = await migration56.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data.PreferencesController.tokens, [
+    expect(newStorage.data.PreferencesController.tokens).toStrictEqual([
       TOKEN2,
       TOKEN3,
     ]);
   });
 
-  it(`should filter out accountTokens without a valid address property`, async function () {
+  it(`should filter out accountTokens without a valid address property`, async () => {
     const originalAccountTokens = {
       '0x1111111111111111111111111': {
         '0x1': [TOKEN2, TOKEN3, BAD_TOKEN_DATA],
@@ -98,13 +97,12 @@ describe('migration #56', function () {
     desiredResult['0x1111111111111111111111111']['0x4'] = [];
     desiredResult['0x1111111111111111111111112']['0x4'] = [];
 
-    assert.deepStrictEqual(
-      newStorage.data.PreferencesController.accountTokens,
+    expect(newStorage.data.PreferencesController.accountTokens).toStrictEqual(
       desiredResult,
     );
   });
 
-  it(`should remove a bad assetImages key`, async function () {
+  it(`should remove a bad assetImages key`, async () => {
     const desiredAssetImages = {
       '0x514910771af9ca656af840dff83e8264ecf986ca':
         'images/contract/chainlink.svg',
@@ -121,13 +119,12 @@ describe('migration #56', function () {
     };
 
     const newStorage = await migration56.migrate(oldStorage);
-    assert.deepStrictEqual(
-      newStorage.data.PreferencesController.assetImages,
+    expect(newStorage.data.PreferencesController.assetImages).toStrictEqual(
       desiredAssetImages,
     );
   });
 
-  it(`token data with no problems should preserve all data`, async function () {
+  it(`token data with no problems should preserve all data`, async () => {
     const perfectData = {
       tokens: [TOKEN2, TOKEN3],
       accountTokens: {
@@ -150,6 +147,6 @@ describe('migration #56', function () {
     };
 
     const newStorage = await migration56.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data.PreferencesController, perfectData);
+    expect(newStorage.data.PreferencesController).toStrictEqual(perfectData);
   });
 });

@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import pify from 'pify';
 
 import getRestrictedMethods from './restrictedMethods';
@@ -15,17 +14,10 @@ describe('restricted methods', function () {
 
       const res = {};
       const fooError = new Error('foo');
-      await assert.rejects(
-        ethAccountsMethod(null, res, null),
-        fooError,
-        'Should reject with expected error',
-      );
 
-      assert.deepEqual(
-        res,
-        { error: fooError },
-        'response should have expected error and no result',
-      );
+      await expect(ethAccountsMethod(null, res, null)).rejects.toThrow('foo');
+
+      expect(res).toStrictEqual({ error: fooError });
     });
 
     it('should handle missing identity for first account when sorting', async function () {
@@ -38,13 +30,11 @@ describe('restricted methods', function () {
       const ethAccountsMethod = pify(restrictedMethods.eth_accounts.method);
 
       const res = {};
-      await assert.rejects(ethAccountsMethod(null, res, null));
-      assert.ok(res.error instanceof Error, 'result should have error');
-      assert.deepEqual(
-        Object.keys(res),
-        ['error'],
-        'result should only contain error',
+      await expect(ethAccountsMethod(null, res, null)).rejects.toThrow(
+        'Missing identity for address 0x7e57e3',
       );
+      expect(res.error instanceof Error).toStrictEqual(true);
+      expect(Object.keys(res)).toStrictEqual(['error']);
     });
 
     it('should handle missing identity for second account when sorting', async function () {
@@ -57,13 +47,11 @@ describe('restricted methods', function () {
       const ethAccountsMethod = pify(restrictedMethods.eth_accounts.method);
 
       const res = {};
-      await assert.rejects(ethAccountsMethod(null, res, null));
-      assert.ok(res.error instanceof Error, 'result should have error');
-      assert.deepEqual(
-        Object.keys(res),
-        ['error'],
-        'result should only contain error',
+      await expect(ethAccountsMethod(null, res, null)).rejects.toThrow(
+        'Missing identity for address 0x7e57e2',
       );
+      expect(res.error instanceof Error).toStrictEqual(true);
+      expect(Object.keys(res)).toStrictEqual(['error']);
     });
 
     it('should return accounts in keyring order when none are selected', async function () {
@@ -81,11 +69,7 @@ describe('restricted methods', function () {
 
       const res = {};
       await ethAccountsMethod(null, res, null);
-      assert.deepEqual(
-        res,
-        { result: keyringAccounts },
-        'should return accounts in correct order',
-      );
+      expect(res).toStrictEqual({ result: keyringAccounts });
     });
 
     it('should return accounts in keyring order when all have same last selected time', async function () {
@@ -103,11 +87,7 @@ describe('restricted methods', function () {
 
       const res = {};
       await ethAccountsMethod(null, res, null);
-      assert.deepEqual(
-        res,
-        { result: keyringAccounts },
-        'should return accounts in correct order',
-      );
+      expect(res).toStrictEqual({ result: keyringAccounts });
     });
 
     it('should return accounts sorted by last selected (descending)', async function () {
@@ -126,11 +106,7 @@ describe('restricted methods', function () {
 
       const res = {};
       await ethAccountsMethod(null, res, null);
-      assert.deepEqual(
-        res,
-        { result: expectedResult },
-        'should return accounts in correct order',
-      );
+      expect(res).toStrictEqual({ result: expectedResult });
     });
 
     it('should return accounts sorted by last selected (descending) with unselected accounts last, in keyring order', async function () {
@@ -164,11 +140,7 @@ describe('restricted methods', function () {
 
       const res = {};
       await ethAccountsMethod(null, res, null);
-      assert.deepEqual(
-        res,
-        { result: expectedResult },
-        'should return accounts in correct order',
-      );
+      expect(res).toStrictEqual({ result: expectedResult });
     });
   });
 });

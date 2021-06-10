@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import {
   GOERLI,
   GOERLI_CHAIN_ID,
@@ -19,8 +18,8 @@ const TOKEN2 = { symbol: 'TXT', address: '0x11', decimals: 18 };
 const TOKEN3 = { symbol: 'TVT', address: '0x12', decimals: 18 };
 const TOKEN4 = { symbol: 'TAT', address: '0x13', decimals: 18 };
 
-describe('migration #52', function () {
-  it('should update the version metadata', async function () {
+describe('migration #52', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 52,
@@ -29,12 +28,12 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 52,
     });
   });
 
-  it(`should move ${MAINNET} tokens and hidden tokens to be keyed by ${MAINNET_CHAIN_ID} for each address`, async function () {
+  it(`should move ${MAINNET} tokens and hidden tokens to be keyed by ${MAINNET_CHAIN_ID} for each address`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -62,7 +61,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         accountHiddenTokens: {
           '0x1111': {
@@ -86,7 +85,7 @@ describe('migration #52', function () {
     });
   });
 
-  it(`should move ${RINKEBY} tokens and hidden tokens to be keyed by ${RINKEBY_CHAIN_ID} for each address`, async function () {
+  it(`should move ${RINKEBY} tokens and hidden tokens to be keyed by ${RINKEBY_CHAIN_ID} for each address`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -114,7 +113,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         accountHiddenTokens: {
           '0x1111': {
@@ -138,7 +137,7 @@ describe('migration #52', function () {
     });
   });
 
-  it(`should move ${KOVAN} tokens and hidden tokens to be keyed by ${KOVAN_CHAIN_ID} for each address`, async function () {
+  it(`should move ${KOVAN} tokens and hidden tokens to be keyed by ${KOVAN_CHAIN_ID} for each address`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -166,7 +165,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         accountHiddenTokens: {
           '0x1111': {
@@ -190,7 +189,7 @@ describe('migration #52', function () {
     });
   });
 
-  it(`should move ${GOERLI} tokens and hidden tokens to be keyed by ${GOERLI_CHAIN_ID} for each address`, async function () {
+  it(`should move ${GOERLI} tokens and hidden tokens to be keyed by ${GOERLI_CHAIN_ID} for each address`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -218,7 +217,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         accountHiddenTokens: {
           '0x1111': {
@@ -242,7 +241,7 @@ describe('migration #52', function () {
     });
   });
 
-  it(`should move ${ROPSTEN} tokens and hidden tokens to be keyed by ${ROPSTEN_CHAIN_ID} for each address`, async function () {
+  it(`should move ${ROPSTEN} tokens and hidden tokens to be keyed by ${ROPSTEN_CHAIN_ID} for each address`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -270,7 +269,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         accountHiddenTokens: {
           '0x1111': {
@@ -294,7 +293,7 @@ describe('migration #52', function () {
     });
   });
 
-  it(`should duplicate ${NETWORK_TYPE_RPC} tokens and hidden tokens to all custom networks for each address`, async function () {
+  it(`should duplicate ${NETWORK_TYPE_RPC} tokens and hidden tokens to all custom networks for each address`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -327,7 +326,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         frequentRpcListDetail: [
           { chainId: '0xab' },
@@ -364,7 +363,7 @@ describe('migration #52', function () {
     });
   });
 
-  it(`should overwrite ${NETWORK_TYPE_RPC} tokens with built in networks if chainIds match`, async function () {
+  it(`should overwrite ${NETWORK_TYPE_RPC} tokens with built in networks if chainIds match`, async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -389,7 +388,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         frequentRpcListDetail: [{ chainId: '0x1' }],
         accountHiddenTokens: {
@@ -408,7 +407,7 @@ describe('migration #52', function () {
     });
   });
 
-  it('should do nothing if no PreferencesController key', async function () {
+  it('should do nothing if no PreferencesController key', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -417,7 +416,7 @@ describe('migration #52', function () {
     };
 
     const newStorage = await migration52.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       foo: 'bar',
     });
   });

@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import migration58 from './058';
 
 describe('migration #58', function () {
@@ -11,7 +10,7 @@ describe('migration #58', function () {
     };
 
     const newStorage = await migration58.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 58,
     });
   });
@@ -29,7 +28,7 @@ describe('migration #58', function () {
         },
       };
       const newStorage = await migration58.migrate(oldStorage);
-      assert.deepEqual(newStorage.data.AppStateController, { bar: 'baz' });
+      expect(newStorage.data.AppStateController).toStrictEqual({ bar: 'baz' });
     });
 
     it('should not modify state if the AppStateController does not exist', async function () {
@@ -40,7 +39,7 @@ describe('migration #58', function () {
         },
       };
       const newStorage = await migration58.migrate(oldStorage);
-      assert.deepEqual(newStorage.data, oldStorage.data);
+      expect(newStorage.data).toStrictEqual(oldStorage.data);
     });
   });
 });

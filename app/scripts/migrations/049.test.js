@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration49 from './049';
 
-describe('migration #49', function () {
-  it('should update the version metadata', async function () {
+describe('migration #49', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 48,
@@ -11,12 +10,12 @@ describe('migration #49', function () {
     };
 
     const newStorage = await migration49.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 49,
     });
   });
 
-  it('should move metaMetricsId to MetaMetricsController', async function () {
+  it('should move metaMetricsId to MetaMetricsController', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -29,7 +28,7 @@ describe('migration #49', function () {
     };
 
     const newStorage = await migration49.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         bar: 'baz',
       },
@@ -40,7 +39,7 @@ describe('migration #49', function () {
     });
   });
 
-  it('should move participateInMetaMetrics to MetaMetricsController', async function () {
+  it('should move participateInMetaMetrics to MetaMetricsController', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -53,7 +52,7 @@ describe('migration #49', function () {
     };
 
     const newStorage = await migration49.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         bar: 'baz',
       },
@@ -64,7 +63,7 @@ describe('migration #49', function () {
     });
   });
 
-  it('should move metaMetricsSendCount to MetaMetricsController', async function () {
+  it('should move metaMetricsSendCount to MetaMetricsController', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -77,7 +76,7 @@ describe('migration #49', function () {
     };
 
     const newStorage = await migration49.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         bar: 'baz',
       },
@@ -88,7 +87,7 @@ describe('migration #49', function () {
     });
   });
 
-  it('should move all metaMetrics fields to MetaMetricsController', async function () {
+  it('should move all metaMetrics fields to MetaMetricsController', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -103,7 +102,7 @@ describe('migration #49', function () {
     };
 
     const newStorage = await migration49.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         bar: 'baz',
       },
@@ -116,7 +115,7 @@ describe('migration #49', function () {
     });
   });
 
-  it('should do nothing if no PreferencesController key', async function () {
+  it('should do nothing if no PreferencesController key', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -125,7 +124,7 @@ describe('migration #49', function () {
     };
 
     const newStorage = await migration49.migrate(oldStorage);
-    assert.deepStrictEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       foo: 'bar',
     });
   });

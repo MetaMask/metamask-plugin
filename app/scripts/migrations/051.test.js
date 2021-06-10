@@ -1,12 +1,11 @@
-import { strict as assert } from 'assert';
 import {
   INFURA_PROVIDER_TYPES,
   NETWORK_TYPE_TO_ID_MAP,
 } from '../../../shared/constants/network';
 import migration51 from './051';
 
-describe('migration #51', function () {
-  it('should update the version metadata', async function () {
+describe('migration #51', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 50,
@@ -15,14 +14,14 @@ describe('migration #51', function () {
     };
 
     const newStorage = await migration51.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 51,
     });
   });
 
-  describe('setting chainId', function () {
+  describe('setting chainId', () => {
     INFURA_PROVIDER_TYPES.forEach(function (type) {
-      it(`should correctly set the chainId for the Infura network "${type}", if no chainId is set`, async function () {
+      it(`should correctly set the chainId for the Infura network "${type}", if no chainId is set`, async () => {
         const oldStorage = {
           meta: {},
           data: {
@@ -38,7 +37,7 @@ describe('migration #51', function () {
           },
         };
         const newStorage = await migration51.migrate(oldStorage);
-        assert.deepEqual(newStorage.data, {
+        expect(newStorage.data).toStrictEqual({
           NetworkController: {
             settings: {
               fizz: 'buzz',
@@ -52,7 +51,7 @@ describe('migration #51', function () {
         });
       });
 
-      it(`should correctly set the chainId for the Infura network "${type}", if an incorrect chainId is set`, async function () {
+      it(`should correctly set the chainId for the Infura network "${type}", if an incorrect chainId is set`, async () => {
         const oldStorage = {
           meta: {},
           data: {
@@ -69,7 +68,7 @@ describe('migration #51', function () {
           },
         };
         const newStorage = await migration51.migrate(oldStorage);
-        assert.deepEqual(newStorage.data, {
+        expect(newStorage.data).toStrictEqual({
           NetworkController: {
             settings: {
               fizz: 'buzz',
@@ -84,7 +83,7 @@ describe('migration #51', function () {
       });
     });
 
-    it('should not set the chainId for a non-Infura network that does not have chainId set', async function () {
+    it('should not set the chainId for a non-Infura network that does not have chainId set', async () => {
       const oldStorage = {
         meta: {},
         data: {
@@ -99,10 +98,10 @@ describe('migration #51', function () {
         },
       };
       const newStorage = await migration51.migrate(oldStorage);
-      assert.deepEqual(newStorage.data, oldStorage.data);
+      expect(newStorage.data).toStrictEqual(oldStorage.data);
     });
 
-    it('should not set the chainId for a non-Infura network that does have chainId set', async function () {
+    it('should not set the chainId for a non-Infura network that does have chainId set', async () => {
       const oldStorage = {
         meta: {},
         data: {
@@ -118,7 +117,7 @@ describe('migration #51', function () {
         },
       };
       const newStorage = await migration51.migrate(oldStorage);
-      assert.deepEqual(newStorage.data, oldStorage.data);
+      expect(newStorage.data).toStrictEqual(oldStorage.data);
     });
   });
 });

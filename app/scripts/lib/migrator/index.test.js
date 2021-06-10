@@ -1,5 +1,5 @@
+/* eslint-disable jest/no-conditional-expect */
 import fs from 'fs';
-import { strict as assert } from 'assert';
 import { cloneDeep } from 'lodash';
 import liveMigrations from '../../migrations';
 import data from '../../first-time-state';
@@ -39,11 +39,11 @@ const firstTimeState = {
   data,
 };
 
-describe('migrations', function () {
-  describe('liveMigrations require list', function () {
+describe('migrations', () => {
+  describe('liveMigrations require list', () => {
     let migrationNumbers;
 
-    before(function () {
+    beforeAll(() => {
       const fileNames = fs.readdirSync('./app/scripts/migrations/');
       migrationNumbers = fileNames
         .reduce((acc, filename) => {
@@ -56,21 +56,19 @@ describe('migrations', function () {
         .map((num) => parseInt(num, 10));
     });
 
-    it('should include all migrations', function () {
+    it('should include all migrations', () => {
       migrationNumbers.forEach((num) => {
         const migration = liveMigrations.find((m) => m.version === num);
-        assert(
-          migration,
-          `migration not included in 'migrations/index.js': ${num}`,
-        );
+        expect(migration.version).toStrictEqual(num);
       });
     });
 
-    it('should have tests for all migrations', function () {
+    it('should have tests for all migrations', () => {
       const fileNames = fs.readdirSync('./app/scripts/migrations/');
       const testNumbers = fileNames
         .reduce((acc, filename) => {
           const name = filename.split('.test.')[0];
+          // eslint-disable-next-line jest/no-if
           if (/^\d+$/u.test(name)) {
             acc.push(name);
           }
@@ -80,30 +78,31 @@ describe('migrations', function () {
 
       migrationNumbers.forEach((num) => {
         if (num >= 33) {
-          assert.ok(
-            testNumbers.includes(num),
-            `no test found for migration: ${num}`,
-          );
+          expect(testNumbers).toContain(num);
         }
       });
     });
   });
 
-  describe('Migrator', function () {
-    it('migratedData version should be version 3', async function () {
+  describe('Migrator', () => {
+    it('migratedData version should be version 3', async () => {
       const migrator = new Migrator({ migrations: stubMigrations });
       const migratedData = await migrator.migrateData(versionedData);
-      assert.equal(migratedData.meta.version, stubMigrations[2].version);
+      expect(migratedData.meta.version).toStrictEqual(
+        stubMigrations[2].version,
+      );
     });
 
-    it('should match the last version in live migrations', async function () {
+    it('should match the last version in live migrations', async () => {
       const migrator = new Migrator({ migrations: liveMigrations });
       const migratedData = await migrator.migrateData(firstTimeState);
       const last = liveMigrations.length - 1;
-      assert.equal(migratedData.meta.version, liveMigrations[last].version);
+      expect(migratedData.meta.version).toStrictEqual(
+        liveMigrations[last].version,
+      );
     });
 
-    it('should emit an error', async function () {
+    it('should emit an error', async () => {
       const migrator = new Migrator({
         migrations: [
           {
@@ -114,7 +113,9 @@ describe('migrations', function () {
           },
         ],
       });
-      await assert.rejects(migrator.migrateData({ meta: { version: 0 } }));
+      await expect(async () => {
+        await migrator.migrateData({ meta: { version: 0 } });
+      }).rejects.toThrow('Error: MetaMask Migration Error #1: test');
     });
   });
 });

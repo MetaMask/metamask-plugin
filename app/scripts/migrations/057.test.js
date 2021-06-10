@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration57 from './057';
 
-describe('migration #57', function () {
-  it('should update the version metadata', async function () {
+describe('migration #57', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 56,
@@ -11,12 +10,12 @@ describe('migration #57', function () {
     };
 
     const newStorage = await migration57.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 57,
     });
   });
 
-  it('should transactions array into an object keyed by id', async function () {
+  it('should transactions array into an object keyed by id', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -45,7 +44,7 @@ describe('migration #57', function () {
     };
 
     const newStorage = await migration57.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: {
           0: {
@@ -67,7 +66,7 @@ describe('migration #57', function () {
     });
   });
 
-  it('should handle transactions without an id, just in case', async function () {
+  it('should handle transactions without an id, just in case', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -98,24 +97,22 @@ describe('migration #57', function () {
       newStorage.data.TransactionController.transactions,
     )) {
       // Make sure each transaction now has an id.
-      assert.ok(
-        typeof transaction.id !== 'undefined',
-        'transaction id is undefined',
-      );
+      expect(typeof transaction.id !== 'undefined').toStrictEqual(true);
       // Build expected transaction object
       expectedTransactions[transaction.id] = transaction;
     }
     // Ensure that we got the correct number of transactions
-    assert.equal(
-      Object.keys(expectedTransactions).length,
+    expect(Object.keys(expectedTransactions)).toHaveLength(
       oldStorage.data.TransactionController.transactions.length,
     );
     // Ensure that the one transaction with id is preserved, even though it is
     // a falsy id.
-    assert.equal(newStorage.data.TransactionController.transactions[0].id, 0);
+    expect(
+      newStorage.data.TransactionController.transactions[0].id,
+    ).toStrictEqual(0);
   });
 
-  it('should not blow up if transactions are not an array', async function () {
+  it('should not blow up if transactions are not an array', async () => {
     const storageWithTransactionsAsString = {
       meta: {},
       data: {
@@ -140,11 +137,13 @@ describe('migration #57', function () {
       storageWithTransactionsAsArrayOfString,
     );
 
-    assert.deepEqual(storageWithTransactionsAsString.data, result1.data);
-    assert.deepEqual(storageWithTransactionsAsArrayOfString.data, result2.data);
+    expect(storageWithTransactionsAsString.data).toStrictEqual(result1.data);
+    expect(storageWithTransactionsAsArrayOfString.data).toStrictEqual(
+      result2.data,
+    );
   });
 
-  it('should do nothing if transactions state does not exist', async function () {
+  it('should do nothing if transactions state does not exist', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -156,10 +155,10 @@ describe('migration #57', function () {
     };
 
     const newStorage = await migration57.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 
-  it('should convert empty array into empty object', async function () {
+  it('should convert empty array into empty object', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -172,7 +171,7 @@ describe('migration #57', function () {
     };
 
     const newStorage = await migration57.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: {},
         bar: 'baz',
@@ -181,13 +180,13 @@ describe('migration #57', function () {
     });
   });
 
-  it('should do nothing if state is empty', async function () {
+  it('should do nothing if state is empty', async () => {
     const oldStorage = {
       meta: {},
       data: {},
     };
 
     const newStorage = await migration57.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 });

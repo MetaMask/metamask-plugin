@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import firstTimeState from '../first-time-state';
 import { TRANSACTION_STATUSES } from '../../../shared/constants/transaction';
 import migration27 from './027';
@@ -22,38 +21,27 @@ while (transactions.length < 9) {
 
 oldStorage.data.TransactionController.transactions = transactions;
 
-describe('migration #27', function () {
-  it('should remove rejected transactions', function (done) {
-    migration27
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        const newTransactions =
-          newStorage.data.TransactionController.transactions;
-        assert.equal(
-          newTransactions.length,
-          6,
-          'transactions is expected to have the length of 6',
-        );
-        newTransactions.forEach((txMeta) => {
-          if (txMeta.status === TRANSACTION_STATUSES.REJECTED) {
-            done(new Error('transaction was found with a status of rejected'));
-          }
-        });
-        done();
-      })
-      .catch(done);
+describe('migration #27', () => {
+  it('should remove rejected transactions', async () => {
+    const newStorage = await migration27.migrate(oldStorage);
+
+    const newTransactions = newStorage.data.TransactionController.transactions;
+
+    expect(newTransactions).toHaveLength(6);
+
+    newTransactions.forEach((txMeta) => {
+      if (txMeta.status === TRANSACTION_STATUSES.REJECTED) {
+        throw new Error('transaction was found with a status of rejected');
+      }
+    });
   });
 
-  it('should successfully migrate first time state', function (done) {
-    migration27
-      .migrate({
-        meta: {},
-        data: firstTimeState,
-      })
-      .then((migratedData) => {
-        assert.equal(migratedData.meta.version, migration27.version);
-        done();
-      })
-      .catch(done);
+  it('should successfully migrate first time state', async () => {
+    const migratedData = await migration27.migrate({
+      meta: {},
+      data: firstTimeState,
+    });
+
+    expect(migratedData.meta.version).toStrictEqual(migration27.version);
   });
 });

@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import migration48 from './048';
 
 const localhostNetwork = {
@@ -18,8 +17,8 @@ const expectedPreferencesState = {
   },
 };
 
-describe('migration #48', function () {
-  it('should update the version metadata', async function () {
+describe('migration #48', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 47,
@@ -28,12 +27,12 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 48,
     });
   });
 
-  it('should delete NetworkController.settings', async function () {
+  it('should delete NetworkController.settings', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -50,7 +49,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       NetworkController: {
         provider: {
@@ -61,7 +60,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should migrate NetworkController.provider to Rinkeby if the type is "rpc" and the chainId is invalid (1)', async function () {
+  it('should migrate NetworkController.provider to Rinkeby if the type is "rpc" and the chainId is invalid (1)', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -78,7 +77,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       NetworkController: {
         provider: {
@@ -95,7 +94,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should migrate NetworkController.provider to Rinkeby if the type is "rpc" and the chainId is invalid (2)', async function () {
+  it('should migrate NetworkController.provider to Rinkeby if the type is "rpc" and the chainId is invalid (2)', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -112,7 +111,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       NetworkController: {
         provider: {
@@ -129,7 +128,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should not migrate NetworkController.provider to Rinkeby if the type is "rpc" and the chainId is valid', async function () {
+  it('should not migrate NetworkController.provider to Rinkeby if the type is "rpc" and the chainId is valid', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -146,7 +145,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       NetworkController: {
         provider: {
@@ -160,7 +159,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should migrate NetworkController.provider to Rinkeby if the type is "localhost"', async function () {
+  it('should migrate NetworkController.provider to Rinkeby if the type is "localhost"', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -176,7 +175,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       NetworkController: {
         provider: {
@@ -193,7 +192,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should re-key NetworkController.provider.rpcTarget to rpcUrl if the type is not "rpc" or "localhost"', async function () {
+  it('should re-key NetworkController.provider.rpcTarget to rpcUrl if the type is not "rpc" or "localhost"', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -210,7 +209,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       NetworkController: {
         foo: 'bar',
@@ -224,7 +223,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should do nothing to NetworkController if affected state does not exist', async function () {
+  it('should do nothing to NetworkController if affected state does not exist', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -238,13 +237,13 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(
-      { ...expectedPreferencesState, ...oldStorage.data },
-      { ...expectedPreferencesState, ...newStorage.data },
-    );
+    expect({ ...expectedPreferencesState, ...oldStorage.data }).toStrictEqual({
+      ...expectedPreferencesState,
+      ...newStorage.data,
+    });
   });
 
-  it('should add frequentRpcListDetail item to beginning of list', async function () {
+  it('should add frequentRpcListDetail item to beginning of list', async () => {
     const existingList = [
       { rpcUrl: 'foo', chainId: '0x1' },
       { rpcUrl: 'bar', chainId: '0x2' },
@@ -261,7 +260,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         frequentRpcListDetail: [{ ...localhostNetwork }, ...existingList],
       },
@@ -269,7 +268,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should delete CachedBalancesController.cachedBalances', async function () {
+  it('should delete CachedBalancesController.cachedBalances', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -286,7 +285,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       CachedBalancesController: {
         bar: {
@@ -297,7 +296,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should convert hex transaction metamaskNetworkId values to decimal', async function () {
+  it('should convert hex transaction metamaskNetworkId values to decimal', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -323,7 +322,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       TransactionController: {
         transactions: [
@@ -346,7 +345,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should migrate the address book', async function () {
+  it('should migrate the address book', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -380,7 +379,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       AddressBookController: {
         addressBook: {
@@ -411,7 +410,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should migrate the address book and merge entries', async function () {
+  it('should migrate the address book and merge entries', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -452,7 +451,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       AddressBookController: {
         addressBook: {
@@ -483,7 +482,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should not modify address book if all entries are valid or un-parseable', async function () {
+  it('should not modify address book if all entries are valid or un-parseable', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -501,7 +500,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       AddressBookController: {
         addressBook: {
@@ -516,7 +515,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should delete localhost key in IncomingTransactionsController', async function () {
+  it('should delete localhost key in IncomingTransactionsController', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -532,7 +531,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       IncomingTransactionsController: {
         incomingTxLastFetchedBlocksByNetwork: {
@@ -544,7 +543,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should not modify IncomingTransactionsController state if affected key is missing', async function () {
+  it('should not modify IncomingTransactionsController state if affected key is missing', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -560,7 +559,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       ...expectedPreferencesState,
       IncomingTransactionsController: {
         incomingTxLastFetchedBlocksByNetwork: {
@@ -573,7 +572,7 @@ describe('migration #48', function () {
     });
   });
 
-  it('should merge localhost token list into rpc token list', async function () {
+  it('should merge localhost token list into rpc token list', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -604,7 +603,7 @@ describe('migration #48', function () {
     };
 
     const newStorage = await migration48.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         accountTokens: {
           address1: {

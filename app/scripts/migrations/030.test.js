@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import migrationTemplate from './030';
 
 const storage = {
@@ -33,29 +32,20 @@ const storage = {
   },
 };
 
-describe('storage is migrated successfully', function () {
-  it('should work', function (done) {
-    migrationTemplate
-      .migrate(storage)
-      .then((migratedData) => {
-        assert.equal(migratedData.meta.version, 30);
-        assert.equal(
-          migratedData.data.PreferencesController.frequentRpcListDetail[0]
-            .chainId,
-          undefined,
-        );
-        assert.equal(
-          migratedData.data.PreferencesController.frequentRpcListDetail[1]
-            .chainId,
-          '1',
-        );
-        assert.equal(
-          migratedData.data.NetworkController.provider.chainId,
-          undefined,
-        );
-        assert.equal(migratedData.data.NetworkController.network, undefined);
-        done();
-      })
-      .catch(done);
+describe('storage is migrated successfully', () => {
+  it('should work', async () => {
+    const migratedData = await migrationTemplate.migrate(storage);
+
+    expect(migratedData.meta.version).toStrictEqual(30);
+    expect(
+      migratedData.data.PreferencesController.frequentRpcListDetail[0].chainId,
+    ).toBeUndefined();
+    expect(
+      migratedData.data.PreferencesController.frequentRpcListDetail[1].chainId,
+    ).toStrictEqual('1');
+    expect(
+      migratedData.data.NetworkController.provider.chainId,
+    ).toBeUndefined();
+    expect(migratedData.data.NetworkController.network).toBeUndefined();
   });
 });

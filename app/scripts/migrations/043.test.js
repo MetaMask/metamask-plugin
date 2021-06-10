@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration43 from './043';
 
-describe('migration #43', function () {
-  it('should update the version metadata', async function () {
+describe('migration #43', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 42,
@@ -11,12 +10,12 @@ describe('migration #43', function () {
     };
 
     const newStorage = await migration43.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 43,
     });
   });
 
-  it('should delete currentAccountTab state', async function () {
+  it('should delete currentAccountTab state', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -29,7 +28,7 @@ describe('migration #43', function () {
     };
 
     const newStorage = await migration43.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       PreferencesController: {
         bar: 'baz',
       },
@@ -37,7 +36,7 @@ describe('migration #43', function () {
     });
   });
 
-  it('should do nothing if currentAccountTab state does not exist', async function () {
+  it('should do nothing if currentAccountTab state does not exist', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -49,6 +48,6 @@ describe('migration #43', function () {
     };
 
     const newStorage = await migration43.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 });

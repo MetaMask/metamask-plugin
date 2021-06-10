@@ -1,26 +1,25 @@
-import { strict as assert } from 'assert';
 import sinon from 'sinon';
 import { ObservableStore } from '@metamask/obs-store';
 import TokenRatesController from './token-rates';
 
-describe('TokenRatesController', function () {
+describe('TokenRatesController', () => {
   let nativeCurrency;
   let getNativeCurrency;
-  beforeEach(function () {
+  beforeEach(() => {
     nativeCurrency = 'ETH';
     getNativeCurrency = () => nativeCurrency;
   });
-  it('should listen for preferences store updates', function () {
+  it('should listen for preferences store updates', () => {
     const preferences = new ObservableStore({ tokens: [] });
     preferences.putState({ tokens: ['foo'] });
     const controller = new TokenRatesController({
       preferences,
       getNativeCurrency,
     });
-    assert.deepEqual(controller._tokens, ['foo']);
+    expect(controller._tokens).toStrictEqual(['foo']);
   });
 
-  it('should poll on correct interval', async function () {
+  it('should poll on correct interval', async () => {
     const stub = sinon.stub(global, 'setInterval');
     const preferences = new ObservableStore({ tokens: [] });
     preferences.putState({ tokens: ['foo'] });
@@ -30,7 +29,7 @@ describe('TokenRatesController', function () {
     });
     controller.start(1337);
 
-    assert.strictEqual(stub.getCall(0).args[1], 1337);
+    expect(stub.getCall(0).args[1]).toStrictEqual(1337);
     stub.restore();
     controller.stop();
   });

@@ -1,24 +1,23 @@
-import { strict as assert } from 'assert';
 import { TRANSACTION_STATUSES } from '../../../shared/constants/transaction';
 import MessageManager from './message-manager';
 
-describe('Message Manager', function () {
+describe('Message Manager', () => {
   let messageManager;
 
-  beforeEach(function () {
+  beforeEach(() => {
     messageManager = new MessageManager();
   });
 
-  describe('#getMsgList', function () {
-    it('when new should return empty array', function () {
+  describe('#getMsgList', () => {
+    it('when new should return empty array', () => {
       const result = messageManager.messages;
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 0);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(0);
     });
   });
 
-  describe('#addMsg', function () {
-    it('adds a Msg returned in getMsgList', function () {
+  describe('#addMsg', () => {
+    it('adds a Msg returned in getMsgList', () => {
       const Msg = {
         id: 1,
         status: TRANSACTION_STATUSES.APPROVED,
@@ -26,14 +25,14 @@ describe('Message Manager', function () {
       };
       messageManager.addMsg(Msg);
       const result = messageManager.messages;
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 1);
-      assert.equal(result[0].id, 1);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(1);
+      expect(result[0].id).toStrictEqual(1);
     });
   });
 
-  describe('#setMsgStatusApproved', function () {
-    it('sets the Msg status to approved', function () {
+  describe('#setMsgStatusApproved', () => {
+    it('sets the Msg status to approved', () => {
       const Msg = {
         id: 1,
         status: 'unapproved',
@@ -42,14 +41,14 @@ describe('Message Manager', function () {
       messageManager.addMsg(Msg);
       messageManager.setMsgStatusApproved(1);
       const result = messageManager.messages;
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 1);
-      assert.equal(result[0].status, TRANSACTION_STATUSES.APPROVED);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(1);
+      expect(result[0].status).toStrictEqual(TRANSACTION_STATUSES.APPROVED);
     });
   });
 
-  describe('#rejectMsg', function () {
-    it('sets the Msg status to rejected', function () {
+  describe('#rejectMsg', () => {
+    it('sets the Msg status to rejected', () => {
       const Msg = {
         id: 1,
         status: 'unapproved',
@@ -58,14 +57,14 @@ describe('Message Manager', function () {
       messageManager.addMsg(Msg);
       messageManager.rejectMsg(1);
       const result = messageManager.messages;
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 1);
-      assert.equal(result[0].status, TRANSACTION_STATUSES.REJECTED);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(1);
+      expect(result[0].status).toStrictEqual(TRANSACTION_STATUSES.REJECTED);
     });
   });
 
-  describe('#_updateMsg', function () {
-    it('replaces the Msg with the same id', function () {
+  describe('#_updateMsg', () => {
+    it('replaces the Msg with the same id', () => {
       messageManager.addMsg({
         id: '1',
         status: 'unapproved',
@@ -83,12 +82,12 @@ describe('Message Manager', function () {
         metamaskNetworkId: 'unit test',
       });
       const result = messageManager.getMsg('1');
-      assert.equal(result.hash, 'foo');
+      expect(result.hash).toStrictEqual('foo');
     });
   });
 
-  describe('#getUnapprovedMsgs', function () {
-    it('returns unapproved Msgs in a hash', function () {
+  describe('#getUnapprovedMsgs', () => {
+    it('returns unapproved Msgs in a hash', () => {
       messageManager.addMsg({
         id: '1',
         status: 'unapproved',
@@ -100,14 +99,14 @@ describe('Message Manager', function () {
         metamaskNetworkId: 'unit test',
       });
       const result = messageManager.getUnapprovedMsgs();
-      assert.equal(typeof result, 'object');
-      assert.equal(result['1'].status, 'unapproved');
-      assert.equal(result['2'], undefined);
+      expect(typeof result).toStrictEqual('object');
+      expect(result['1'].status).toStrictEqual('unapproved');
+      expect(result['2']).toBeUndefined();
     });
   });
 
-  describe('#getMsg', function () {
-    it('returns a Msg with the requested id', function () {
+  describe('#getMsg', () => {
+    it('returns a Msg with the requested id', () => {
       messageManager.addMsg({
         id: '1',
         status: 'unapproved',
@@ -118,9 +117,8 @@ describe('Message Manager', function () {
         status: TRANSACTION_STATUSES.APPROVED,
         metamaskNetworkId: 'unit test',
       });
-      assert.equal(messageManager.getMsg('1').status, 'unapproved');
-      assert.equal(
-        messageManager.getMsg('2').status,
+      expect(messageManager.getMsg('1').status).toStrictEqual('unapproved');
+      expect(messageManager.getMsg('2').status).toStrictEqual(
         TRANSACTION_STATUSES.APPROVED,
       );
     });

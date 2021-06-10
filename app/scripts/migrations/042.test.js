@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration42 from './042';
 
-describe('migration #42', function () {
-  it('should update the version metadata', function (done) {
+describe('migration #42', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 41,
@@ -10,18 +9,11 @@ describe('migration #42', function () {
       data: {},
     };
 
-    migration42
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.meta, {
-          version: 42,
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration42.migrate(oldStorage);
+    expect(newStorage.meta.version).toStrictEqual(42);
   });
 
-  it('should set connectedStatusPopoverHasBeenShown to false', function (done) {
+  it('should set connectedStatusPopoverHasBeenShown to false', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -33,22 +25,17 @@ describe('migration #42', function () {
       },
     };
 
-    migration42
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, {
-          AppStateController: {
-            connectedStatusPopoverHasBeenShown: false,
-            bar: 'baz',
-          },
-          foo: 'bar',
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration42.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual({
+      AppStateController: {
+        connectedStatusPopoverHasBeenShown: false,
+        bar: 'baz',
+      },
+      foo: 'bar',
+    });
   });
 
-  it('should initialize AppStateController if it does not exist', function (done) {
+  it('should initialize AppStateController if it does not exist', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -56,17 +43,12 @@ describe('migration #42', function () {
       },
     };
 
-    migration42
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, {
-          foo: 'bar',
-          AppStateController: {
-            connectedStatusPopoverHasBeenShown: false,
-          },
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration42.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual({
+      foo: 'bar',
+      AppStateController: {
+        connectedStatusPopoverHasBeenShown: false,
+      },
+    });
   });
 });

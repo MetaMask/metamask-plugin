@@ -1,9 +1,8 @@
-import { strict as assert } from 'assert';
 import { TRANSACTION_TYPES } from '../../../shared/constants/transaction';
 import migration53 from './053';
 
-describe('migration #53', function () {
-  it('should update the version metadata', async function () {
+describe('migration #53', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 52,
@@ -12,12 +11,12 @@ describe('migration #53', function () {
     };
 
     const newStorage = await migration53.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 53,
     });
   });
 
-  it('should update type of standard transactions', async function () {
+  it('should update type of standard transactions', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -60,7 +59,7 @@ describe('migration #53', function () {
     };
 
     const newStorage = await migration53.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: [
           { type: TRANSACTION_TYPES.CANCEL, txParams: { foo: 'bar' } },
@@ -86,7 +85,7 @@ describe('migration #53', function () {
     });
   });
 
-  it('should do nothing if transactions state does not exist', async function () {
+  it('should do nothing if transactions state does not exist', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -101,10 +100,10 @@ describe('migration #53', function () {
     };
 
     const newStorage = await migration53.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 
-  it('should do nothing if transactions state is empty', async function () {
+  it('should do nothing if transactions state is empty', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -121,16 +120,16 @@ describe('migration #53', function () {
     };
 
     const newStorage = await migration53.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 
-  it('should do nothing if state is empty', async function () {
+  it('should do nothing if state is empty', async () => {
     const oldStorage = {
       meta: {},
       data: {},
     };
 
     const newStorage = await migration53.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 });

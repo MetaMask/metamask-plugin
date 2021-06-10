@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration35 from './035';
 
-describe('migration #35', function () {
-  it('should update the version metadata', function (done) {
+describe('migration #35', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 34,
@@ -10,18 +9,11 @@ describe('migration #35', function () {
       data: {},
     };
 
-    migration35
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.meta, {
-          version: 35,
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration35.migrate(oldStorage);
+    expect(newStorage.meta.version).toStrictEqual(35);
   });
 
-  it('should delete seedWords', function (done) {
+  it('should delete seedWords', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -31,16 +23,11 @@ describe('migration #35', function () {
       },
     };
 
-    migration35
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data.PreferencesController, {});
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration35.migrate(oldStorage);
+    expect(newStorage.data.PreferencesController).toStrictEqual({});
   });
 
-  it('should delete falsy seedWords', function (done) {
+  it('should delete falsy seedWords', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -50,16 +37,11 @@ describe('migration #35', function () {
       },
     };
 
-    migration35
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data.PreferencesController, {});
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration35.migrate(oldStorage);
+    expect(newStorage.data.PreferencesController).toStrictEqual({});
   });
 
-  it('should leave state without seedWords unchanged', function (done) {
+  it('should leave state without seedWords unchanged', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -88,12 +70,7 @@ describe('migration #35', function () {
       },
     };
 
-    migration35
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, oldStorage.data);
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration35.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual(oldStorage.data);
   });
 });

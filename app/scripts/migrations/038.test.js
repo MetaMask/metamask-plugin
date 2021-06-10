@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration38 from './038';
 
-describe('migration #38', function () {
-  it('should update the version metadata', function (done) {
+describe('migration #38', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 37,
@@ -10,36 +9,23 @@ describe('migration #38', function () {
       data: {},
     };
 
-    migration38
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.meta, {
-          version: 38,
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration38.migrate(oldStorage);
+    expect(newStorage.meta.version).toStrictEqual(38);
   });
 
-  it('should add a fullScreenVsPopup property set to either "control" or "fullScreen"', function (done) {
+  it('should add a fullScreenVsPopup property set to either "control" or "fullScreen"', async () => {
     const oldStorage = {
       meta: {},
       data: {},
     };
 
-    migration38
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.equal(
-          newStorage.data.ABTestController.abTests.fullScreenVsPopup,
-          'control',
-        );
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration38.migrate(oldStorage);
+    expect(
+      newStorage.data.ABTestController?.abTests?.fullScreenVsPopup,
+    ).toStrictEqual('control');
   });
 
-  it('should leave the fullScreenVsPopup property unchanged if it exists', function (done) {
+  it('should leave the fullScreenVsPopup property unchanged if it exists', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -51,16 +37,9 @@ describe('migration #38', function () {
       },
     };
 
-    migration38
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data.ABTestController, {
-          abTests: {
-            fullScreenVsPopup: 'fullScreen',
-          },
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration38.migrate(oldStorage);
+    expect(
+      newStorage.data.ABTestController?.abTests?.fullScreenVsPopup,
+    ).toStrictEqual('fullScreen');
   });
 });

@@ -1,4 +1,4 @@
-import { strict as assert } from 'assert';
+/* eslint-disable jest/no-conditional-expect */
 import data from '../first-time-state';
 import { TRANSACTION_STATUSES } from '../../../shared/constants/transaction';
 import migration25 from './025';
@@ -36,33 +36,25 @@ while (transactions.length <= 10) {
 
 storage.data.TransactionController.transactions = transactions;
 
-describe('storage is migrated successfully and the txParams.from are lowercase', function () {
-  it('should lowercase the from for unapproved txs', function (done) {
-    migration25
-      .migrate(storage)
-      .then((migratedData) => {
-        const migratedTransactions =
-          migratedData.data.TransactionController.transactions;
-        migratedTransactions.forEach((tx) => {
-          if (tx.status === TRANSACTION_STATUSES.UNAPPROVED) {
-            assert(!tx.txParams.random);
-          }
-          if (tx.status === TRANSACTION_STATUSES.UNAPPROVED) {
-            assert(!tx.txParams.chainId);
-          }
-        });
-        done();
-      })
-      .catch(done);
+describe('storage is migrated successfully and the txParams.from are lowercase', () => {
+  it('should lowercase the from for unapproved txs', async () => {
+    const migratedData = await migration25.migrate(storage);
+
+    const migratedTransactions =
+      migratedData.data.TransactionController.transactions;
+    migratedTransactions.forEach((tx) => {
+      if (tx.status === TRANSACTION_STATUSES.UNAPPROVED) {
+        expect(!tx.txParams.random).toStrictEqual(true);
+      }
+      if (tx.status === TRANSACTION_STATUSES.UNAPPROVED) {
+        expect(!tx.txParams.chainId).toStrictEqual(true);
+      }
+    });
   });
 
-  it('should migrate first time state', function (done) {
-    migration25
-      .migrate(firstTimeState)
-      .then((migratedData) => {
-        assert.equal(migratedData.meta.version, 25);
-        done();
-      })
-      .catch(done);
+  it('should migrate first time state', async () => {
+    const migratedData = await migration25.migrate(firstTimeState);
+
+    expect(migratedData.meta.version).toStrictEqual(25);
   });
 });

@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import sinon from 'sinon';
 import migration50 from './050';
 
@@ -14,18 +13,21 @@ const LEGACY_LOCAL_STORAGE_KEYS = [
   'GAS_API_ESTIMATES',
 ];
 
-describe('migration #50', function () {
+describe('migration #50', () => {
   let mockLocalStorageRemoveItem;
 
-  beforeEach(function () {
-    mockLocalStorageRemoveItem = sinon.stub(window.localStorage, 'removeItem');
+  beforeEach(() => {
+    mockLocalStorageRemoveItem = jest
+      // eslint-disable-next-line no-undef
+      .spyOn(Storage.prototype, 'removeItem')
+      .mockImplementation();
   });
 
-  afterEach(function () {
+  afterEach(() => {
     sinon.restore();
   });
 
-  it('should update the version metadata', async function () {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 49,
@@ -34,12 +36,12 @@ describe('migration #50', function () {
     };
 
     const newStorage = await migration50.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 50,
     });
   });
 
-  it('should call window.localStorage.removeItem for each legacy key', async function () {
+  it('should call window.localStorage.removeItem for each legacy key', async () => {
     const oldStorage = {
       meta: {
         version: 49,
@@ -48,41 +50,32 @@ describe('migration #50', function () {
     };
 
     await migration50.migrate(oldStorage);
-    assert.equal(mockLocalStorageRemoveItem.callCount, 9);
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(0).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls).toHaveLength(9);
+    expect(mockLocalStorageRemoveItem.mock.calls[0][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[0],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(1).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[1][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[1],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(2).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[2][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[2],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(3).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[3][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[3],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(4).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[4][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[4],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(5).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[5][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[5],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(6).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[6][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[6],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(7).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[7][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[7],
     );
-    assert.equal(
-      mockLocalStorageRemoveItem.getCall(8).args[0],
+    expect(mockLocalStorageRemoveItem.mock.calls[8][0]).toStrictEqual(
       LEGACY_LOCAL_STORAGE_KEYS[8],
     );
   });

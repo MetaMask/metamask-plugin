@@ -13,5 +13,12 @@ module.exports = {
   },
   setupFiles: ['./test/setup.js', './test/env.js'],
   setupFilesAfterEnv: ['./test/jest/setup.js'],
-  testMatch: ['**/ui/**/?(*.)+(test).js'],
+  testMatch: ['<rootDir>/**/*.test.js'],
+  testPathIgnorePatterns: [
+    '<rootDir>/app/scripts/metamask-controller.test.js',
+    '<rootDir>/app/scripts/controllers/transactions/index.test.js',
+    '<rootDir>/app/scripts/controllers/network/pending-middleware.test.js',
+    '<rootDir>/app/scripts/controllers/permissions/permissions-middleware.test.js',
+    '<rootDir>/test/unit-global/',
+  ],
 };

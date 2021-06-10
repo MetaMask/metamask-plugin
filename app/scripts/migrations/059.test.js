@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import { cloneDeep } from 'lodash';
 import {
   KOVAN_CHAIN_ID,
@@ -131,7 +130,7 @@ describe('migration #59', function () {
     };
 
     const newStorage = await migration59.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 59,
     });
   });
@@ -150,7 +149,7 @@ describe('migration #59', function () {
     const newStorage = await migration59.migrate(oldStorage);
     const EXPECTED = cloneDeep(ERRONEOUS_TRANSACTION_STATE);
     delete EXPECTED['0'];
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: EXPECTED,
       },
@@ -182,7 +181,7 @@ describe('migration #59', function () {
       oldStorage.data.TransactionController.transactions,
     );
     delete EXPECTED['0'];
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: EXPECTED,
       },
@@ -209,7 +208,7 @@ describe('migration #59', function () {
     };
 
     const newStorage = await migration59.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: oldStorage.data.TransactionController.transactions,
       },
@@ -231,7 +230,7 @@ describe('migration #59', function () {
     const newStorage = await migration59.migrate(oldStorage);
     const EXPECTED = cloneDeep(ERRONEOUS_TRANSACTION_STATE_RETRY);
     delete EXPECTED['0'];
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: EXPECTED,
       },
@@ -263,7 +262,7 @@ describe('migration #59', function () {
       oldStorage.data.TransactionController.transactions,
     );
     delete EXPECTED['0'];
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: EXPECTED,
       },
@@ -290,7 +289,7 @@ describe('migration #59', function () {
     };
 
     const newStorage = await migration59.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: oldStorage.data.TransactionController.transactions,
       },
@@ -315,7 +314,7 @@ describe('migration #59', function () {
     // transactions we expect to be missing.
     const EXPECTED = cloneDeep(ERRONEOUS_TRANSACTION_STATE);
     delete EXPECTED['0'];
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       TransactionController: {
         transactions: EXPECTED,
       },
@@ -338,7 +337,7 @@ describe('migration #59', function () {
     };
 
     const newStorage = await migration59.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 
   it('should do nothing if transactions state is empty', async function () {
@@ -354,7 +353,7 @@ describe('migration #59', function () {
     };
 
     const newStorage = await migration59.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 
   it('should do nothing if transactions state is not an object', async function () {
@@ -370,7 +369,7 @@ describe('migration #59', function () {
     };
 
     const newStorage = await migration59.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 
   it('should do nothing if state is empty', async function () {
@@ -380,6 +379,6 @@ describe('migration #59', function () {
     };
 
     const newStorage = await migration59.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 });

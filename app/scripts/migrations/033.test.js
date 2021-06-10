@@ -1,7 +1,6 @@
-import { strict as assert } from 'assert';
 import migration33 from './033';
 
-describe('Migration to delete notice controller', function () {
+describe('Migration to delete notice controller', () => {
   const oldStorage = {
     meta: {},
     data: {
@@ -31,9 +30,8 @@ describe('Migration to delete notice controller', function () {
     },
   };
 
-  it('removes notice controller from state', function () {
-    migration33.migrate(oldStorage).then((newStorage) => {
-      assert.equal(newStorage.data.NoticeController, undefined);
-    });
+  it('removes notice controller from state', async () => {
+    const newStorage = await migration33.migrate(oldStorage);
+    expect(newStorage.data.NoticeController).toBeUndefined();
   });
 });

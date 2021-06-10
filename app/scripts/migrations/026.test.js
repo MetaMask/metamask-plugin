@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import firstTimeState from '../first-time-state';
 import migration26 from './026';
 
@@ -15,35 +14,25 @@ const oldStorage = {
   },
 };
 
-describe('migration #26', function () {
-  it('should move the identities from KeyringController', function (done) {
-    migration26
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        const { identities } = newStorage.data.PreferencesController;
-        assert.deepEqual(identities, {
-          '0x1e77e2': { name: 'Test Account 1', address: '0x1e77e2' },
-          '0x7e57e2': { name: 'Test Account 2', address: '0x7e57e2' },
-        });
-        assert.strictEqual(
-          newStorage.data.KeyringController.walletNicknames,
-          undefined,
-        );
-        done();
-      })
-      .catch(done);
+describe('migration #26', () => {
+  it('should move the identities from KeyringController', async () => {
+    const newStorage = await migration26.migrate(oldStorage);
+
+    const { identities } = newStorage.data.PreferencesController;
+
+    expect(identities).toStrictEqual({
+      '0x1e77e2': { name: 'Test Account 1', address: '0x1e77e2' },
+      '0x7e57e2': { name: 'Test Account 2', address: '0x7e57e2' },
+    });
+
+    expect(newStorage.data.KeyringController.walletNicknames).toBeUndefined();
   });
 
-  it('should successfully migrate first time state', function (done) {
-    migration26
-      .migrate({
-        meta: {},
-        data: firstTimeState,
-      })
-      .then((migratedData) => {
-        assert.equal(migratedData.meta.version, migration26.version);
-        done();
-      })
-      .catch(done);
+  it('should successfully migrate first time state', async () => {
+    const migratedData = await migration26.migrate({
+      meta: {},
+      data: firstTimeState,
+    });
+    expect(migratedData.meta.version).toStrictEqual(migration26.version);
   });
 });

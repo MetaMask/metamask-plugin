@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import { isPrefixedFormattedHexString } from '../../../shared/modules/network.utils';
 
 import {
@@ -9,67 +8,67 @@ import {
 } from '../../../shared/constants/app';
 import { getEnvironmentType, sufficientBalance } from './util';
 
-describe('app utils', function () {
-  describe('getEnvironmentType', function () {
-    it('should return popup type', function () {
+describe('app utils', () => {
+  describe('getEnvironmentType', () => {
+    it('should return popup type', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/popup.html',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_POPUP);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_POPUP);
     });
 
-    it('should return notification type', function () {
+    it('should return notification type', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/notification.html',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_NOTIFICATION);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_NOTIFICATION);
     });
 
-    it('should return fullscreen type for home.html', function () {
+    it('should return fullscreen type for home.html', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/home.html',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_FULLSCREEN);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_FULLSCREEN);
     });
 
-    it('should return fullscreen type for phishing.html', function () {
+    it('should return fullscreen type for phishing.html', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/phishing.html',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_FULLSCREEN);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_FULLSCREEN);
     });
 
-    it('should return background type', function () {
+    it('should return background type', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/_generated_background_page.html',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_BACKGROUND);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_BACKGROUND);
     });
 
-    it('should return the correct type for a URL with a hash fragment', function () {
+    it('should return the correct type for a URL with a hash fragment', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/popup.html#hash',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_POPUP);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_POPUP);
     });
 
-    it('should return the correct type for a URL with query parameters', function () {
+    it('should return the correct type for a URL with query parameters', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/popup.html?param=foo',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_POPUP);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_POPUP);
     });
 
-    it('should return the correct type for a URL with query parameters and a hash fragment', function () {
+    it('should return the correct type for a URL with query parameters and a hash fragment', () => {
       const environmentType = getEnvironmentType(
         'http://extension-id/popup.html?param=foo#hash',
       );
-      assert.equal(environmentType, ENVIRONMENT_TYPE_POPUP);
+      expect(environmentType).toStrictEqual(ENVIRONMENT_TYPE_POPUP);
     });
   });
 
-  describe('SufficientBalance', function () {
-    it('returns true if max tx cost is equal to balance.', function () {
+  describe('SufficientBalance', () => {
+    it('returns true if max tx cost is equal to balance.', () => {
       const tx = {
         value: '0x1',
         gas: '0x2',
@@ -78,10 +77,10 @@ describe('app utils', function () {
       const balance = '0x8';
 
       const result = sufficientBalance(tx, balance);
-      assert.ok(result, 'sufficient balance found.');
+      expect(result).toStrictEqual(true);
     });
 
-    it('returns true if max tx cost is less than balance.', function () {
+    it('returns true if max tx cost is less than balance.', () => {
       const tx = {
         value: '0x1',
         gas: '0x2',
@@ -90,10 +89,10 @@ describe('app utils', function () {
       const balance = '0x9';
 
       const result = sufficientBalance(tx, balance);
-      assert.ok(result, 'sufficient balance found.');
+      expect(result).toStrictEqual(true);
     });
 
-    it('returns false if max tx cost is more than balance.', function () {
+    it('returns false if max tx cost is more than balance.', () => {
       const tx = {
         value: '0x1',
         gas: '0x2',
@@ -102,91 +101,41 @@ describe('app utils', function () {
       const balance = '0x6';
 
       const result = sufficientBalance(tx, balance);
-      assert.ok(!result, 'insufficient balance found.');
+      expect(result).toStrictEqual(false);
     });
   });
 
-  describe('isPrefixedFormattedHexString', function () {
-    it('should return true for valid hex strings', function () {
-      assert.equal(
-        isPrefixedFormattedHexString('0x1'),
-        true,
-        'should return true',
-      );
+  describe('isPrefixedFormattedHexString', () => {
+    it('should return true for valid hex strings', () => {
+      expect(isPrefixedFormattedHexString('0x1')).toStrictEqual(true);
 
-      assert.equal(
-        isPrefixedFormattedHexString('0xa'),
-        true,
-        'should return true',
-      );
+      expect(isPrefixedFormattedHexString('0xa')).toStrictEqual(true);
 
-      assert.equal(
+      expect(
         isPrefixedFormattedHexString('0xabcd1123fae909aad87452'),
-        true,
-        'should return true',
-      );
+      ).toStrictEqual(true);
     });
 
-    it('should return false for invalid hex strings', function () {
-      assert.equal(
-        isPrefixedFormattedHexString('0x'),
-        false,
-        'should return false',
-      );
+    it('should return false for invalid hex strings', () => {
+      expect(isPrefixedFormattedHexString('0x')).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString('0x0'),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString('0x0')).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString('0x01'),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString('0x01')).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString(' 0x1'),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString(' 0x1')).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString('0x1 '),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString('0x1 ')).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString('0x1afz'),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString('0x1afz')).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString('z'),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString('z')).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString(2),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString(2)).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString(['0x1']),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString(['0x1'])).toStrictEqual(false);
 
-      assert.equal(
-        isPrefixedFormattedHexString(),
-        false,
-        'should return false',
-      );
+      expect(isPrefixedFormattedHexString()).toStrictEqual(false);
     });
   });
 });

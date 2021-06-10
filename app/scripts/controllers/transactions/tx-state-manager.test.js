@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import sinon from 'sinon';
 import {
   TRANSACTION_STATUSES,
@@ -45,13 +44,13 @@ function generateTransactions(
   }
   return txs;
 }
-describe('TransactionStateManager', function () {
+describe('TransactionStateManager', () => {
   let txStateManager;
   const currentNetworkId = KOVAN_NETWORK_ID;
   const currentChainId = KOVAN_CHAIN_ID;
   const otherNetworkId = '2';
 
-  beforeEach(function () {
+  beforeEach(() => {
     txStateManager = new TxStateManager({
       initState: {
         transactions: {},
@@ -62,8 +61,8 @@ describe('TransactionStateManager', function () {
     });
   });
 
-  describe('#setTxStatusSigned', function () {
-    it('sets the tx status to signed', function () {
+  describe('#setTxStatusSigned', () => {
+    it('sets the tx status to signed', () => {
       const tx = {
         id: 1,
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -76,12 +75,12 @@ describe('TransactionStateManager', function () {
       txStateManager.addTransaction(tx);
       txStateManager.setTxStatusSigned(1);
       const result = txStateManager.getTransactions();
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 1);
-      assert.equal(result[0].status, TRANSACTION_STATUSES.SIGNED);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(1);
+      expect(result[0].status).toStrictEqual(TRANSACTION_STATUSES.SIGNED);
     });
 
-    it('should emit a signed event to signal the execution of callback', function () {
+    it('should emit a signed event to signal the execution of callback', () => {
       const tx = {
         id: 1,
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -100,12 +99,12 @@ describe('TransactionStateManager', function () {
       clock.runAll();
       clock.restore();
 
-      assert.ok(onSigned.calledOnce);
+      expect(onSigned.calledOnce).toStrictEqual(true);
     });
   });
 
-  describe('#setTxStatusRejected', function () {
-    it('sets the tx status to rejected and removes it from history', function () {
+  describe('#setTxStatusRejected', () => {
+    it('sets the tx status to rejected and removes it from history', () => {
       const tx = {
         id: 1,
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -118,11 +117,11 @@ describe('TransactionStateManager', function () {
       txStateManager.addTransaction(tx);
       txStateManager.setTxStatusRejected(1);
       const result = txStateManager.getTransactions();
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 0);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(0);
     });
 
-    it('should emit a rejected event to signal the execution of callback', function () {
+    it('should emit a rejected event to signal the execution of callback', () => {
       const tx = {
         id: 1,
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -141,18 +140,18 @@ describe('TransactionStateManager', function () {
       clock.runAll();
       clock.restore();
 
-      assert.ok(onSigned.calledOnce);
+      expect(onSigned.calledOnce).toStrictEqual(true);
     });
   });
 
-  describe('#getTransactions', function () {
-    it('when new should return empty array', function () {
+  describe('#getTransactions', () => {
+    it('when new should return empty array', () => {
       const result = txStateManager.getTransactions();
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 0);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(0);
     });
 
-    it('should return a full list of transactions', function () {
+    it('should return a full list of transactions', () => {
       const submittedTx = {
         id: 0,
         metamaskNetworkId: currentNetworkId,
@@ -188,10 +187,10 @@ describe('TransactionStateManager', function () {
         getCurrentChainId: () => currentChainId,
       });
 
-      assert.deepEqual(txm.getTransactions(), [submittedTx, confirmedTx]);
+      expect(txm.getTransactions()).toStrictEqual([submittedTx, confirmedTx]);
     });
 
-    it('should return a list of transactions, limited by N unique nonces when there are NO duplicates', function () {
+    it('should return a list of transactions, limited by N unique nonces when there are NO duplicates', () => {
       const submittedTx0 = {
         id: 0,
         metamaskNetworkId: currentNetworkId,
@@ -253,13 +252,13 @@ describe('TransactionStateManager', function () {
         getCurrentChainId: () => currentChainId,
       });
 
-      assert.deepEqual(txm.getTransactions({ limit: 2 }), [
+      expect(txm.getTransactions({ limit: 2 })).toStrictEqual([
         approvedTx2,
         confirmedTx3,
       ]);
     });
 
-    it('should return a list of transactions, limited by N unique nonces when there ARE duplicates', function () {
+    it('should return a list of transactions, limited by N unique nonces when there ARE duplicates', () => {
       const submittedTx0 = {
         id: 0,
         metamaskNetworkId: currentNetworkId,
@@ -362,7 +361,7 @@ describe('TransactionStateManager', function () {
         getCurrentChainId: () => currentChainId,
       });
 
-      assert.deepEqual(txm.getTransactions({ limit: 2 }), [
+      expect(txm.getTransactions({ limit: 2 })).toStrictEqual([
         approvedTx2,
         approvedTx2Dupe,
         failedTx3,
@@ -370,7 +369,7 @@ describe('TransactionStateManager', function () {
       ]);
     });
 
-    it('returns a tx with the requested data', function () {
+    it('returns a tx with the requested data', () => {
       const txMetas = [
         {
           id: 0,
@@ -440,8 +439,7 @@ describe('TransactionStateManager', function () {
         status: TRANSACTION_STATUSES.UNAPPROVED,
         from: VALID_ADDRESS,
       };
-      assert.equal(
-        txStateManager.getTransactions({ searchCriteria }).length,
+      expect(txStateManager.getTransactions({ searchCriteria })).toHaveLength(
         3,
         `getTransactions - ${JSON.stringify(searchCriteria)}`,
       );
@@ -449,8 +447,7 @@ describe('TransactionStateManager', function () {
         status: TRANSACTION_STATUSES.UNAPPROVED,
         to: VALID_ADDRESS,
       };
-      assert.equal(
-        txStateManager.getTransactions({ searchCriteria }).length,
+      expect(txStateManager.getTransactions({ searchCriteria })).toHaveLength(
         2,
         `getTransactions - ${JSON.stringify(searchCriteria)}`,
       );
@@ -458,42 +455,37 @@ describe('TransactionStateManager', function () {
         status: TRANSACTION_STATUSES.CONFIRMED,
         from: VALID_ADDRESS_TWO,
       };
-      assert.equal(
-        txStateManager.getTransactions({ searchCriteria }).length,
+      expect(txStateManager.getTransactions({ searchCriteria })).toHaveLength(
         3,
         `getTransactions - ${JSON.stringify(searchCriteria)}`,
       );
       searchCriteria = { status: TRANSACTION_STATUSES.CONFIRMED };
-      assert.equal(
-        txStateManager.getTransactions({ searchCriteria }).length,
+      expect(txStateManager.getTransactions({ searchCriteria })).toHaveLength(
         5,
         `getTransactions - ${JSON.stringify(searchCriteria)}`,
       );
       searchCriteria = { from: VALID_ADDRESS };
-      assert.equal(
-        txStateManager.getTransactions({ searchCriteria }).length,
+      expect(txStateManager.getTransactions({ searchCriteria })).toHaveLength(
         5,
         `getTransactions - ${JSON.stringify(searchCriteria)}`,
       );
       searchCriteria = { to: VALID_ADDRESS };
-      assert.equal(
-        txStateManager.getTransactions({ searchCriteria }).length,
+      expect(txStateManager.getTransactions({ searchCriteria })).toHaveLength(
         5,
         `getTransactions - ${JSON.stringify(searchCriteria)}`,
       );
       searchCriteria = {
         status: (status) => status !== TRANSACTION_STATUSES.CONFIRMED,
       };
-      assert.equal(
-        txStateManager.getTransactions({ searchCriteria }).length,
+      expect(txStateManager.getTransactions({ searchCriteria })).toHaveLength(
         5,
         `getTransactions - ${JSON.stringify(searchCriteria)}`,
       );
     });
   });
 
-  describe('#addTransaction', function () {
-    it('adds a tx returned in getTransactions', function () {
+  describe('#addTransaction', () => {
+    it('adds a tx returned in getTransactions', () => {
       const tx = {
         id: 1,
         status: TRANSACTION_STATUSES.CONFIRMED,
@@ -505,12 +497,12 @@ describe('TransactionStateManager', function () {
       };
       txStateManager.addTransaction(tx);
       const result = txStateManager.getTransactions();
-      assert.ok(Array.isArray(result));
-      assert.equal(result.length, 1);
-      assert.equal(result[0].id, 1);
+      expect(Array.isArray(result)).toStrictEqual(true);
+      expect(result).toHaveLength(1);
+      expect(result[0].id).toStrictEqual(1);
     });
 
-    it('throws error and does not add tx if txParams are invalid', function () {
+    it('throws error and does not add tx if txParams are invalid', () => {
       const validTxParams = {
         from: '0x0dcd5d886577d5081b0c52e242ef29e70be3e7bc',
         to: '0x0039f22efb07a647557c7c5d17854cfd6d489ef3',
@@ -533,18 +525,17 @@ describe('TransactionStateManager', function () {
               [key]: value,
             },
           };
-          assert.throws(
+          expect(
             txStateManager.addTransaction.bind(txStateManager, tx),
-            'addTransaction should throw error',
-          );
+          ).toThrow('');
           const result = txStateManager.getTransactions();
-          assert.ok(Array.isArray(result), 'txList should be an array');
-          assert.equal(result.length, 0, 'txList should be empty');
+          expect(Array.isArray(result)).toStrictEqual(true);
+          expect(result).toHaveLength(0);
         }
       });
     });
 
-    it('does not override txs from other networks', function () {
+    it('does not override txs from other networks', () => {
       const tx = {
         id: 1,
         status: TRANSACTION_STATUSES.CONFIRMED,
@@ -569,11 +560,11 @@ describe('TransactionStateManager', function () {
         filterToCurrentNetwork: false,
       });
       const result2 = txStateManager.getTransactions();
-      assert.equal(result.length, 2, 'txs were deleted');
-      assert.equal(result2.length, 1, 'incorrect number of txs on network.');
+      expect(result).toHaveLength(2);
+      expect(result2).toHaveLength(1);
     });
 
-    it('cuts off early txs beyond a limit', function () {
+    it('cuts off early txs beyond a limit', () => {
       const limit = txStateManager.txHistoryLimit;
       const txs = generateTransactions(limit + 1, {
         chainId: currentChainId,
@@ -583,11 +574,11 @@ describe('TransactionStateManager', function () {
       });
       txs.forEach((tx) => txStateManager.addTransaction(tx));
       const result = txStateManager.getTransactions();
-      assert.equal(result.length, limit, `limit of ${limit} txs enforced`);
-      assert.equal(result[0].id, 1, 'early txs truncated');
+      expect(result).toHaveLength(limit);
+      expect(result[0].id).toStrictEqual(1);
     });
 
-    it('cuts off early txs beyond a limit whether or not it is confirmed or rejected', function () {
+    it('cuts off early txs beyond a limit whether or not it is confirmed or rejected', () => {
       const limit = txStateManager.txHistoryLimit;
       const txs = generateTransactions(limit + 1, {
         chainId: currentChainId,
@@ -597,11 +588,11 @@ describe('TransactionStateManager', function () {
       });
       txs.forEach((tx) => txStateManager.addTransaction(tx));
       const result = txStateManager.getTransactions();
-      assert.equal(result.length, limit, `limit of ${limit} txs enforced`);
-      assert.equal(result[0].id, 1, 'early txs truncated');
+      expect(result).toHaveLength(limit);
+      expect(result[0].id).toStrictEqual(1);
     });
 
-    it('cuts off early txs beyond a limit but does not cut unapproved txs', function () {
+    it('cuts off early txs beyond a limit but does not cut unapproved txs', () => {
       const limit = txStateManager.txHistoryLimit;
       const txs = generateTransactions(
         // we add two transactions over limit here to first insert the must be always present
@@ -620,18 +611,10 @@ describe('TransactionStateManager', function () {
       );
       txs.forEach((tx) => txStateManager.addTransaction(tx));
       const result = txStateManager.getTransactions();
-      assert.equal(
-        result.length,
-        limit + 1,
-        `limit of ${limit} + 1 for the unapproved tx is enforced`,
-      );
-      assert.equal(result[0].id, 0, 'first tx should still be there');
-      assert.equal(
-        result[0].status,
-        TRANSACTION_STATUSES.UNAPPROVED,
-        'first tx should be unapproved',
-      );
-      assert.equal(result[1].id, 2, 'early txs truncated');
+      expect(result).toHaveLength(limit + 1); // limit of ${limit} + 1 for the unapproved tx is enforced
+      expect(result[0].id).toStrictEqual(0); // first tx should still be there
+      expect(result[0].status).toStrictEqual(TRANSACTION_STATUSES.UNAPPROVED); // first tx should be unapproved
+      expect(result[1].id).toStrictEqual(2); // early txs truncated
     });
 
     it('cuts off entire groups of transactions by nonce when adding new transaction', function () {
@@ -656,17 +639,16 @@ describe('TransactionStateManager', function () {
       });
       txs.forEach((tx) => txStateManager.addTransaction(tx));
       const result = txStateManager.getTransactions();
-      assert.equal(result.length, limit, `limit of ${limit} is enforced`);
-      assert.notEqual(result[0].id, 0, 'first tx should be removed');
-      assert.equal(
+      expect(result).toHaveLength(limit); // `limit of ${limit} is enforced`;
+      expect(result[0].id).not.toStrictEqual(0); // 'first tx should be removed';
+      expect(
         result.some(
           (tx) =>
             tx.status === TRANSACTION_STATUSES.DROPPED ||
             tx.status === TRANSACTION_TYPES.CANCEL,
         ),
-        false,
-        'the cancel and dropped transactions should not be present in the result',
-      );
+      ).toStrictEqual(false);
+      // 'the cancel and dropped transactions should not be present in the result',
     });
 
     it('cuts off entire groups of transactions by nonce + network when adding new transaction', function () {
@@ -699,20 +681,15 @@ describe('TransactionStateManager', function () {
         filterToCurrentNetwork: false,
       });
 
-      assert.equal(
-        result.length,
-        limit + 1,
-        `limit of ${limit} + 1 for the grouped transactions is enforced`,
-      );
+      expect(result).toHaveLength(limit + 1); // `limit of ${limit} + 1 for the grouped transactions is enforced`,
       // The first group of transactions on mainnet should be removed
-      assert.equal(
+      expect(
         result.some(
           (tx) =>
             tx.chainId === MAINNET_CHAIN_ID && tx.txParams.nonce === '0x0',
         ),
-        false,
-        'the mainnet transactions with nonce 0x0 should not be present in the result',
-      );
+      ).toStrictEqual(false);
+      // 'the mainnet transactions with nonce 0x0 should not be present in the result'
     });
 
     it('does not cut off entire groups of transactions when adding new transaction when under limit', function () {
@@ -742,13 +719,13 @@ describe('TransactionStateManager', function () {
       const result = txStateManager.getTransactions({
         filterToCurrentNetwork: false,
       });
-      assert.equal(result.length, 9, `all nine transactions should be present`);
-      assert.equal(result[0].id, 0, 'first tx should be present');
+      expect(result).toHaveLength(9); // `all nine transactions should be present`;
+      expect(result[0].id).toStrictEqual(0); // 'first tx should be present';
     });
   });
 
-  describe('#updateTransaction', function () {
-    it('replaces the tx with the same id', function () {
+  describe('#updateTransaction', () => {
+    it('replaces the tx with the same id', () => {
       txStateManager.addTransaction({
         id: '1',
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -771,10 +748,10 @@ describe('TransactionStateManager', function () {
       txMeta.hash = 'foo';
       txStateManager.updateTransaction(txMeta);
       const result = txStateManager.getTransaction('1');
-      assert.equal(result.hash, 'foo');
+      expect(result.hash).toStrictEqual('foo');
     });
 
-    it('throws error and does not update tx if txParams are invalid', function () {
+    it('throws error and does not update tx if txParams are invalid', () => {
       const validTxParams = {
         from: '0x0dcd5d886577d5081b0c52e242ef29e70be3e7bc',
         to: '0x0039f22efb07a647557c7c5d17854cfd6d489ef3',
@@ -803,17 +780,16 @@ describe('TransactionStateManager', function () {
               [key]: value,
             },
           };
-          assert.throws(
+          expect(
             txStateManager.updateTransaction.bind(txStateManager, newTx),
-            'updateTransaction should throw an error',
-          );
+          ).toThrow('');
           const result = txStateManager.getTransaction(1);
-          assert.deepEqual(result, originalTx, 'tx should not be updated');
+          expect(result).toStrictEqual(originalTx);
         }
       });
     });
 
-    it('updates gas price and adds history items', function () {
+    it('updates gas price and adds history items', () => {
       const originalGasPrice = '0x01';
       const desiredGasPrice = '0x02';
 
@@ -831,17 +807,9 @@ describe('TransactionStateManager', function () {
       txStateManager.addTransaction(txMeta);
       const updatedTx = txStateManager.getTransaction('1');
       // verify tx was initialized correctly
-      assert.equal(updatedTx.history.length, 1, 'one history item (initial)');
-      assert.equal(
-        Array.isArray(updatedTx.history[0]),
-        false,
-        'first history item is initial state',
-      );
-      assert.deepEqual(
-        updatedTx.history[0],
-        snapshotFromTxMeta(updatedTx),
-        'first history item is initial state',
-      );
+      expect(updatedTx.history).toHaveLength(1);
+      expect(Array.isArray(updatedTx.history[0])).toStrictEqual(false);
+      expect(updatedTx.history[0]).toStrictEqual(snapshotFromTxMeta(updatedTx));
       // modify value and updateTransaction
       updatedTx.txParams.gasPrice = desiredGasPrice;
       const before = new Date().getTime();
@@ -849,19 +817,13 @@ describe('TransactionStateManager', function () {
       const after = new Date().getTime();
       // check updated value
       const result = txStateManager.getTransaction('1');
-      assert.equal(
-        result.txParams.gasPrice,
-        desiredGasPrice,
-        'gas price updated',
-      );
+      expect(result.txParams.gasPrice).toStrictEqual(desiredGasPrice);
       // validate history was updated
-      assert.equal(
-        result.history.length,
+      expect(result.history).toHaveLength(
         2,
         'two history items (initial + diff)',
       );
-      assert.equal(
-        result.history[1].length,
+      expect(result.history[1]).toHaveLength(
         1,
         'two history state items (initial + diff)',
       );
@@ -871,28 +833,16 @@ describe('TransactionStateManager', function () {
         path: '/txParams/gasPrice',
         value: desiredGasPrice,
       };
-      assert.deepEqual(
-        result.history[1][0].op,
-        expectedEntry.op,
-        'two history items (initial + diff) operation',
-      );
-      assert.deepEqual(
-        result.history[1][0].path,
-        expectedEntry.path,
-        'two history items (initial + diff) path',
-      );
-      assert.deepEqual(
-        result.history[1][0].value,
-        expectedEntry.value,
-        'two history items (initial + diff) value',
-      );
-      assert.ok(
+      expect(result.history[1][0].op).toStrictEqual(expectedEntry.op);
+      expect(result.history[1][0].path).toStrictEqual(expectedEntry.path);
+      expect(result.history[1][0].value).toStrictEqual(expectedEntry.value);
+      expect(
         result.history[1][0].timestamp >= before &&
           result.history[1][0].timestamp <= after,
-      );
+      ).toStrictEqual(true);
     });
 
-    it('does NOT add empty history items', function () {
+    it('does NOT add empty history items', () => {
       const txMeta = {
         id: '1',
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -908,12 +858,12 @@ describe('TransactionStateManager', function () {
       txStateManager.updateTransaction(txMeta);
 
       const { history } = txStateManager.getTransaction('1');
-      assert.equal(history.length, 1, 'two history items (initial + diff)');
+      expect(history).toHaveLength(1);
     });
   });
 
-  describe('#getUnapprovedTxList', function () {
-    it('returns unapproved txs in a hash', function () {
+  describe('#getUnapprovedTxList', () => {
+    it('returns unapproved txs in a hash', () => {
       txStateManager.addTransaction({
         id: '1',
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -933,14 +883,14 @@ describe('TransactionStateManager', function () {
         },
       });
       const result = txStateManager.getUnapprovedTxList();
-      assert.equal(typeof result, 'object');
-      assert.equal(result['1'].status, TRANSACTION_STATUSES.UNAPPROVED);
-      assert.equal(result['2'], undefined);
+      expect(typeof result).toStrictEqual('object');
+      expect(result['1'].status).toStrictEqual(TRANSACTION_STATUSES.UNAPPROVED);
+      expect(result['2']).toBeUndefined();
     });
   });
 
-  describe('#getTransaction', function () {
-    it('returns a tx with the requested id', function () {
+  describe('#getTransaction', () => {
+    it('returns a tx with the requested id', () => {
       txStateManager.addTransaction({
         id: '1',
         status: TRANSACTION_STATUSES.UNAPPROVED,
@@ -959,22 +909,20 @@ describe('TransactionStateManager', function () {
           from: VALID_ADDRESS,
         },
       });
-      assert.equal(
-        txStateManager.getTransaction('1').status,
+      expect(txStateManager.getTransaction('1').status).toStrictEqual(
         TRANSACTION_STATUSES.UNAPPROVED,
       );
-      assert.equal(
-        txStateManager.getTransaction('2').status,
+      expect(txStateManager.getTransaction('2').status).toStrictEqual(
         TRANSACTION_STATUSES.CONFIRMED,
       );
     });
   });
 
-  describe('#wipeTransactions', function () {
+  describe('#wipeTransactions', () => {
     const specificAddress = VALID_ADDRESS;
     const otherAddress = VALID_ADDRESS_TWO;
 
-    it('should remove only the transactions from a specific address', function () {
+    it('should remove only the transactions from a specific address', () => {
       const txMetas = [
         {
           id: 0,
@@ -1006,11 +954,11 @@ describe('TransactionStateManager', function () {
         .getTransactions()
         .filter((txMeta) => txMeta.txParams.from !== specificAddress);
 
-      assert.equal(transactionsFromCurrentAddress.length, 0);
-      assert.equal(transactionsFromOtherAddresses.length, 2);
+      expect(transactionsFromCurrentAddress).toHaveLength(0);
+      expect(transactionsFromOtherAddresses).toHaveLength(2);
     });
 
-    it('should not remove the transactions from other networks', function () {
+    it('should not remove the transactions from other networks', () => {
       const txMetas = [
         {
           id: 0,
@@ -1043,39 +991,35 @@ describe('TransactionStateManager', function () {
         .getTransactions({ filterToCurrentNetwork: false })
         .filter((txMeta) => txMeta.metamaskNetworkId === otherNetworkId);
 
-      assert.equal(txsFromCurrentNetworkAndAddress.length, 0);
-      assert.equal(txFromOtherNetworks.length, 2);
+      expect(txsFromCurrentNetworkAndAddress).toHaveLength(0);
+      expect(txFromOtherNetworks).toHaveLength(2);
     });
   });
 
-  describe('#_deleteTransaction', function () {
-    it('should remove the transaction from the storage', function () {
+  describe('#_deleteTransaction', () => {
+    it('should remove the transaction from the storage', () => {
       txStateManager.addTransaction({ id: 1 });
       txStateManager._deleteTransaction(1);
-      assert.ok(
-        !txStateManager.getTransactions({ filterToCurrentNetwork: false })
-          .length,
-        'txList should be empty',
-      );
+      expect(
+        txStateManager.getTransactions({ filterToCurrentNetwork: false }),
+      ).toHaveLength(0);
     });
 
-    it('should only remove the transaction with ID 1 from the storage', function () {
+    it('should only remove the transaction with ID 1 from the storage', () => {
       txStateManager.store.updateState({
         transactions: { 1: { id: 1 }, 2: { id: 2 } },
       });
       txStateManager._deleteTransaction(1);
-      assert.equal(
+      expect(
         txStateManager.getTransactions({
           filterToCurrentNetwork: false,
         })[0].id,
-        2,
-        'txList should have a id of 2',
-      );
+      ).toStrictEqual(2);
     });
   });
 
-  describe('#clearUnapprovedTxs', function () {
-    it('removes unapproved transactions', function () {
+  describe('#clearUnapprovedTxs', () => {
+    it('removes unapproved transactions', () => {
       const txMetas = [
         {
           id: 0,
@@ -1111,7 +1055,7 @@ describe('TransactionStateManager', function () {
         .getTransactions({ filterToCurrentNetwork: false })
         .filter((tx) => tx.status === TRANSACTION_STATUSES.UNAPPROVED);
 
-      assert.equal(unapprovedTxList.length, 0);
+      expect(unapprovedTxList).toHaveLength(0);
     });
   });
 });

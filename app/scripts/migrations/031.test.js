@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration31 from './031';
 
-describe('migration #31', function () {
-  it('should set completedOnboarding to true if vault exists', function (done) {
+describe('migration #31', () => {
+  it('should set completedOnboarding to true if vault exists', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -26,19 +25,14 @@ describe('migration #31', function () {
       },
     };
 
-    migration31
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.equal(
-          newStorage.data.PreferencesController.completedOnboarding,
-          true,
-        );
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration31.migrate(oldStorage);
+
+    expect(
+      newStorage.data.PreferencesController.completedOnboarding,
+    ).toStrictEqual(true);
   });
 
-  it('should set completedOnboarding to false if vault does not exist', function (done) {
+  it('should set completedOnboarding to false if vault does not exist', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -56,15 +50,9 @@ describe('migration #31', function () {
       },
     };
 
-    migration31
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.equal(
-          newStorage.data.PreferencesController.completedOnboarding,
-          false,
-        );
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration31.migrate(oldStorage);
+    expect(
+      newStorage.data.PreferencesController.completedOnboarding,
+    ).toStrictEqual(false);
   });
 });

@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import {
   GOERLI,
   GOERLI_CHAIN_ID,
@@ -13,8 +12,8 @@ import {
 } from '../../../shared/constants/network';
 import migration55 from './055';
 
-describe('migration #55', function () {
-  it('should update the version metadata', async function () {
+describe('migration #55', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 54,
@@ -23,12 +22,12 @@ describe('migration #55', function () {
     };
 
     const newStorage = await migration55.migrate(oldStorage);
-    assert.deepEqual(newStorage.meta, {
+    expect(newStorage.meta).toStrictEqual({
       version: 55,
     });
   });
 
-  it('should replace incomingTxLastFetchedBlocksByNetwork with incomingTxLastFetchedBlockByChainId, and carry over old values', async function () {
+  it('should replace incomingTxLastFetchedBlocksByNetwork with incomingTxLastFetchedBlockByChainId, and carry over old values', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -54,7 +53,7 @@ describe('migration #55', function () {
     };
 
     const newStorage = await migration55.migrate(oldStorage);
-    assert.deepEqual(newStorage.data, {
+    expect(newStorage.data).toStrictEqual({
       IncomingTransactionsController: {
         incomingTransactions:
           oldStorage.data.IncomingTransactionsController.incomingTransactions,
@@ -70,7 +69,7 @@ describe('migration #55', function () {
     });
   });
 
-  it('should do nothing if incomingTxLastFetchedBlocksByNetwork key is not populated', async function () {
+  it('should do nothing if incomingTxLastFetchedBlocksByNetwork key is not populated', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -82,15 +81,15 @@ describe('migration #55', function () {
     };
 
     const newStorage = await migration55.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
-  it('should do nothing if state is empty', async function () {
+  it('should do nothing if state is empty', async () => {
     const oldStorage = {
       meta: {},
       data: {},
     };
 
     const newStorage = await migration55.migrate(oldStorage);
-    assert.deepEqual(oldStorage.data, newStorage.data);
+    expect(oldStorage.data).toStrictEqual(newStorage.data);
   });
 });

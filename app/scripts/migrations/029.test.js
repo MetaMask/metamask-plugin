@@ -1,4 +1,3 @@
-import { strict as assert } from 'assert';
 import { TRANSACTION_STATUSES } from '../../../shared/constants/transaction';
 import migration29 from './029';
 
@@ -30,38 +29,20 @@ const storage = {
   },
 };
 
-describe('storage is migrated successfully where transactions that are submitted have submittedTimes', function () {
-  it('should auto fail transactions more than 12 hours old', function (done) {
-    migration29
-      .migrate(storage)
-      .then((migratedData) => {
-        const txs = migratedData.data.TransactionController.transactions;
-        const [txMeta1] = txs;
-        assert.equal(migratedData.meta.version, 29);
+describe('storage is migrated successfully where transactions that are submitted have submittedTimes', () => {
+  it('should auto fail transactions more than 12 hours old', async () => {
+    const migratedData = await migration29.migrate(storage);
+    const txs = migratedData.data.TransactionController.transactions;
+    const [txMeta1] = txs;
 
-        assert.equal(
-          txMeta1.status,
-          TRANSACTION_STATUSES.FAILED,
-          'old tx is auto failed',
-        );
-        assert(
-          txMeta1.err.message.includes('too long'),
-          'error message assigned',
-        );
+    expect(migratedData.meta.version).toStrictEqual(29);
+    expect(txMeta1.status).toStrictEqual(TRANSACTION_STATUSES.FAILED);
 
-        txs.forEach((tx) => {
-          if (tx.id === 1) {
-            return;
-          }
-          assert.notEqual(
-            tx.status,
-            TRANSACTION_STATUSES.FAILED,
-            'other tx is not auto failed',
-          );
-        });
-
-        done();
-      })
-      .catch(done);
+    txs.forEach((tx) => {
+      if (tx.id === 1) {
+        return;
+      }
+      expect(tx.status).not.toStrictEqual(TRANSACTION_STATUSES.FAILED);
+    });
   });
 });

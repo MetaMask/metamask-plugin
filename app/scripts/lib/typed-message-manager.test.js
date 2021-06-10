@@ -1,9 +1,8 @@
-import { strict as assert } from 'assert';
 import sinon from 'sinon';
 import { TRANSACTION_STATUSES } from '../../../shared/constants/transaction';
 import TypedMessageManager from './typed-message-manager';
 
-describe('Typed Message Manager', function () {
+describe('Typed Message Manager', () => {
   let typedMessageManager,
     msgParamsV1,
     msgParamsV3,
@@ -14,7 +13,7 @@ describe('Typed Message Manager', function () {
 
   const address = '0xc42edfcc21ed14dda456aa0756c153f7985d8813';
 
-  beforeEach(async function () {
+  beforeEach(async () => {
     typedMessageManager = new TypedMessageManager({
       getCurrentChainId: sinon.fake.returns('0x1'),
     });
@@ -80,47 +79,48 @@ describe('Typed Message Manager', function () {
     numberMsgId = parseInt(msgId, 10);
   });
 
-  it('supports version 1 of signedTypedData', function () {
+  it('supports version 1 of signedTypedData', () => {
     typedMessageManager.addUnapprovedMessage(msgParamsV1, null, 'V1');
-    assert.equal(
-      messages[messages.length - 1].msgParams.data,
+    expect(messages[messages.length - 1].msgParams.data).toStrictEqual(
       msgParamsV1.data,
     );
   });
 
-  it('has params address', function () {
-    assert.equal(typedMsgs[msgId].msgParams.from, address);
+  it('has params address', () => {
+    expect(typedMsgs[msgId].msgParams.from).toStrictEqual(address);
   });
 
-  it('adds to unapproved messages and sets status to unapproved', function () {
-    assert.equal(typedMsgs[msgId].status, TRANSACTION_STATUSES.UNAPPROVED);
+  it('adds to unapproved messages and sets status to unapproved', () => {
+    expect(typedMsgs[msgId].status).toStrictEqual(
+      TRANSACTION_STATUSES.UNAPPROVED,
+    );
   });
 
-  it('validates params', function () {
-    assert.doesNotThrow(() => {
+  it('validates params', async () => {
+    await expect(() => {
       typedMessageManager.validateParams(messages[0].msgParams);
-    }, 'Does not throw with valid parameters');
+    }).not.toThrow();
   });
 
-  it('gets unapproved by id', function () {
+  it('gets unapproved by id', () => {
     const getMsg = typedMessageManager.getMsg(numberMsgId);
-    assert.equal(getMsg.id, numberMsgId);
+    expect(getMsg.id).toStrictEqual(numberMsgId);
   });
 
-  it('approves messages', async function () {
+  it('approves messages', async () => {
     const messageMetaMaskId = messages[0].msgParams;
     typedMessageManager.approveMessage(messageMetaMaskId);
-    assert.equal(messages[0].status, TRANSACTION_STATUSES.APPROVED);
+    expect(messages[0].status).toStrictEqual(TRANSACTION_STATUSES.APPROVED);
   });
 
-  it('sets msg status to signed and adds a raw sig to message details', function () {
+  it('sets msg status to signed and adds a raw sig to message details', () => {
     typedMessageManager.setMsgStatusSigned(numberMsgId, 'raw sig');
-    assert.equal(messages[0].status, TRANSACTION_STATUSES.SIGNED);
-    assert.equal(messages[0].rawSig, 'raw sig');
+    expect(messages[0].status).toStrictEqual(TRANSACTION_STATUSES.SIGNED);
+    expect(messages[0].rawSig).toStrictEqual('raw sig');
   });
 
-  it('rejects message', function () {
+  it('rejects message', () => {
     typedMessageManager.rejectMsg(numberMsgId);
-    assert.equal(messages[0].status, TRANSACTION_STATUSES.REJECTED);
+    expect(messages[0].status).toStrictEqual(TRANSACTION_STATUSES.REJECTED);
   });
 });

@@ -1,8 +1,7 @@
-import { strict as assert } from 'assert';
 import migration34 from './034';
 
-describe('migration #34', function () {
-  it('should update the version metadata', function (done) {
+describe('migration #34', () => {
+  it('should update the version metadata', async () => {
     const oldStorage = {
       meta: {
         version: 33,
@@ -10,18 +9,11 @@ describe('migration #34', function () {
       data: {},
     };
 
-    migration34
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.meta, {
-          version: 34,
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration34.migrate(oldStorage);
+    expect(newStorage.meta.version).toStrictEqual(34);
   });
 
-  it('should set migratedPrivacyMode & privacyMode if featureFlags.privacyMode was false', function (done) {
+  it('should set migratedPrivacyMode & privacyMode if featureFlags.privacyMode was false', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -33,21 +25,16 @@ describe('migration #34', function () {
       },
     };
 
-    migration34
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data.PreferencesController, {
-          migratedPrivacyMode: true,
-          featureFlags: {
-            privacyMode: true,
-          },
-        });
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration34.migrate(oldStorage);
+    expect(newStorage.data.PreferencesController).toStrictEqual({
+      migratedPrivacyMode: true,
+      featureFlags: {
+        privacyMode: true,
+      },
+    });
   });
 
-  it('should NOT change any state if migratedPrivacyMode is already set to true', function (done) {
+  it('should NOT change any state if migratedPrivacyMode is already set to true', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -60,16 +47,11 @@ describe('migration #34', function () {
       },
     };
 
-    migration34
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, oldStorage.data);
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration34.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual(oldStorage.data);
   });
 
-  it('should NOT change any state if migratedPrivacyMode is already set to false', function (done) {
+  it('should NOT change any state if migratedPrivacyMode is already set to false', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -82,31 +64,21 @@ describe('migration #34', function () {
       },
     };
 
-    migration34
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, oldStorage.data);
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration34.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual(oldStorage.data);
   });
 
-  it('should NOT change any state if PreferencesController is missing', function (done) {
+  it('should NOT change any state if PreferencesController is missing', async () => {
     const oldStorage = {
       meta: {},
       data: {},
     };
 
-    migration34
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, oldStorage.data);
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration34.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual(newStorage.data);
   });
 
-  it('should NOT change any state if featureFlags.privacyMode is already true', function (done) {
+  it('should NOT change any state if featureFlags.privacyMode is already true', async () => {
     const oldStorage = {
       meta: {},
       data: {
@@ -118,12 +90,7 @@ describe('migration #34', function () {
       },
     };
 
-    migration34
-      .migrate(oldStorage)
-      .then((newStorage) => {
-        assert.deepEqual(newStorage.data, oldStorage.data);
-        done();
-      })
-      .catch(done);
+    const newStorage = await migration34.migrate(oldStorage);
+    expect(newStorage.data).toStrictEqual(oldStorage.data);
   });
 });
