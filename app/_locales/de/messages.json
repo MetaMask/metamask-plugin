@@ -23,6 +23,9 @@
   "accountSelectionRequired": {
     "message": "Sie müssen ein Konto auswählen!"
   },
+  "activity": {
+    "message": "Aktivität"
+  },
   "activityLog": {
     "message": "Aktivitätsprotokoll"
   },
@@ -81,6 +84,9 @@
   },
   "asset": {
     "message": "Vermögenswert"
+  },
+  "assets": {
+    "message": "Vermögen"
   },
   "attemptToCancel": {
     "message": "Stornierung versuchen?"
@@ -142,6 +148,9 @@
   },
   "builtInCalifornia": {
     "message": "MetaMask wurde in Kalifornien entwickelt und gebaut."
+  },
+  "buy": {
+    "message": "Kaufen"
   },
   "buyWithWyre": {
     "message": "ETH mit Wyre kaufen"
@@ -720,6 +729,12 @@
   "readdToken": {
     "message": "Du kannst diesen Token immer erneut hinzufügen, indem du in den Menüpunkt \"Token hinzufügen\" in den Einstellungen deines Accounts gehst."
   },
+  "readyToConnect": {
+    "message": "Bereit für die Verbindung?"
+  },
+  "receive": {
+    "message": "Empfangen"
+  },
   "recents": {
     "message": "Letzte"
   },
@@ -950,6 +965,9 @@
   },
   "supportCenter": {
     "message": "Gehe zu unserem Support Center"
+  },
+  "swap": {
+    "message": "Tauschen"
   },
   "switchNetworks": {
     "message": "Netzwerk wechseln"
