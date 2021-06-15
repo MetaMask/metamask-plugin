@@ -1,15 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
+import { isValidAddress } from 'ethereumjs-util';
 import Identicon from '../../../ui/identicon';
 import TextField from '../../../ui/text-field';
-import {
-  isValidAddress,
-  isValidDomainName,
-} from '../../../../helpers/utils/util';
+import { isValidDomainName } from '../../../../helpers/utils/util';
 import EnsInput from '../../../../pages/send/send-content/add-recipient/ens-input';
 import PageContainerFooter from '../../../ui/page-container/page-container-footer';
+import { getEnvironmentType } from '../../../../../app/scripts/lib/util';
+import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../../shared/constants/app';
 
+const environmentType = getEnvironmentType();
+const isFullScreen = environmentType === ENVIRONMENT_TYPE_FULLSCREEN;
 export default class AddNewContactModal extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
@@ -39,7 +41,7 @@ export default class AddNewContactModal extends PureComponent {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.qrCodeData && nextProps.qrCodeData.type === 'address') {
+    if (nextProps?.qrCodeData?.type === 'address') {
       const scannedAddress = nextProps.qrCodeData.values.address.toLowerCase();
       const currentAddress = this.state.ensAddress || this.state.ethAddress;
       if (currentAddress.toLowerCase() !== scannedAddress) {
@@ -62,10 +64,11 @@ export default class AddNewContactModal extends PureComponent {
   };
 
   renderInput() {
+    const { t } = this.context;
     return (
       <EnsInput
         className="send__to-row"
-        placeholderText=" "
+        placeholderText={isFullScreen ? t('addAnEthereumAddress') : ' '}
         scanQrCode={(_) => {
           this.props.scanQrCode();
         }}
@@ -110,6 +113,7 @@ export default class AddNewContactModal extends PureComponent {
               id="nickname"
               value={this.state.newName}
               onChange={(e) => this.setState({ newName: e.target.value })}
+              placeholder={isFullScreen ? t('userName') : ''}
               fullWidth
               margin="dense"
             />
@@ -134,6 +138,7 @@ export default class AddNewContactModal extends PureComponent {
             <textarea
               className="first-time-flow__textarea"
               id="memoInput"
+              placeholder={isFullScreen ? t('addMemo') : ''}
               value={this.state.memo}
               onChange={(e) => this.setState({ memo: e.target.value })}
             />
