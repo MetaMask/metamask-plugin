@@ -237,7 +237,7 @@
     "brfs": "^2.0.2",
     "browserify": "^16.5.1",
     "chalk": "^3.0.0",
-    "chromedriver": "^79.0.0",
+    "chromedriver": "^91.0.1",
     "concurrently": "^5.2.0",
     "copy-webpack-plugin": "^6.0.3",
     "cross-spawn": "^7.0.3",

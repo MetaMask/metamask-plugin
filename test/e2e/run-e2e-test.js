@@ -63,8 +63,17 @@ async function main() {
     throw error;
   }
 
+  let command = 'yarn';
+  const args = ['mocha', '--no-timeouts', e2eTestPath];
+
+  // Run test with virtual display on CI
+  if (process.env.CI === 'true') {
+    command = 'xvfb-run';
+    args.unshift(...['-e', '/dev/stderr', '-a', 'yarn']);
+  }
+
   await retry(retries, async () => {
-    await runInShell('yarn', ['mocha', '--no-timeouts', e2eTestPath]);
+    await runInShell(command, args);
   });
 }
 

@@ -27,3 +27,6 @@ printf '%s\n' "Firefox ${FIREFOX_VERSION} installed"
 sudo cp .circleci/scripts/firefox.cfg "${FIREFOX_PATH}"
 
 printf '%s\n' "Firefox ${FIREFOX_VERSION} configured"
+
+# Set '/tmp/.X11-unix' to root to silence warning when running xvfb-run
+sudo chown root:root /tmp/.X11-unix
