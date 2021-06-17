@@ -1,0 +1,374 @@
+name: Lint and Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  prep-deps:
+    name: Prepare dependencies
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Get Yarn cache directory
+        run: echo "::set-output name=YARN_CACHE_DIR::$(yarn cache dir)"
+        id: yarn-cache-dir
+      - name: Get Yarn version
+        run: echo "::set-output name=YARN_VERSION::$(yarn --version)"
+        id: yarn-version
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ${{ steps.yarn-cache-dir.outputs.YARN_CACHE_DIR }}
+            build-artifacts/yarn-install-har
+          key: yarn-cache-${{ runner.os }}-${{ steps.yarn-version.outputs.YARN_VERSION }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        run: ./development/deps-install.sh
+      - name: Store HAR artifacts from install
+        uses: actions/upload-artifact@v2
+        with:
+          name: install-artifacts
+          path: build-artifacts/yarn-install-har
+      - name: Run postinstall scripts
+        run: yarn setup:postinstall
+      - name: Archive dependencies
+        run: tar -czf dependencies.tgz node_modules
+      - name: Store dependencies as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dependencies
+          path: dependencies.tgz
+          retention-days: 1
+          if-no-files-found: error
+  prep-build-test:
+    name: Prepare build for E2E testing
+    runs-on: ubuntu-20.04
+    needs: prep-deps
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Build extension for testing
+        run: yarn build:test
+      - name: Archive test build
+        run: tar -czf build-test.tgz dist builds
+      - name: Store test build as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-test
+          path: build-test.tgz
+          retention-days: 1
+          if-no-files-found: error
+  prep-build-test-metrics:
+    name: Prepare build for E2E metrics testing
+    runs-on: ubuntu-20.04
+    needs: prep-deps
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Build extension for testing
+        run: yarn build:test:metrics
+      - name: Archive metrics test build
+        run: tar -czf build-test-metrics.tgz dist builds
+      - name: Store test build as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-test-metrics
+          path: build-test-metrics.tgz
+          retention-days: 1
+          if-no-files-found: error
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
+    needs: prep-deps
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Lint
+        run: yarn lint
+      - name: Lint locales
+        run: yarn verify-locales --quiet
+      - name: Lint lockfile
+        run: yarn lint:lockfile
+      - name: Validate RC changelog
+        if: ${{ startsWith(github.ref, 'Version-v') }}
+        run: yarn auto-changelog validate --rc
+      - name: Validate changelog
+        if: ${{ !startsWith(github.ref, 'Version-v') }}
+        run: yarn auto-changelog validate
+  test-unit:
+    name: Unit Tests
+    runs-on: ubuntu-20.04
+    needs: prep-deps
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Run Mocha unit tests
+        run: yarn test:coverage
+      - name: Run Jest unit tests
+        run: yarn test:coverage:jest
+      - name: Run global unit tests
+        run: yarn test:unit:global
+      - name: Save coverage artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: |
+            coverage
+            jest-coverage
+          if-no-files-found: error
+  test-e2e-chrome:
+    name: Chrome E2E Tests
+    runs-on: ubuntu-20.04
+    needs:
+      - prep-deps
+      - prep-build-test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Download test build
+        uses: actions/download-artifact@v2
+        with:
+          name: build-test
+      - name: Extract test build
+        run: tar -xzf build-test.tgz
+      - name: Install Chrome
+        run: ./development/chrome-install.sh
+      - name: Run Chrome E2E tests
+        run: |
+          if ./development/test-run-e2e.sh
+          then
+            ENABLE_CHROME_LOGGING=true xvfb-run -e /dev/stderr -as '-screen 0 1280x1024x24' yarn test:e2e:chrome --retries 2
+          fi
+      - name: Save Chrome E2E test artifacts on failure
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: test-artifacts-e2e-chrome
+          path: test-artifacts
+  test-e2e-chrome-metrics:
+    name: Chrome E2E Metrics Tests
+    runs-on: ubuntu-20.04
+    needs:
+      - prep-deps
+      - prep-build-test-metrics
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Download metrics test build
+        uses: actions/download-artifact@v2
+        with:
+          name: build-test-metrics
+      - name: Extract metrics test build
+        run: tar -xzf build-test-metrics.tgz
+      - name: Install Chrome
+        run: ./development/chrome-install.sh
+      - name: Run Chrome E2E metrics tests
+        run: |
+          if ./development/test-run-e2e.sh
+          then
+            ENABLE_CHROME_LOGGING=true xvfb-run -e /dev/stderr -as '-screen 0 1280x1024x24' yarn test:e2e:chrome:metrics --retries 2
+          fi
+      - name: Save Chrome E2E metrics test artifacts on failure
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: test-artifacts-e2e-chrome-metrics
+          path: test-artifacts
+  test-e2e-firefox:
+    name: Firefox E2E Tests
+    runs-on: ubuntu-20.04
+    needs:
+      - prep-deps
+      - prep-build-test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Download test build
+        uses: actions/download-artifact@v2
+        with:
+          name: build-test
+      - name: Extract test build
+        run: tar -xzf build-test.tgz
+      - name: Install Firefox
+        run: ./development/firefox-install.sh
+      - name: Run Firefox E2E tests
+        run: |
+          if ./development/test-run-e2e.sh
+          then
+            xvfb-run -e /dev/stderr -as '-screen 0 1280x1024x24' yarn test:e2e:firefox --retries 2
+          fi
+      - name: Save Firefox E2E test artifacts on failure
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: test-artifacts-e2e-firefox
+          path: test-artifacts
+  test-e2e-firefox-metrics:
+    name: Firefox E2E Metrics Tests
+    runs-on: ubuntu-20.04
+    needs:
+      - prep-deps
+      - prep-build-test-metrics
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Download metrics test build
+        uses: actions/download-artifact@v2
+        with:
+          name: build-test-metrics
+      - name: Extract metrics test build
+        run: tar -xzf build-test-metrics.tgz
+      - name: Install Firefox
+        run: ./development/firefox-install.sh
+      - name: Run Firefox E2E metrics tests
+        run: |
+          if ./development/test-run-e2e.sh
+          then
+            xvfb-run -e /dev/stderr -as '-screen 0 1280x1024x24' yarn test:e2e:firefox:metrics --retries 2
+          fi
+      - name: Save Firefox E2E metrics test artifacts on failure
+        uses: actions/upload-artifact@v2
+        if: ${{ failure() }}
+        with:
+          name: test-artifacts-e2e-firefox-metrics
+          path: test-artifacts
+  benchmark:
+    name: Benchmark
+    runs-on: ubuntu-20.04
+    needs:
+      - prep-deps
+      - prep-build-test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Download dependencies
+        uses: actions/download-artifact@v2
+        with:
+          name: dependencies
+      - name: Extract dependencies
+        run: tar -xzf dependencies.tgz
+      - name: Download test build
+        uses: actions/download-artifact@v2
+        with:
+          name: build-test
+      - name: Extract test build
+        run: tar -xzf build-test.tgz
+      - name: Install Chrome
+        run: ./development/chrome-install.sh
+      - name: Run page load benchmark
+        run: |
+          if ./development/test-run-e2e.sh
+          then
+            ENABLE_CHROME_LOGGING=true xvfb-run -e /dev/stderr -as '-screen 0 1280x1024x24' yarn benchmark:chrome --out test-artifacts/chrome/benchmark/pageload.json
+          fi
+      - name: Save benchmark artifacts
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: benchmark-artifacts
+          path: test-artifacts
+  audit-deps:
+    name: Audit dependencies
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Run Yarn audit
+        run: ./development/yarn-audit.sh
+  all-jobs-pass:
+    name: All jobs pass
+    runs-on: ubuntu-20.04
+    needs:
+      - lint
+      - test-unit
+      - audit-deps
+      - test-e2e-chrome
+      - test-e2e-chrome-metrics
+      - test-e2e-firefox
+      - test-e2e-firefox-metrics
+    steps:
+      - run: echo "Great success!"

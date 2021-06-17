@@ -25,7 +25,6 @@ workflows:
               only:
                 - /^Version-v(\d+)[.](\d+)[.](\d+)/
       - prep-deps
-      - test-deps
       - validate-lavamoat-config:
           filters:
             branches:
@@ -45,16 +44,7 @@ workflows:
       - prep-build-storybook:
           requires:
             - prep-deps
-      - test-lint:
-          requires:
-            - prep-deps
       - test-lint-shellcheck
-      - test-lint-lockfile:
-          requires:
-            - prep-deps
-      - test-lint-changelog:
-          requires:
-            - prep-deps
       - test-e2e-chrome:
           requires:
             - prep-build-test
@@ -67,12 +57,6 @@ workflows:
       - test-e2e-firefox-metrics:
           requires:
             - prep-build-test-metrics
-      - test-unit:
-          requires:
-            - prep-deps
-      - test-unit-global:
-          requires:
-            - prep-deps
       - validate-source-maps:
           requires:
             - prep-build
@@ -83,12 +67,7 @@ workflows:
       - all-tests-pass:
           requires:
             - validate-lavamoat-config
-            - test-lint
             - test-lint-shellcheck
-            - test-lint-lockfile
-            - test-lint-changelog
-            - test-unit
-            - test-unit-global
             - validate-source-maps
             - test-mozilla-lint
             - test-e2e-chrome
@@ -149,7 +128,7 @@ jobs:
       - run:
           name: Install deps
           command: |
-            .circleci/scripts/deps-install.sh
+            development/deps-install.sh
       - save_cache:
           key: dependency-cache-v1-{{ checksum "yarn.lock" }}
           paths:
@@ -254,19 +233,6 @@ jobs:
           paths:
             - storybook-build
 
-  test-lint:
-    executor: node-browsers
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: Lint
-          command: yarn lint
-      - run:
-          name: Verify locales
-          command: yarn verify-locales --quiet
-
   test-lint-shellcheck:
     executor: shellcheck
     steps:
@@ -276,60 +242,13 @@ jobs:
           name: ShellCheck Lint
           command: ./development/shellcheck.sh
 
-  test-lint-lockfile:
-    executor: node-browsers
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: lockfile-lint
-          command: yarn lint:lockfile
-
-  test-lint-changelog:
-    executor: node-browsers
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - when:
-          condition:
-            not:
-              matches:
-                pattern: /^Version-v(\d+)[.](\d+)[.](\d+)$/
-                value: << pipeline.git.branch >>
-          steps:
-            - run:
-                name: Validate changelog
-                command: yarn auto-changelog validate
-      - when:
-          condition:
-            matches:
-              pattern: /^Version-v(\d+)[.](\d+)[.](\d+)$/
-              value: << pipeline.git.branch >>
-          steps:
-            - run:
-                name: Validate release candidate changelog
-                command: yarn auto-changelog validate --rc
-
-
-  test-deps:
-    executor: node-browsers
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: yarn audit
-          command: .circleci/scripts/yarn-audit.sh
-
   test-e2e-chrome:
     executor: node-browsers
     steps:
       - checkout
       - run:
           name: Re-Install Chrome
-          command: ./.circleci/scripts/chrome-install.sh
+          command: ./development/chrome-install.sh
       - attach_workspace:
           at: .
       - run:
@@ -341,7 +260,7 @@ jobs:
       - run:
           name: test:e2e:chrome
           command: |
-            if .circleci/scripts/test-run-e2e.sh
+            if ./development/test-run-e2e.sh
             then
               yarn test:e2e:chrome --retries 2
             fi
@@ -356,7 +275,7 @@ jobs:
       - checkout
       - run:
           name: Re-Install Chrome
-          command: ./.circleci/scripts/chrome-install.sh
+          command: ./development/chrome-install.sh
       - attach_workspace:
           at: .
       - run:
@@ -368,7 +287,7 @@ jobs:
       - run:
           name: test:e2e:chrome:metrics
           command: |
-            if .circleci/scripts/test-run-e2e.sh
+            if ./development/test-run-e2e.sh
             then
               yarn test:e2e:chrome:metrics --retries 2
             fi
@@ -383,7 +302,7 @@ jobs:
       - checkout
       - run:
           name: Install Firefox
-          command: ./.circleci/scripts/firefox-install.sh
+          command: ./development/firefox-install.sh
       - attach_workspace:
           at: .
       - run:
@@ -395,7 +314,7 @@ jobs:
       - run:
           name: test:e2e:firefox
           command: |
-            if .circleci/scripts/test-run-e2e.sh
+            if ./development/test-run-e2e.sh
             then
               yarn test:e2e:firefox --retries 2
             fi
@@ -410,7 +329,7 @@ jobs:
       - checkout
       - run:
           name: Install Firefox
-          command: ./.circleci/scripts/firefox-install.sh
+          command: ./development/firefox-install.sh
       - attach_workspace:
           at: .
       - run:
@@ -422,7 +341,7 @@ jobs:
       - run:
           name: test:e2e:firefox:metrics
           command: |
-            if .circleci/scripts/test-run-e2e.sh
+            if ./development/test-run-e2e.sh
             then
               yarn test:e2e:firefox:metrics --retries 2
             fi
@@ -437,7 +356,7 @@ jobs:
       - checkout
       - run:
           name: Re-Install Chrome
-          command: ./.circleci/scripts/chrome-install.sh
+          command: ./development/chrome-install.sh
       - attach_workspace:
           at: .
       - run:
@@ -472,12 +391,6 @@ jobs:
       - store_artifacts:
           path: builds
           destination: builds
-      - store_artifacts:
-          path: coverage
-          destination: coverage
-      - store_artifacts:
-          path: jest-coverage
-          destination: jest-coverage
       - store_artifacts:
           path: test-artifacts
           destination: test-artifacts
@@ -525,34 +438,6 @@ jobs:
           command: |
             git remote add storybook git@github.com:MetaMask/metamask-storybook.git
             yarn storybook:deploy
-
-  test-unit:
-    executor: node-browsers
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: test:coverage
-          command: yarn test:coverage
-      - run:
-          name: test:coverage:jest
-          command: yarn test:coverage:jest
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .nyc_output
-            - coverage
-            - jest-coverage
-  test-unit-global:
-    executor: node-browsers
-    steps:
-      - checkout
-      - attach_workspace:
-          at: .
-      - run:
-          name: test:unit:global
-          command: yarn test:unit:global
 
   validate-source-maps:
     executor: node-browsers

@@ -11,7 +11,7 @@ FIREFOX_PATH='/opt/firefox'
 
 printf '%s\n' "Removing old Firefox installation"
 
-sudo rm -r "${FIREFOX_PATH}"
+sudo rm -rf "${FIREFOX_PATH}"
 
 printf '%s\n' "Downloading & installing Firefox ${FIREFOX_VERSION}"
 
@@ -24,6 +24,9 @@ printf '%s\n' "Firefox ${FIREFOX_VERSION} installed"
   printf '%s\n' 'pref("general.config.obscure_value", 0);'
 } | sudo tee "${FIREFOX_PATH}/defaults/pref/autoconfig.js"
 
-sudo cp .circleci/scripts/firefox.cfg "${FIREFOX_PATH}"
+sudo cp ./development/firefox.cfg "${FIREFOX_PATH}"
 
 printf '%s\n' "Firefox ${FIREFOX_VERSION} configured"
+
+# Set '/tmp/.X11-unix' to root to silence warning when running xvfb-run
+sudo chown root:root /tmp/.X11-unix

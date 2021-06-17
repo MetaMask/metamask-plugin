@@ -14,7 +14,13 @@ class ChromeDriver {
     const builder = new Builder()
       .forBrowser('chrome')
       .setChromeOptions(options);
-    const service = new chrome.ServiceBuilder();
+
+    // By default, ChromeDriver allows local connections over IPv4 and IPv6.
+    // When run in a Docker environment without IPv6 enabled (e.g. like on
+    // GitHub Actions), an error is thrown about failing to bind to a port.
+    // Setting the allowed IPs to just IPv4 localhost prevents it from trying
+    // and failing to allow connections on IPv6 localhost.
+    const service = new chrome.ServiceBuilder().setAllowedIps(['127.0.0.1']);
 
     // Enables Chrome logging.
     // Especially useful for discovering why Chrome has crashed, but can also

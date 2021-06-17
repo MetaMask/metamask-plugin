@@ -1,17 +1,30 @@
 diff --git a/node_modules/selenium-webdriver/chromium.js b/node_modules/selenium-webdriver/chromium.js
-index d828ce5..87176f4 100644
+index d828ce5..bca4a0f 100644
 --- a/node_modules/selenium-webdriver/chromium.js
 +++ b/node_modules/selenium-webdriver/chromium.js
-@@ -197,6 +197,14 @@ class ServiceBuilder extends remote.DriverService.Builder {
+@@ -197,6 +197,27 @@ class ServiceBuilder extends remote.DriverService.Builder {
      return this.addArguments('--log-path=' + path);
    }
- 
+
 +  /**
 +   * Enables Chrome logging.
 +   * @returns {!ServiceBuilder} A self reference.
 +   */
 +  enableChromeLogging() {
 +    return this.addArguments('--enable-chrome-logs');
++  }
++
++  /**
++   * Set the remote IPs that are allowed to connect to ChromeDriver
++   *
++   * @param {Array<string>=} allowedIps A list of remote IPs to allow
++   * @returns {!ServiceBuilder} A self reference.
++   */
++   setAllowedIps(allowedIps) {
++     if (allowedIps) {
++      return this.addArguments('--allowed-ips=' + allowedIps.join(','));
++     }
++     return this.addArguments('--allowed-ips');
 +  }
 +
    /**
