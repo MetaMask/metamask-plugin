@@ -62,7 +62,8 @@ const styles = {
       marginTop: '9px',
     },
     'border': '1px solid #BBC0C5',
-    'height': '48px',
+    'min-height': '48px',
+    'overflow-y': 'scroll',
     'borderRadius': '6px',
     'padding': '0 16px',
     'display': 'flex',
@@ -203,6 +204,7 @@ const TextField = ({
   min,
   max,
   autoComplete,
+  multiline,
   ...textFieldProps
 }) => {
   const inputProps = themeToInputProps[theme]({
@@ -212,6 +214,7 @@ const TextField = ({
     dir,
     min,
     max,
+    multiline,
     autoComplete,
   });
 
@@ -219,6 +222,7 @@ const TextField = ({
     <MaterialTextField
       error={Boolean(error)}
       helperText={error}
+      multiline={multiline}
       {...inputProps}
       {...textFieldProps}
     />
@@ -240,6 +244,7 @@ TextField.propTypes = {
   largeLabel: PropTypes.bool,
   min: PropTypes.number,
   max: PropTypes.number,
+  multiline: PropTypes.bool,
   autoComplete: PropTypes.string,
 };
 
