@@ -29,7 +29,8 @@ import {
   sumHexWEIsToRenderableFiat,
 } from '../../../helpers/utils/conversions.util';
 import { formatETHFee } from '../../../helpers/utils/formatters';
-import { calcGasTotal, isBalanceSufficient } from '../../send/send.utils';
+import { isBalanceSufficient } from '../../send/send.utils';
+import { calcGasTotal } from '../../../../shared/modules/gas-utils';
 import SwapsGasCustomizationModalComponent from './swaps-gas-customization-modal.component';
 
 const mapStateToProps = (state) => {

@@ -7,7 +7,7 @@ import Identicon from '../../components/ui/identicon';
 
 import { ENVIRONMENT_TYPE_NOTIFICATION } from '../../../shared/constants/app';
 import { getEnvironmentType } from '../../../app/scripts/lib/util';
-import { conversionUtil } from '../../helpers/utils/conversion-util';
+import { conversionUtil } from '../../../shared/modules/conversion-util';
 
 export default class ConfirmEncryptionPublicKey extends Component {
   static contextTypes = {

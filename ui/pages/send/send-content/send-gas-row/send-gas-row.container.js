@@ -20,7 +20,7 @@ import {
   getIsEthGasPriceFetched,
   getNoGasPriceFetched,
 } from '../../../../selectors';
-import { isBalanceSufficient, calcGasTotal } from '../../send.utils';
+import { isBalanceSufficient } from '../../send.utils';
 import { calcMaxAmount } from '../send-amount-row/amount-max-button/amount-max-button.utils';
 import {
   showGasButtonGroup,
@@ -37,6 +37,7 @@ import {
 } from '../../../../ducks/gas/gas.duck';
 import { getConversionRate } from '../../../../ducks/metamask/metamask';
 import { showModal } from '../../../../store/actions';
+import { calcGasTotal } from '../../../../../shared/modules/gas-utils';
 import SendGasRow from './send-gas-row.component';
 
 export default connect(

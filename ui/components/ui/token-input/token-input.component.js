@@ -6,7 +6,7 @@ import { getWeiHexFromDecimalValue } from '../../../helpers/utils/conversions.ut
 import {
   conversionUtil,
   multiplyCurrencies,
-} from '../../../helpers/utils/conversion-util';
+} from '../../../../shared/modules/conversion-util';
 import { ETH } from '../../../helpers/constants/common';
 import { addHexPrefix } from '../../../../app/scripts/lib/util';
 

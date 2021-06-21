@@ -42,7 +42,7 @@ import {
   getTokens,
 } from '../../ducks/metamask/metamask';
 import { isValidDomainName } from '../../helpers/utils/util';
-import { calcGasTotal } from './send.utils';
+import { calcGasTotal } from '../../../shared/modules/gas-utils';
 import SendEther from './send.component';
 
 function mapStateToProps(state) {

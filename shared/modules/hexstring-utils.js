@@ -72,3 +72,13 @@ export function toChecksumHexAddress(address) {
   }
   return toChecksumAddress(addHexPrefix(address));
 }
+
+/**
+ * Given and object where all values are strings, returns the same object with all values
+ * now prefixed with '0x'
+ */
+export function addHexPrefixToObjectValues(obj) {
+  return Object.keys(obj).reduce((newObj, key) => {
+    return { ...newObj, [key]: addHexPrefix(obj[key]) };
+  }, {});
+}

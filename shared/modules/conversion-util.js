@@ -264,6 +264,35 @@ const toNegative = (n, options = {}) => {
   return multiplyCurrencies(n, -1, options);
 };
 
+/**
+ * Given a number and specified precision, returns that number in base 10 with a maximum of precision
+ * significant digits, but without any trailing zeros after the decimal point To be used when wishing
+ * to display only as much digits to the user as necessary
+ *
+ * @param {string | number | BigNumber} n - The number to format
+ * @param {number} precision - The maximum number of significant digits in the return value
+ * @returns {string} The number in decimal form, with <= precision significant digits and no decimal trailing zeros
+ */
+function toPrecisionWithoutTrailingZeros(n, precision) {
+  return new BigNumber(n)
+    .toPrecision(precision)
+    .replace(/(\.[0-9]*[1-9])0*|(\.0*)/u, '$1');
+}
+
+function hexToDecimal(hexValue) {
+  return conversionUtil(hexValue, {
+    fromNumericBase: 'hex',
+    toNumericBase: 'dec',
+  });
+}
+
+function decimalToHex(decimal) {
+  return conversionUtil(decimal, {
+    fromNumericBase: 'dec',
+    toNumericBase: 'hex',
+  });
+}
+
 export {
   conversionUtil,
   addCurrencies,
@@ -275,4 +304,7 @@ export {
   conversionMax,
   toNegative,
   subtractCurrencies,
+  toPrecisionWithoutTrailingZeros,
+  hexToDecimal,
+  decimalToHex,
 };

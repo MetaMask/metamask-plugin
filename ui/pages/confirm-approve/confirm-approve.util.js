@@ -1,9 +1,7 @@
 import { TRANSACTION_TYPES } from '../../../shared/constants/transaction';
-import { decimalToHex } from '../../helpers/utils/conversions.util';
-import {
-  calcTokenValue,
-  getTokenAddressParam,
-} from '../../helpers/utils/token-util';
+import { decimalToHex } from '../../../shared/modules/conversion-util';
+import { calcTokenValue } from '../../../shared/modules/token-utils';
+import { getTokenAddressParam } from '../../helpers/utils/token-util';
 import { getTokenData } from '../../helpers/utils/transactions.util';
 
 export function getCustomTxParamsData(

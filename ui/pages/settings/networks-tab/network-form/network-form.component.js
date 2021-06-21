@@ -10,7 +10,7 @@ import {
   isSafeChainId,
 } from '../../../../../shared/modules/network.utils';
 import { jsonRpcRequest } from '../../../../../shared/modules/rpc.utils';
-import { decimalToHex } from '../../../../helpers/utils/conversions.util';
+import { decimalToHex } from '../../../../../shared/modules/conversion-util';
 
 const FORM_STATE_KEYS = [
   'rpcUrl',

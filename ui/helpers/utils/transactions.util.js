@@ -9,9 +9,8 @@ import {
   TRANSACTION_GROUP_STATUSES,
   TRANSACTION_STATUSES,
 } from '../../../shared/constants/transaction';
-import fetchWithCache from './fetch-with-cache';
-
-import { addCurrencies } from './conversion-util';
+import { addCurrencies } from '../../../shared/modules/conversion-util';
+import fetchWithCache from '../../../shared/modules/fetch-with-cache';
 
 const hstInterface = new ethers.utils.Interface(abi);
 

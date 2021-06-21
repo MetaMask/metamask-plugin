@@ -1,8 +1,6 @@
 import { useMemo } from 'react';
-import {
-  getTokenValueParam,
-  calcTokenAmount,
-} from '../helpers/utils/token-util';
+import { calcTokenAmount } from '../../shared/modules/token-utils';
+import { getTokenValueParam } from '../helpers/utils/token-util';
 import { useTokenData } from './useTokenData';
 
 /**

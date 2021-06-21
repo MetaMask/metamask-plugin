@@ -49,14 +49,12 @@ import {
   sumHexWEIsToRenderableFiat,
 } from '../../../../helpers/utils/conversions.util';
 import { formatETHFee } from '../../../../helpers/utils/formatters';
-import {
-  calcGasTotal,
-  isBalanceSufficient,
-} from '../../../../pages/send/send.utils';
+import { isBalanceSufficient } from '../../../../pages/send/send.utils';
 import { MIN_GAS_LIMIT_DEC } from '../../../../pages/send/send.constants';
 import { calcMaxAmount } from '../../../../pages/send/send-content/send-amount-row/amount-max-button/amount-max-button.utils';
 import { TRANSACTION_STATUSES } from '../../../../../shared/constants/transaction';
 import { GAS_LIMITS } from '../../../../../shared/constants/gas';
+import { calcGasTotal } from '../../../../../shared/modules/gas-utils';
 import GasModalPageContainer from './gas-modal-page-container.component';
 
 const mapStateToProps = (state, ownProps) => {

@@ -17,8 +17,6 @@ import {
   BnMultiplyByFraction,
   addHexPrefix,
 } from '../../lib/util';
-import { TRANSACTION_NO_CONTRACT_ERROR_KEY } from '../../../../ui/helpers/constants/error-keys';
-import { getSwapsTokensReceivedFromTxMeta } from '../../../../ui/pages/swaps/swaps.util';
 import {
   TRANSACTION_STATUSES,
   TRANSACTION_TYPES,
@@ -29,10 +27,13 @@ import {
   MAINNET,
   NETWORK_TYPE_RPC,
 } from '../../../../shared/constants/network';
+import { getSwapsTokensReceivedFromTxMeta } from '../../../../shared/modules/swaps.utils';
 import TransactionStateManager from './tx-state-manager';
 import TxGasUtil from './tx-gas-utils';
 import PendingTransactionTracker from './pending-tx-tracker';
 import * as txUtils from './lib/util';
+
+export const TRANSACTION_NO_CONTRACT_ERROR_KEY = 'transactionErrorNoContract';
 
 const HARDFORK = 'berlin';
 

@@ -3,7 +3,7 @@ import {
   SEVERITIES,
   TYPOGRAPHY,
 } from '../../../helpers/constants/design-system';
-import fetchWithCache from '../../../helpers/utils/fetch-with-cache';
+import fetchWithCache from '../../../../shared/modules/fetch-with-cache';
 
 const UNRECOGNIZED_CHAIN = {
   id: 'UNRECOGNIZED_CHAIN',

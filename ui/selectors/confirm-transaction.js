@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 import txHelper from '../helpers/utils/tx-helper';
-import { calcTokenAmount } from '../helpers/utils/token-util';
 import {
   roundExponential,
   getValueFromWeiHex,
@@ -12,6 +11,7 @@ import {
 import { sumHexes } from '../helpers/utils/transactions.util';
 import { transactionMatchesNetwork } from '../../shared/modules/transaction.utils';
 import { getNativeCurrency } from '../ducks/metamask/metamask';
+import { calcTokenValue } from '../../shared/modules/token-utils';
 import { getAveragePriceEstimateInHexWEI } from './custom-gas';
 import { getCurrentChainId, deprecatedGetCurrentNetworkId } from './selectors';
 
@@ -195,7 +195,7 @@ export const sendTokenTokenAmountAndToAddressSelector = createSelector(
 
       if (tokenDecimals) {
         // bignumber.js return value
-        value = calcTokenAmount(value, tokenDecimals).toFixed();
+        value = calcTokenValue(value, tokenDecimals).toFixed();
       }
 
       tokenAmount = roundExponential(value);

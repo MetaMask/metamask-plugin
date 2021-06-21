@@ -14,7 +14,7 @@ import {
   setCustomGasLimit,
   setCustomGasPriceForRetry,
 } from '../ducks/gas/gas.duck';
-import { multiplyCurrencies } from '../helpers/utils/conversion-util';
+import { multiplyCurrencies } from '../../shared/modules/conversion-util';
 import { GAS_LIMITS } from '../../shared/constants/gas';
 
 /**

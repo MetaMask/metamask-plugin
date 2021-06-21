@@ -4,25 +4,11 @@ import {
   conversionUtil,
   addCurrencies,
   subtractCurrencies,
-} from './conversion-util';
+} from '../../../shared/modules/conversion-util';
 import { formatCurrency } from './confirm-tx.util';
 
 export function bnToHex(inputBn) {
   return addHexPrefix(inputBn.toString(16));
-}
-
-export function hexToDecimal(hexValue) {
-  return conversionUtil(hexValue, {
-    fromNumericBase: 'hex',
-    toNumericBase: 'dec',
-  });
-}
-
-export function decimalToHex(decimal) {
-  return conversionUtil(decimal, {
-    fromNumericBase: 'dec',
-    toNumericBase: 'hex',
-  });
 }
 
 export function getEthConversionFromWeiHex({

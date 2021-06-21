@@ -6,7 +6,7 @@ import BigNumber from 'bignumber.js';
 import Modal from '../../modal';
 import Identicon from '../../../ui/identicon';
 import TextField from '../../../ui/text-field';
-import { calcTokenAmount } from '../../../../helpers/utils/token-util';
+import { calcTokenAmount } from '../../../../../shared/modules/token-utils';
 
 const MAX_UNSIGNED_256_INT = new BigNumber(2).pow(256).minus(1).toString(10);
 

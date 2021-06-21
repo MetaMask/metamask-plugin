@@ -33,7 +33,9 @@ jest.mock('../../../../selectors', () => ({
 jest.mock('../../send.utils.js', () => ({
   isBalanceSufficient: ({ amount, gasTotal, balance, conversionRate }) =>
     `${amount}:${gasTotal}:${balance}:${conversionRate}`,
+}));
 
+jest.mock('../../../../../shared/modules/gas-utils', () => ({
   calcGasTotal: (gasLimit, gasPrice) => gasLimit + gasPrice,
 }));
 

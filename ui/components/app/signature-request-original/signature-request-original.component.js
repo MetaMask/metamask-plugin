@@ -11,7 +11,7 @@ import {
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import Identicon from '../../ui/identicon';
 import AccountListItem from '../account-list-item';
-import { conversionUtil } from '../../../helpers/utils/conversion-util';
+import { conversionUtil } from '../../../../shared/modules/conversion-util';
 import Button from '../../ui/button';
 import SiteIcon from '../../ui/site-icon';
 

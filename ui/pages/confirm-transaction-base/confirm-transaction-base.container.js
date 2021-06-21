@@ -21,8 +21,8 @@ import {
   GAS_LIMIT_TOO_LOW_ERROR_KEY,
 } from '../../helpers/constants/error-keys';
 import { getHexGasTotal } from '../../helpers/utils/confirm-tx.util';
-import { isBalanceSufficient, calcGasTotal } from '../send/send.utils';
-import { conversionGreaterThan } from '../../helpers/utils/conversion-util';
+import { isBalanceSufficient } from '../send/send.utils';
+import { conversionGreaterThan } from '../../../shared/modules/conversion-util';
 import { MIN_GAS_LIMIT_DEC } from '../send/send.constants';
 import { shortenAddress, valuesFor } from '../../helpers/utils/util';
 import {
@@ -40,6 +40,7 @@ import {
 import { getMostRecentOverviewPage } from '../../ducks/history/history';
 import { transactionMatchesNetwork } from '../../../shared/modules/transaction.utils';
 import { toChecksumHexAddress } from '../../../shared/modules/hexstring-utils';
+import { calcGasTotal } from '../../../shared/modules/gas-utils';
 import ConfirmTransactionBase from './confirm-transaction-base.component';
 
 const casedContractMap = Object.keys(contractMap).reduce((acc, base) => {

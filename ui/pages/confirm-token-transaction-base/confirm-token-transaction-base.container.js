@@ -8,10 +8,10 @@ import {
 import { getTokens } from '../../ducks/metamask/metamask';
 import { getTokenData } from '../../helpers/utils/transactions.util';
 import {
-  calcTokenAmount,
   getTokenAddressParam,
   getTokenValueParam,
 } from '../../helpers/utils/token-util';
+import { calcTokenAmount } from '../../../shared/modules/token-utils';
 import ConfirmTokenTransactionBase from './confirm-token-transaction-base.component';
 
 const mapStateToProps = (state, ownProps) => {

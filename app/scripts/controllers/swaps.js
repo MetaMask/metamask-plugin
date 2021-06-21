@@ -4,9 +4,7 @@ import BigNumber from 'bignumber.js';
 import { ObservableStore } from '@metamask/obs-store';
 import { mapValues, cloneDeep } from 'lodash';
 import abi from 'human-standard-token-abi';
-import { calcTokenAmount } from '../../../ui/helpers/utils/token-util';
-import { calcGasTotal } from '../../../ui/pages/send/send.utils';
-import { conversionUtil } from '../../../ui/helpers/utils/conversion-util';
+import { conversionUtil } from '../../../shared/modules/conversion-util';
 import {
   DEFAULT_ERC20_APPROVE_GAS,
   QUOTES_EXPIRED_ERROR,
@@ -15,14 +13,16 @@ import {
   SWAPS_CHAINID_CONTRACT_ADDRESS_MAP,
 } from '../../../shared/constants/swaps';
 
-import { isSwapsDefaultTokenAddress } from '../../../shared/modules/swaps.utils';
-
 import {
   fetchTradesInfo as defaultFetchTradesInfo,
   fetchSwapsFeatureLiveness as defaultFetchSwapsFeatureLiveness,
   fetchSwapsQuoteRefreshTime as defaultFetchSwapsQuoteRefreshTime,
-} from '../../../ui/pages/swaps/swaps.util';
+  isSwapsDefaultTokenAddress,
+} from '../../../shared/modules/swaps.utils';
+
 import { MINUTE, SECOND } from '../../../shared/constants/time';
+import { calcGasTotal } from '../../../shared/modules/gas-utils';
+import { calcTokenAmount } from '../../../shared/modules/token-utils';
 import { NETWORK_EVENTS } from './network';
 
 // The MAX_GAS_LIMIT is a number that is higher than the maximum gas costs we have observed on any aggregator

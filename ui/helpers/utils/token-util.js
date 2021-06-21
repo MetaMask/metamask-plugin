@@ -1,8 +1,11 @@
 import log from 'loglevel';
 import BigNumber from 'bignumber.js';
 import contractMap from '@metamask/contract-metadata';
+import {
+  conversionUtil,
+  multiplyCurrencies,
+} from '../../../shared/modules/conversion-util';
 import * as util from './util';
-import { conversionUtil, multiplyCurrencies } from './conversion-util';
 import { formatCurrency } from './confirm-tx.util';
 
 const casedContractMap = Object.keys(contractMap).reduce((acc, base) => {
@@ -119,16 +122,6 @@ export function tokenInfoGetter() {
 
     return tokens[address];
   };
-}
-
-export function calcTokenAmount(value, decimals) {
-  const multiplier = Math.pow(10, Number(decimals || 0));
-  return new BigNumber(String(value)).div(multiplier);
-}
-
-export function calcTokenValue(value, decimals) {
-  const multiplier = Math.pow(10, Number(decimals || 0));
-  return new BigNumber(String(value)).times(multiplier);
 }
 
 /**

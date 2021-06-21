@@ -1,7 +1,7 @@
 import {
   multiplyCurrencies,
   subtractCurrencies,
-} from '../../../../../helpers/utils/conversion-util';
+} from '../../../../../../shared/modules/conversion-util';
 import { addHexPrefix } from '../../../../../../app/scripts/lib/util';
 
 export function calcMaxAmount({ balance, gasTotal, sendToken, tokenBalance }) {

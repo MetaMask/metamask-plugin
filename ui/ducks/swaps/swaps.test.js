@@ -1,7 +1,7 @@
 import nock from 'nock';
 
 import { setSwapsLiveness } from '../../store/actions';
-import { setStorageItem } from '../../helpers/utils/storage-helpers';
+import { setStorageItem } from '../../../shared/modules/storage-helpers';
 import * as swaps from './swaps';
 
 jest.mock('../../store/actions.js', () => ({

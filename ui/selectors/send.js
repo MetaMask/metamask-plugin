@@ -1,5 +1,5 @@
 import abi from 'human-standard-token-abi';
-import { calcGasTotal } from '../pages/send/send.utils';
+import { calcGasTotal } from '../../shared/modules/gas-utils';
 import {
   getSelectedAccount,
   getTargetAccount,

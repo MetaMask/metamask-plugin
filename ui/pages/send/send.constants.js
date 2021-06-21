@@ -1,7 +1,7 @@
 import {
   conversionUtil,
   multiplyCurrencies,
-} from '../../helpers/utils/conversion-util';
+} from '../../../shared/modules/conversion-util';
 import { addHexPrefix } from '../../../app/scripts/lib/util';
 
 const MIN_GAS_PRICE_DEC = '0';

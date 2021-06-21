@@ -6,12 +6,12 @@ import {
   multiplyCurrencies,
   conversionGreaterThan,
   conversionLessThan,
-} from '../../helpers/utils/conversion-util';
+} from '../../../shared/modules/conversion-util';
 
-import { calcTokenAmount } from '../../helpers/utils/token-util';
 import { addHexPrefix } from '../../../app/scripts/lib/util';
 
 import { GAS_LIMITS } from '../../../shared/constants/gas';
+import { calcTokenAmount } from '../../../shared/modules/token-utils';
 import {
   INSUFFICIENT_FUNDS_ERROR,
   INSUFFICIENT_TOKENS_ERROR,
@@ -22,7 +22,6 @@ import {
 
 export {
   addGasBuffer,
-  calcGasTotal,
   calcTokenBalance,
   doesAmountErrorRequireUpdate,
   estimateGasForSend,
@@ -35,14 +34,6 @@ export {
   removeLeadingZeroes,
   ellipsify,
 };
-
-function calcGasTotal(gasLimit = '0', gasPrice = '0') {
-  return multiplyCurrencies(gasLimit, gasPrice, {
-    toNumericBase: 'hex',
-    multiplicandBase: 16,
-    multiplierBase: 16,
-  });
-}
 
 function isBalanceSufficient({
   amount = '0x0',

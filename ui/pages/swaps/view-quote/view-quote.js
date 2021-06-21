@@ -43,8 +43,6 @@ import {
 } from '../../../selectors';
 import { getNativeCurrency, getTokens } from '../../../ducks/metamask/metamask';
 
-import { toPrecisionWithoutTrailingZeros } from '../../../helpers/utils/util';
-
 import {
   safeRefetchQuotes,
   setCustomApproveTxData,
@@ -59,18 +57,9 @@ import {
   AWAITING_SWAP_ROUTE,
 } from '../../../helpers/constants/routes';
 import { getTokenData } from '../../../helpers/utils/transactions.util';
-import {
-  calcTokenAmount,
-  calcTokenValue,
-  getTokenValueParam,
-} from '../../../helpers/utils/token-util';
-import {
-  decimalToHex,
-  hexToDecimal,
-  getValueFromWeiHex,
-} from '../../../helpers/utils/conversions.util';
+import { getTokenValueParam } from '../../../helpers/utils/token-util';
+import { getValueFromWeiHex } from '../../../helpers/utils/conversions.util';
 import MainQuoteSummary from '../main-quote-summary';
-import { calcGasTotal } from '../../send/send.utils';
 import { getCustomTxParamsData } from '../../confirm-approve/confirm-approve.util';
 import ActionableMessage from '../actionable-message';
 import {
@@ -81,6 +70,16 @@ import { useTokenTracker } from '../../../hooks/useTokenTracker';
 import { QUOTES_EXPIRED_ERROR } from '../../../../shared/constants/swaps';
 import CountdownTimer from '../countdown-timer';
 import SwapsFooter from '../swaps-footer';
+import { calcGasTotal } from '../../../../shared/modules/gas-utils';
+import {
+  calcTokenAmount,
+  calcTokenValue,
+} from '../../../../shared/modules/token-utils';
+import {
+  decimalToHex,
+  hexToDecimal,
+  toPrecisionWithoutTrailingZeros,
+} from '../../../../shared/modules/conversion-util';
 import ViewQuotePriceDifference from './view-quote-price-difference';
 
 export default function ViewQuote() {

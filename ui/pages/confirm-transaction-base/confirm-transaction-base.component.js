@@ -19,7 +19,6 @@ import {
 } from '../../helpers/constants/error-keys';
 import UserPreferencedCurrencyDisplay from '../../components/app/user-preferenced-currency-display';
 import { PRIMARY, SECONDARY } from '../../helpers/constants/common';
-import { hexToDecimal } from '../../helpers/utils/conversions.util';
 import AdvancedGasInputs from '../../components/app/gas-customization/advanced-gas-inputs';
 import TextField from '../../components/ui/text-field';
 import {
@@ -29,6 +28,7 @@ import {
 import { getTransactionTypeTitle } from '../../helpers/utils/transactions.util';
 import ErrorMessage from '../../components/ui/error-message';
 import { toBuffer } from '../../../shared/modules/buffer-utils';
+import { hexToDecimal } from '../../../shared/modules/conversion-util';
 
 export default class ConfirmTransactionBase extends Component {
   static contextTypes = {

@@ -34,19 +34,18 @@ import {
   SWAPS_MAINTENANCE_ROUTE,
 } from '../../helpers/constants/routes';
 import {
-  fetchSwapsFeatureLiveness,
   fetchSwapsGasPrices,
   isContractAddressValid,
 } from '../../pages/swaps/swaps.util';
-import { calcGasTotal } from '../../pages/send/send.utils';
 import {
-  decimalToHex,
   getValueFromWeiHex,
   decGWEIToHexWEI,
   hexWEIToDecGWEI,
 } from '../../helpers/utils/conversions.util';
-import { conversionLessThan } from '../../helpers/utils/conversion-util';
-import { calcTokenAmount } from '../../helpers/utils/token-util';
+import {
+  conversionLessThan,
+  decimalToHex,
+} from '../../../shared/modules/conversion-util';
 import {
   getSelectedAccount,
   getTokenExchangeRates,
@@ -64,6 +63,9 @@ import {
   SWAPS_FETCH_ORDER_CONFLICT,
 } from '../../../shared/constants/swaps';
 import { TRANSACTION_TYPES } from '../../../shared/constants/transaction';
+import { calcGasTotal } from '../../../shared/modules/gas-utils';
+import { calcTokenAmount } from '../../../shared/modules/token-utils';
+import { fetchSwapsFeatureLiveness } from '../../../shared/modules/swaps.utils';
 
 const GAS_PRICES_LOADING_STATES = {
   INITIAL: 'INITIAL',

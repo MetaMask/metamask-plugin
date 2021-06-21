@@ -3,13 +3,13 @@ import BigNumber from 'bignumber.js';
 import {
   getStorageItem,
   setStorageItem,
-} from '../../helpers/utils/storage-helpers';
+} from '../../../shared/modules/storage-helpers';
 import {
   decGWEIToHexWEI,
   getValueFromWeiHex,
 } from '../../helpers/utils/conversions.util';
 import { getIsMainnet, getCurrentChainId } from '../../selectors';
-import fetchWithCache from '../../helpers/utils/fetch-with-cache';
+import fetchWithCache from '../../../shared/modules/fetch-with-cache';
 
 export const BASIC_ESTIMATE_STATES = {
   LOADING: 'LOADING',

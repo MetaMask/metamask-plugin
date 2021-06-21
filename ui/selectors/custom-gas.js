@@ -2,15 +2,15 @@ import { addHexPrefix } from '../../app/scripts/lib/util';
 import {
   conversionUtil,
   conversionGreaterThan,
-} from '../helpers/utils/conversion-util';
+} from '../../shared/modules/conversion-util';
 import { formatCurrency } from '../helpers/utils/confirm-tx.util';
 import { decEthToConvertedCurrency as ethTotalToConvertedCurrency } from '../helpers/utils/conversions.util';
 import { formatETHFee } from '../helpers/utils/formatters';
-import { calcGasTotal } from '../pages/send/send.utils';
 
 import { GAS_ESTIMATE_TYPES } from '../helpers/constants/common';
 import { BASIC_ESTIMATE_STATES, GAS_SOURCE } from '../ducks/gas/gas.duck';
 import { GAS_LIMITS } from '../../shared/constants/gas';
+import { calcGasTotal } from '../../shared/modules/gas-utils';
 import {
   getCurrentCurrency,
   getIsMainnet,

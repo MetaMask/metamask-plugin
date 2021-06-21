@@ -1,7 +1,7 @@
 import ethAbi from 'ethereumjs-abi';
 import { TOKEN_TRANSFER_FUNCTION_SIGNATURE } from '../send.constants';
 import { addHexPrefix } from '../../../../app/scripts/lib/util';
-import { addHexPrefixToObjectValues } from '../../../helpers/utils/util';
+import { addHexPrefixToObjectValues } from '../../../../shared/modules/hexstring-utils';
 
 export function constructTxParams({
   sendToken,

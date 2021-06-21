@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PageContainer from '../../../components/ui/page-container';
 import { Tabs, Tab } from '../../../components/ui/tabs';
-import { calcGasTotal } from '../../send/send.utils';
 import { sumHexWEIsToUnformattedFiat } from '../../../helpers/utils/conversions.util';
 import AdvancedGasInputs from '../../../components/app/gas-customization/advanced-gas-inputs';
 import BasicTabContent from '../../../components/app/gas-customization/gas-modal-page-container/basic-tab-content';
 import { GAS_ESTIMATE_TYPES } from '../../../helpers/constants/common';
+import { calcGasTotal } from '../../../../shared/modules/gas-utils';
 
 export default class GasModalPageContainer extends Component {
   static contextTypes = {

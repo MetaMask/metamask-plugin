@@ -33,7 +33,7 @@ jest.mock('../../ducks/send/send.duck', () => ({
   setGasTotal: jest.fn(),
 }));
 
-jest.mock('./send.utils.js', () => ({
+jest.mock('../../../shared/modules/gas-utils', () => ({
   calcGasTotal: (gasLimit, gasPrice) => gasLimit + gasPrice,
 }));
 

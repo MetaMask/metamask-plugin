@@ -38,11 +38,7 @@ import {
   getRpcPrefsForCurrentProvider,
 } from '../../../selectors';
 
-import {
-  getValueFromWeiHex,
-  hexToDecimal,
-} from '../../../helpers/utils/conversions.util';
-import { calcTokenAmount } from '../../../helpers/utils/token-util';
+import { getValueFromWeiHex } from '../../../helpers/utils/conversions.util';
 import { usePrevious } from '../../../hooks/usePrevious';
 import { useTokenTracker } from '../../../hooks/useTokenTracker';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
@@ -57,6 +53,8 @@ import { SWAPS_CHAINID_DEFAULT_BLOCK_EXPLORER_URL_MAP } from '../../../../shared
 import { resetSwapsPostFetchState, removeToken } from '../../../store/actions';
 import { fetchTokenPrice, fetchTokenBalance } from '../swaps.util';
 import SwapsFooter from '../swaps-footer';
+import { calcTokenAmount } from '../../../../shared/modules/token-utils';
+import { hexToDecimal } from '../../../../shared/modules/conversion-util';
 
 const fuseSearchKeys = [
   { name: 'name', weight: 0.499 },

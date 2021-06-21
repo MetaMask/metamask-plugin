@@ -15,16 +15,14 @@ import {
 } from '../../shared/constants/swaps';
 
 import { shortenAddress, getAccountByAddress } from '../helpers/utils/util';
-import {
-  getValueFromWeiHex,
-  hexToDecimal,
-} from '../helpers/utils/conversions.util';
+import { getValueFromWeiHex } from '../helpers/utils/conversions.util';
 
 import { TEMPLATED_CONFIRMATION_MESSAGE_TYPES } from '../pages/confirmation/templates';
 
 import { toChecksumHexAddress } from '../../shared/modules/hexstring-utils';
 import { DAY } from '../../shared/constants/time';
 import { getNativeCurrency } from '../ducks/metamask/metamask';
+import { hexToDecimal } from '../../shared/modules/conversion-util';
 
 /**
  * One of the only remaining valid uses of selecting the network subkey of the

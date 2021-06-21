@@ -12,7 +12,7 @@ import Copy from '../../components/ui/icon/copy-icon.component';
 import { ENVIRONMENT_TYPE_NOTIFICATION } from '../../../shared/constants/app';
 import { SECOND } from '../../../shared/constants/time';
 import { getEnvironmentType } from '../../../app/scripts/lib/util';
-import { conversionUtil } from '../../helpers/utils/conversion-util';
+import { conversionUtil } from '../../../shared/modules/conversion-util';
 
 export default class ConfirmDecryptMessage extends Component {
   static contextTypes = {

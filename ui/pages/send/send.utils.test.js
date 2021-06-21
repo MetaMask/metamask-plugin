@@ -6,11 +6,11 @@ import {
   addCurrencies,
   conversionGTE,
   conversionUtil,
-} from '../../helpers/utils/conversion-util';
+} from '../../../shared/modules/conversion-util';
 
 import { GAS_LIMITS } from '../../../shared/constants/gas';
+import { calcGasTotal } from '../../../shared/modules/gas-utils';
 import {
-  calcGasTotal,
   estimateGasForSend,
   doesAmountErrorRequireUpdate,
   generateTokenTransferData,
@@ -28,7 +28,7 @@ import {
   INSUFFICIENT_TOKENS_ERROR,
 } from './send.constants';
 
-jest.mock('../../helpers/utils/conversion-util', () => ({
+jest.mock('../../../shared/modules/conversion-util', () => ({
   addCurrencies: jest.fn((a, b) => {
     let [a1, b1] = [a, b];
     if (String(a).match(/^0x.+/u)) {
@@ -46,7 +46,7 @@ jest.mock('../../helpers/utils/conversion-util', () => ({
   conversionLessThan: (obj1, obj2) => obj1.value < obj2.value,
 }));
 
-jest.mock('../../helpers/utils/token-util', () => ({
+jest.mock('../../../shared/modules/token-utils', () => ({
   calcTokenAmount: (a, d) => `calc:${a}${d}`,
 }));
 
@@ -55,6 +55,7 @@ jest.mock('ethereumjs-abi', () => ({
 }));
 
 describe('send utils', () => {
+  // TODO: CURRENT_WORK_NEEDED
   describe('calcGasTotal()', () => {
     it('should call multiplyCurrencies with the correct params and return the multiplyCurrencies return', () => {
       const result = calcGasTotal(12, 15);

@@ -9,7 +9,6 @@ import {
 } from '../../store/actions';
 import { getTokenData } from '../../helpers/utils/transactions.util';
 import {
-  calcTokenAmount,
   getTokenAddressParam,
   getTokenValueParam,
 } from '../../helpers/utils/token-util';
@@ -30,6 +29,7 @@ import {
 
 import { currentNetworkTxListSelector } from '../../selectors/transactions';
 import Loading from '../../components/ui/loading-screen';
+import { calcTokenAmount } from '../../../shared/modules/token-utils';
 import { getCustomTxParamsData } from './confirm-approve.util';
 import ConfirmApproveContent from './confirm-approve-content';
 
