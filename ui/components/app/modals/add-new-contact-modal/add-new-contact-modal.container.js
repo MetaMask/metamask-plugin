@@ -7,7 +7,7 @@ import {
   qrCodeDetected,
   hideModal,
 } from '../../../../store/actions';
-import { getQrCodeData } from '../../../../selectors';
+import { getQrCodeData } from '../../../../ducks/app/app';
 import AddNewContactModal from './add-new-contact-modal.component';
 
 const mapStateToProps = (state) => {

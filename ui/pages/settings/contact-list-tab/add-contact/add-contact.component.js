@@ -35,8 +35,6 @@ export default class AddContact extends PureComponent {
     ethAddress: '',
     error: '',
     input: '',
-    ensError: '',
-    memo: '',
   };
 
   constructor(props) {
@@ -139,20 +137,6 @@ export default class AddContact extends PureComponent {
                 {t(errorToRender)}
               </div>
             )}
-          </div>
-          <div className="address-book__view-contact__group">
-            <div className="address-book__view-contact__group__label">
-              {t('memo')}
-            </div>
-            <TextField
-              type="Multiline"
-              id="memoInput"
-              placeholder="Add memo"
-              rows={4}
-              value={this.state.memo}
-              onChange={(e) => this.setState({ memo: e.target.value })}
-              fullWidth
-            />
           </div>
         </div>
         <PageContainerFooter
