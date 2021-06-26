@@ -9,6 +9,11 @@ import Button from '../../../../components/ui/button/button.component';
 import Tooltip from '../../../../components/ui/tooltip';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
 import { useCopyToClipboard } from '../../../../hooks/useCopyToClipboard';
+import { getEnvironmentType } from '../../../../../app/scripts/lib/util';
+import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../../shared/constants/app';
+
+const environmentType = getEnvironmentType();
+const isFullScreen = environmentType === ENVIRONMENT_TYPE_FULLSCREEN;
 
 function quadSplit(address) {
   return `0x ${address
@@ -36,20 +41,21 @@ function ViewContact({
   return (
     <div className="settings-page__content-row">
       <div className="settings-page__content-item">
-        <div className="settings-page__header address-book__header">
-          <Identicon address={address} diameter={60} />
-          <div className="address-book__header__name">{name}</div>
-        </div>
-        <div className="address-book__view-contact__group">
-          <Button
-            type="secondary"
-            onClick={() => {
-              history.push(`${editRoute}/${address}`);
-            }}
-          >
-            {t('edit')}
-          </Button>
-        </div>
+        {isFullScreen ? (
+          <div className="settings-page__header address-book__header">
+            <Identicon address={address} diameter={60} />
+            <div className="address-book__header__name">{name}</div>
+          </div>
+        ) : (
+          <div className="address-book__view-contact__group">
+            <div className="address-book__view-contact__group__label--capitalized">
+              {t('userName')}
+            </div>
+            <div className="address-book__view-contact__group__static-address">
+              {name}
+            </div>
+          </div>
+        )}
         <div className="address-book__view-contact__group">
           <div className="address-book__view-contact__group__label">
             {t('ethereumPublicAddress')}
@@ -80,6 +86,17 @@ function ViewContact({
           <div className="address-book__view-contact__group__static-address">
             {memo}
           </div>
+        </div>
+        <div className="address-book__view-contact__group">
+          <Button
+            className="button btn-secondary btn--rounded"
+            type="secondary"
+            onClick={() => {
+              history.push(`${editRoute}/${address}`);
+            }}
+          >
+            {t('edit')}
+          </Button>
         </div>
       </div>
     </div>
