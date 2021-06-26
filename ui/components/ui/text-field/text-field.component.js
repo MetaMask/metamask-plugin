@@ -62,7 +62,9 @@ const styles = {
       marginTop: '9px',
     },
     'border': '1px solid #BBC0C5',
-    'height': '48px',
+    'min-height': '48px',
+    'max-height': '8rem',
+    'overflow-y': 'scroll',
     'borderRadius': '6px',
     'padding': '0 16px',
     'display': 'flex',
@@ -124,6 +126,7 @@ const getMaterialWhitePaddedThemeInputProps = ({
   startAdornment,
   min,
   max,
+  multiline,
   autoComplete,
 }) => ({
   InputProps: {
@@ -138,6 +141,7 @@ const getMaterialWhitePaddedThemeInputProps = ({
       dir,
       min,
       max,
+      multiline,
       autoComplete,
     },
   },
