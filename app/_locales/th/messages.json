@@ -158,10 +158,29 @@
     "message": "แก้ไขผู้ติดต่อ"
   },
   "endOfFlowMessage1": {
-    "message": "คุณผ่านการทดสอบแล้ว กรุณารับผิดชอบในการรักษา Seed Phrase ให้ปลอดภัย"
+    "message": "คุณผ่านการทดสอบแล้ว โปรดรักษา seedphrase ของคุณให้ปลอดภัย ถือเป็นความรับผิดชอบของคุณ!"
+  },
+  "endOfFlowMessage2": {
+    "message": "เคล็ดลับในการจัดเก็บอย่างปลอดภัย"
+  },
+  "endOfFlowMessage3": {
+    "message": "เก็บสำรองไว้หลาย ๆ ที่ (และปลอดภัย)"
+  },
+  "endOfFlowMessage4": {
+    "message": "อย่าแบ่งปัน seedphrase นี้กับใคร"
   },
   "endOfFlowMessage5": {
-    "message": "โปรดระวังฟิชชิ่ง MetaMask จะไม่ขอ Seed Phrase ของคุณโดยไม่มีการแจ้งล่วงหน้าเลย"
+    "message": "โปรดระวังฟิชชิ่ง และ MetaMask จะไม่ขอ seedphrase ของคุณโดยไม่มีการแจ้งล่วงหน้า"
+  },
+  "endOfFlowMessage6": {
+    "message": "หากคุณต้องการตรวจสอบ seedphrase ของคุณอีกครั้งคุณสามารถค้นหาได้ใน การตั้งค่า -> ความปลอดภัย"
+  },
+  "endOfFlowMessage7": {
+    "message": "หากคุณมีคข้อสงสัยหรือเห็นสิ่งผิดปกติโปรดติดต่อฝ่ายสนับสนุนของเรา $1",
+    "description": "$1 is a clickable link with text defined by the 'here' key. The link will open to a form where users can file support tickets."
+  },
+  "endOfFlowMessage8": {
+    "message": "MetaMask ไม่สามารถกู้คืน seedphrase ของคุณได้"
   },
   "endOfFlowMessage9": {
     "message": "เรียนรู้เพิ่มเติม"
