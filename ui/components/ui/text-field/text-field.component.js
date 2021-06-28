@@ -62,9 +62,7 @@ const styles = {
       marginTop: '9px',
     },
     'border': '1px solid #BBC0C5',
-    'min-height': '48px',
-    'max-height': '8rem',
-    'overflow-y': 'scroll',
+    'height': '48px',
     'borderRadius': '6px',
     'padding': '0 16px',
     'display': 'flex',
@@ -126,7 +124,6 @@ const getMaterialWhitePaddedThemeInputProps = ({
   startAdornment,
   min,
   max,
-  multiline,
   autoComplete,
 }) => ({
   InputProps: {
@@ -141,7 +138,6 @@ const getMaterialWhitePaddedThemeInputProps = ({
       dir,
       min,
       max,
-      multiline,
       autoComplete,
     },
   },
@@ -207,7 +203,6 @@ const TextField = ({
   min,
   max,
   autoComplete,
-  multiline,
   ...textFieldProps
 }) => {
   const inputProps = themeToInputProps[theme]({
@@ -217,7 +212,6 @@ const TextField = ({
     dir,
     min,
     max,
-    multiline,
     autoComplete,
   });
 
@@ -225,7 +219,6 @@ const TextField = ({
     <MaterialTextField
       error={Boolean(error)}
       helperText={error}
-      multiline={multiline}
       {...inputProps}
       {...textFieldProps}
     />
@@ -247,7 +240,6 @@ TextField.propTypes = {
   largeLabel: PropTypes.bool,
   min: PropTypes.number,
   max: PropTypes.number,
-  multiline: PropTypes.bool,
   autoComplete: PropTypes.string,
 };
 

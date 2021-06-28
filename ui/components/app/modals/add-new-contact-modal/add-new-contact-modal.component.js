@@ -135,7 +135,7 @@ export default class AddNewContactModal extends PureComponent {
             <div className="address-book__view-contact__group__label--capitalized">
               {t('memo')}
             </div>
-            <TextField
+            {/* <TextField
               className="first-time-flow__textarea"
               type="text"
               id="memoInput"
@@ -145,6 +145,12 @@ export default class AddNewContactModal extends PureComponent {
               fullWidth
               multiline
               margin="dense"
+            /> */}
+            <textarea
+              className="add-new-contact-modal__textarea"
+              value={this.state.memo}
+              onChange={(e) => this.setState({ memo: e.target.value })}
+              placeholder={isFullScreen ? t('addMemo') : ''}
             />
           </div>
         </div>
