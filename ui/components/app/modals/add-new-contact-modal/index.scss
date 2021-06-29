@@ -1,15 +1,18 @@
 .add-new-contact-modal {
-    &__textarea {
-        @include Paragraph;
+  &__input-text {
+    margin-top: 8px;
+  }
 
-        /*rtl:ignore*/
-        direction: ltr;
-        border: 1px solid #cdcdcd;
-        border-radius: 6px;
-        background-color: #fff;
-        padding: 16px;
-        margin-top: 8px;
+  &__textarea {
+    @include Paragraph;
 
-        resize: none;
-    }
+    /*rtl:ignore*/
+    direction: ltr;
+    border: 1px solid #cdcdcd;
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 16px;
+    margin-top: 8px;
+    resize: none;
+  }
 }

@@ -1,12 +1,7 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {
-  addToAddressBook,
-  showQrScanner,
-  qrCodeDetected,
-  hideModal,
-} from '../../../../store/actions';
+import { addToAddressBook, hideModal } from '../../../../store/actions';
 import { getQrCodeData } from '../../../../ducks/app/app';
 import AddNewContactModal from './add-new-contact-modal.component';
 
@@ -21,8 +16,6 @@ const mapDispatchToProps = (dispatch) => {
     hideModal: () => dispatch(hideModal()),
     addToAddressBook: (recipient, nickname, memo) =>
       dispatch(addToAddressBook(recipient, nickname, memo)),
-    scanQrCode: () => dispatch(showQrScanner()),
-    qrCodeDetected: (data) => dispatch(qrCodeDetected(data)),
   };
 };
 

@@ -271,6 +271,9 @@
   "builtAroundTheWorld": {
     "message": "MetaMask is designed and built around the world."
   },
+  "burnAddress": {
+    "message": "This is a burn address"
+  },
   "buy": {
     "message": "Buy"
   },
