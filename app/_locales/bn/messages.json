@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "MetaMask ব্যবহার করে আপনি যে টোকেনগুলি অর্জন করেছেন সেগুলি যোগ করুন"
   },
-  "addAlias": {
-    "message": "উপনাম যোগ করুন"
-  },
   "addNetwork": {
     "message": "নেটওয়ার্ক যোগ করুন"
   },

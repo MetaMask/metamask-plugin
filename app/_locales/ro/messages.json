@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Adăugați token-urile pe care le-ați achiziționat folosind MetaMask"
   },
-  "addAlias": {
-    "message": "Adăugare alias"
-  },
   "addNetwork": {
     "message": "Adăugați rețea"
   },

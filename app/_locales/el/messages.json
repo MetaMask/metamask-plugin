@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Προσθέστε τα token που αποκτήσατε χρησιμοποιώντας το MetaMask"
   },
-  "addAlias": {
-    "message": "Προσθήκη ψευδωνύμου"
-  },
   "addNetwork": {
     "message": "Προσθήκη Δικτύου"
   },

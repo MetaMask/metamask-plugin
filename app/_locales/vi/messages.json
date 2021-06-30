@@ -46,9 +46,6 @@
   "addAcquiredTokens": {
     "message": "Thêm token mà bạn đã mua bằng MetaMask"
   },
-  "addAlias": {
-    "message": "Thêm biệt danh"
-  },
   "addContact": {
     "message": "Thêm người liên hệ"
   },

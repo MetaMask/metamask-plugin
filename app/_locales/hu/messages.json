@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Adja hozzá MetaMask-kal a kapott érméket"
   },
-  "addAlias": {
-    "message": "Álnév hozzáadása"
-  },
   "addNetwork": {
     "message": "Hálózat hozzáadása"
   },

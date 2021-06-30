@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "رمزیاب های را که با استفاده از MetaMask بدست آورده اید، اضافه کنید"
   },
-  "addAlias": {
-    "message": "نام مستعار اضافه کنید"
-  },
   "addNetwork": {
     "message": "اضافه شبکه"
   },

@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Pridajte tokeny, ktoré ste získali pomocou MetaMask"
   },
-  "addAlias": {
-    "message": "Pridať alias"
-  },
   "addNetwork": {
     "message": "Pridať sieť"
   },

@@ -35,9 +35,6 @@
   "addAcquiredTokens": {
     "message": "將您已經擁有的代幣顯示於 MetaMask"
   },
-  "addAlias": {
-    "message": "新增化名"
-  },
   "addNetwork": {
     "message": "新增網路"
   },

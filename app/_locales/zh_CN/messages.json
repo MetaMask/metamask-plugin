@@ -46,9 +46,6 @@
   "addAcquiredTokens": {
     "message": "在 MetaMask 上添加获得的代币"
   },
-  "addAlias": {
-    "message": "添加别名"
-  },
   "addNetwork": {
     "message": "添加网络"
   },

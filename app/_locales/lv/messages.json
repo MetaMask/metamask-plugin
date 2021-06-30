@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Pievienojiet marķierus, ko ieguvāt, izmantojot MetaMask"
   },
-  "addAlias": {
-    "message": "Pievienot segvārdu"
-  },
   "addNetwork": {
     "message": "Pievienot tīklu"
   },

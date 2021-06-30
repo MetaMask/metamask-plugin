@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Pridėkite žetonus, kuriuos gavote naudodamiesi „MetaMask“"
   },
-  "addAlias": {
-    "message": "Pridėti alternatyvųjį vardą"
-  },
   "addNetwork": {
     "message": "Pridėti tinklą"
   },

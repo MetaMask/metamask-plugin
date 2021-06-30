@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Lägg till de tokens du har skaffat med MetaMask"
   },
-  "addAlias": {
-    "message": "Lägg till alias"
-  },
   "addNetwork": {
     "message": "Lägg till nätverk"
   },

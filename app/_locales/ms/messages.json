@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Tambah token yang anda peroleh menggunakan MetaMask"
   },
-  "addAlias": {
-    "message": "Tambah alias"
-  },
   "addNetwork": {
     "message": "Tambah Rangkaian"
   },

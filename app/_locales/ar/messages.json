@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "أضف العملات الرمزية التي اكتسبتها باستخدام MetaMask"
   },
-  "addAlias": {
-    "message": "إضافة اسم مستعار"
-  },
   "addNetwork": {
     "message": "أضف شبكة"
   },

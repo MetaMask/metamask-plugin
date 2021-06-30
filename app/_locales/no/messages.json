@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Legg til sjetongene du har kjøpt med MetaMask"
   },
-  "addAlias": {
-    "message": "Legg til alias "
-  },
   "addNetwork": {
     "message": "Legg til nettverk"
   },

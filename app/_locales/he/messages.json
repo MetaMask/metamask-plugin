@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "הוספת הטוקנים שהשגת באמצעות MetaMask"
   },
-  "addAlias": {
-    "message": "הוסף כינוי"
-  },
   "addNetwork": {
     "message": "הוסף/י רשת"
   },

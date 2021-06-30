@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Ajouter les jetons que vous avez acquis par l'intermédiaire de MetaMask"
   },
-  "addAlias": {
-    "message": "Ajouter un alias"
-  },
   "addNetwork": {
     "message": "Ajouter un réseau"
   },

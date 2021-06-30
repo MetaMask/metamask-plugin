@@ -46,9 +46,6 @@
   "addAcquiredTokens": {
     "message": "Add the tokens you've acquired using MetaMask"
   },
-  "addAlias": {
-    "message": "Add alias"
-  },
   "addAnEthereumAddress": {
     "message": "Add an Ethereum Address"
   },

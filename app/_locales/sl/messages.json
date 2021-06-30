@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Dodaj žetone pridobljene z MetaMask"
   },
-  "addAlias": {
-    "message": "Dodaj vzdevek"
-  },
   "addNetwork": {
     "message": "Dodaj omrežje"
   },
