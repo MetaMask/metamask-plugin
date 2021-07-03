@@ -43,8 +43,21 @@ function ViewContact({
       <div className="settings-page__content-item">
         {isFullScreen ? (
           <div className="settings-page__header address-book__header">
-            <Identicon address={address} diameter={60} />
-            <div className="address-book__header__name">{name}</div>
+            <div>
+              <Identicon address={address} diameter={60} />
+            </div>
+            <div className="address-book__header__column">
+              <p className="address-book__header__name">{name}</p>
+              <Button
+                className="button btn-secondary address-book__header__button"
+                type="secondary"
+                onClick={() => {
+                  history.push(`${editRoute}/${address}`);
+                }}
+              >
+                {t('edit')}
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="address-book__view-contact__group">
@@ -87,17 +100,21 @@ function ViewContact({
             {memo}
           </div>
         </div>
-        <div className="address-book__view-contact__group">
-          <Button
-            className="button btn-secondary btn--rounded"
-            type="secondary"
-            onClick={() => {
-              history.push(`${editRoute}/${address}`);
-            }}
-          >
-            {t('edit')}
-          </Button>
-        </div>
+        {isFullScreen ? (
+          ''
+        ) : (
+          <div className="address-book__view-contact__group">
+            <Button
+              className="button btn-secondary btn--rounded address-book__view-contact__group__button"
+              type="secondary"
+              onClick={() => {
+                history.push(`${editRoute}/${address}`);
+              }}
+            >
+              {t('edit')}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

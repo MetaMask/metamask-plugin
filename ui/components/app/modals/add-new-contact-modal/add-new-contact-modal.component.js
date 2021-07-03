@@ -120,6 +120,7 @@ export default class AddNewContactModal extends PureComponent {
               onChange={(e) => this.setState({ newName: e.target.value })}
               placeholder={isFullScreen ? t('userName') : ''}
               fullWidth
+              autoFocus
               margin="dense"
             />
           </div>

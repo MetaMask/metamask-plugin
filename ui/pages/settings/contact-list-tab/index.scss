@@ -40,6 +40,14 @@
 
       margin-left: 24px;
     }
+    &__column {
+      flex: 1;
+      padding-right: 1em;
+    }
+    &__button {
+      margin-top: 10px;
+      margin-left: 24px;
+    }
   }
 
   &__header--edit {
@@ -159,6 +167,10 @@
             color: black;
           }
         }
+      }
+
+      &__button {
+        max-width: 150px;
       }
 
       .unit-input__input {
