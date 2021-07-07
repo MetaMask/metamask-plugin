@@ -411,6 +411,15 @@
   "continue": {
     "message": "Continuar"
   },
+  "contactUs": {
+    "message": "Nos contate"
+  },
+  "contacts": {
+    "message": "Contatos"
+  },
+  "contactsSettingsDescription": {
+    "message": "adicione, edite, remova, e gerencie seus contatos"
+  },
   "continueToWyre": {
     "message": "Continuar para o Wyre"
   },
