@@ -118,8 +118,8 @@ export default class AccountTracker {
       }
     });
 
-    this.addAccounts(accountsToAdd);
     this.removeAccount(accountsToRemove);
+    this.addAccounts(accountsToAdd);
   }
 
   /**
@@ -133,7 +133,7 @@ export default class AccountTracker {
     const { accounts } = this.store.getState();
     // add initial state for addresses
     addresses.forEach((address) => {
-      accounts[address] = {};
+      accounts[address] = { address, balance: '0x0' };
     });
     // save accounts state
     this.store.updateState({ accounts });
