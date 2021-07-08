@@ -2,7 +2,7 @@ import { ethErrors, serializeError } from 'eth-rpc-errors';
 
 const createMetaRPCHandler = (api, outStream) => {
   return (data) => {
-    if (outStream._writableState.ended) {
+    if (outStream._writableState.ended || outStream._readableState.ended) {
       return;
     }
     if (!api[data.method]) {
@@ -16,7 +16,7 @@ const createMetaRPCHandler = (api, outStream) => {
       return;
     }
     api[data.method](...data.params, (err, result) => {
-      if (outStream._writableState.ended) {
+      if (outStream._writableState.ended || outStream._readableState.ended) {
         return;
       }
       if (err) {

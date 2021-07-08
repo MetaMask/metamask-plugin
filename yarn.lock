@@ -2794,6 +2794,15 @@
     once "^1.4.0"
     readable-stream "^2.3.3"
 
+"@metamask/object-multiplex@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@metamask/object-multiplex/-/object-multiplex-1.2.0.tgz#38fc15c142f61939391e1b9a8eed679696c7e4f4"
+  integrity sha512-hksV602d3NWE2Q30Mf2Np1WfVKaGqfJRy9vpHAmelbaD0OkDt06/0KQkRR6UVYdMbTbkuEu8xN5JDUU80inGwQ==
+  dependencies:
+    end-of-stream "^1.4.4"
+    once "^1.4.0"
+    readable-stream "^2.3.3"
+
 "@metamask/obs-store@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/obs-store/-/obs-store-5.0.0.tgz#cf2213874c62186a8a4c80f0c402af62a0a877a9"
@@ -9688,7 +9697,7 @@ encoding@^0.1.11:
   dependencies:
     iconv-lite "~0.4.13"
 
-end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.0, end-of-stream@^1.4.1, end-of-stream@^1.4.4:
+end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1, end-of-stream@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
   integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
@@ -19356,15 +19365,6 @@ oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   integrity sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
-
-obj-multiplex@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/obj-multiplex/-/obj-multiplex-1.0.0.tgz#2f2ae6bfd4ae11befe742ea9ea5b36636eabffc1"
-  integrity sha1-Lyrmv9SuEb7+dC6p6ls2Y26r/8E=
-  dependencies:
-    end-of-stream "^1.4.0"
-    once "^1.4.0"
-    readable-stream "^2.3.3"
 
 object-assign@4.X, object-assign@^4, object-assign@^4.0.0, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"

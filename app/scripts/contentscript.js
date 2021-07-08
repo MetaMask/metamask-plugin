@@ -1,7 +1,7 @@
 import querystring from 'querystring';
 import pump from 'pump';
 import { WindowPostMessageStream } from '@metamask/post-message-stream';
-import ObjectMultiplex from 'obj-multiplex';
+import ObjectMultiplex from '@metamask/object-multiplex';
 import extension from 'extensionizer';
 import PortStream from 'extension-port-stream';
 import { obj as createThoughStream } from 'through2';
