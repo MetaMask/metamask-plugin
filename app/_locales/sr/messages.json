@@ -3,73 +3,73 @@
     "message": "Основни подаци"
   },
   "aboutSettingsDescription": {
-    "message": "Verzija, centar za podršku i podaci za kontakt"
+    "message": "Верзија, центар за подршку и подаци за контакт"
   },
   "acceleratingATransaction": {
-    "message": "* Time što se ubrzava transakcija koristeći veću gas cenu, povećavaju se šanse da se procesuira brže od strane mreže, ali to nije uvek zagarantovano."
+    "message": "* Тиме што се убрзава трансакција користећи већу гас цену, повећавају се шансе да се процесуира брже од стране мреже, али то није увек загарантовано."
   },
   "accessingYourCamera": {
-    "message": "Pristupa se vašoj kameri..."
+    "message": "Приступа се вашој камери..."
   },
   "account": {
     "message": "налог"
   },
   "accountDetails": {
-    "message": "Detalji naloga"
+    "message": "Детаљи налога"
   },
   "accountName": {
-    "message": "Ime naloga"
+    "message": "Назив налога"
   },
   "accountOptions": {
-    "message": "Opcije naloga"
+    "message": "Опције налога"
   },
   "accountSelectionRequired": {
-    "message": "Potrebno je da izaberete nalog!"
+    "message": "Потребно је да изаберете налог!"
   },
   "activityLog": {
-    "message": "dnevnik aktivnosti"
+    "message": "дневник активности"
   },
   "addAcquiredTokens": {
-    "message": "Dodajte stečene tokene koristeći MetaMask."
+    "message": "Додајте стечене токене користећи МетаМаск."
   },
   "addAlias": {
-    "message": "Dodaj pseudonim"
+    "message": "Додај псеудоним"
   },
   "addNetwork": {
-    "message": "Dodajte mrežu"
+    "message": "Додајте мрежу"
   },
   "addRecipient": {
-    "message": "Dodaj primaoca"
+    "message": "Додај примаоца"
   },
   "addSuggestedTokens": {
-    "message": "Dodajte sugerisane tokene"
+    "message": "Додајте сугерисане токене"
   },
   "addToAddressBook": {
-    "message": "Dodaj u adresar"
+    "message": "Додај у адресар"
   },
   "addToAddressBookModalPlaceholder": {
-    "message": "npr. John D."
+    "message": "нпр. Петар П."
   },
   "addToken": {
-    "message": "Dodaj token"
+    "message": "Додај токен"
   },
   "addTokens": {
-    "message": "Dodaj tokene"
+    "message": "Додај токене"
   },
   "advanced": {
     "message": "Напредне опције"
   },
   "advancedOptions": {
-    "message": "Dodatne opcije"
+    "message": "Додатне опције"
   },
   "advancedSettingsDescription": {
-    "message": "Pristupite funkcijama za programere, preuzmite državne evidencije, resetujte nalog, postavite testne mreže i prilagođeni RPC"
+    "message": "Приступите функцијама за програмере, преузмите државне евиденције, ресетујте налог, поставите тестне мреже и прилагођени RPC"
   },
   "amount": {
-    "message": "Iznos"
+    "message": "Износ"
   },
   "appDescription": {
-    "message": "Ethereum novčanik u vašem pregledaču",
+    "message": "Ethereum новчаник у вашем прегледачу",
     "description": "The description of the application"
   },
   "appName": {
@@ -77,95 +77,95 @@
     "description": "The name of the application"
   },
   "approve": {
-    "message": "Odobrite"
+    "message": "Одобрите"
   },
   "approved": {
-    "message": "Odobreno"
+    "message": "Одобрено"
   },
   "asset": {
-    "message": "Sredstva"
+    "message": "Средства"
   },
   "attemptToCancel": {
-    "message": "Pokušavate da otkažete?"
+    "message": "Покушавате од откажете?"
   },
   "attemptToCancelDescription": {
-    "message": "Slanje ovog pokušaja ne garantuje da će prvobitna transakcija biti otkazana. Ako je pokušaj otkazivanja uspešan, biće vam naplaćena provizija koja je navedena gore."
+    "message": "Слање овог покушаја не гарантује да ће првобитна трансакција бити отказана. Ако је покушај отказивања успешан, биће вам наплаћена провизија која је наведена горе."
   },
   "attemptingConnect": {
-    "message": "Pokušava da se poveže na lanac blokova"
+    "message": "Покушава да се повеже на ланац блокова"
   },
   "attributions": {
-    "message": "Atribucije"
+    "message": "Приписивања"
   },
   "autoLockTimeLimit": {
-    "message": "Tajmer za automatsko odjavljivanje (u minutama)"
+    "message": "Тајмер за аутоматско одјављивање (у минутама)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Podesite vreme mirovanja u minutima pre nego što se MetaMask automatski odjavi. "
+    "message": "Подесите време мировања у минутима пре него што се МетаМаск аутоматски одјави. "
   },
   "average": {
-    "message": "Prosečno"
+    "message": "Просечно"
   },
   "back": {
     "message": "Назад"
   },
   "backToAll": {
-    "message": "Povratak na Sve"
+    "message": "Повратак на Све"
   },
   "backupApprovalInfo": {
-    "message": "Potreban je tajni kôd za oporavak vašeg novčanika u slučaju da izgubite uređaj, zaboravite lozinku, morate ponovo da instalirate MetaMask ili želite da pristupite novčaniku sa drugog uređaja."
+    "message": "Потребан је тајни кôд за опоравак вашег новчаника у случају да изгубите уређај, заборавите лозинку, морате поново да инсталирате МетаМаск или желите да приступите новчанику са другог уређаја."
   },
   "backupApprovalNotice": {
-    "message": "Napravite rezervnu kopiju tajnog kôda za oporavak da bi vaš novčanik i sredstva bili bezbedni."
+    "message": "Направите резервну копију тајног кôда за опоравак да би ваш новчаник и средства били безбедни."
   },
   "backupNow": {
-    "message": "Napravite rezervu sad"
+    "message": "Направите резерву сада"
   },
   "balance": {
-    "message": "Bilans"
+    "message": "Стање"
   },
   "balanceOutdated": {
-    "message": "Saldo je možda zastario"
+    "message": "Салдо је можда застарео"
   },
   "basic": {
     "message": "Основна"
   },
   "blockExplorerUrl": {
-    "message": "Blok istraživač"
+    "message": "Блок истраживач"
   },
   "blockExplorerView": {
-    "message": "Pogledajte nalog za $1",
+    "message": "Погледајте налог за $1",
     "description": "$1 replaced by URL for custom block explorer"
   },
   "blockiesIdenticon": {
-    "message": "Koristite „Blockies Identicon”"
+    "message": "Користите „Blockies Identicon”"
   },
   "browserNotSupported": {
-    "message": "Vaš pregledač nije podržan..."
+    "message": "Ваш прегледач није подржан..."
   },
   "buyWithWyre": {
-    "message": "Kupite ETH preko servisa Wyre"
+    "message": "Купите ETH преко сервиса Wyre"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre vam dozvoljava da koristite kreditnu karticu kako biste deponovali ETH pravo na vaš MetaMask nalog."
+    "message": "Wyre вам дозвољава да користите кредитну картицу како бисте депоновали ETH право на ваш МетаМаск налог."
   },
   "bytes": {
-    "message": "Bajtovi"
+    "message": "Бајтови"
   },
   "cancel": {
-    "message": "Otkaži"
+    "message": "Откажи"
   },
   "cancellationGasFee": {
-    "message": "Otkazivanje gas naknade"
+    "message": "Отказивање гас накнаде"
   },
   "cancelled": {
-    "message": "Otkazano"
+    "message": "Отказано"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Da biste se povezali sa Vašim hardverskim novčanikom morate da koristite MetaMask na Google Chrome-u."
+    "message": "Да бисте се повезали са Вашим хардверским новчаником морате да користите МетаМаск на Google Chrome-у."
   },
   "clickToRevealSeed": {
-    "message": "Kliknite ovde kako biste otkrili tajne reči"
+    "message": "Кликните овде како бисте открили тајне речи"
   },
   "close": {
     "message": "Затвори"
@@ -174,181 +174,181 @@
     "message": "Потврди"
   },
   "confirmPassword": {
-    "message": "Potvrdite lozinku"
+    "message": "Потврдите лозинку"
   },
   "confirmSecretBackupPhrase": {
-    "message": "Potvrdite svoju tajnu frazu za rezervnu kopiju"
+    "message": "Потврдите своју тајну фразу за резервну копију"
   },
   "confirmed": {
-    "message": "Potvrđeno"
+    "message": "Потврђено"
   },
   "congratulations": {
-    "message": "Čestitamo"
+    "message": "Честитамо"
   },
   "connect": {
     "message": "Повезивање"
   },
   "connectHardwareWallet": {
-    "message": "Povežite Hardverski novčanik"
+    "message": "Повежите хардверски новчаник"
   },
   "connectingTo": {
-    "message": "Povezuje se na $1"
+    "message": "Повезује се на $1"
   },
   "connectingToGoerli": {
-    "message": "Povezuje se sa test mrežom Goerli "
+    "message": "Повезује се са тест мрежом Goerli "
   },
   "connectingToKovan": {
-    "message": "Povezuje se na test mrežu Kovan"
+    "message": "Повезује се на тест мрежу Kovan"
   },
   "connectingToMainnet": {
-    "message": "Povezuje se na glavnu Ethereum mrežu"
+    "message": "Повезује се на главну Ethereum мрежу"
   },
   "connectingToRinkeby": {
-    "message": "Poezivanje na Rinkeby Test mrežu"
+    "message": "Повезивање на Rinkeby тест мрежу"
   },
   "connectingToRopsten": {
-    "message": "Povezuje se na Ropsten Test mrežu"
+    "message": "Повезује се на Ropsten тест мрежу"
   },
   "continueToWyre": {
-    "message": "Nastavite ka Wyre"
+    "message": "Наставите ка Wyre"
   },
   "contractDeployment": {
-    "message": "Primena ugovora"
+    "message": "Примена уговора"
   },
   "contractInteraction": {
-    "message": "Ugovorna interakcija"
+    "message": "Уговорна интеракција"
   },
   "copiedExclamation": {
-    "message": "Kopirano!"
+    "message": "Копирано!"
   },
   "copiedTransactionId": {
-    "message": "Kopiran identifikator transakcije"
+    "message": "Копиран идентификатор трансакције"
   },
   "copyAddress": {
-    "message": "Kopirajte adresu u ostavu"
+    "message": "Копирајте адресу у оставу"
   },
   "copyPrivateKey": {
-    "message": "Ovo je vaš privatni ključ (kliknite kako biste ga kopirali)"
+    "message": "Ово је ваш приватни кључ (кликните како бисте га копирали)"
   },
   "copyToClipboard": {
     "message": "Копирај у меморију"
   },
   "copyTransactionId": {
-    "message": "Kopirajte identifikacioni broj transakcije"
+    "message": "Копирајте идентификациони број трансакције"
   },
   "create": {
     "message": "Направи"
   },
   "createAWallet": {
-    "message": "Napravi novčanik"
+    "message": "Направи новчаник"
   },
   "createAccount": {
-    "message": "Kreirajte nalog"
+    "message": "Направите налог"
   },
   "createPassword": {
-    "message": "Kreirajte lozinku"
+    "message": "Направите лозинку"
   },
   "currencyConversion": {
-    "message": "Konverzija valuta"
+    "message": "Конверзија валута"
   },
   "currentLanguage": {
-    "message": "Trenutni jezik"
+    "message": "Тренутни језик"
   },
   "customGas": {
-    "message": "Prilagodi gas"
+    "message": "Прилагоди гас"
   },
   "customGasSubTitle": {
-    "message": "Povećanje naknade može smanjiti vreme obrade, ali to nije zagarantovano."
+    "message": "Повец́ање накнаде може смањити време обраде, али то није загарантовано."
   },
   "customRPC": {
-    "message": "Korisnički definisan RPC"
+    "message": "Кориснички дефинисан RPC"
   },
   "customToken": {
-    "message": "Prilagođeni token"
+    "message": "Прилагођени токен"
   },
   "decimal": {
-    "message": "Decimale preciznosti"
+    "message": "Децимале прецизности"
   },
   "decimalsMustZerotoTen": {
-    "message": "Decimalni broj mora biti najmanje 0, a ne veći od 36."
+    "message": "Децимални број мора бити најмање 0, а не већи од 36."
   },
   "defaultNetwork": {
-    "message": "Podrazumevana mreža za Ether transakcije je Main Net."
+    "message": "Подразумевана мрежа за Ether трансакције је Main Net."
   },
   "delete": {
     "message": "Избриши"
   },
   "deleteAccount": {
-    "message": "Obriši nalog"
+    "message": "Обриши налог"
   },
   "deleteNetwork": {
-    "message": "Da li želite da obrišete mrežu?"
+    "message": "Да ли желите да обришете мрежу?"
   },
   "deleteNetworkDescription": {
-    "message": "Da li ste sigurni da želite da izbrišete ovu mrežu?"
+    "message": "Да ли сте сигурни да желите да избришете ову мрежу?"
   },
   "depositEther": {
-    "message": "Dajte depozit Ether-u"
+    "message": "Дајте депозит Ether-у"
   },
   "details": {
     "message": "Детаљи"
   },
   "directDepositEther": {
-    "message": "Direktno deponujte Ether"
+    "message": "Директно депонујте Ether"
   },
   "directDepositEtherExplainer": {
-    "message": "Ako već imate neki Ether, najbrži način da preuzmete Ether u svoj novi novčanik jeste direktnim deponovanjem."
+    "message": "Ако већ имате неки Ether, најбржи начин да преузмете Ether у свој нови новчаник јесте директним депоновањем."
   },
   "done": {
-    "message": "Gotovo"
+    "message": "Готово"
   },
   "downloadGoogleChrome": {
-    "message": "Preuzmi Google Chrome"
+    "message": "Преузми Google Chrome"
   },
   "downloadSecretBackup": {
-    "message": "Preuzmi ovu tajnu rezervnu kopiju fraze i čuvaj je bezbedno skladištenu na eksternom šifrovanom čvrstom disku ili skladištu."
+    "message": "Преузми ову тајну резервну копију фразе и чувај је безбедно складиштену на екстерном шифрованом чврстом диску или складишту."
   },
   "downloadStateLogs": {
-    "message": "Preuzmite dnevnike stanja"
+    "message": "Преузмите дневнике стања"
   },
   "dropped": {
-    "message": "Ispušteno"
+    "message": "Одбачено"
   },
   "edit": {
     "message": "Измени"
   },
   "editContact": {
-    "message": "Izmeni kontakt"
+    "message": "Измени контакт"
   },
   "endOfFlowMessage1": {
-    "message": "Prošli ste test - čuvajte svoju frazu početnih vrednosti, to je vaša odgovornost!"
+    "message": "Прошли сте тест - чувајте своју фразу почетних вредности, то је ваша одговорност!"
   },
   "endOfFlowMessage10": {
-    "message": "Sve je gotovo"
+    "message": "Све је готово"
   },
   "endOfFlowMessage2": {
-    "message": "Saveti za sigurno skladištenje"
+    "message": "Савети за сигурно складиштење"
   },
   "endOfFlowMessage3": {
-    "message": "Sačuvajte rezervnu kopiju na više mesta."
+    "message": "Сачувајте резервну копију на више места."
   },
   "endOfFlowMessage4": {
-    "message": "Nikada ne delite frazu ni sa kim."
+    "message": "Никада не делите фразу ни са ким."
   },
   "endOfFlowMessage5": {
-    "message": "Čuvajte se pecanja (krađe podataka)! MetaMask nikad neće spontano tražiti vašu šifru za oporavak naloga (seed phrase)."
+    "message": "Чувајте се пецања (крађе података)! МетаМаск никад неће спонтано тражити вашу шифру за опоравак налога (seed phrase)."
   },
   "endOfFlowMessage6": {
-    "message": "Ako treba ponovo da izradite rezervnu kopiju svoje početne fraze, možete je pronaći u Postavke -> Bezbednost."
+    "message": "Ако треба поново да израдите резервну копију своје почетне фразе, можете је пронац́и у Поставке -> Безбедност."
   },
   "endOfFlowMessage8": {
-    "message": "MetaMask ne može da oporavi vašu početnu frazu. Saznajte više."
+    "message": "МетаМаск не може да опорави вашу почетну фразу. Сазнајте више."
   },
   "endOfFlowMessage9": {
-    "message": "Saznajte više."
+    "message": "Сазнајте више."
   },
   "ensNotFoundOnCurrentNetwork": {
-    "message": "ENS ime nije nađeno na trenutnoj mreži. Probajte da se prebacite na glavnu Ethereum mrežu."
+    "message": "ENS име није нађено на тренутној мрежи. Пробајте да се пребаците на главну Ethereum мрежу."
   },
   "ensRegistrationError": {
     "message": "Greška u registraciji ENS imena."
