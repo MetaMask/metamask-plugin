@@ -1,0 +1,46 @@
+# things that *are* used, that depcheck is wrong about
+ignores:
+  # 
+  # webapp deps
+  # 
+
+  - "@babel/runtime"
+  - "@fortawesome/fontawesome-free"
+  - "punycode"
+  
+  # 
+  # dev deps
+  #
+  
+  # safety fallback for npm lifecycle scripts, not used normally
+  - "@lavamoat/preinstall-always-fail"
+  # used in testing + ci
+  - "@metamask/auto-changelog" # invoked as `auto-changelog`
+  - "@metamask/forwarder"
+  - "@metamask/test-dapp"
+  - "chromedriver"
+  - "geckodriver"
+  - "ganache-cli"
+  - "lavamoat-viz"
+  - "@sentry/cli" # invoked as `sentry-cli`
+  - "prettier-plugin-sort-json" # automatically imported by prettier
+  - "source-map-explorer"
+  - "depcheck" # ooo meta
+  # development tool
+  - "yarn-deduplicate"
+  # storybook
+  - "@storybook/core"
+  - "@storybook/addon-backgrounds"
+  - "@storybook/addon-toolbars"
+  - "style-loader"
+  - "css-loader"
+  - "sass-loader"
+  - "resolve-url-loader"
+
+# files depcheck should not parse 
+ignorePatterns:
+  # seems to incorrectly parse scss @include pragmas?
+  - "**/*.scss"
+  # self-contained bundle used for testing
+  - "**/send-eth-with-private-key-test/web3js.js"
+  - "**/send-eth-with-private-key-test/ethereumjs-tx.js"

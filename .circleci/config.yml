@@ -25,7 +25,10 @@ workflows:
               only:
                 - /^Version-v(\d+)[.](\d+)[.](\d+)/
       - prep-deps
-      - test-deps
+      - test-deps-audit
+      - test-deps-depcheck:
+          requires:
+            - prep-deps
       - validate-lavamoat-config:
           filters:
             branches:
@@ -313,7 +316,7 @@ jobs:
                 command: yarn auto-changelog validate --rc
 
 
-  test-deps:
+  test-deps-audit:
     executor: node-browsers
     steps:
       - checkout
@@ -322,6 +325,16 @@ jobs:
       - run:
           name: yarn audit
           command: .circleci/scripts/yarn-audit.sh
+
+  test-deps-depcheck:
+    executor: node-browsers
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: depcheck
+          command: yarn depcheck
 
   test-e2e-chrome:
     executor: node-browsers
