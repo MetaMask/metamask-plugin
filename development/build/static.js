@@ -100,11 +100,20 @@ const copyTargetsProd = [
   },
 ];
 
-function createStaticAssetTasks({ livereload, browserPlatforms }) {
+const copyTargetsBeta = [
+  ...copyTargetsProd,
+  {
+    src: './app/build-types/beta/',
+    dest: `images`,
+  },
+];
+
+function createStaticAssetTasks({ livereload, isBeta, browserPlatforms }) {
+  const targets = isBeta ? copyTargetsBeta : copyTargetsProd;
   const prod = createTask(
     'static:prod',
     composeSeries(
-      ...copyTargetsProd.map((target) => {
+      ...targets.map((target) => {
         return async function copyStaticAssets() {
           await performCopy(target);
         };

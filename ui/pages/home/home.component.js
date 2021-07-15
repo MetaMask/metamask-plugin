@@ -16,6 +16,8 @@ import { EthOverview } from '../../components/app/wallet-overview';
 import WhatsNewPopup from '../../components/app/whats-new-popup';
 import RecoveryPhraseReminder from '../../components/app/recovery-phrase-reminder';
 
+import { isBeta } from '../../helpers/utils/build-types';
+
 import {
   ASSET_ROUTE,
   RESTORE_VAULT_ROUTE,
@@ -30,6 +32,7 @@ import {
   VIEW_QUOTE_ROUTE,
   CONFIRMATION_V_NEXT_ROUTE,
 } from '../../helpers/constants/routes';
+import BetaHomeFooter from './beta-home-footer.component';
 
 const LEARN_MORE_URL =
   'https://metamask.zendesk.com/hc/en-us/articles/360045129011-Intro-to-MetaMask-v8-extension';
@@ -402,16 +405,20 @@ export default class Home extends PureComponent {
               </Tab>
             </Tabs>
             <div className="home__support">
-              {t('needHelp', [
-                <a
-                  href="https://support.metamask.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key="need-help-link"
-                >
-                  {t('needHelpLinkText')}
-                </a>,
-              ])}
+              {isBeta() ? (
+                <BetaHomeFooter />
+              ) : (
+                t('needHelp', [
+                  <a
+                    href="https://support.metamask.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    key="need-help-link"
+                  >
+                    {t('needHelpLinkText')}
+                  </a>,
+                ])
+              )}
             </div>
           </div>
 

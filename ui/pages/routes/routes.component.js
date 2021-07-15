@@ -61,6 +61,7 @@ import {
   ENVIRONMENT_TYPE_POPUP,
 } from '../../../shared/constants/app';
 import { getEnvironmentType } from '../../../app/scripts/lib/util';
+import { isBeta } from '../../helpers/utils/build-types';
 import { TRANSACTION_STATUSES } from '../../../shared/constants/transaction';
 import ConfirmationPage from '../confirmation';
 
@@ -305,6 +306,7 @@ export default class Routes extends Component {
           [`os-${os}`]: os,
           [`browser-${browser}`]: browser,
           'mouse-user-styles': isMouseUser,
+          'beta': isBeta(),
         })}
         dir={textDirection}
         onClick={() => setMouseUserState(true)}

@@ -9,7 +9,12 @@ const { createTask, composeParallel } = require('./task');
 
 module.exports = createEtcTasks;
 
-function createEtcTasks({ browserPlatforms, livereload }) {
+function createEtcTasks({
+  browserPlatforms,
+  livereload,
+  isBeta,
+  betaVersionsMap,
+}) {
   const clean = createTask('clean', async function clean() {
     await del(['./dist/*']);
     await Promise.all(
@@ -27,18 +32,24 @@ function createEtcTasks({ browserPlatforms, livereload }) {
   const zip = createTask(
     'zip',
     composeParallel(
-      ...browserPlatforms.map((platform) => createZipTask(platform)),
+      ...browserPlatforms.map((platform) =>
+        createZipTask(platform, isBeta ? betaVersionsMap[platform] : undefined),
+      ),
     ),
   );
 
   return { clean, reload, zip };
 }
 
-function createZipTask(target) {
+function createZipTask(platform, betaVersion) {
   return async () => {
+    let path = `metamask-${platform}-${version}`;
+    if (betaVersion) {
+      path = `metamask-BETA-${platform}-${betaVersion}`;
+    }
     await pump(
-      gulp.src(`dist/${target}/**`),
-      gulpZip(`metamask-${target}-${version}.zip`),
+      gulp.src(`dist/${platform}/**`),
+      gulpZip(`${path}.zip`),
       gulp.dest('builds'),
     );
   };

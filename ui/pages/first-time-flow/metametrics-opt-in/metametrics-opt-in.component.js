@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MetaFoxLogo from '../../../components/ui/metafox-logo';
 import PageContainerFooter from '../../../components/ui/page-container/page-container-footer';
+import { isBeta } from '../../../helpers/utils/build-types';
 
 export default class MetaMetricsOptIn extends Component {
   static propTypes = {
@@ -30,7 +31,7 @@ export default class MetaMetricsOptIn extends Component {
     return (
       <div className="metametrics-opt-in">
         <div className="metametrics-opt-in__main">
-          <MetaFoxLogo />
+          <MetaFoxLogo useDark={isBeta()} />
           <div className="metametrics-opt-in__body-graphic">
             <img src="images/metrics-chart.svg" alt="" />
           </div>

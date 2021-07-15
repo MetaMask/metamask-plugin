@@ -25,9 +25,8 @@ const metamaskrc = require('rc')('metamask', {
     'https://f59f3dd640d2429d9d0e2445a87ea8e1@sentry.io/273496',
 });
 
-const { version } = require('../../package.json');
-
 const packageJSON = require('../../package.json');
+
 const {
   createTask,
   composeParallel,
@@ -37,9 +36,7 @@ const {
 
 module.exports = createScriptTasks;
 
-const dependencies = Object.keys(
-  (packageJSON && packageJSON.dependencies) || {},
-);
+const dependencies = Object.keys(packageJSON.dependencies || {});
 const materialUIDependencies = ['@material-ui/core'];
 const reactDepenendencies = dependencies.filter((dep) => dep.match(/react/u));
 
@@ -240,7 +237,10 @@ function createNormalBundle({
     const buildConfiguration = createBuildConfiguration();
     const { bundlerOpts, events } = buildConfiguration;
 
-    const envVars = getEnvironmentVariables({ devMode, testing });
+    const envVars = getEnvironmentVariables({
+      devMode,
+      testing,
+    });
     setupBundlerDefaults(buildConfiguration, {
       devMode,
       envVars,
@@ -427,7 +427,8 @@ function getEnvironmentVariables({ devMode, testing }) {
   return {
     METAMASK_DEBUG: devMode,
     METAMASK_ENVIRONMENT: environment,
-    METAMASK_VERSION: version,
+    METAMASK_VERSION: packageJSON.version,
+    METAMASK_BUILD_TYPE: process.env.BUILD_TYPE || 'main',
     NODE_ENV: devMode ? 'development' : 'production',
     IN_TEST: testing ? 'true' : false,
     PUBNUB_SUB_KEY: process.env.PUBNUB_SUB_KEY || '',

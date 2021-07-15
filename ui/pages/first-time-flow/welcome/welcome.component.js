@@ -7,6 +7,9 @@ import {
   INITIALIZE_CREATE_PASSWORD_ROUTE,
   INITIALIZE_SELECT_ACTION_ROUTE,
 } from '../../../helpers/constants/routes';
+import { isBeta } from '../../../helpers/utils/build-types';
+import WelcomeFooter from './welcome-footer.component';
+import BetaWelcomeFooter from './beta-welcome-footer.component';
 
 export default class Welcome extends PureComponent {
   static propTypes = {
@@ -50,11 +53,7 @@ export default class Welcome extends PureComponent {
             width="125"
             height="125"
           />
-          <div className="welcome-page__header">{t('welcome')}</div>
-          <div className="welcome-page__description">
-            <div>{t('metamaskDescription')}</div>
-            <div>{t('happyToSeeYou')}</div>
-          </div>
+          {isBeta() ? <BetaWelcomeFooter /> : <WelcomeFooter />}
           <Button
             type="primary"
             className="first-time-flow__button"

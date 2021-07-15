@@ -27,8 +27,15 @@
   &__description {
     text-align: center;
 
-    div {
+    p {
       @include Paragraph;
+
+      text-align: start;
+      margin-bottom: 22px;
+    }
+
+    a {
+      color: $primary-1;
     }
 
     @media screen and (max-width: 575px) {

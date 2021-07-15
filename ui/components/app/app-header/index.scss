@@ -95,6 +95,10 @@
     flex: 1 0 auto;
     width: 0;
     justify-content: flex-end;
+
+    .beta & span {
+      color: $ui-3;
+    }
   }
 
   &__network-down-arrow {
@@ -102,5 +106,9 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+  }
+
+  .beta & {
+    background: $ui-black;
   }
 }

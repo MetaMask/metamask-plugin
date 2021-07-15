@@ -2782,10 +2782,10 @@
     color "^0.11.3"
     mersenne-twister "^1.1.0"
 
-"@metamask/logo@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@metamask/logo/-/logo-2.5.0.tgz#4d35bf9e427db66c0030d81b8faa0f5162d17f7a"
-  integrity sha512-SBgWhcbKj0+efpFVAHf5Jh7URGMhH3Os06sgmERui+dvgXMEIBrt2aEeGRXe1aKKRSOhruazHknpdLdqyEvNjA==
+"@metamask/logo@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/logo/-/logo-3.0.1.tgz#9c0758d9abc56345c5e4ed01cac22a6d2d452793"
+  integrity sha512-EV1BqyUI/GX1X9pTIydBRZ94c7Zx4Vlsl6V/zIOqk8Zw9mhlLG46lRQSBCq8syCvuGeKVMj/1LYsf/sNVf/SsA==
   dependencies:
     gl-mat4 "1.1.4"
     gl-vec3 "1.0.3"

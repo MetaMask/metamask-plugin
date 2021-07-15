@@ -4,6 +4,7 @@
 // run any task with "yarn build ${taskName}"
 //
 const livereload = require('gulp-livereload');
+const { version } = require('../../package.json');
 const {
   createTask,
   composeSeries,
@@ -15,6 +16,7 @@ const createScriptTasks = require('./scripts');
 const createStyleTasks = require('./styles');
 const createStaticAssetTasks = require('./static');
 const createEtcTasks = require('./etc');
+const { getNextBetaVersionMap } = require('./utils');
 
 // packages required dynamically via browserify configuration in dependencies
 require('loose-envify');
@@ -33,13 +35,30 @@ defineAllTasks();
 detectAndRunEntryTask();
 
 function defineAllTasks() {
-  const staticTasks = createStaticAssetTasks({ livereload, browserPlatforms });
-  const manifestTasks = createManifestTasks({ browserPlatforms });
+  const IS_BETA = process.env.BUILD_TYPE === 'beta';
+  const BETA_VERSIONS_MAP = getNextBetaVersionMap(version, browserPlatforms);
+
+  const staticTasks = createStaticAssetTasks({
+    livereload,
+    isBeta: IS_BETA,
+    browserPlatforms,
+  });
+  const manifestTasks = createManifestTasks({
+    browserPlatforms,
+    isBeta: IS_BETA,
+    betaVersionsMap: BETA_VERSIONS_MAP,
+  });
   const styleTasks = createStyleTasks({ livereload });
-  const scriptTasks = createScriptTasks({ livereload, browserPlatforms });
+  const scriptTasks = createScriptTasks({
+    livereload,
+    browserPlatforms,
+  });
+
   const { clean, reload, zip } = createEtcTasks({
     livereload,
     browserPlatforms,
+    isBeta: IS_BETA,
+    betaVersionsMap: BETA_VERSIONS_MAP,
   });
 
   // build for development (livereload)

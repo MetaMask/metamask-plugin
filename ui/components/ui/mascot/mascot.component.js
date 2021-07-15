@@ -3,6 +3,8 @@ import React, { createRef, Component } from 'react';
 import MetaMaskLogo from '@metamask/logo';
 import { debounce } from 'lodash';
 
+import { getBuildSpecificAsset } from '../../../helpers/utils/build-types';
+
 const directionTargetGenerator = ({ top, left, height, width }) => {
   const horizontalMiddle = left + width / 2;
   const verticalMiddle = top + height / 2;
@@ -43,6 +45,7 @@ export default class Mascot extends Component {
       pxNotRatio: true,
       width,
       height,
+      meshJson: getBuildSpecificAsset('foxMeshJson'),
     });
 
     this.mascotContainer = createRef();

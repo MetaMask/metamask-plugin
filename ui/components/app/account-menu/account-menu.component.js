@@ -20,6 +20,8 @@ import {
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
 
+import { isBeta } from '../../../helpers/utils/build-types';
+
 export function AccountMenuItem(props) {
   const { icon, children, text, subText, className, onClick } = props;
 
@@ -309,6 +311,13 @@ export default class AccountMenu extends Component {
       return null;
     }
 
+    let supportText = t('support');
+    let supportLink = 'https://support.metamask.io';
+    if (isBeta()) {
+      supportText = t('needHelpSubmitTicket');
+      supportLink = 'https://metamask.zendesk.com/hc/en-us/requests/new';
+    }
+
     return (
       <div className="account-menu">
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
@@ -409,10 +418,10 @@ export default class AccountMenu extends Component {
         <div className="account-menu__divider" />
         <AccountMenuItem
           onClick={() => {
-            global.platform.openTab({ url: 'https://support.metamask.io' });
+            global.platform.openTab({ url: supportLink });
           }}
-          icon={<img src="images/support.svg" alt={t('support')} />}
-          text={t('support')}
+          icon={<img src="images/support.svg" alt={supportText} />}
+          text={supportText}
         />
 
         <AccountMenuItem

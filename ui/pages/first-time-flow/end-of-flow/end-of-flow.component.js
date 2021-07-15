@@ -5,6 +5,7 @@ import Snackbar from '../../../components/ui/snackbar';
 import MetaFoxLogo from '../../../components/ui/metafox-logo';
 import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
 import { returnToOnboardingInitiator } from '../onboarding-initiator-util';
+import { isBeta } from '../../../helpers/utils/build-types';
 
 export default class EndOfFlowScreen extends PureComponent {
   static contextTypes = {
@@ -67,7 +68,7 @@ export default class EndOfFlowScreen extends PureComponent {
 
     return (
       <div className="end-of-flow">
-        <MetaFoxLogo />
+        <MetaFoxLogo useDark={isBeta()} />
         <div className="end-of-flow__emoji">🎉</div>
         <div className="first-time-flow__header">{t('congratulations')}</div>
         <div className="first-time-flow__text-block end-of-flow__text-1">
