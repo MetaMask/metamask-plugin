@@ -253,10 +253,10 @@ describe('Metamask Import UI', function () {
         await driver.delay(regularDelayMs);
         await driver.clickElement('.account-menu__icon');
 
-        const accountListItemsAgfterRemoval = await driver.findElements(
+        const accountListItemsAfterRemoval = await driver.findElements(
           '.account-menu__account',
         );
-        assert.equal(accountListItemsAgfterRemoval.length, 4);
+        assert.equal(accountListItemsAfterRemoval.length, 4);
       },
     );
   });

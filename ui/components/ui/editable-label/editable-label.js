@@ -12,7 +12,17 @@ class EditableLabel extends Component {
   state = {
     isEditing: false,
     value: this.props.defaultValue || '',
+    ensName: '',
   };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.state.ensName !== nextProps.defaultValue) {
+      this.setState({
+        value: nextProps.defaultValue,
+        ensName: nextProps.defaultValue,
+      });
+    }
+  }
 
   handleSubmit() {
     const { value } = this.state;
@@ -35,7 +45,7 @@ class EditableLabel extends Component {
         type="text"
         required
         dir="auto"
-        value={this.state.value}
+        value={value}
         onKeyPress={(event) => {
           if (event.key === 'Enter') {
             this.handleSubmit();
@@ -58,9 +68,11 @@ class EditableLabel extends Component {
   }
 
   renderReadonly() {
+    const { value } = this.state;
+
     return [
       <div key={1} className="editable-label__value">
-        {this.state.value}
+        {value}
       </div>,
       <button
         key={2}
