@@ -1,0 +1,7 @@
+.edit-gas-popover {
+  &__wrapper {
+    @media screen and (min-width: 576px) {
+      max-height: 84vh;
+    }
+  }
+}

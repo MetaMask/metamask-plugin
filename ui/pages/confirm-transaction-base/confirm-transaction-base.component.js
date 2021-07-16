@@ -384,6 +384,10 @@ export default class ConfirmTransactionBase extends Component {
                     hideLabel
                   />
                 }
+                handleActionClick={
+                  advancedInlineGasShown ? null : () => this.handleEditGas()
+                }
+                actionText={advancedInlineGasShown ? '' : t('edit')}
               />,
               <TransactionDetailItem
                 key="total-item"

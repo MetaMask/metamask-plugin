@@ -1,6 +1,5 @@
 import React, { useCallback, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useGasFeeInputs } from '../../../hooks/useGasFeeInputs';
 
@@ -75,6 +74,7 @@ export default function EditGasPopover({
     isMaxFeeError,
     isMaxPriorityFeeError,
     isGasTooLow,
+    balanceError,
   } = useGasFeeInputs(defaultEstimateToUse);
 
   /**
@@ -164,6 +164,7 @@ export default function EditGasPopover({
     <Popover
       title={title}
       onClose={closePopover}
+      className="edit-gas-popover__wrapper"
       onBack={
         showEducationContent ? () => setShowEducationContent(false) : undefined
       }
@@ -176,7 +177,8 @@ export default function EditGasPopover({
               isMaxFeeError ||
               isMaxPriorityFeeError ||
               isGasTooLow ||
-              isGasEstimatesLoading
+              isGasEstimatesLoading ||
+              balanceError
             }
           >
             {footerButtonText}
@@ -220,6 +222,7 @@ export default function EditGasPopover({
             isGasTooLow={isGasTooLow}
             onEducationClick={() => setShowEducationContent(true)}
             mode={mode}
+            balanceError={balanceError}
             {...editGasDisplayProps}
           />
         )}

@@ -16,6 +16,7 @@ import {
 } from '../../../helpers/constants/design-system';
 
 import InfoTooltip from '../../ui/info-tooltip';
+import ErrorMessage from '../../ui/error-message';
 import TransactionTotalBanner from '../transaction-total-banner/transaction-total-banner.component';
 import RadioGroup from '../../ui/radio-group/radio-group.component';
 import AdvancedGasControls from '../advanced-gas-controls/advanced-gas-controls.component';
@@ -57,12 +58,20 @@ export default function EditGasDisplay({
   showAdvancedForm,
   setShowAdvancedForm,
   warning,
+  balanceError,
 }) {
   const t = useContext(I18nContext);
 
   const requireDappAcknowledgement = Boolean(
     dappSuggestedGasFee && !dappSuggestedGasFeeAcknowledged,
   );
+
+  const showTopError = balanceError;
+
+  let errorKey;
+  if (balanceError) {
+    errorKey = 'insufficientFunds';
+  }
 
   return (
     <div className="edit-gas-display">
@@ -73,6 +82,11 @@ export default function EditGasDisplay({
               className="actionable-message--warning"
               message={warning}
             />
+          </div>
+        )}
+        {showTopError && (
+          <div className="edit-gas-display__warning">
+            <ErrorMessage errorKey={errorKey} />
           </div>
         )}
         {requireDappAcknowledgement && (
@@ -246,4 +260,5 @@ EditGasDisplay.propTypes = {
   showAdvancedForm: PropTypes.bool,
   setShowAdvancedForm: PropTypes.func,
   warning: PropTypes.string,
+  balanceError: PropTypes.bool,
 };
