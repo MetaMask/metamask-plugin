@@ -97,6 +97,9 @@
   "addTokens": {
     "message": "टोकन जोड़ें"
   },
+  "addressBookIcon": {
+    "message": "पता पुस्तिका आइकन"
+  },
   "advanced": {
     "message": "उन्नत"
   },
@@ -150,6 +153,9 @@
   "amount": {
     "message": "राशि"
   },
+  "amountGasFee": {
+    "message": "राशि + गैस शुल्क"
+  },
   "amountWithColon": {
     "message": "राशि:"
   },
@@ -174,7 +180,7 @@
     "message": "अनुमोदित करें"
   },
   "approveSpendLimit": {
-    "message": "$1 खर्च सीमा को अनुमोदित करें",
+    "message": "$1 खर्च सीमा अनुमोदित करें",
     "description": "The token symbol that is being approved"
   },
   "approved": {
@@ -223,7 +229,7 @@
     "message": "यदि आप अपना डिवाइस खो देते हैं, अपना पासवर्ड भूल जाते हैं, MetaMask को फिर से स्थापित करना हो या दूसरे डिवाइस पर अपने वॉलेट तक पहुँचना चाहते हों, तो आपके वॉलेट को पुनर्प्राप्त करने के लिए यह गुप्त कोड आवश्यक है।"
   },
   "backupApprovalNotice": {
-    "message": "अपने वॉलेट और धन को सुरक्षित रखने के लिए अपने गुप्त रिकवरी कोड का बैकअप लें।"
+    "message": "अपने वॉलेट और धन को सुरक्षित रखने के लिए अपने गुप्त रिकवरी फ़्रेज़ का बैकअप लें।"
   },
   "backupNow": {
     "message": "अभी बैकअप लें"
@@ -256,8 +262,17 @@
   "buildContactList": {
     "message": "अपनी संपर्क सूची बनाएं"
   },
+  "builtAroundTheWorld": {
+    "message": "MetaMask को विश्व भर में डिज़ाइन और निर्मित किया गया है।"
+  },
   "buy": {
     "message": "खरीदें"
+  },
+  "buyWithTransak": {
+    "message": "Transak के साथ ETH खरीदें"
+  },
+  "buyWithTransakDescription": {
+    "message": "Transak 59+ देशों में डेबिट कार्ड और बैंक स्थानांतरण (स्थान के आधार पर) का समर्थन करता है। आपके MetaMask खाते में ETH जमा करता है।"
   },
   "buyWithWyre": {
     "message": "ETH को Wyre साथ खरीदें"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "जारी रखें"
   },
+  "continueToTransak": {
+    "message": "Transak पर जारी रखें"
+  },
   "continueToWyre": {
     "message": "Wyre पर जारी रखें"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "खाता बनाएँ"
   },
+  "createNewWallet": {
+    "message": "एक नया वॉलेट बनाएँ"
+  },
   "createPassword": {
     "message": "पासवर्ड बनाएँ"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "कस्टम टोकन"
+  },
+  "data": {
+    "message": "डेटा"
   },
   "dataBackupFoundInfo": {
     "message": "MetaMask की पिछली स्थापना के दौरान आपके कुछ खाता डेटा का बैकअप लिया गया था। इसमें आपकी सेटिंग, संपर्क और टोकन शामिल हो सकते हैं। क्या आप अब इस डेटा को पुनर्स्थापित करना चाहेंगे?"
@@ -596,6 +620,42 @@
   "editContact": {
     "message": "संपर्क संपादित करें"
   },
+  "editGasEducationButtonText": {
+    "message": "मुझे कैसे चुनना चाहिए?"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "यह स्वैप या अन्य समय के प्रति संवेदनशील लेनदेनों के लिए सबसे अच्छा रहता है। यदि स्वैप को संसाधित होने में बहुत अधिक समय लगता है, तो यह अक्सर विफल हो जाएगा और आप धन खो सकते हैं।"
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "गैस को अनुकूलित करने के बारे में अधिक जानें।"
+  },
+  "editGasEducationLowExplanation": {
+    "message": "कम, कम गैस शुल्क केवल उन लेनदेनों के लिए चुना जाना चाहिए जहां संसाधन का समय कम महत्वपूर्ण हो। कम शुल्क के साथ, यह अनुमान लगाना कठिन हो सकता है कि आपका लेनदेन कब सफल होगा (या सफल होगा भी या नहीं)।"
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "मध्यम गैस शुल्क भेजने, निकालने या अन्य गैर-समय संवेदनशील लेकिन महत्वपूर्ण लेनदेन के लिए अच्छा रहता है।"
+  },
+  "editGasEducationModalIntro": {
+    "message": "चुनने के लिए सही गैस राशि लेनदेन के प्रकार और यह कितनी महत्वपूर्ण है, पर निर्भर करती है।"
+  },
+  "editGasEducationModalTitle": {
+    "message": "कैसे चुनें?"
+  },
+  "editGasHigh": {
+    "message": "उच्च"
+  },
+  "editGasLow": {
+    "message": "कम"
+  },
+  "editGasMedium": {
+    "message": "मध्यम"
+  },
+  "editGasPriceTooltip": {
+    "message": "यह नेटवर्क गैस मूल्य निर्धारण के पुराने संस्करण का उपयोग करता है जिसके लिए \"गैस मूल्य\" फ़ील्ड की आवश्यकता होती है। गैस की कीमत वह अधिकतम राशि है जो आप प्रति यूनिट गैस का भुगतान चाहते हैं।"
+  },
+  "editGasTitle": {
+    "message": "गैस शुल्क संपादित करें"
+  },
   "editNonceField": {
     "message": "नॉन्स संपादित करें"
   },
@@ -647,11 +707,20 @@
     "message": "समापन बिंदु ने अलग चेन ID लौटाई है: $1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "ENS के लिए अमान्य वर्ण।"
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "वर्तमान नेटवर्क पर ENS नाम नहीं मिला। Ethereum Mainnet पर स्विच करने का प्रयास करें।"
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "नेटवर्क ENS का समर्थन नहीं करता है"
+  },
   "ensRegistrationError": {
     "message": "ENS नाम पंजीकरण में त्रुटि"
+  },
+  "ensUnknownError": {
+    "message": "ENS लुकअप विफल रहा।"
   },
   "enterAnAlias": {
     "message": "एक उपनाम दर्ज करें"
@@ -773,6 +842,19 @@
   },
   "functionType": {
     "message": "फ़ंक्शन का प्रकार"
+  },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "ऐप सुझाव संपादित करें"
+  },
+  "gasDisplayDappWarning": {
+    "message": "यह गैस शुल्क ऐप $1 द्वारा सुझाया गया है। यह लीगेसी गैस अनुमान का उपयोग कर रहा है, जो गलत हो सकता है। हालांकि, इस गैस शुल्क को संपादित करने पर अनपेक्षित परिणाम सामने आ सकते हैं। यदि आपके पास कोई प्रश्न हैं, तो कृपया ऐप टीम से संपर्क करें।",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "गैस शुल्क"
+  },
+  "gasFeeEstimate": {
+    "message": "अनुमान"
   },
   "gasLimit": {
     "message": "गैस की सीमा"
@@ -1060,6 +1142,12 @@
   },
   "max": {
     "message": "अधिकतम"
+  },
+  "maxFee": {
+    "message": "अधिकतम शुल्क"
+  },
+  "maxPriorityFee": {
+    "message": "अधिकतम प्राथमिकता शुल्क"
   },
   "memo": {
     "message": "मेमो"
@@ -1352,6 +1440,9 @@
   "onlyConnectTrust": {
     "message": "केवल उन साइटों से कनेक्ट करें, जिन पर आप भरोसा करते हैं।"
   },
+  "optional": {
+    "message": "वैकल्पिक"
+  },
   "optionalBlockExplorerUrl": {
     "message": "ब्लॉक एक्सप्लोरर URL (वैकल्पिक)"
   },
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "पासवर्ड की लंबाई पर्याप्त नहीं है"
+  },
+  "passwordSetupDetails": {
+    "message": "यह पासवर्ड आपके MetaMask वॉलेट को केवल इस डिवाइस पर अनलॉक करेगा। MetaMask इस पासवर्ड को पुनर्प्राप्त नहीं कर सकता है।"
+  },
+  "passwordTermsWarning": {
+    "message": "मैं समझता हूँ कि MetaMask मेरे लिए यह पासवर्ड पुनर्प्राप्त नहीं कर सकता है। $1"
   },
   "passwordsDontMatch": {
     "message": "पासवर्ड मेल नहीं खाते"
@@ -1440,7 +1537,7 @@
     "message": "कतारबद्ध"
   },
   "readdToken": {
-    "message": "आप अपने खातों के विकल्प मेनू में “टोकन जोड़ें” पर जाकर भविष्य में इस टोकन को वापस जोड़ सकते हैं।"
+    "message": "आप अपने खातों के विकल्प मेनू में \"टोकन जोड़ें\" पर जाकर भविष्य में इस टोकन को वापस जोड़ सकते हैं।"
   },
   "receive": {
     "message": "प्राप्त करें"
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "खोज, सार्वजनिक पता (0x) या ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "अनुशंसित"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "यहाँ से प्रारंभ करें"
@@ -1615,7 +1715,7 @@
     "message": "बैंक की तिजोरी में रखें।"
   },
   "seedPhraseIntroSidebarCopyOne": {
-    "message": "आपका रिकवरी फ्रेज़ आपके वॉलेट और धन के लिए “मास्टर कुंजी” है।"
+    "message": "आपका रिकवरी फ्रेज़ आपके वॉलेट और धन के लिए \"मास्टर कुंजी\" है।"
   },
   "seedPhraseIntroSidebarCopyThree": {
     "message": "यदि कोई व्यक्ति आपका रिकवरी फ्रेज़ मांगता है, तो सबसे अधिक संभावना है कि वे आपको धोखा देने का प्रयास कर रहे हैं।"
@@ -1706,6 +1806,9 @@
   "settings": {
     "message": "सेटिंग"
   },
+  "show": {
+    "message": "दिखाएँ"
+  },
   "showAdvancedGasInline": {
     "message": "उन्नत गैस नियंत्रण"
   },
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "इस रद्दीकरण को गति दें"
+  },
+  "speedUpExplanation": {
+    "message": "हमने मौजूदा नेटवर्क स्थितियों के आधार पर गैस शुल्क का पुनर्मूल्यांकन किया है और इसे कम से कम 10% (नेटवर्क द्वारा आवश्यक) बढ़ा दिया है।"
+  },
+  "speedUpPopoverTitle": {
+    "message": "लेनदेन को गति दें"
+  },
+  "speedUpTooltipText": {
+    "message": "नया गैस शुल्क"
   },
   "speedUpTransaction": {
     "message": "इस लेनदेन को गति दें"
@@ -1849,7 +1961,7 @@
     "message": "स्वैप करें"
   },
   "swapAdvancedSlippageInfo": {
-    "message": "यदि आपके ऑर्डर किए जाने और पुष्टि किए जाने के समय के बीच मूल्य में परिवर्तन होता है, तो इसे “स्लिपेज” कहा जाता है। यदि आपका स्लिपेज आपकी “अधिकतम स्लिपेज” सेटिंग से अधिक हो जाता है, तो आपका स्वैप स्वतः रद्द हो जाएगा।"
+    "message": "यदि आपके ऑर्डर किए जाने और पुष्टि किए जाने के समय के बीच मूल्य में परिवर्तन होता है, तो इसे \"स्लिपेज\" कहा जाता है। यदि आपका स्लिपेज आपकी \"अधिकतम स्लिपेज\" सेटिंग से अधिक हो जाता है, तो आपका स्वैप स्वतः रद्द हो जाएगा।"
   },
   "swapAggregator": {
     "message": "एग्रीगेटर"
@@ -2183,6 +2295,9 @@
   "symbolBetweenZeroTwelve": {
     "message": "प्रतीक 11 वर्ण या उससे कम का होना चाहिए।"
   },
+  "syncInProgress": {
+    "message": "सिंक जारी है"
+  },
   "syncWithMobile": {
     "message": "मोबाइल के साथ सिंक करें"
   },
@@ -2274,6 +2389,12 @@
   "transactionCreated": {
     "message": "$2 पर $1 के मूल्य के साथ लेनदेन बनाया गया।"
   },
+  "transactionDetailGasHeading": {
+    "message": "अनुमानित गैस शुल्क"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "राशि + गैस शुल्क"
+  },
   "transactionDropped": {
     "message": "लेनदेन $2 पर ड्रॉप किया गया।"
   },
@@ -2363,6 +2484,10 @@
     "message": "नेटवर्क विवरण सत्यापित करें",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
   },
+  "unsendableAsset": {
+    "message": "कलेक्टिबल (ERC-721) टोकन भेजना वर्तमान में समर्थित नहीं है",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
+  },
   "updatedWithDate": {
     "message": "अपडेट किया गया $1"
   },
@@ -2404,6 +2529,9 @@
   },
   "viewContact": {
     "message": "संपर्क देखें"
+  },
+  "viewFullTransactionDetails": {
+    "message": "पूर्ण लेनदेन विवरण देखें"
   },
   "viewMore": {
     "message": "और देखें"

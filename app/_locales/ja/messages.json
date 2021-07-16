@@ -97,6 +97,9 @@
   "addTokens": {
     "message": "トークンの追加"
   },
+  "addressBookIcon": {
+    "message": "アドレス帳のアイコン"
+  },
   "advanced": {
     "message": "詳細"
   },
@@ -149,6 +152,9 @@
   },
   "amount": {
     "message": "金額"
+  },
+  "amountGasFee": {
+    "message": "金額＋ガス費"
   },
   "amountWithColon": {
     "message": "金額:"
@@ -223,7 +229,7 @@
     "message": "このシークレット コードは、デバイスをなくしたとき、パスワードを忘れたとき、MetaMask の再インストールが必要なとき、または別のデバイスでウォレットにアクセスするときに必要です。"
   },
   "backupApprovalNotice": {
-    "message": "シークレット リカバリ コードをバックアップして、ウォレットと資金の安全を確保してください。"
+    "message": "シークレット リカバリ フレーズをバックアップして、ウォレットと資金の安全を確保してください。"
   },
   "backupNow": {
     "message": "今すぐバックアップ"
@@ -256,8 +262,17 @@
   "buildContactList": {
     "message": "連絡先リストを作成する"
   },
+  "builtAroundTheWorld": {
+    "message": "MetaMask は世界中で設計および作成されました。"
+  },
   "buy": {
     "message": "購入"
+  },
+  "buyWithTransak": {
+    "message": "Transak で ETH を購入"
+  },
+  "buyWithTransakDescription": {
+    "message": "Transak は59以上の国で、デビットカードおよび銀行送金（地域による）をサポートしています。ETH が MetaMask アカウントにデポジットされます。"
   },
   "buyWithWyre": {
     "message": "Wyre で ETH を購入"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "続行"
   },
+  "continueToTransak": {
+    "message": "Transak に進む"
+  },
   "continueToWyre": {
     "message": "Wyre に進む"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "アカウントの作成"
   },
+  "createNewWallet": {
+    "message": "新しいウォレットの作成"
+  },
   "createPassword": {
     "message": "パスワードの作成"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "カスタム トークン"
+  },
+  "data": {
+    "message": "データ"
   },
   "dataBackupFoundInfo": {
     "message": "一部のアカウント データは MetaMask の前回のインストール時にバックアップされました。これには、設定、連絡先、およびトークンが含まれます。このデータを今すぐ復元しますか?"
@@ -596,6 +620,42 @@
   "editContact": {
     "message": "連絡先の編集"
   },
+  "editGasEducationButtonText": {
+    "message": "どのように選択するのか。"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "スワップなどの時間制約のあるトランザクションに最適です。スワップに時間がかかり過ぎで処理できないと、処理の失敗がたびたび起こり、資金を失う可能性があります。"
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "カスタマイズされたガスの詳細を表示。"
+  },
+  "editGasEducationLowExplanation": {
+    "message": "ロー、つまりより低いガス費は処理時間があまり問題でないトランザクションの場合のみ選択してください。低い料金では、いつ（または本当に）トランザクションがうまく行くか予測が難しくなります。"
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "ミディアムのガス費は送金、引き出し、または他の時間制約のない、しかし重要なトランザクションに適しています。"
+  },
+  "editGasEducationModalIntro": {
+    "message": "選ぶべき適切なガス量は、トランザクションの種類とその重要性によって異なります。"
+  },
+  "editGasEducationModalTitle": {
+    "message": "どのように選択するのか。"
+  },
+  "editGasHigh": {
+    "message": "ハイ"
+  },
+  "editGasLow": {
+    "message": "ロー"
+  },
+  "editGasMedium": {
+    "message": "ミディアム"
+  },
+  "editGasPriceTooltip": {
+    "message": "このネットワークでは、古いバージョンのガス価格を使用しており、ここには「ガス価格」フィールドが必要となります。ガス価格とは、ガス1本あたりに支払う金額の上限です。"
+  },
+  "editGasTitle": {
+    "message": "ガス費の編集"
+  },
   "editNonceField": {
     "message": "ナンスの編集"
   },
@@ -647,11 +707,20 @@
     "message": "エンドポイントが別のチェーン ID を返してきました。$1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "ENS の不正な文字です。"
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "ENS 名が現在のネットワーク上に見つかりませんでした。イーサリアム メインネットへの切り替えを試みてください。"
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "ネットワークは ENS をサポートしていません"
+  },
   "ensRegistrationError": {
     "message": "ENS 名の登録のエラーです"
+  },
+  "ensUnknownError": {
+    "message": "ENS検索に失敗しました。"
   },
   "enterAnAlias": {
     "message": "別名を入力してください"
@@ -701,7 +770,7 @@
     "message": "推定処理時間"
   },
   "ethGasPriceFetchWarning": {
-    "message": "現在、主なガスの見積もりサービスは行っていないので、バックアップのガス料金を提供しています。"
+    "message": "現在、主なガスの見積サービスは行っていないので、バックアップのガス料金を提供しています。"
   },
   "eth_accounts": {
     "message": "許可されたアカウントのアドレスを表示してください (必須)",
@@ -773,6 +842,19 @@
   },
   "functionType": {
     "message": "機能の種類"
+  },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "アプリ提案の編集"
+  },
+  "gasDisplayDappWarning": {
+    "message": "このガス費は $1アプリによって提案されています。レガシーガスの推定値を使用しているため、正確性に欠ける場合があります。しかし、このガス費を編集すると、意図しない結果を招く可能性があります。ご不明な点があれば、アプリチームにご相談ください。",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "ガス費"
+  },
+  "gasFeeEstimate": {
+    "message": "推定金額"
   },
   "gasLimit": {
     "message": "ガス リミット"
@@ -1060,6 +1142,12 @@
   },
   "max": {
     "message": "最大"
+  },
+  "maxFee": {
+    "message": "費用の最大値"
+  },
+  "maxPriorityFee": {
+    "message": "最大プライオリティー値"
   },
   "memo": {
     "message": "メモ"
@@ -1352,6 +1440,9 @@
   "onlyConnectTrust": {
     "message": "信頼するサイトにのみ接続します。"
   },
+  "optional": {
+    "message": "オプション"
+  },
   "optionalBlockExplorerUrl": {
     "message": "ブロック エクスプローラーの URL (オプション)"
   },
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "パスワードの長さが足りません"
+  },
+  "passwordSetupDetails": {
+    "message": "このパスワードによって、このデバイスでのみ MetaMask ウォレットのロックが解除されます。MetaMask はこのパスワードを復元できません。"
+  },
+  "passwordTermsWarning": {
+    "message": "MetaMask ではこのパスワードを復元できないことを理解しています。$1"
   },
   "passwordsDontMatch": {
     "message": "パスワードが一致しません"
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "検索、パブリック アドレス (0x)、または ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "推奨"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "ここから開始"
@@ -1706,6 +1806,9 @@
   "settings": {
     "message": "設定"
   },
+  "show": {
+    "message": "表示"
+  },
   "showAdvancedGasInline": {
     "message": "高度なガス コントロール"
   },
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "このキャンセルの高速化"
+  },
+  "speedUpExplanation": {
+    "message": "ガス費は現在のネットワーク状況を考慮して再評価しており、最低でも10% の増額を行いました（ネットワークの要求によります）。"
+  },
+  "speedUpPopoverTitle": {
+    "message": "トランザクションの高速化"
+  },
+  "speedUpTooltipText": {
+    "message": "新しいガス費"
   },
   "speedUpTransaction": {
     "message": "このトランザクションの高速化"
@@ -2183,6 +2295,9 @@
   "symbolBetweenZeroTwelve": {
     "message": "シンボルは 11 文字以下にする必要があります。"
   },
+  "syncInProgress": {
+    "message": "同期処理中"
+  },
   "syncWithMobile": {
     "message": "モバイルとの同期"
   },
@@ -2274,6 +2389,12 @@
   "transactionCreated": {
     "message": "トランザクションは $1の値が $2 で作成されました。"
   },
+  "transactionDetailGasHeading": {
+    "message": "推定のガス料金"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "金額＋ガス費"
+  },
   "transactionDropped": {
     "message": "トランザクションは $2 で削除されました。"
   },
@@ -2363,6 +2484,10 @@
     "message": "ネットワークの詳細を確認します",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
   },
+  "unsendableAsset": {
+    "message": "コレクタブル（ERC-721）トークンの送信は現在サポートされていません。",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
+  },
   "updatedWithDate": {
     "message": "$1 に更新されました"
   },
@@ -2404,6 +2529,9 @@
   },
   "viewContact": {
     "message": "連絡先を表示"
+  },
+  "viewFullTransactionDetails": {
+    "message": "トランザクション詳細の表示"
   },
   "viewMore": {
     "message": "詳細を表示"

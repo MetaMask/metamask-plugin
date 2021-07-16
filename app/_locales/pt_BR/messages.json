@@ -97,6 +97,9 @@
   "addTokens": {
     "message": "Adicionar tokens"
   },
+  "addressBookIcon": {
+    "message": "Ícone do catálogo de endereços"
+  },
   "advanced": {
     "message": "Avançadas"
   },
@@ -149,6 +152,9 @@
   },
   "amount": {
     "message": "Valor"
+  },
+  "amountGasFee": {
+    "message": "Valor + taxa de gás"
   },
   "amountWithColon": {
     "message": "Valor:"
@@ -223,7 +229,7 @@
     "message": "Este código secreto é obrigatório para recuperar sua carteira caso você perca seu dispositivo, esqueça sua senha, precise reinstalar o MetaMask ou queira acessar sua carteira em outro dispositivo."
   },
   "backupApprovalNotice": {
-    "message": "Faça backup do código secreto de recuperação para manter sua carteira e seus fundos em segurança."
+    "message": "Faça backup de sua frase de recuperação secreta para manter a carteira e os fundos seguros."
   },
   "backupNow": {
     "message": "Fazer backup agora"
@@ -256,8 +262,17 @@
   "buildContactList": {
     "message": "Crie sua lista de contatos"
   },
+  "builtAroundTheWorld": {
+    "message": "O MetaMask é projetado e construído em todo o mundo."
+  },
   "buy": {
     "message": "Comprar"
+  },
+  "buyWithTransak": {
+    "message": "Comprar ETH com Transak"
+  },
+  "buyWithTransakDescription": {
+    "message": "O Transak suporta cartão de débito e transferências bancárias (dependendo da localização) em mais de 59 países. O ETH deposita em sua conta MetaMask."
   },
   "buyWithWyre": {
     "message": "Comprar ETH com Wyre"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "Continuar"
   },
+  "continueToTransak": {
+    "message": "Prosseguir para o Transak"
+  },
   "continueToWyre": {
     "message": "Continuar para o Wyre"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "Criar conta"
   },
+  "createNewWallet": {
+    "message": "Criar nova carteira"
+  },
   "createPassword": {
     "message": "Criar senha"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "Token personalizado"
+  },
+  "data": {
+    "message": "Dados"
   },
   "dataBackupFoundInfo": {
     "message": "Foi feito backup de alguns dos dados da sua conta durante uma instalação anterior do MetaMask. Isso poderia incluir configurações, contatos e tokens. Gostaria de restaurar esses dados agora?"
@@ -596,6 +620,42 @@
   "editContact": {
     "message": "Editar contato"
   },
+  "editGasEducationButtonText": {
+    "message": "Como devo escolher?"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "Isso é melhor para swaps ou outras transações sensíveis ao tempo. Quando um swap demora muito para ser processado, costuma falhar, e você pode perder fundos."
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "Saiba mais sobre personalizar o combustível."
+  },
+  "editGasEducationLowExplanation": {
+    "message": "Baixa Uma taxa de gás mais baixa só deve ser selecionada para transações em que o tempo de processamento é menos importante. Com uma taxa mais baixa, pode ser difícil prever quando (ou se) sua transação será bem-sucedida."
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "Uma taxa de gás média é boa para enviar, retirar ou outras transações não urgentes, mas importantes."
+  },
+  "editGasEducationModalIntro": {
+    "message": "A quantidade certa de gás a ser selecionada depende do tipo de transação e da importância dela."
+  },
+  "editGasEducationModalTitle": {
+    "message": "Como escolher?"
+  },
+  "editGasHigh": {
+    "message": "Alta"
+  },
+  "editGasLow": {
+    "message": "Baixa"
+  },
+  "editGasMedium": {
+    "message": "Médio"
+  },
+  "editGasPriceTooltip": {
+    "message": "Esta rede usa uma versão mais antiga de precificação do gás que requer um campo “Preço do gás”. O preço do gás é o valor máximo que você está disposto a pagar por unidade de gás."
+  },
+  "editGasTitle": {
+    "message": "Editar taxa de gás"
+  },
   "editNonceField": {
     "message": "Editar Nonce (Número Aleatório)"
   },
@@ -647,11 +707,20 @@
     "message": "O endpoint retornou um ID diferente da chain: $1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "Caractere ilegal para ENS."
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "Nome ENS não encontrado na rede atual. Procure alternar para a mainnet do Ethereum."
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "Rede não suporta ENS"
+  },
   "ensRegistrationError": {
     "message": "Erro no registro do nome ENS"
+  },
+  "ensUnknownError": {
+    "message": "A pesquisa de ENS falhou."
   },
   "enterAnAlias": {
     "message": "Informar um alias"
@@ -773,6 +842,19 @@
   },
   "functionType": {
     "message": "Tipo de função"
+  },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "Editar sugestão de aplicativo"
+  },
+  "gasDisplayDappWarning": {
+    "message": "Esta taxa de gás foi sugerida pelo aplicativo $1. Ele está usando uma estimativa de gás legada que pode ser imprecisa. No entanto, editar esta taxa de gás pode causar consequências indesejadas. Entre em contato com a equipe do aplicativo se tiver dúvidas.",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "Taxa de gás"
+  },
+  "gasFeeEstimate": {
+    "message": "Estimativa"
   },
   "gasLimit": {
     "message": "Gas Limit"
@@ -1059,7 +1141,13 @@
     "message": "Criar novo swap"
   },
   "max": {
-    "message": "Máx"
+    "message": "Máx."
+  },
+  "maxFee": {
+    "message": "Taxa máxima"
+  },
+  "maxPriorityFee": {
+    "message": "Taxa máxima de prioridade"
   },
   "memo": {
     "message": "memorando"
@@ -1131,7 +1219,7 @@
     "message": "Informe sua senha para confirmar que é você mesmo!"
   },
   "mustSelectOne": {
-    "message": "Selecione pelo menos 1 token."
+    "message": "Selecione pelo menos 1 token."
   },
   "myAccounts": {
     "message": "Minhas contas"
@@ -1352,6 +1440,9 @@
   "onlyConnectTrust": {
     "message": "Conecte-se somente com sites em quem você confia."
   },
+  "optional": {
+    "message": "Opcional"
+  },
   "optionalBlockExplorerUrl": {
     "message": "URL do Block Explorer (opcional)"
   },
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "A senha não é longa o suficiente"
+  },
+  "passwordSetupDetails": {
+    "message": "Esta senha desbloqueará sua carteira do MetaMask somente neste dispositivo. O MetaMask não pode recuperar esta senha."
+  },
+  "passwordTermsWarning": {
+    "message": "Eu entendo que o MetaMask não consegue recuperar essa senha por mim. $1"
   },
   "passwordsDontMatch": {
     "message": "As senhas são diferentes"
@@ -1440,7 +1537,7 @@
     "message": "Em fila"
   },
   "readdToken": {
-    "message": "Você pode adicionar este token novamente no futuro ao ir a “Adicionar token” no menu de opções das suas contas."
+    "message": "Você pode adicionar este token novamente no futuro ao ir a \"Adicionar token\" no menu de opções das suas contas."
   },
   "receive": {
     "message": "Receber"
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "Busca, endereço público (0x) ou ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "Recomendado"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "Iniciar aqui"
@@ -1615,7 +1715,7 @@
     "message": "Guarde em um cofre-forte bancário."
   },
   "seedPhraseIntroSidebarCopyOne": {
-    "message": "A sua frase de recuperação é a “chave-mestra” para sua carteira e seus fundos."
+    "message": "A sua frase de recuperação é a \"chave-mestra\" para sua carteira e seus fundos."
   },
   "seedPhraseIntroSidebarCopyThree": {
     "message": "Caso alguém lhe peça a sua frase de recuperação, essa pessoa provavelmente está tentando dar um golpe em você."
@@ -1706,6 +1806,9 @@
   "settings": {
     "message": "Configurações"
   },
+  "show": {
+    "message": "Mostrar"
+  },
   "showAdvancedGasInline": {
     "message": "Controles avançados de gas"
   },
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "Acelerar este cancelamento"
+  },
+  "speedUpExplanation": {
+    "message": "Nós reestimamos a taxa de gás com base nas condições atuais da rede e aumentamos em pelo menos 10% (exigido pela rede)."
+  },
+  "speedUpPopoverTitle": {
+    "message": "Acelerar a transação"
+  },
+  "speedUpTooltipText": {
+    "message": "Nova taxa de gás"
   },
   "speedUpTransaction": {
     "message": "Acelerar esta transação"
@@ -1849,7 +1961,7 @@
     "message": "Swap"
   },
   "swapAdvancedSlippageInfo": {
-    "message": "Quando o preço varia entre o momento em que seu pedido é feito e o momento em que é confirmado, isso recebe o nome de “slippage”. Seu swap será automaticamente cancelado se o slippage for superior à configuração “slippage máximo”."
+    "message": "Quando o preço varia entre o momento em que seu pedido é feito e o momento em que é confirmado, isso recebe o nome de \"slippage\". Seu swap será automaticamente cancelado se o slippage for superior à configuração “slippage máximo”."
   },
   "swapAggregator": {
     "message": "Agregador"
@@ -2183,6 +2295,9 @@
   "symbolBetweenZeroTwelve": {
     "message": "O símbolo deve ter 11 caracteres ou menos."
   },
+  "syncInProgress": {
+    "message": "Sincronização em andamento"
+  },
   "syncWithMobile": {
     "message": "Sincronizar com dispositivo móvel"
   },
@@ -2274,6 +2389,12 @@
   "transactionCreated": {
     "message": "Transação criada com valor de $1 a $2."
   },
+  "transactionDetailGasHeading": {
+    "message": "Taxa estimada de gas"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "Valor + taxa de gás"
+  },
   "transactionDropped": {
     "message": "Transação abandonada a $2."
   },
@@ -2363,6 +2484,10 @@
     "message": "Verifique os detalhes da rede",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
   },
+  "unsendableAsset": {
+    "message": "O envio de tokens colecionáveis (ERC-721) não é compatível no momento",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
+  },
   "updatedWithDate": {
     "message": "Atualizado(a) em $1"
   },
@@ -2404,6 +2529,9 @@
   },
   "viewContact": {
     "message": "Exibir contato"
+  },
+  "viewFullTransactionDetails": {
+    "message": "Ver todos os detalhes da transação"
   },
   "viewMore": {
     "message": "Exibir Mais"

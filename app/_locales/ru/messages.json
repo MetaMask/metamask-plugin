@@ -97,6 +97,9 @@
   "addTokens": {
     "message": "Добавить токены"
   },
+  "addressBookIcon": {
+    "message": "Значок адресной книги"
+  },
   "advanced": {
     "message": "Дополнительно"
   },
@@ -149,6 +152,9 @@
   },
   "amount": {
     "message": "Сумма"
+  },
+  "amountGasFee": {
+    "message": "Сумма + плата за газ"
   },
   "amountWithColon": {
     "message": "Сумма:"
@@ -223,7 +229,7 @@
     "message": "Этот секретный код необходим для восстановления вашего кошелька в случае, если вы потеряете свое устройство, забудете пароль, вам придется переустановить MetaMask или захотите получить доступ к своему кошельку на другом устройстве."
   },
   "backupApprovalNotice": {
-    "message": "Сделайте копию своего секретного кода восстановления, чтобы обезопасить свой кошелек и средства."
+    "message": "Сделайте копию своего секретной фразы для восстановления, чтобы обезопасить свой кошелек и средства."
   },
   "backupNow": {
     "message": "Сделайте резервную копию сейчас"
@@ -256,8 +262,17 @@
   "buildContactList": {
     "message": "Создайте список контактов"
   },
+  "builtAroundTheWorld": {
+    "message": "MetaMask разработан и построен по всему миру."
+  },
   "buy": {
     "message": "Купить"
+  },
+  "buyWithTransak": {
+    "message": "Купить ETH с Transak"
+  },
+  "buyWithTransakDescription": {
+    "message": "Transak поддерживает дебетовые карты и банковские переводы (в зависимости от местоположения) в более чем 59 странах. Депозиты ETH на ваш счет в MetaMask."
   },
   "buyWithWyre": {
     "message": "Купить ETH с Wyre"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "Продолжить"
   },
+  "continueToTransak": {
+    "message": "Продолжить к Transak"
+  },
   "continueToWyre": {
     "message": "Продолжить к Wyre"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "Создать счет"
   },
+  "createNewWallet": {
+    "message": "Создать новый кошелек"
+  },
   "createPassword": {
     "message": "Создать пароль"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "Пользовательский токен"
+  },
+  "data": {
+    "message": "Данные"
   },
   "dataBackupFoundInfo": {
     "message": "Некоторые данные вашего счета были скопированы во время предыдущей установки MetaMask. Они могли включать ваши настройки, контакты и токены. Хотите восстановить эти данные сейчас?"
@@ -596,6 +620,42 @@
   "editContact": {
     "message": "Изменить контакт"
   },
+  "editGasEducationButtonText": {
+    "message": "Как мне выбрать?"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "Это лучше всего подходит для свопов или других операций, когда важно время. Если процесс свопа занимает слишком много времени, он часто оказывается неудачным, и вы можете потерять средства."
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "Подробнее о индивидуальный плане оплаты за газ."
+  },
+  "editGasEducationLowExplanation": {
+    "message": "Низкий Более низкую оплату за газ следует выбирать только для операций, где время обработки менее важно. При более низкой оплате может быть трудно предсказать, когда ваша сделка будет успешной, если она вообще произойдет."
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "Средняя цена за газ подходит для отправки, снятия денег или других не чувствительных ко времени, но важных операций."
+  },
+  "editGasEducationModalIntro": {
+    "message": "Правильный выбор количества газа зависит от типа сделки и ее важности."
+  },
+  "editGasEducationModalTitle": {
+    "message": "Как выбрать?"
+  },
+  "editGasHigh": {
+    "message": "Высокая"
+  },
+  "editGasLow": {
+    "message": "Низкая"
+  },
+  "editGasMedium": {
+    "message": "Средняя"
+  },
+  "editGasPriceTooltip": {
+    "message": "Эта сеть использует старую версию ценообразования на газ, для которой требуется поле «Цена на газ». Цена на газ - это максимальная сумма, которую вы готовы платить за единицу топлива."
+  },
+  "editGasTitle": {
+    "message": "Редактировать плату за газ"
+  },
   "editNonceField": {
     "message": "Изменить одноразовый номер"
   },
@@ -647,11 +707,20 @@
     "message": "Конечная точка вернула другой идентификатор цепочки: $1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "Недопустимый символ для ENS."
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "Имя ENS не найдено в текущей сети. Попробуйте переключиться на сеть Ethereum Mainnet."
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "Сеть не поддерживает ENS"
+  },
   "ensRegistrationError": {
     "message": "Ошибка при регистрации имени ENS"
+  },
+  "ensUnknownError": {
+    "message": "Не удалось выполнить поиск ENS."
   },
   "enterAnAlias": {
     "message": "Ввести псевдоним"
@@ -773,6 +842,19 @@
   },
   "functionType": {
     "message": "Тип функции"
+  },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "Редактировать предложение приложения"
+  },
+  "gasDisplayDappWarning": {
+    "message": "Эта плата за газ была предложена приложением $1. При этом используются старые оценки газа, которые могут быть неточными. Однако редактирование этой платы за газ может привести к непредвиденным последствиям. Свяжитесь с командой приложения, если у вас есть вопросы.",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "Плата за газ"
+  },
+  "gasFeeEstimate": {
+    "message": "Оценка"
   },
   "gasLimit": {
     "message": "Предел топлива"
@@ -1060,6 +1142,12 @@
   },
   "max": {
     "message": "Макс."
+  },
+  "maxFee": {
+    "message": "Максимальная плата"
+  },
+  "maxPriorityFee": {
+    "message": "Максимальная плата за приоритет"
   },
   "memo": {
     "message": "памятка"
@@ -1352,8 +1440,11 @@
   "onlyConnectTrust": {
     "message": "Подключайтесь только к сайтам, которым доверяете."
   },
+  "optional": {
+    "message": "Необязательно"
+  },
   "optionalBlockExplorerUrl": {
-    "message": "URL-адрес проводника блока (необязательно)"
+    "message": "URL-адрес проводника блоков (необязательно)"
   },
   "optionalCurrencySymbol": {
     "message": "Символ валюты (необязательно)"
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "Пароль недостаточно длинный"
+  },
+  "passwordSetupDetails": {
+    "message": "Этот пароль разблокирует ваш кошелек MetaMask только на этом устройстве. MetaMask не может восстановить этот пароль."
+  },
+  "passwordTermsWarning": {
+    "message": "Я понимаю, что MetaMask не может восстановить мне этот пароль. $1"
   },
   "passwordsDontMatch": {
     "message": "Пароли не совпадают"
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "Поиск, публичный адрес (0x) или ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "Рекомендуется"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "Начать здесь"
@@ -1706,6 +1806,9 @@
   "settings": {
     "message": "Настройки"
   },
+  "show": {
+    "message": "Показать"
+  },
   "showAdvancedGasInline": {
     "message": "Расширенное управление топливом"
   },
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "Ускорить эту отмену"
+  },
+  "speedUpExplanation": {
+    "message": "Мы пересчитали плату за газ, исходя из текущих условий сети, и увеличили ее как минимум на 10% (по требованию сети)."
+  },
+  "speedUpPopoverTitle": {
+    "message": "Ускорить транзакцию"
+  },
+  "speedUpTooltipText": {
+    "message": "Новая плата за газ"
   },
   "speedUpTransaction": {
     "message": "Ускорить эту транзакцию"
@@ -2183,6 +2295,9 @@
   "symbolBetweenZeroTwelve": {
     "message": "Символ должен состоять из 11 или менее знаков."
   },
+  "syncInProgress": {
+    "message": "Выполняется синхронизация"
+  },
   "syncWithMobile": {
     "message": "Синхронизировать с мобильным устройством"
   },
@@ -2274,6 +2389,12 @@
   "transactionCreated": {
     "message": "Сделка создана со стоимостью $1 в $2."
   },
+  "transactionDetailGasHeading": {
+    "message": "Ориентировочная плата за газ"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "Сумма + плата за газ"
+  },
   "transactionDropped": {
     "message": "Транзакция прекращена в $2."
   },
@@ -2363,6 +2484,10 @@
     "message": "проверить сведения о сети",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
   },
+  "unsendableAsset": {
+    "message": "Отправка коллекционных токенов (ERC-721) в настоящее время не поддерживается",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
+  },
   "updatedWithDate": {
     "message": "Обновлено $1"
   },
@@ -2404,6 +2529,9 @@
   },
   "viewContact": {
     "message": "Посмотреть контакт"
+  },
+  "viewFullTransactionDetails": {
+    "message": "Просмотреть полные детали транзакции"
   },
   "viewMore": {
     "message": "Посмотреть больше"

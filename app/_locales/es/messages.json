@@ -6,7 +6,7 @@
     "message": "Versión, centro de soporte técnico e información de contacto"
   },
   "acceleratingATransaction": {
-    "message": "* Usar un precio de gas más alto para acelerar una transacción aumenta las posibilidades de un procesamiento más rápido en la red, pero esto no siempre se garantiza."
+    "message": "* Usar un precio de gas más alto para acelerar una transacción aumenta las posibilidades de un procesamiento más rápido en la red, pero esto no siempre se garantiza."
   },
   "acceptTermsOfUse": {
     "message": "Leí y estoy de acuerdo con $1",
@@ -89,13 +89,16 @@
     "message": "Agregar a la libreta de direcciones"
   },
   "addToAddressBookModalPlaceholder": {
-    "message": "p. ej., John D."
+    "message": "p. ej., John D."
   },
   "addToken": {
     "message": "Agregar token"
   },
   "addTokens": {
     "message": "Agregar tokens"
+  },
+  "addressBookIcon": {
+    "message": "Ícono de la libreta de direcciones"
   },
   "advanced": {
     "message": "Avanzado"
@@ -149,6 +152,9 @@
   },
   "amount": {
     "message": "Importe"
+  },
+  "amountGasFee": {
+    "message": "Importe + cuota de gas"
   },
   "amountWithColon": {
     "message": "Importe:"
@@ -223,7 +229,7 @@
     "message": "Este código secreto es necesario para que recupere la cartera en caso de que pierda el dispositivo, olvide su contraseña, tenga que volver a instalar MetaMask o quiera acceder a la cartera en otro dispositivo."
   },
   "backupApprovalNotice": {
-    "message": "Cree una copia de seguridad del código de recuperación secreto para mantener protegidos sus fondos y su cartera."
+    "message": "Cree una copia de seguridad de la frase de recuperación secreto para mantener protegidos sus fondos y su cartera."
   },
   "backupNow": {
     "message": "Crear copia de seguridad ahora"
@@ -256,8 +262,17 @@
   "buildContactList": {
     "message": "Cree su lista de contactos"
   },
+  "builtAroundTheWorld": {
+    "message": "MetaMask se diseñó y compiló alrededor del mundo."
+  },
   "buy": {
     "message": "Comprar"
+  },
+  "buyWithTransak": {
+    "message": "Comprar ETH con Transak"
+  },
+  "buyWithTransakDescription": {
+    "message": "Transak permite realizar transferencias bancarias y con tarjeta de débito (según la ubicación) en más de 59 países. Depósitos de ETH en su cuenta de MetaMask."
   },
   "buyWithWyre": {
     "message": "Comprar ETH con Wyre"
@@ -290,7 +305,7 @@
     "message": "En este momento, la red $1 está utilizando este identificador de cadena."
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Debe usar MetaMask en Google Chrome para poder conectarse a su cartera de hardware."
+    "message": "Debe usar MetaMask en Google Chrome para poder conectarse a su cartera de hardware."
   },
   "clickToRevealSeed": {
     "message": "Haga clic aquí para revelar las palabras secretas"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "Continuar"
   },
+  "continueToTransak": {
+    "message": "Continuar a Transak"
+  },
   "continueToWyre": {
     "message": "Continuar a Wyre"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "Crear cuenta"
   },
+  "createNewWallet": {
+    "message": "Crear una cartera nueva"
+  },
   "createPassword": {
     "message": "Crear contraseña"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "Token personalizado"
+  },
+  "data": {
+    "message": "Datos"
   },
   "dataBackupFoundInfo": {
     "message": "Se crearon copias de seguridad de algunos de los datos de la cuenta durante una instalación anterior de MetaMask. Esto podría incluir configuraciones, contactos y tokens. ¿Le gustaría restaurar estos datos ahora?"
@@ -579,7 +603,7 @@
     "message": "No volver a mostrar"
   },
   "downloadGoogleChrome": {
-    "message": "Descargar Google Chrome"
+    "message": "Descargar Google Chrome"
   },
   "downloadSecretBackup": {
     "message": "Descargue esta frase secreta de respaldo y guárdela en un medio de almacenamiento o disco duro externo cifrado."
@@ -595,6 +619,42 @@
   },
   "editContact": {
     "message": "Editar contacto"
+  },
+  "editGasEducationButtonText": {
+    "message": "¿Cómo debo elegir?"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "Esto es lo mejor para los swaps u otras transacciones sensibles al tiempo. Si un swap tarda demasiado en procesarse, a menudo fallará y podría perder fondos."
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "Obtenga más información sobre la personalización del gas."
+  },
+  "editGasEducationLowExplanation": {
+    "message": "Baja Una tarifa de gas más baja solo debería seleccionarse para transacciones en las que el tiempo de procesamiento es menos importante. Con una tarifa baja, puede ser difícil predecir cuándo (o si) su transacción tendrá éxito."
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "Una tasa de gas media es adecuada para enviar, retirar o para otras transacciones no sensibles al tiempo pero importantes."
+  },
+  "editGasEducationModalIntro": {
+    "message": "La cantidad de gas correcta a seleccionar depende del tipo de transacción y de su importancia."
+  },
+  "editGasEducationModalTitle": {
+    "message": "¿Cómo elegir?"
+  },
+  "editGasHigh": {
+    "message": "Alta"
+  },
+  "editGasLow": {
+    "message": "Baja"
+  },
+  "editGasMedium": {
+    "message": "Media"
+  },
+  "editGasPriceTooltip": {
+    "message": "Esta red usa una versión más vieja del precio del gas que requiere un campo de \"Precio de gas\". El precio del gas es la cantidad máxima que está dispuesto a pagar por unidad de gas."
+  },
+  "editGasTitle": {
+    "message": "Editar cuota de gas"
   },
   "editNonceField": {
     "message": "Editar nonce"
@@ -641,17 +701,26 @@
     "message": "MetaMask no puede recuperar la frase secreta de recuperación."
   },
   "endOfFlowMessage9": {
-    "message": "Obtenga más información."
+    "message": "Más información."
   },
   "endpointReturnedDifferentChainId": {
     "message": "El punto de conexión devolvió un id. de cadena diferente: $1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "Carácter ilegal para ENS."
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "El nombre de ENS no se encuentra en la red actual. Intente cambiar a la red principal de Ethereum."
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "La red no admite ENS"
+  },
   "ensRegistrationError": {
     "message": "Error en el registro del nombre de ENS"
+  },
+  "ensUnknownError": {
+    "message": "Error en el bloqueo de ENS."
   },
   "enterAnAlias": {
     "message": "Escribir un alias"
@@ -774,6 +843,19 @@
   "functionType": {
     "message": "Tipo de función"
   },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "Editar sugerencia de la aplicación"
+  },
+  "gasDisplayDappWarning": {
+    "message": "Esta cuota de gas ha sido sugerida por la aplicación $1. Está utilizando una estimación de gas heredada que podría ser inexacta. Sin embargo, la edición de esta cuota de gas puede tener consecuencias no deseadas. Comuníquese con el equipo de la aplicación si tiene dudas.",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "Cuota de gas"
+  },
+  "gasFeeEstimate": {
+    "message": "Estimar"
+  },
   "gasLimit": {
     "message": "Límite de gas"
   },
@@ -781,7 +863,7 @@
     "message": "El límite de gas es la cantidad máxima de unidades de gas que está dispuesto a gastar."
   },
   "gasLimitTooLow": {
-    "message": "El límite de gas debe ser al menos 21 000"
+    "message": "El límite de gas debe ser al menos 21 000"
   },
   "gasLimitTooLowWithDynamicFee": {
     "message": "El límite de gas debe ser al menos $1",
@@ -977,7 +1059,7 @@
     "message": "Número no válido. Quite todos los ceros iniciales."
   },
   "invalidRPC": {
-    "message": "Dirección URL de RPC no válida"
+    "message": "Dirección URL de RPC no válida"
   },
   "invalidSeedPhrase": {
     "message": "Frase secreta de recuperación no válida"
@@ -1044,7 +1126,7 @@
     "message": "Cargando tokens…"
   },
   "localhost": {
-    "message": "Host local 8545"
+    "message": "Host local 8545"
   },
   "lock": {
     "message": "Bloquear"
@@ -1060,6 +1142,12 @@
   },
   "max": {
     "message": "Máx."
+  },
+  "maxFee": {
+    "message": "Cuota máxima"
+  },
+  "maxPriorityFee": {
+    "message": "Cuota prioritaria máxima"
   },
   "memo": {
     "message": "memorándum"
@@ -1131,7 +1219,7 @@
     "message": "Escriba su contraseña para confirmar que es usted."
   },
   "mustSelectOne": {
-    "message": "Debe seleccionar al menos 1 token."
+    "message": "Debe seleccionar al menos 1 token."
   },
   "myAccounts": {
     "message": "Mis cuentas"
@@ -1181,10 +1269,10 @@
     "message": "Agregar y editar redes RPC personalizadas"
   },
   "networkURL": {
-    "message": "Dirección URL de la red"
+    "message": "Dirección URL de la red"
   },
   "networkURLDefinition": {
-    "message": "La dirección URL que se utilizó para acceder a esta red."
+    "message": "La dirección URL que se utilizó para acceder a esta red."
   },
   "networks": {
     "message": "Redes"
@@ -1212,7 +1300,7 @@
     "message": "Red nueva"
   },
   "newPassword": {
-    "message": "Contraseña nueva (mín. de 8 caracteres)"
+    "message": "Contraseña nueva (mín. de 8 caracteres)"
   },
   "newToMetaMask": {
     "message": "¿Es nuevo en MetaMask?"
@@ -1305,11 +1393,11 @@
     "description": "Title for a notification in the 'See What's New' popup. Encourages users to do swaps on Binance Smart Chain."
   },
   "notifications5Description": {
-    "message": "Su \"frase de recuperación\" ahora se llama \"frase secreta de recuperación.\"",
+    "message": "Su “frase de recuperación” ahora se llama “frase secreta de recuperación.”",
     "description": "Description of a notification in the 'See What's New' popup. Describes the seed phrase wording update."
   },
   "notifications6DescriptionOne": {
-    "message": "A partir de la versión 91 de Chrome, la API que habilitaba nuestro soporte para Ledger (U2F) ya no es compatible con carteras de hardware. MetaMask ha implementado un nuevo soporte para Ledger Live mediante el cual usted puede seguir conectándose a su dispositivo Ledger a través de la aplicación de escritorio Ledger Live.",
+    "message": "A partir de la versión 91 de Chrome, la API que habilitaba nuestro soporte para Ledger (U2F) ya no es compatible con carteras de hardware. MetaMask ha implementado un nuevo soporte para Ledger Live mediante el cual usted puede seguir conectándose a su dispositivo Ledger a través de la aplicación de escritorio Ledger Live.",
     "description": "Description of a notification in the 'See What's New' popup. Describes the Ledger support update."
   },
   "notifications6DescriptionThree": {
@@ -1340,7 +1428,7 @@
     "message": "Activado"
   },
   "onboardingReturnNotice": {
-    "message": "\"$1\" cerrará esta pestaña y lo dirigirá de nuevo a $2",
+    "message": "“$1” cerrará esta pestaña y lo dirigirá de nuevo a $2",
     "description": "Return the user to the site that initiated onboarding"
   },
   "onlyAddTrustedNetworks": {
@@ -1351,6 +1439,9 @@
   },
   "onlyConnectTrust": {
     "message": "Conéctese solo con sitios de confianza."
+  },
+  "optional": {
+    "message": "Opcional"
   },
   "optionalBlockExplorerUrl": {
     "message": "Dirección URL del explorador de bloques (opcional)"
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "La contraseña no es suficientemente larga"
+  },
+  "passwordSetupDetails": {
+    "message": "Esta contraseña desbloqueará su cartera de MetaMask solo en este dispositivo. MetaMask no puede recuperar esta contraseña."
+  },
+  "passwordTermsWarning": {
+    "message": "Entiendo que MetaMask no me puede ayudar a recuperar esta contraseña. $1"
   },
   "passwordsDontMatch": {
     "message": "Las contraseñas no coinciden"
@@ -1409,7 +1506,7 @@
     "message": "Moneda principal"
   },
   "primaryCurrencySettingDescription": {
-    "message": "Seleccione Nativa para dar prioridad a mostrar los valores en la moneda nativa de la cadena (p. ej., ETH). Seleccione Fiduciaria para dar prioridad a mostrar los valores en la moneda fiduciaria seleccionada."
+    "message": "Seleccione Nativa para dar prioridad a mostrar los valores en la moneda nativa de la cadena (p. ej., ETH). Seleccione Fiduciaria para dar prioridad a mostrar los valores en la moneda fiduciaria seleccionada."
   },
   "privacyMsg": {
     "message": "Política de privacidad"
@@ -1440,7 +1537,7 @@
     "message": "En cola"
   },
   "readdToken": {
-    "message": "Puede volver a agregar este token en el futuro desde “Agregar token” en el menú de opciones de las cuentas."
+    "message": "Puede volver a agregar este token en el futuro desde \"Agregar token\" en el menú de opciones de las cuentas."
   },
   "receive": {
     "message": "Recibir"
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "Búsqueda, dirección pública (0x) o ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "Recomendado"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "Iniciar aquí"
@@ -1482,7 +1582,7 @@
     "message": "Rechazar todo"
   },
   "rejectTxsDescription": {
-    "message": "Está a punto de rechazar $1 transacciones en lote."
+    "message": "Está a punto de rechazar $1 transacciones en lote."
   },
   "rejectTxsN": {
     "message": "Rechazar $1 transacciones"
@@ -1597,7 +1697,7 @@
     "message": "Ingrese su frase secreta aquí para restaurar su bóveda."
   },
   "securityAndPrivacy": {
-    "message": "Seguridad y privacidad"
+    "message": "Seguridad y privacidad"
   },
   "securitySettingsDescription": {
     "message": "Configuración de privacidad y frase secreta de recuperación de la cartera"
@@ -1645,7 +1745,7 @@
     "message": "Pegar la frase secreta de recuperación desde el Portapapeles"
   },
   "seedPhraseReq": {
-    "message": "Las frases secretas de recuperación contienen 12, 15, 18, 21 o 24 palabras"
+    "message": "Las frases secretas de recuperación contienen 12, 15, 18, 21 o 24 palabras"
   },
   "selectAHigherGasFee": {
     "message": "Seleccione una cuota de gas más alta para acelerar el procesamiento de la transacción.*"
@@ -1676,7 +1776,7 @@
     "message": "Seleccione la ruta de acceso al disco duro"
   },
   "selectPathHelp": {
-    "message": "Si no ve sus cuentas existentes en Ledger a continuación, intente cambiar de ruta de acceso a \"Legacy (MEW / MyCrypto)\""
+    "message": "Si no ve sus cuentas existentes en Ledger a continuación, intente cambiar de ruta de acceso a “Legacy (MEW / MyCrypto)”"
   },
   "selectType": {
     "message": "Seleccionar tipo"
@@ -1705,6 +1805,9 @@
   },
   "settings": {
     "message": "Configuración"
+  },
+  "show": {
+    "message": "Mostrar"
   },
   "showAdvancedGasInline": {
     "message": "Controles avanzados de gas"
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "Acelerar esta cancelación"
+  },
+  "speedUpExplanation": {
+    "message": "Hemos vuelto a calcular la cuota de gas en función de las condiciones actuales de la red y la hemos aumentado al menos un 10 % (exigido por la red)."
+  },
+  "speedUpPopoverTitle": {
+    "message": "Acelerar transacción"
+  },
+  "speedUpTooltipText": {
+    "message": "Nueva cuota de gas"
   },
   "speedUpTransaction": {
     "message": "Acelerar esta transacción"
@@ -1849,7 +1961,7 @@
     "message": "Canjear"
   },
   "swapAdvancedSlippageInfo": {
-    "message": "Si el precio cambia entre el momento en que hace el pedido y cuando se confirma, se denomina “desfase”. El canje se cancelará automáticamente si el desfase supera lo establecido en la configuración “max slippage” (desfase máximo)."
+    "message": "Si el precio cambia entre el momento en que hace el pedido y cuando se confirma, se denomina \"desfase\". El canje se cancelará automáticamente si el desfase supera lo establecido en la configuración \"max slippage\" (desfase máximo)."
   },
   "swapAggregator": {
     "message": "Agregador"
@@ -1887,7 +1999,7 @@
     "message": "Confirmar con la cartera de hardware"
   },
   "swapContractDataDisabledErrorDescription": {
-    "message": "En la aplicación de Ethereum en su Ledger, diríjase a \"Configuración\" y habilite los datos de contrato. A continuación, intente canjear de nuevo."
+    "message": "En la aplicación de Ethereum en su Ledger, diríjase a “Configuración” y habilite los datos de contrato. A continuación, intente canjear de nuevo."
   },
   "swapContractDataDisabledErrorTitle": {
     "message": "Los datos de contrato no se habilitaron en su Ledger"
@@ -1964,7 +2076,7 @@
     "message": "Cuota de MetaMask"
   },
   "swapMetaMaskFeeDescription": {
-    "message": "Buscamos el mejor precio en las fuentes de liquidez más importantes, todo el tiempo. Se incorpora de manera automática a esta cotización una cuota del $1 %.",
+    "message": "Buscamos el mejor precio en las fuentes de liquidez más importantes, todo el tiempo. Se incorpora de manera automática a esta cotización una cuota del $1 %.",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapNQuotes": {
@@ -1987,7 +2099,7 @@
     "description": "This message represents the price slippage for the swap.  $1 and $4 are a number (ex: 2.89), $2 and $5 are symbols (ex: ETH), and $3 and $6 are fiat currency amounts."
   },
   "swapPriceDifferenceTitle": {
-    "message": "Diferencia de precio de ~$1 %",
+    "message": "Diferencia de precio de ~$1 %",
     "description": "$1 is a number (ex: 1.23) that represents the price difference."
   },
   "swapPriceImpactTooltip": {
@@ -2006,10 +2118,10 @@
     "message": "Detalles de cotización"
   },
   "swapQuoteDetailsSlippageInfo": {
-    "message": "Si el precio cambia entre el momento en que hace el pedido y cuando se confirma, se denomina \"desfase\". El canje se cancelará automáticamente si el desfase supera lo establecido en la configuración \"tolerancia de desfase\"."
+    "message": "Si el precio cambia entre el momento en que hace el pedido y cuando se confirma, se denomina “desfase”. El canje se cancelará automáticamente si el desfase supera lo establecido en la configuración “tolerancia de desfase”."
   },
   "swapQuoteIncludesRate": {
-    "message": "La cotización incluye una cuota de MetaMask de $1 %",
+    "message": "La cotización incluye una cuota de MetaMask de $1 %",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapQuoteNofN": {
@@ -2118,7 +2230,7 @@
     "message": "Transacción completa"
   },
   "swapTwoTransactions": {
-    "message": "2 transacciones"
+    "message": "2 transacciones"
   },
   "swapUnknown": {
     "message": "Desconocido"
@@ -2135,13 +2247,13 @@
     "description": "Tells the user how much of a token they have in their balance. $1 is a decimal number amount of tokens, and $2 is a token symbol"
   },
   "swapZeroSlippage": {
-    "message": "0 % de desfase"
+    "message": "0 % de desfase"
   },
   "swapsAdvancedOptions": {
     "message": "Opciones avanzadas"
   },
   "swapsExcessiveSlippageWarning": {
-    "message": "El monto del desfase es muy alto, por lo que recibirá una tasa de conversión desfavorable. Disminuya su tolerancia de desfase a un valor menor al 15 %."
+    "message": "El monto del desfase es muy alto, por lo que recibirá una tasa de conversión desfavorable. Disminuya su tolerancia de desfase a un valor menor al 15 %."
   },
   "swapsMaxSlippage": {
     "message": "Tolerancia de desfase"
@@ -2181,7 +2293,10 @@
     "message": "Símbolo"
   },
   "symbolBetweenZeroTwelve": {
-    "message": "El símbolo debe tener 11 caracteres o menos."
+    "message": "El símbolo debe tener 11 caracteres o menos."
+  },
+  "syncInProgress": {
+    "message": "Sincronización en curso"
   },
   "syncWithMobile": {
     "message": "Sincronizar con dispositivo móvil"
@@ -2193,7 +2308,7 @@
     "message": "Los datos se sincronizaron correctamente. ¡Disfrute de la aplicación móvil de MetaMask!"
   },
   "syncWithMobileDesc": {
-    "message": "Puede sincronizar sus cuentas y su información con el dispositivo móvil. Abra la aplicación móvil de MetaMask, vaya a \"Configuración\" y presione \"Sincronizar desde la extensión del explorador\""
+    "message": "Puede sincronizar sus cuentas y su información con el dispositivo móvil. Abra la aplicación móvil de MetaMask, vaya a “Configuración” y presione “Sincronizar desde la extensión del explorador”"
   },
   "syncWithMobileDescNewUsers": {
     "message": "Si acaba de abrir la aplicación móvil de MetaMask por primera vez, siga los pasos que aparecen en el teléfono."
@@ -2273,6 +2388,12 @@
   },
   "transactionCreated": {
     "message": "La transacción se creó con un valor de $1 en $2."
+  },
+  "transactionDetailGasHeading": {
+    "message": "Cuota de Gas estimada"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "Importe + cuota de gas"
   },
   "transactionDropped": {
     "message": "La transacción se abandonó en $2."
@@ -2363,6 +2484,10 @@
     "message": "verifique los detalles de la red",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
   },
+  "unsendableAsset": {
+    "message": "El envío de tokens coleccionables (ERC-721) no se admite actualmente",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
+  },
   "updatedWithDate": {
     "message": "$1 actualizado"
   },
@@ -2405,6 +2530,9 @@
   "viewContact": {
     "message": "Ver contacto"
   },
+  "viewFullTransactionDetails": {
+    "message": "Ver todos los detalles de la transacción"
+  },
   "viewMore": {
     "message": "Ver más"
   },
@@ -2430,7 +2558,7 @@
     "message": "Frase secreta de recuperación de la cartera"
   },
   "web3ShimUsageNotification": {
-    "message": "Parece que el sitio web actual intentó utilizar la API de window.web3 que se eliminó. Si el sitio no funciona, haga clic en $1 para obtener más información.",
+    "message": "Parece que el sitio web actual intentó utilizar la API de window.web3 que se eliminó. Si el sitio no funciona, haga clic en $1 para obtener más información.",
     "description": "$1 is a clickable link."
   },
   "welcome": {

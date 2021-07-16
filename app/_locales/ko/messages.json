@@ -6,7 +6,7 @@
     "message": "버전, 지원 센터, 연락처"
   },
   "acceleratingATransaction": {
-    "message": "* 높은 Gas 가격을 이용해 거래를 가속화하면 네트워크를 통한 처리 속도가 개선되지만 항상 그렇지는 않습니다."
+    "message": "* 높은 가스 가격을 이용해 거래를 가속화하면 네트워크를 통한 처리 속도가 개선되지만 항상 그렇지는 않습니다."
   },
   "acceptTermsOfUse": {
     "message": "$1을(를) 읽고 이에 동의합니다.",
@@ -97,6 +97,9 @@
   "addTokens": {
     "message": "토큰 추가"
   },
+  "addressBookIcon": {
+    "message": "주소록 아이콘"
+  },
   "advanced": {
     "message": "고급"
   },
@@ -149,6 +152,9 @@
   },
   "amount": {
     "message": "금액"
+  },
+  "amountGasFee": {
+    "message": "금액 + 가스 요금"
   },
   "amountWithColon": {
     "message": "금액:"
@@ -223,7 +229,7 @@
     "message": "이 비밀 코드는 장치를 분실하여 지갑을 복구해야 하거나, 암호를 잊었거나, MetaMask를 다시 설치해야 하거나, 다른 장치에서 지갑에 액세스해야 할 때 필요합니다."
   },
   "backupApprovalNotice": {
-    "message": "시드 코드를 백업하여 지갑과 자금을 안전하게 보호하세요."
+    "message": "시드 구문을 백업하여 지갑과 자금을 안전하게 보호하세요."
   },
   "backupNow": {
     "message": "지금 백업"
@@ -251,13 +257,22 @@
     "message": "Blockies 아이덴티콘 사용"
   },
   "browserNotSupported": {
-    "message": "지원되지 않는 브라우저입니다..."
+    "message": "지원되지 않는 브라우저입니다."
   },
   "buildContactList": {
     "message": "연락처 목록 작성하기"
   },
+  "builtAroundTheWorld": {
+    "message": "MetaMask는 전 세계에서 설계 및 제작됩니다."
+  },
   "buy": {
     "message": "구매"
+  },
+  "buyWithTransak": {
+    "message": "Transak으로 ETH 구매"
+  },
+  "buyWithTransakDescription": {
+    "message": "Transak은 59개국에서 체크카드와 은행 송금을 지원합니다(지역별 상이). ETH를 MetaMask 계정에 입금합니다."
   },
   "buyWithWyre": {
     "message": "Wyre로 ETH 구매"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "계속"
   },
+  "continueToTransak": {
+    "message": "Transak으로 넘어가기"
+  },
   "continueToWyre": {
     "message": "Wyre로 넘어가기"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "계정 생성"
   },
+  "createNewWallet": {
+    "message": "새 지갑 생성"
+  },
   "createPassword": {
     "message": "암호 생성"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "맞춤형 토큰"
+  },
+  "data": {
+    "message": "데이터"
   },
   "dataBackupFoundInfo": {
     "message": "일부 계정 데이터가 이전의 MetaMask 설치 도중에 백업되었습니다. 여기에는 설정, 연락처, 토큰이 포함될 수 있습니다. 지금 이 데이터를 복구하시겠어요?"
@@ -596,6 +620,42 @@
   "editContact": {
     "message": "연락처 편집"
   },
+  "editGasEducationButtonText": {
+    "message": "어떻게 선택해야 하나요?"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "이는 스왑이나 다른 급한 거래에 최적입니다. 스왑을 처리하는 데 너무 오래 걸리는 경우 처리에 실패하여 자금을 잃을 수 있습니다."
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "가스 사용자 지정을 자세히 알아봅니다."
+  },
+  "editGasEducationLowExplanation": {
+    "message": "낮은 가스 요금은 처리 시간이 중요하지 않은 거래에만 선택하세요. 요금이 낮으면 거래 처리 시간과 여부를 예측하기 어렵습니다."
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "중간 수준의 가스 요금은 급하지 않으나 중요한 거래를 전송, 인출하는 데 좋습니다."
+  },
+  "editGasEducationModalIntro": {
+    "message": "적절한 가스 금액은 거래 유형과 중요도에 따라 결정됩니다."
+  },
+  "editGasEducationModalTitle": {
+    "message": "어떻게 선택해야 하나요?"
+  },
+  "editGasHigh": {
+    "message": "높음"
+  },
+  "editGasLow": {
+    "message": "낮음"
+  },
+  "editGasMedium": {
+    "message": "중간"
+  },
+  "editGasPriceTooltip": {
+    "message": "이 네트워크.는 구 버전의 가스 가격을 사용하기 때문에 “가스 가격” 필드가 요구됩니다. 가스 가격은 귀하가 단위 가스당 지불할 최대 금액입니다."
+  },
+  "editGasTitle": {
+    "message": "가스 요금 수정"
+  },
   "editNonceField": {
     "message": "임시값 편집"
   },
@@ -638,7 +698,7 @@
     "description": "$1 is a clickable link with text defined by the 'here' key. The link will open to a form where users can file support tickets."
   },
   "endOfFlowMessage8": {
-    "message": "MetaMask에서는 계정 시드 구문을 복구할 수 없습니다."
+    "message": "MetaMask에서는 비밀 복구 구문을 복구할 수 없습니다."
   },
   "endOfFlowMessage9": {
     "message": "자세한 내용을 알아보십시오."
@@ -647,11 +707,20 @@
     "message": "엔드포인트에서 다른 체인 ID를 반환했습니다. $1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "ENS에서 허용되지 않는 문자입니다."
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "현재 네트워크에서 ENS 이름을 찾을 수 없습니다. 이더리움 메인넷으로 전환해 보세요."
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "네트워크가 ENS를 지원하지 않습니다."
+  },
   "ensRegistrationError": {
     "message": "ENS 이름 등록 중 오류 발생"
+  },
+  "ensUnknownError": {
+    "message": "ENS 조회에 실패했습니다."
   },
   "enterAnAlias": {
     "message": "별칭 입력"
@@ -759,7 +828,7 @@
     "message": "금지된 IPFS 게이트웨이: CID 게이트웨이를 지정하세요."
   },
   "forgetDevice": {
-    "message": "이 장치 잊기"
+    "message": "이 장치 지우기"
   },
   "from": {
     "message": "발신"
@@ -773,6 +842,19 @@
   },
   "functionType": {
     "message": "기능 유형"
+  },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "앱 제안 편집"
+  },
+  "gasDisplayDappWarning": {
+    "message": "이 가스 요금은 $1 앱이 제안하였습니다. 이는 레거시 가스 견적을 사용하여 정확하지 않을 수 있습니다. 그러나 요금을 수정하면 예기치 못한 결과가 발생할 수 있습니다. 궁금한 점은 앱 제작사에 문의하세요.",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "가스 요금"
+  },
+  "gasFeeEstimate": {
+    "message": "견적"
   },
   "gasLimit": {
     "message": "Gas 한도"
@@ -1061,6 +1143,12 @@
   "max": {
     "message": "최대"
   },
+  "maxFee": {
+    "message": "최대 요금"
+  },
+  "maxPriorityFee": {
+    "message": "최대 우선 요금"
+  },
   "memo": {
     "message": "메모"
   },
@@ -1099,15 +1187,15 @@
     "message": "MetaMask에서는.."
   },
   "metametricsCommitmentsNeverCollectIP": {
-    "message": "전체 IP 주소를 절대 수집하지 않습니다.",
+    "message": "$1은(는) 전체 IP 주소를 수집하지 않습니다",
     "description": "The $1 is the bolded word 'Never', from 'metametricsCommitmentsBoldNever'"
   },
   "metametricsCommitmentsNeverCollectKeysEtc": {
-    "message": "키, 주소, 거래, 잔액, 해시 또는 개인 정보를 절대 수집하지 않습니다.",
+    "message": "$1은(는) 키, 주소, 거래, 잔액, 해시, 개인 정보를 수집하지 않습니다",
     "description": "The $1 is the bolded word 'Never', from 'metametricsCommitmentsBoldNever'"
   },
   "metametricsCommitmentsNeverSellDataForProfit": {
-    "message": "수익을 위해 데이터를 절대 판매하지 않습니다. 결코 그렇습니다.",
+    "message": "$1은(는) 수익을 위해 데이터를 절대 판매하지 않습니다. 결코 그렇습니다.",
     "description": "The $1 is the bolded word 'Never', from 'metametricsCommitmentsBoldNever'"
   },
   "metametricsCommitmentsSendAnonymizedEvents": {
@@ -1352,6 +1440,9 @@
   "onlyConnectTrust": {
     "message": "신뢰하는 사이트만 연결하세요."
   },
+  "optional": {
+    "message": "선택 사항"
+  },
   "optionalBlockExplorerUrl": {
     "message": "블록 탐색기 URL(선택 사항)"
   },
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "암호가 짧습니다."
+  },
+  "passwordSetupDetails": {
+    "message": "이 암호는 이 장치에서만 MetaMask 지갑의 잠금을 해제합니다. MetaMask는 이 암호를 복구할 수 없습니다."
+  },
+  "passwordTermsWarning": {
+    "message": "MetaMask가 이 암호를 복구할 수 없음을 이해합니다. $1"
   },
   "passwordsDontMatch": {
     "message": "암호가 일치하지 않습니다."
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "검색, 공개 주소(0x) 또는 ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "권장됨"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "여기에서 시작"
@@ -1706,6 +1806,9 @@
   "settings": {
     "message": "설정"
   },
+  "show": {
+    "message": "표시"
+  },
   "showAdvancedGasInline": {
     "message": "고급 Gas 제어 기능"
   },
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "이 취소 가속화"
+  },
+  "speedUpExplanation": {
+    "message": "현재 네트워크 상태를 기반으로 가스 요금을 재추산하여 요금이 10% 이상 인상되었습니다(네트워크에서 요구함)."
+  },
+  "speedUpPopoverTitle": {
+    "message": "거래 가속화"
+  },
+  "speedUpTooltipText": {
+    "message": "새 가스 요금"
   },
   "speedUpTransaction": {
     "message": "이 거래 가속화"
@@ -2006,7 +2118,7 @@
     "message": "견적 세부 정보"
   },
   "swapQuoteDetailsSlippageInfo": {
-    "message": "주문 시점과 확인 시점 사이에 가격이 변동되는 현상을 \"슬리패지\"라고 합니다. 슬리패지가 \"최대 슬리패지\" 설정을 초과하면 스왑이 자동으로 취소됩니다."
+    "message": "주문 시점과 확인 시점 사이에 가격이 변동되는 현상을 “슬리패지”라고 합니다. 슬리패지가 \"슬리패지 허용치\" 설정을 초과하면 스왑이 자동으로 취소됩니다."
   },
   "swapQuoteIncludesRate": {
     "message": "견적에는 $1% MetaMask 요금이 포함됩니다.",
@@ -2183,6 +2295,9 @@
   "symbolBetweenZeroTwelve": {
     "message": "기호는 11자 이하여야 합니다."
   },
+  "syncInProgress": {
+    "message": "동기화를 진행 중입니다!"
+  },
   "syncWithMobile": {
     "message": "모바일과 동기화"
   },
@@ -2274,6 +2389,12 @@
   "transactionCreated": {
     "message": "$2에서 $1 값으로 거래가 생성되었습니다."
   },
+  "transactionDetailGasHeading": {
+    "message": "예상 Gas 요금"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "금액 + 가스 요금"
+  },
   "transactionDropped": {
     "message": "$2에서의 거래가 중단되었습니다."
   },
@@ -2338,7 +2459,7 @@
     "message": "카메라에 액세스하는 도중 오류가 발생했습니다. 다시 시도하세요..."
   },
   "unknownCameraErrorTitle": {
-    "message": "이런! 문제가 발생했습니다...."
+    "message": "이런! 문제가 발생했습니다."
   },
   "unknownNetwork": {
     "message": "알 수 없는 비공개 네트워크"
@@ -2362,6 +2483,10 @@
   "unrecognizedChainLinkText": {
     "message": "네트워크 세부 정보 검증",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
+  },
+  "unsendableAsset": {
+    "message": "수집품(ERC-721) 토큰 전송은 현재 지원되지 않습니다",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
   },
   "updatedWithDate": {
     "message": "$1에 업데이트됨"
@@ -2404,6 +2529,9 @@
   },
   "viewContact": {
     "message": "연락처 보기"
+  },
+  "viewFullTransactionDetails": {
+    "message": "전체 거래 세부 정보 보기"
   },
   "viewMore": {
     "message": "더 보기"

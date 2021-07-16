@@ -97,6 +97,9 @@
   "addTokens": {
     "message": "Thêm token"
   },
+  "addressBookIcon": {
+    "message": "Biểu tượng sổ địa chỉ"
+  },
   "advanced": {
     "message": "Nâng cao"
   },
@@ -149,6 +152,9 @@
   },
   "amount": {
     "message": "Số tiền"
+  },
+  "amountGasFee": {
+    "message": "Số tiền + Phí gas"
   },
   "amountWithColon": {
     "message": "Số tiền:"
@@ -223,7 +229,7 @@
     "message": "Đây là mã bí mật bắt buộc phải dùng để khôi phục ví trong trường hợp bạn bị mất thiết bị, quên mật khẩu, phải cài đặt lại MetaMask hoặc muốn truy cập ví của mình trên một thiết bị khác."
   },
   "backupApprovalNotice": {
-    "message": "Sao lưu Mã khôi phục bí mật để đảm bảo an toàn cho ví và tiền của bạn."
+    "message": "Sao lưu Cụm mật khẩu khôi phục bí mật để đảm bảo an toàn cho ví và tiền của bạn."
   },
   "backupNow": {
     "message": "Sao lưu ngay"
@@ -256,8 +262,17 @@
   "buildContactList": {
     "message": "Xây dựng danh sách liên hệ của bạn"
   },
+  "builtAroundTheWorld": {
+    "message": "MetaMask được thiết kế và phát triển khắp nơi trên thế giới."
+  },
   "buy": {
     "message": "Mua"
+  },
+  "buyWithTransak": {
+    "message": "Mua ETH qua Transak"
+  },
+  "buyWithTransakDescription": {
+    "message": "Transak hỗ trợ thẻ tín dụng và chuyển khoản ngân hàng (tùy thuộc vào vị trí) tại hơn 59 quốc gia. ETH đã nộp tiền vào tài khoản MetaMask của bạn."
   },
   "buyWithWyre": {
     "message": "Mua ETH qua Wyre"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "Tiếp tục"
   },
+  "continueToTransak": {
+    "message": "Tiếp tục chuyển đến Transak"
+  },
   "continueToWyre": {
     "message": "Tiếp tục chuyển đến Wyre"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "Tạo tài khoản"
   },
+  "createNewWallet": {
+    "message": "Tạo một ví mới"
+  },
   "createPassword": {
     "message": "Tạo mật khẩu"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "Token tùy chỉnh"
+  },
+  "data": {
+    "message": "Dữ liệu"
   },
   "dataBackupFoundInfo": {
     "message": "Một số dữ liệu tài khoản của bạn đã được sao lưu trong lần cài đặt MetaMask trước đó. Dữ liệu này có thể bao gồm các tùy chọn cài đặt, danh bạ và token. Bạn có muốn khôi phục dữ liệu này bây giờ không?"
@@ -596,6 +620,42 @@
   "editContact": {
     "message": "Chỉnh sửa người liên hệ"
   },
+  "editGasEducationButtonText": {
+    "message": "Tôi sẽ chọn bằng cách nào?"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "Đây là lựa chọn phù hợp nhất cho các giao dịch hoán đổi hoặc các giao dịch có giới hạn thời gian khác. Nếu một giao dịch hoán đổi mất quá nhiều thời gian xử lý, thì giao dịch hoán đổi đó thường không thành công và bạn có thể mất tiền."
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "Tìm hiểu thêm về tùy chỉnh phí gas."
+  },
+  "editGasEducationLowExplanation": {
+    "message": "Chỉ nên chọn Phí ga thấp hơn mức A cho các giao dịch mà thời gian xử lý ít quan trọng hơn. Với mức phí thấp hơn, có thể khó dự đoán được thời điểm (hoặc nếu) giao dịch của bạn thành công."
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "Phí gas ở mức trung bình rất phù hợp cho việc gửi, rút tiền hoặc các giao dịch quan trọng nhưng không giới hạn thời gian."
+  },
+  "editGasEducationModalIntro": {
+    "message": "Lượng gas phù hợp để chọn sẽ tùy thuộc vào loại giao dịch và mức độ quan trọng của giao dịch."
+  },
+  "editGasEducationModalTitle": {
+    "message": "Cách chọn?"
+  },
+  "editGasHigh": {
+    "message": "Cao"
+  },
+  "editGasLow": {
+    "message": "Thấp"
+  },
+  "editGasMedium": {
+    "message": "Trung bình"
+  },
+  "editGasPriceTooltip": {
+    "message": "Mạng này dùng một phiên bản giá gas cũ nên cần có trường \"Giá ga\". Giá gas là số tiền tối đa mà bạn sẵn sàng trả cho một đơn vị gas."
+  },
+  "editGasTitle": {
+    "message": "Chỉnh sửa phí gas"
+  },
   "editNonceField": {
     "message": "Chỉnh sửa số chỉ dùng một lần"
   },
@@ -647,11 +707,20 @@
     "message": "Điểm cuối đã trả về một mã chuỗi khác: $1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "Ký tự bất hợp pháp cho ENS."
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "Không tìm thấy tên ENS trên mạng hiện tại. Đang chuyển sang mạng chính thức của Ethereum."
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "Mạng không được hỗ trợ ENS"
+  },
   "ensRegistrationError": {
     "message": "Lỗi khi đăng ký tên ENS"
+  },
+  "ensUnknownError": {
+    "message": "Tra cứu ENS không thành công."
   },
   "enterAnAlias": {
     "message": "Nhập một biệt danh"
@@ -773,6 +842,19 @@
   },
   "functionType": {
     "message": "Loại chức năng"
+  },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "Chỉnh sửa đề xuất ứng dụng"
+  },
+  "gasDisplayDappWarning": {
+    "message": "Phí gas này đã được ứng dụng $1 đề xuất. Ứng dụng đang sử dụng ước tính gas cũ. Ước tính này có thể không chính xác. Tuy nhiên, việc chỉnh sửa phí gas này có thể gây ra những hệ quả khôn lường. Vui lòng liên hệ với nhóm ứng dụng nếu bạn có câu hỏi.",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "Phí gas"
+  },
+  "gasFeeEstimate": {
+    "message": "Ước tính"
   },
   "gasLimit": {
     "message": "Giới hạn gas"
@@ -1060,6 +1142,12 @@
   },
   "max": {
     "message": "Tối đa"
+  },
+  "maxFee": {
+    "message": "Phí tối đa"
+  },
+  "maxPriorityFee": {
+    "message": "Phí ưu tiên tối đa"
   },
   "memo": {
     "message": "thư báo"
@@ -1352,6 +1440,9 @@
   "onlyConnectTrust": {
     "message": "Chỉ kết nối với các trang web mà bạn tin tưởng."
   },
+  "optional": {
+    "message": "Không bắt buộc"
+  },
   "optionalBlockExplorerUrl": {
     "message": "URL trình khám phá khối (không bắt buộc)"
   },
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "Mật khẩu không đủ dài"
+  },
+  "passwordSetupDetails": {
+    "message": "Mật khẩu này sẽ chỉ mở khóa ví MetaMask của bạn trên thiết bị này. MetaMask không thể khôi phục mật khẩu này."
+  },
+  "passwordTermsWarning": {
+    "message": "Tôi hiểu rằng MetaMask không thể giúp tôi khôi phục mật khẩu này. $1"
   },
   "passwordsDontMatch": {
     "message": "Mật khẩu không khớp"
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "Tìm kiếm, địa chỉ công khai (0x) hoặc ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "Nên sử dụng"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "Bắt đầu tại đây"
@@ -1615,7 +1715,7 @@
     "message": "Lưu giữ trong két an toàn."
   },
   "seedPhraseIntroSidebarCopyOne": {
-    "message": "Cụm mật khẩu khôi phục bí mật là “chìa khóa chính” để truy cập ví và số tiền của bạn."
+    "message": "Cụm mật khẩu khôi phục bí mật là \"chìa khóa chính\" để truy cập ví và số tiền của bạn."
   },
   "seedPhraseIntroSidebarCopyThree": {
     "message": "Nếu ai đó hỏi bạn cụm mật khẩu khôi phục bí mật, thì họ đang cố gắng lừa đảo bạn."
@@ -1706,6 +1806,9 @@
   "settings": {
     "message": "Cài đặt"
   },
+  "show": {
+    "message": "Hiện"
+  },
   "showAdvancedGasInline": {
     "message": "Quyền kiểm soát gas nâng cao"
   },
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "Tăng tốc lệnh hủy này"
+  },
+  "speedUpExplanation": {
+    "message": "Chúng tôi đã ước tính lại phí gas dựa trên điều kiện mạng hiện tại và tăng ít nhất 10% (theo yêu cầu của mạng)."
+  },
+  "speedUpPopoverTitle": {
+    "message": "Tăng tốc giao dịch"
+  },
+  "speedUpTooltipText": {
+    "message": "Phí gas mới"
   },
   "speedUpTransaction": {
     "message": "Tăng tốc giao dịch này"
@@ -2183,6 +2295,9 @@
   "symbolBetweenZeroTwelve": {
     "message": "Ký hiệu không được dài quá 11 ký tự."
   },
+  "syncInProgress": {
+    "message": "Đang đồng bộ hóa"
+  },
   "syncWithMobile": {
     "message": "Đồng bộ hóa với thiết bị di động"
   },
@@ -2274,6 +2389,12 @@
   "transactionCreated": {
     "message": "Đã tạo giao dịch với giá trị $1 lúc $2."
   },
+  "transactionDetailGasHeading": {
+    "message": "Phí gas ước tính"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "Số tiền + phí gas"
+  },
   "transactionDropped": {
     "message": "Đã ngừng giao dịch lúc $2."
   },
@@ -2363,6 +2484,10 @@
     "message": "xác minh thông tin về mạng",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
   },
+  "unsendableAsset": {
+    "message": "Chúng tôi hiện chưa hỗ trợ gửi mã thông báo có thể thu thập (ERC-721)",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
+  },
   "updatedWithDate": {
     "message": "Đã cập nhật vào $1"
   },
@@ -2404,6 +2529,9 @@
   },
   "viewContact": {
     "message": "Xem người liên hệ"
+  },
+  "viewFullTransactionDetails": {
+    "message": "Xem toàn bộ chi tiết giao dịch"
   },
   "viewMore": {
     "message": "Xem thêm"

@@ -97,6 +97,9 @@
   "addTokens": {
     "message": "Tambahkan Token"
   },
+  "addressBookIcon": {
+    "message": "Ikon buku alamat"
+  },
   "advanced": {
     "message": "Tingkat Lanjut"
   },
@@ -149,6 +152,9 @@
   },
   "amount": {
     "message": "Jumlah"
+  },
+  "amountGasFee": {
+    "message": "Jumlah + Biaya Jaringan"
   },
   "amountWithColon": {
     "message": "Jumlah:"
@@ -223,7 +229,7 @@
     "message": "Kode rahasia ini diperlukan untuk memulihkan dompet seandainya Anda kehilangan perangkat, lupa kata sandi, harus menginstal kembali MetaMask, atau ingin mengakses dompet Anda di perangkat lain."
   },
   "backupApprovalNotice": {
-    "message": "Cadangkan kode Pemulihan Rahasia Anda untuk menjaga keamanan dompet dan dana Anda."
+    "message": "Cadangkan Frasa Pemulihan Rahasia Anda untuk menjaga keamanan dompet dan dana Anda."
   },
   "backupNow": {
     "message": "Cadangkan sekarang"
@@ -256,8 +262,17 @@
   "buildContactList": {
     "message": "Buat daftar kontak Anda"
   },
+  "builtAroundTheWorld": {
+    "message": "MetaMask didesain dan didirikan di seluruh dunia."
+  },
   "buy": {
     "message": "Beli"
+  },
+  "buyWithTransak": {
+    "message": "Beli ETH dengan Transak"
+  },
+  "buyWithTransakDescription": {
+    "message": "Transak mendukung kartu debit dan transfer bank (tergantung lokasi) di 59 lebih negara. Deposit ETH ke akun MetaMask Anda."
   },
   "buyWithWyre": {
     "message": "Beli ETH dengan Wyre"
@@ -411,6 +426,9 @@
   "continue": {
     "message": "Lanjutkan"
   },
+  "continueToTransak": {
+    "message": "Lanjutkan ke Transak"
+  },
   "continueToWyre": {
     "message": "Lanjutkan ke Wyre"
   },
@@ -453,6 +471,9 @@
   "createAccount": {
     "message": "Buat Akun"
   },
+  "createNewWallet": {
+    "message": "Buat dompet baru"
+  },
   "createPassword": {
     "message": "Buat Kata Sandi"
   },
@@ -488,6 +509,9 @@
   },
   "customToken": {
     "message": "Token Kustom"
+  },
+  "data": {
+    "message": "Data"
   },
   "dataBackupFoundInfo": {
     "message": "Beberapa data akun Anda telah dicadangkan selama penginstalan MetaMask yang lalu. Ini bisa mencakup pengaturan, kontak, dan token Anda. Apakah Anda ingin memulihkan data ini sekarang?"
@@ -596,6 +620,42 @@
   "editContact": {
     "message": "Edit Kontak"
   },
+  "editGasEducationButtonText": {
+    "message": "Bagaimana cara memilih?"
+  },
+  "editGasEducationHighExplanation": {
+    "message": "Ini yang terbaik untuk penukaran atau transaksi sensitif waktu lainnya. Jika terlalu lama diproses, penukaran akan sering kali gagal dan dana Anda bisa hilang."
+  },
+  "editGasEducationLearnMoreLinkText": {
+    "message": "Pelajari selengkapnya tentang menyesuaikan biaya jaringan."
+  },
+  "editGasEducationLowExplanation": {
+    "message": "Menurunkan biaya jaringan yang lebih rendah hanya harus dipilih untuk transaksi dengan waktu pemrosesan yang kurang penting. Dengan biaya yang lebih rendah, maka akan sulit untuk memprediksi kapan (atau jika) transaksi Anda akan berhasil."
+  },
+  "editGasEducationMediumExplanation": {
+    "message": "Biaya jaringan menengah baik untuk transaksi mengirim, menarik, atau transaksi yang tidak sensitif terhadap waktu, tetapi penting."
+  },
+  "editGasEducationModalIntro": {
+    "message": "Jumlah biaya jaringan yang benar dipilih tergantung pada jenis transaksi dan seberapa pentingnya."
+  },
+  "editGasEducationModalTitle": {
+    "message": "Bagaimana cara memilih?"
+  },
+  "editGasHigh": {
+    "message": "Tinggi"
+  },
+  "editGasLow": {
+    "message": "Rendah"
+  },
+  "editGasMedium": {
+    "message": "Menengah"
+  },
+  "editGasPriceTooltip": {
+    "message": "Jaringan ini menggunakan versi lama biaya jaringan yang memerlukan bidang “Biaya jaringan”. Biaya jaringan adalah jumlah maksimum yang akan Anda bayarkan per unit biaya jaringan."
+  },
+  "editGasTitle": {
+    "message": "Edit biaya jaringan"
+  },
   "editNonceField": {
     "message": "Edit Nonce"
   },
@@ -647,11 +707,20 @@
     "message": "Titik akhir memberikan hasil ID rantai yang berbeda: $1",
     "description": "$1 is the return value of eth_chainId from an RPC endpoint"
   },
+  "ensIllegalCharacter": {
+    "message": "Karakter Tidak Sah untuk ENS."
+  },
   "ensNotFoundOnCurrentNetwork": {
     "message": "Nama ENS tidak ditemukan pada jaringan saat ini. Coba untuk beralih ke Ethereum Mainnet."
   },
+  "ensNotSupportedOnNetwork": {
+    "message": "Jaringan tidak mendukung ENS"
+  },
   "ensRegistrationError": {
     "message": "Kesalahan pada pendaftaran nama ENS"
+  },
+  "ensUnknownError": {
+    "message": "Pencarian ENS gagal."
   },
   "enterAnAlias": {
     "message": "Masukkan alias"
@@ -773,6 +842,19 @@
   },
   "functionType": {
     "message": "Jenis Fungsi"
+  },
+  "gasDisplayAcknowledgeDappButtonText": {
+    "message": "Edit saran aplikasi"
+  },
+  "gasDisplayDappWarning": {
+    "message": "Biaya jaringan ini telah disarankan oleh aplikasi $1. Ini menggunakan estimasi biaya jaringan warisan yang mungkin tidak akurat. Namun, mengedit biaya jaringan ini dapat menyebabkan konsekuensi yang tidak diinginkan. Silakan hubungi tim aplikasi jika Anda memiliki pertanyaan.",
+    "description": "$1 represents the Dapp's origin"
+  },
+  "gasFee": {
+    "message": "Biaya Jaringan"
+  },
+  "gasFeeEstimate": {
+    "message": "Perkiraan"
   },
   "gasLimit": {
     "message": "Batas Biaya Jaringan"
@@ -1060,6 +1142,12 @@
   },
   "max": {
     "message": "Maks."
+  },
+  "maxFee": {
+    "message": "Biaya maks."
+  },
+  "maxPriorityFee": {
+    "message": "Maks. biaya prioritas"
   },
   "memo": {
     "message": "memo"
@@ -1352,6 +1440,9 @@
   "onlyConnectTrust": {
     "message": "Hanya hubungkan ke situs yang Anda percayai."
   },
+  "optional": {
+    "message": "Opsional"
+  },
   "optionalBlockExplorerUrl": {
     "message": "URL Block Explorer (opsional)"
   },
@@ -1375,6 +1466,12 @@
   },
   "passwordNotLongEnough": {
     "message": "Kata sandi kurang panjang"
+  },
+  "passwordSetupDetails": {
+    "message": "Kata sandi ini akan membuka dompet MetaMask Anda hanya di perangkat ini. MetaMask tidak dapat memulihkan kata sandi ini."
+  },
+  "passwordTermsWarning": {
+    "message": "Saya mengerti bahwa MetaMask tidak dapat memulihkan kata sandi ini untuk saya. $1"
   },
   "passwordsDontMatch": {
     "message": "Kata Sandi Tidak Cocok"
@@ -1450,6 +1547,9 @@
   },
   "recipientAddressPlaceholder": {
     "message": "Cari, alamat publik (0x), atau ENS"
+  },
+  "recommendedGasLabel": {
+    "message": "Direkomendasikan"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "Mulai di sini"
@@ -1615,7 +1715,7 @@
     "message": "Simpan di vault bank."
   },
   "seedPhraseIntroSidebarCopyOne": {
-    "message": "Frasa pemulihan Anda adalah “kunci induk” ke dompet dan dana Anda."
+    "message": "Frasa pemulihan Anda adalah \"kunci induk\" ke dompet dan dana Anda."
   },
   "seedPhraseIntroSidebarCopyThree": {
     "message": "Jika seseorang menanyakan frasa pemulihan Anda, kemungkinan mereka akan mencoba menipu Anda."
@@ -1706,6 +1806,9 @@
   "settings": {
     "message": "Pengaturan"
   },
+  "show": {
+    "message": "Tampilkan"
+  },
   "showAdvancedGasInline": {
     "message": "Kontrol biaya jaringan tingkat lanjut"
   },
@@ -1768,6 +1871,15 @@
   },
   "speedUpCancellation": {
     "message": "Percepat pembatalan ini"
+  },
+  "speedUpExplanation": {
+    "message": "Kami telah memperkirakan biaya jaringan berdasarkan kondisi jaringan saat ini dan telah menaikkannya sekurangnya 10% (diharuskan oleh jaringan)."
+  },
+  "speedUpPopoverTitle": {
+    "message": "Percepat transaksi"
+  },
+  "speedUpTooltipText": {
+    "message": "Biaya jaringan baru"
   },
   "speedUpTransaction": {
     "message": "Percepat transaksi ini"
@@ -2183,6 +2295,9 @@
   "symbolBetweenZeroTwelve": {
     "message": "Simbol harus terdiri dari 11 karakter atau kurang."
   },
+  "syncInProgress": {
+    "message": "Sinkronisasi sedang berlangsung"
+  },
   "syncWithMobile": {
     "message": "Sinkronisasi dengan seluler"
   },
@@ -2274,6 +2389,12 @@
   "transactionCreated": {
     "message": "Transaksi dibuat dengan nilai sebesar $1 pada $2."
   },
+  "transactionDetailGasHeading": {
+    "message": "Perkiraan biaya jaringan"
+  },
+  "transactionDetailGasTotalSubtitle": {
+    "message": "Jumlah + biaya jaringan"
+  },
   "transactionDropped": {
     "message": "Transaksi jatuh pada $2."
   },
@@ -2363,6 +2484,10 @@
     "message": "verifikasi detail jaringan",
     "description": "Serves as link text for the 'unrecognizedChain' key. This text will be embedded inside the translation for that key."
   },
+  "unsendableAsset": {
+    "message": "Mengirim token koleksi (ERC-721) saat ini tidak didukung",
+    "description": "This is an error message we show the user if they attempt to send a collectible asset type, for which currently don't support sending"
+  },
   "updatedWithDate": {
     "message": "Diperbarui $1"
   },
@@ -2404,6 +2529,9 @@
   },
   "viewContact": {
     "message": "Lihat Kontak"
+  },
+  "viewFullTransactionDetails": {
+    "message": "Lihat detail lengkap transaksi"
   },
   "viewMore": {
     "message": "Lihat Selengkapnya"
