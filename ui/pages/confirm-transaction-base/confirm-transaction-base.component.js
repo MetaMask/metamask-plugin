@@ -603,8 +603,6 @@ export default class ConfirmTransactionBase extends Component {
       sendTransaction,
       clearConfirmTransaction,
       txData,
-      history,
-      mostRecentOverviewPage,
       updateCustomNonce,
     } = this.props;
     const { submitting } = this.state;
@@ -622,18 +620,7 @@ export default class ConfirmTransactionBase extends Component {
         this._removeBeforeUnload();
 
         sendTransaction(txData)
-          .then(() => {
-            clearConfirmTransaction();
-            this.setState(
-              {
-                submitting: false,
-              },
-              () => {
-                history.push(mostRecentOverviewPage);
-                updateCustomNonce('');
-              },
-            );
-          })
+          .then(() => clearConfirmTransaction())
           .catch((error) => {
             this.setState({
               submitting: false,
