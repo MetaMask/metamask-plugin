@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Tilføj de tokens du har erhvervet ved hjælp af MetaMask"
   },
-  "addAlias": {
-    "message": "Tilføj alias"
-  },
   "addNetwork": {
     "message": "Tilføj netværk"
   },

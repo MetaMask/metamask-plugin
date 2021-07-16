@@ -46,9 +46,6 @@
   "addAcquiredTokens": {
     "message": "Idagdag ang mga token na nakuha mo gamit ang MetaMask"
   },
-  "addAlias": {
-    "message": "Magdagdag ng alias"
-  },
   "addNetwork": {
     "message": "Magdagdag ng Network"
   },

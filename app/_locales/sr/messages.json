@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Dodajte stečene tokene koristeći MetaMask."
   },
-  "addAlias": {
-    "message": "Dodaj pseudonim"
-  },
   "addNetwork": {
     "message": "Dodajte mrežu"
   },

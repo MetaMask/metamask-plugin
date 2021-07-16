@@ -46,8 +46,8 @@
   "addAcquiredTokens": {
     "message": "Add the tokens you've acquired using MetaMask"
   },
-  "addAlias": {
-    "message": "Add alias"
+  "addAnEthereumAddress": {
+    "message": "Add an Ethereum Address"
   },
   "addContact": {
     "message": "Add contact"
@@ -75,6 +75,9 @@
   },
   "addFriendsAndAddresses": {
     "message": "Add friends and addresses you trust"
+  },
+  "addMemo": {
+    "message": "Add Memo"
   },
   "addNetwork": {
     "message": "Add Network"
@@ -267,6 +270,9 @@
   },
   "builtAroundTheWorld": {
     "message": "MetaMask is designed and built around the world."
+  },
+  "burnAddress": {
+    "message": "This is a burn address"
   },
   "buy": {
     "message": "Buy"

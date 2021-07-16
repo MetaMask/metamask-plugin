@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Додайте токени, отримані за допомогою MetaMask"
   },
-  "addAlias": {
-    "message": "Додати псевдо"
-  },
   "addNetwork": {
     "message": "Додати мережу"
   },

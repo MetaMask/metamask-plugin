@@ -29,6 +29,7 @@ export default class EnsInput extends Component {
     lookupEnsName: PropTypes.func.isRequired,
     initializeEnsSlice: PropTypes.func.isRequired,
     resetEnsResolution: PropTypes.func.isRequired,
+    placeholderText: PropTypes.string,
   };
 
   componentDidMount() {
@@ -80,7 +81,13 @@ export default class EnsInput extends Component {
 
   render() {
     const { t } = this.context;
-    const { className, selectedAddress, selectedName, userInput } = this.props;
+    const {
+      className,
+      selectedAddress,
+      selectedName,
+      userInput,
+      placeholderText,
+    } = this.props;
 
     const hasSelectedAddress = Boolean(selectedAddress);
 
@@ -121,7 +128,9 @@ export default class EnsInput extends Component {
                 className="ens-input__wrapper__input"
                 type="text"
                 dir="auto"
-                placeholder={t('recipientAddressPlaceholder')}
+                placeholder={
+                  placeholderText || t('recipientAddressPlaceholder')
+                }
                 onChange={this.onChange}
                 onPaste={this.onPaste}
                 value={selectedAddress || userInput}

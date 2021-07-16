@@ -46,9 +46,6 @@
   "addAcquiredTokens": {
     "message": "Adicionar os tokens que você adquiriu usando o MetaMask"
   },
-  "addAlias": {
-    "message": "Adicionar alias"
-  },
   "addContact": {
     "message": "Adicionar contato"
   },

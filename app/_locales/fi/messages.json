@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Lisää MetaMaskia käyttämällä hankkimasi tietueet"
   },
-  "addAlias": {
-    "message": "Lisää alias"
-  },
   "addNetwork": {
     "message": "Lisää verkko"
   },

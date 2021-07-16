@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "MetaMask በመጠቀም የገዟቸውን ተለዋጭ ስሞች ያክሉ"
   },
-  "addAlias": {
-    "message": "ተለዋጭ ስም አክል"
-  },
   "addNetwork": {
     "message": "አውታረ መረብ አክል"
   },

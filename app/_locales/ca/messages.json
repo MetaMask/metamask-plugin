@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Afegeix les fitxes que has adquirit fent servir MetaMask"
   },
-  "addAlias": {
-    "message": "Afegeix un àlies"
-  },
   "addNetwork": {
     "message": "Afegir Xarxa"
   },

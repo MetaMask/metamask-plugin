@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "Lisage load, mis olete MetaMaskiga saanud"
   },
-  "addAlias": {
-    "message": "Lisage alias"
-  },
   "addNetwork": {
     "message": "Lisage võrk"
   },

@@ -26,7 +26,7 @@ export default class EditContact extends PureComponent {
     viewRoute: PropTypes.string,
     listRoute: PropTypes.string,
     setAccountLabel: PropTypes.func,
-    showingMyAccounts: PropTypes.bool.isRequired,
+    showingMyAccounts: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -86,7 +86,7 @@ export default class EditContact extends PureComponent {
             <TextField
               type="text"
               id="nickname"
-              placeholder={this.context.t('addAlias')}
+              placeholder={this.context.t('userName')}
               value={this.state.newName}
               onChange={(e) => this.setState({ newName: e.target.value })}
               fullWidth
@@ -116,7 +116,7 @@ export default class EditContact extends PureComponent {
             <TextField
               type="text"
               id="memo"
-              placeholder={memo}
+              placeholder={t('addMemo')}
               value={this.state.newMemo}
               onChange={(e) => this.setState({ newMemo: e.target.value })}
               fullWidth

@@ -46,9 +46,6 @@
   "addAcquiredTokens": {
     "message": "आपके द्वारा MetaMask का उपयोग करके प्राप्त किए गए टोकन जोड़ें"
   },
-  "addAlias": {
-    "message": "उपनाम जोड़ें"
-  },
   "addContact": {
     "message": "संपर्क जोड़ें"
   },

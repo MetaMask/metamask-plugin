@@ -32,9 +32,6 @@
   "addAcquiredTokens": {
     "message": "MetaMask ಬಳಸಿಕೊಂಡು ನೀವು ಸ್ವಾಧೀನಪಡಿಸಿಕೊಂಡಿರುವ ಟೋಕನ್‌ಗಳನ್ನು ಸೇರಿಸಿ"
   },
-  "addAlias": {
-    "message": "ಅಲಿಯಾಸ್ ಸೇರಿಸಿ"
-  },
   "addNetwork": {
     "message": "ನೆಟ್‌ವರ್ಕ್ ಸೇರಿಸಿ"
   },

@@ -46,9 +46,6 @@
   "addAcquiredTokens": {
     "message": "MetaMask を使用して取得したトークンを追加します"
   },
-  "addAlias": {
-    "message": "別名の追加"
-  },
   "addContact": {
     "message": "連絡先の追加"
   },
