@@ -78,7 +78,7 @@ const SWAPS_TESTNET_HOST = 'https://metaswap-api.airswap-dev.codefi.network';
 
 const BSC_DEFAULT_BLOCK_EXPLORER_URL = 'https://bscscan.com/';
 const MAINNET_DEFAULT_BLOCK_EXPLORER_URL = 'https://etherscan.io/';
-const POLYGON_DEFAULT_BLOCK_EXPLORER_URL = 'https://api.polygonscan.com/api/';
+const POLYGON_DEFAULT_BLOCK_EXPLORER_URL = 'https://polygonscan.com/';
 
 export const ALLOWED_SWAPS_CHAIN_IDS = {
   [MAINNET_CHAIN_ID]: true,
