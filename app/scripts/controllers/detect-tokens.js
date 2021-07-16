@@ -1,5 +1,4 @@
 import Web3 from 'web3';
-import contracts from '@metamask/contract-metadata';
 import { warn } from 'loglevel';
 import SINGLE_CALL_BALANCES_ABI from 'single-call-balance-checker-abi';
 import { MAINNET_CHAIN_ID } from '../../../shared/constants/network';
@@ -24,24 +23,25 @@ export default class DetectTokensController {
     preferences,
     network,
     keyringMemStore,
+    tokenList,
   } = {}) {
     this.preferences = preferences;
     this.interval = interval;
     this.network = network;
     this.keyringMemStore = keyringMemStore;
+    this.tokenList = tokenList;
   }
 
   /**
    * For each token in @metamask/contract-metadata, find check selectedAddress balance.
    */
-  async detectNewTokens() {
+  /* async detectNewTokens() {
     if (!this.isActive) {
       return;
     }
     if (this._network.store.getState().provider.chainId !== MAINNET_CHAIN_ID) {
       return;
     }
-
     const tokensToDetect = [];
     this.web3.setProvider(this._network._provider);
     for (const contractAddress in contracts) {
@@ -75,7 +75,7 @@ export default class DetectTokensController {
         );
       }
     });
-  }
+  }*/
 
   async _getTokenBalances(tokens) {
     const ethContract = this.web3.eth
@@ -88,6 +88,60 @@ export default class DetectTokensController {
         }
         return resolve(result);
       });
+    });
+  }
+
+  /**
+   * For each token in tokenlist ptovided by the TokenListController, find check selectedAddress balance.
+   */
+  async detectNewTokens() {
+    if (!this.isActive) {
+      return;
+    }
+    if (
+      this._network.store.getState().provider.chainId !== MAINNET_CHAIN_ID &&
+      this._network.store.getState().provider.chainId !== '0x38'
+    ) {
+      return;
+    }
+
+    const tokensAddressForBalance = [];
+    const tokensToDetect = {};
+    this.web3.setProvider(this._network._provider);
+    console.log(
+      `isStatic: `,
+      Object.keys(this._tokenList.state.tokensChainsCache),
+    );
+    const apiTokens = this._tokenList.state.tokenList;
+    for (const tokenAddress in apiTokens) {
+      if (
+        !this.tokenAddresses.includes(tokenAddress.toLowerCase()) &&
+        !this.hiddenTokens.includes(tokenAddress.toLowerCase())
+      ) {
+        tokensAddressForBalance.push(tokenAddress);
+        tokensToDetect[tokenAddress] = apiTokens[tokenAddress];
+      }
+    }
+    let result;
+    try {
+      result = await this._getTokenBalances(tokensAddressForBalance);
+    } catch (error) {
+      warn(
+        `MetaMask - DetectTokensController single call balance fetch failed`,
+        error,
+      );
+      return;
+    }
+
+    tokensAddressForBalance.forEach((tokenAddress, index) => {
+      const balance = result[index];
+      if (balance && !balance.isZero()) {
+        this._preferences.addToken(
+          tokenAddress,
+          tokensToDetect[tokenAddress].symbol,
+          tokensToDetect[tokenAddress].decimals,
+        );
+      }
     });
   }
 
@@ -174,6 +228,16 @@ export default class DetectTokensController {
         }
       }
     });
+  }
+
+  /**
+   * @type {Object}
+   */
+  set tokenList(tokenList) {
+    if (!tokenList) {
+      return;
+    }
+    this._tokenList = tokenList;
   }
 
   /**

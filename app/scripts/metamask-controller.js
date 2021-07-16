@@ -25,7 +25,7 @@ import {
   PhishingController,
   NotificationController,
   GasFeeController,
-  TokenListController,
+  TokenListController
 } from '@metamask/controllers';
 import { TRANSACTION_STATUSES } from '../../shared/constants/transaction';
 import { MAINNET_CHAIN_ID } from '../../shared/constants/network';
@@ -360,6 +360,7 @@ export default class MetamaskController extends EventEmitter {
       preferences: this.preferencesController,
       network: this.networkController,
       keyringMemStore: this.keyringController.memStore,
+      tokenList: this.tokenListController,
     });
 
     this.addressBookController = new AddressBookController(
@@ -1260,7 +1261,7 @@ export default class MetamaskController extends EventEmitter {
             ? accountTokens[address][chainId].filter(
                 ({ address: tokenAddress }) => {
                   const checksumAddress = toChecksumHexAddress(tokenAddress);
-                  return contractMap[checksumAddress]
+                  return this.preferencesController.store.getState().useStaticTokenList && contractMap[checksumAddress]
                     ? contractMap[checksumAddress].erc20
                     : true;
                 },
