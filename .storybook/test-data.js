@@ -15,9 +15,9 @@ const state = {
     "isAccountMenuOpen": false,
     "rpcUrl": "https://rawtestrpc.metamask.io/",
     "identities": {
-      "0x983211ce699ea5ab57cc528086154b6db1ad8e55": {
-        "name": "Account 1",
-        "address": "0x983211ce699ea5ab57cc528086154b6db1ad8e55"
+      "0x64a845a5b02460acf8a3d84503b0d68d028b4bb4": {
+        "name": "This is a Really Long Account Name",
+        "address": "0x64a845a5b02460acf8a3d84503b0d68d028b4bb4"
       },
       "0xb19ac54efa18cc3a14a5b821bfec73d284bf0c5e": {
         "name": "Account 2",
@@ -160,8 +160,8 @@ const state = {
     },
     "network": "3",
     "accounts": {
-      "0x983211ce699ea5ab57cc528086154b6db1ad8e55": {
-        "address": "0x983211ce699ea5ab57cc528086154b6db1ad8e55",
+      "0x64a845a5b02460acf8a3d84503b0d68d028b4bb4": {
+        "address": "0x64a845a5b02460acf8a3d84503b0d68d028b4bb4",
         "balance": "0x176e5b6f173ebe66"
       },
       "0xb19ac54efa18cc3a14a5b821bfec73d284bf0c5e": {
@@ -200,7 +200,16 @@ const state = {
     "unapprovedPersonalMsgCount": 0,
     "unapprovedDecryptMsgs": {},
     "unapprovedDecryptMsgCount": 0,
-    "unapprovedEncryptionPublicKeyMsgs": {},
+    "unapprovedEncryptionPublicKeyMsgs": {
+      "7786962153682822": {
+        "id": 7786962153682822,
+        "msgParams": "0x64a845a5b02460acf8a3d84503b0d68d028b4bb4",
+        "time": 1622687544054,
+        "status": "unapproved",
+        "type": "eth_getEncryptionPublicKey",
+        "origin": "https://metamask.github.io"
+      }
+    },
     "unapprovedEncryptionPublicKeyMsgCount": 0,
     "unapprovedTypedMessages": {},
     "unapprovedTypedMessagesCount": 0,
