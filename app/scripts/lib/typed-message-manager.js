@@ -123,8 +123,16 @@ export default class TypedMessageManager extends EventEmitter {
     if (req) {
       msgParams.origin = req.origin;
     }
-    this.validateParams(msgParams);
-
+    let warning;
+    try {
+      this.validateParams(msgParams);
+    } catch (error) {
+      if (error.message === 'Domain name does not match origin') {
+        warning = `Domain passed to message - ${error.actual} - does not match the origin of the signature request: ${error.expected}`;
+      } else {
+        throw error;
+      }
+    }
     log.debug(
       `TypedMessageManager addUnapprovedMessage: ${JSON.stringify(msgParams)}`,
     );
@@ -138,6 +146,7 @@ export default class TypedMessageManager extends EventEmitter {
       time,
       status: 'unapproved',
       type: MESSAGE_TYPE.ETH_SIGN_TYPED_DATA,
+      warning,
     };
     this.addMsg(msgData);
 
@@ -212,6 +221,13 @@ export default class TypedMessageManager extends EventEmitter {
             `Provided chainId "${chainId}" must match the active chainId "${activeChainId}"`,
           );
         }
+        const { domain } = data;
+        assert.equal(
+          domain?.name,
+          new URL(params?.origin).hostname,
+          'Domain name does not match origin',
+        );
+
         break;
       }
       default:

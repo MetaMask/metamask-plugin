@@ -58,6 +58,7 @@ export default class SignatureRequest extends PureComponent {
       fromAccount,
       txData: {
         msgParams: { data, origin },
+        warning,
       },
       cancel,
       sign,
@@ -79,6 +80,11 @@ export default class SignatureRequest extends PureComponent {
       <div className="signature-request page-container">
         <Header fromAccount={fromAccount} />
         <div className="signature-request-content">
+          {warning && (
+            <div className="actionable-message--warning signature-request-warning">
+              {warning}
+            </div>
+          )}
           <div className="signature-request-content__title">
             {this.context.t('sigRequest')}
           </div>

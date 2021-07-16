@@ -33,6 +33,7 @@ describe('Typed Message Manager', function () {
 
     msgParamsV3 = {
       from: address,
+      origin: 'https://ethermail.com',
       data: JSON.stringify({
         types: {
           EIP712Domain: [
@@ -53,7 +54,7 @@ describe('Typed Message Manager', function () {
         },
         primaryType: 'Mail',
         domain: {
-          name: 'Ether Mainl',
+          name: 'ethermail.com',
           version: '1',
           chainId: 1,
           verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
