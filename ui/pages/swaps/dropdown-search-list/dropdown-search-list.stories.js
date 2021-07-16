@@ -5,7 +5,7 @@ const tokens = [
   {
     primaryLabel: 'MetaMark (META)',
     name: 'MetaMark',
-    iconUrl: '.storybook/images/metamark.svg',
+    iconUrl: 'metamark.svg',
     erc20: true,
     decimals: 18,
     symbol: 'META',
@@ -14,7 +14,7 @@ const tokens = [
   {
     primaryLabel: '0x (ZRX)',
     name: '0x',
-    iconUrl: '.storybook/images/0x.svg',
+    iconUrl: '0x.svg',
     erc20: true,
     symbol: 'ZRX',
     decimals: 18,
@@ -23,7 +23,7 @@ const tokens = [
   {
     primaryLabel: 'AirSwap Token (AST)',
     name: 'AirSwap Token',
-    iconUrl: '.storybook/images/AST.png',
+    iconUrl: 'AST.png',
     erc20: true,
     symbol: 'AST',
     decimals: 4,
@@ -32,7 +32,7 @@ const tokens = [
   {
     primaryLabel: 'Basic Attention Token (BAT)',
     name: 'Basic Attention Token',
-    iconUrl: '.storybook/images/BAT_icon.svg',
+    iconUrl: 'BAT_icon.svg',
     erc20: true,
     symbol: 'BAT',
     decimals: 18,
@@ -41,7 +41,7 @@ const tokens = [
   {
     primaryLabel: 'Civil Token (CVL)',
     name: 'Civil Token',
-    iconUrl: '.storybook/images/CVL_token.svg',
+    iconUrl: 'CVL_token.svg',
     erc20: true,
     symbol: 'CVL',
     decimals: 18,
@@ -50,7 +50,7 @@ const tokens = [
   {
     primaryLabel: 'Gladius (GLA)',
     name: 'Gladius',
-    iconUrl: '.storybook/images/gladius.svg',
+    iconUrl: 'gladius.svg',
     erc20: true,
     symbol: 'GLA',
     decimals: 8,
@@ -59,7 +59,7 @@ const tokens = [
   {
     primaryLabel: 'Gnosis Token (GNO)',
     name: 'Gnosis Token',
-    iconUrl: '.storybook/images/gnosis.svg',
+    iconUrl: 'gnosis.svg',
     erc20: true,
     symbol: 'GNO',
     decimals: 18,
@@ -68,7 +68,7 @@ const tokens = [
   {
     primaryLabel: 'OmiseGO (OMG)',
     name: 'OmiseGO',
-    iconUrl: '.storybook/images/omg.jpg',
+    iconUrl: 'omg.jpg',
     erc20: true,
     symbol: 'OMG',
     decimals: 18,
@@ -77,7 +77,7 @@ const tokens = [
   {
     primaryLabel: 'Sai Stablecoin v1.0 (SAI)',
     name: 'Sai Stablecoin v1.0',
-    iconUrl: '.storybook/images/sai.svg',
+    iconUrl: 'sai.svg',
     erc20: true,
     symbol: 'SAI',
     decimals: 18,
@@ -86,7 +86,7 @@ const tokens = [
   {
     primaryLabel: 'Tether USD (USDT)',
     name: 'Tether USD',
-    iconUrl: '.storybook/images/tether_usd.png',
+    iconUrl: 'tether_usd.png',
     erc20: true,
     symbol: 'USDT',
     decimals: 6,
@@ -95,7 +95,7 @@ const tokens = [
   {
     primaryLabel: 'WednesdayCoin (WED)',
     name: 'WednesdayCoin',
-    iconUrl: '.storybook/images/wed.png',
+    iconUrl: 'wed.png',
     erc20: true,
     symbol: 'WED',
     decimals: 18,
@@ -104,7 +104,7 @@ const tokens = [
   {
     primaryLabel: 'Wrapped BTC (WBTC)',
     name: 'Wrapped BTC',
-    iconUrl: '.storybook/images/wbtc.png',
+    iconUrl: 'wbtc.png',
     erc20: true,
     symbol: 'WBTC',
     decimals: 8,
