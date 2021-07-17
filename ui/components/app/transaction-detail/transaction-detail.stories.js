@@ -21,7 +21,7 @@ const rows = [
     }
     detailText="0.00896 ETH"
     detailTotal="$15.73"
-    subTitle={<GasTiming text="Very likely in < 15 seconds" />}
+    subTitle={<GasTiming />}
     subText={
       <>
         From <strong>$15.73 - $19.81</strong>

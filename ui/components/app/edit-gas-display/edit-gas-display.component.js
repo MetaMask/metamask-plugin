@@ -22,6 +22,7 @@ import AdvancedGasControls from '../advanced-gas-controls/advanced-gas-controls.
 import ActionableMessage from '../../ui/actionable-message/actionable-message';
 
 import { I18nContext } from '../../../contexts/i18n';
+import GasTiming from '../gas-timing';
 
 export default function EditGasDisplay({
   mode = EDIT_GAS_MODES.MODIFY_IN_PLACE,
@@ -116,7 +117,7 @@ export default function EditGasDisplay({
               </Typography>,
             ])
           }
-          timing=""
+          timing={<GasTiming />}
         />
         {requireDappAcknowledgement && (
           <Button

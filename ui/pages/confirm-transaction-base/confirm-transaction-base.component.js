@@ -34,6 +34,7 @@ import { toBuffer } from '../../../shared/modules/buffer-utils';
 import TransactionDetail from '../../components/app/transaction-detail/transaction-detail.component';
 import TransactionDetailItem from '../../components/app/transaction-detail-item/transaction-detail-item.component';
 import InfoTooltip from '../../components/ui/info-tooltip/info-tooltip';
+import GasTiming from '../../components/app/gas-timing/gas-timing.component';
 
 import { COLORS } from '../../helpers/constants/design-system';
 
@@ -414,6 +415,7 @@ export default class ConfirmTransactionBase extends Component {
                     hideLabel
                   />
                 }
+                subTitle={<GasTiming />}
               />,
               <TransactionDetailItem
                 key="total-item"
