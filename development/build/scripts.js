@@ -189,6 +189,7 @@ function createFactoredBuild({
   return async function () {
     // create bundler setup and apply defaults
     const buildConfiguration = createBuildConfiguration();
+    buildConfiguration.label = 'primary';
     const { bundlerOpts, events } = buildConfiguration;
 
     // devMode options
@@ -288,6 +289,7 @@ function createFactoredBuild({
 }
 
 function createNormalBundle({
+  label,
   destFilepath,
   entryFilepath,
   extraEntries = [],
@@ -299,6 +301,7 @@ function createNormalBundle({
   return async function () {
     // create bundler setup and apply defaults
     const buildConfiguration = createBuildConfiguration();
+    buildConfiguration.label = label;
     const { bundlerOpts, events } = buildConfiguration;
 
     // devMode options
@@ -341,6 +344,7 @@ function createNormalBundle({
 }
 
 function createBuildConfiguration() {
+  const label = '(unnamed bundle)';
   const events = new EventEmitter();
   const bundlerOpts = {
     entries: [],
@@ -351,7 +355,7 @@ function createBuildConfiguration() {
     manualExternal: [],
     manualIgnore: [],
   };
-  return { bundlerOpts, events };
+  return { label, bundlerOpts, events };
 }
 
 function setupBundlerDefaults(
@@ -464,7 +468,7 @@ function setupSourcemaps(buildConfiguration, { devMode }) {
 }
 
 async function bundleIt(buildConfiguration) {
-  const { bundlerOpts, events } = buildConfiguration;
+  const { label, bundlerOpts, events } = buildConfiguration;
   const bundler = browserify(bundlerOpts);
   // manually apply non-standard options
   bundler.external(bundlerOpts.manualExternal);
@@ -474,7 +478,9 @@ async function bundleIt(buildConfiguration) {
   // forward update event (used by watchify)
   bundler.on('update', () => performBundle());
 
+  console.log(`bundle start: "${label}"`);
   await performBundle();
+  console.log(`bundle end: "${label}"`);
 
   async function performBundle() {
     // this pipeline is created for every bundle
