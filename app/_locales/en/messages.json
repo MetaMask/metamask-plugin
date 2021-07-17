@@ -653,11 +653,17 @@
   "editGasHigh": {
     "message": "High"
   },
+  "editGasLimitOutOfBounds": {
+    "message": "Gas limit must be greater than 20999 and less than 7920027"
+  },
   "editGasLimitTooltip": {
     "message": "Gas limit is the maximum units of gas you are willing to use. Units of gas are a multiplier to “Max priority fee” and “Max fee”."
   },
   "editGasLow": {
     "message": "Low"
+  },
+  "editGasMaxFeeHigh": {
+    "message": "Max fee is higher than necessary"
   },
   "editGasMaxFeeLow": {
     "message": "Max fee too low for network conditions"
@@ -665,11 +671,17 @@
   "editGasMaxFeeTooltip": {
     "message": "The max fee is the most you’ll pay (base fee + priority fee)."
   },
+  "editGasMaxPriorityFeeHigh": {
+    "message": "Max priority fee is higher than necessary. You may pay more than needed."
+  },
   "editGasMaxPriorityFeeLow": {
     "message": "Max priority fee too low for network conditions"
   },
   "editGasMaxPriorityFeeTooltip": {
     "message": "Max priority fee (aka “miner tip”) goes directly to miners and incentivizes them to prioritize your transaction. You’ll most often pay your max setting"
+  },
+  "editGasMaxPriorityFeeZeroError": {
+    "message": "Max priority fee must be at least 1 GWEI"
   },
   "editGasMedium": {
     "message": "Medium"
@@ -682,6 +694,9 @@
   },
   "editGasTooLow": {
     "message": "Unknown processing time"
+  },
+  "editGasTooLowTooltip": {
+    "message": "Your max fee is low for current market conditions. We don’t know when (or if) your transaction will be processed."
   },
   "editGasTotalBannerSubtitle": {
     "message": "Up to $1 ($2)",

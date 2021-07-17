@@ -48,14 +48,13 @@ export default function EditGasDisplay({
   setEstimateToUse,
   estimatedMinimumFiat,
   estimatedMaximumFiat,
-  isMaxFeeError,
-  isMaxPriorityFeeError,
-  isGasTooLow,
+  hasGasErrors,
   dappSuggestedGasFeeAcknowledged,
   setDappSuggestedGasFeeAcknowledged,
   showAdvancedForm,
   setShowAdvancedForm,
   warning,
+  gasErrors,
 }) {
   const t = useContext(I18nContext);
 
@@ -126,14 +125,19 @@ export default function EditGasDisplay({
             {t('gasDisplayAcknowledgeDappButtonText')}
           </Button>
         )}
-        {isGasTooLow && (
+        {hasGasErrors && (
           <div className="edit-gas-display__error">
             <Typography
               color={COLORS.ERROR1}
               variant={TYPOGRAPHY.H7}
               align={TEXT_ALIGN.CENTER}
+              fontWeight={FONT_WEIGHT.BOLD}
             >
-              {t('editGasTooLow')}
+              {t('editGasTooLow')}{' '}
+              <InfoTooltip
+                position="top"
+                contentText={t('editGasTooLowTooltip')}
+              />
             </Typography>
           </div>
         )}
@@ -194,10 +198,7 @@ export default function EditGasDisplay({
               setGasPrice={setGasPrice}
               maxPriorityFeeFiat={maxPriorityFeePerGasFiat}
               maxFeeFiat={maxFeePerGasFiat}
-              maxPriorityFeeError={
-                isMaxPriorityFeeError ? t('editGasMaxPriorityFeeLow') : null
-              }
-              maxFeeError={isMaxFeeError ? t('editGasMaxFeeLow') : null}
+              gasErrors={gasErrors}
             />
           )}
       </div>
@@ -236,13 +237,12 @@ EditGasDisplay.propTypes = {
   setEstimateToUse: PropTypes.func,
   estimatedMinimumFiat: PropTypes.string,
   estimatedMaximumFiat: PropTypes.string,
-  isMaxFeeError: PropTypes.boolean,
-  isMaxPriorityFeeError: PropTypes.boolean,
-  isGasTooLow: PropTypes.boolean,
+  hasGasErrors: PropTypes.boolean,
   dappSuggestedGasFeeAcknowledged: PropTypes.boolean,
   setDappSuggestedGasFeeAcknowledged: PropTypes.func,
   showAdvancedForm: PropTypes.bool,
   setShowAdvancedForm: PropTypes.func,
   warning: PropTypes.string,
   transaction: PropTypes.object,
+  gasErrors: PropTypes.object,
 };

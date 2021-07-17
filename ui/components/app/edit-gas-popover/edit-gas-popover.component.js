@@ -72,9 +72,8 @@ export default function EditGasPopover({
     setEstimateToUse,
     estimatedMinimumFiat,
     estimatedMaximumFiat,
-    isMaxFeeError,
-    isMaxPriorityFeeError,
-    isGasTooLow,
+    hasGasErrors,
+    gasErrors,
   } = useGasFeeInputs(defaultEstimateToUse);
 
   /**
@@ -173,12 +172,7 @@ export default function EditGasPopover({
             <Button
               type="primary"
               onClick={onSubmit}
-              disabled={
-                isMaxFeeError ||
-                isMaxPriorityFeeError ||
-                isGasTooLow ||
-                isGasEstimatesLoading
-              }
+              disabled={hasGasErrors || isGasEstimatesLoading}
             >
               {footerButtonText}
             </Button>
@@ -217,12 +211,11 @@ export default function EditGasPopover({
             setEstimateToUse={setEstimateToUse}
             estimatedMinimumFiat={estimatedMinimumFiat}
             estimatedMaximumFiat={estimatedMaximumFiat}
-            isMaxFeeError={isMaxFeeError}
-            isMaxPriorityFeeError={isMaxPriorityFeeError}
-            isGasTooLow={isGasTooLow}
+            hasGasErrors={hasGasErrors}
             onEducationClick={() => setShowEducationContent(true)}
             mode={mode}
             transaction={transaction}
+            gasErrors={gasErrors}
             {...editGasDisplayProps}
           />
         )}

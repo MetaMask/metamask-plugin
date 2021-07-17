@@ -16,10 +16,12 @@
     align-self: center;
   }
 
-  &__row-error,
-  &__row--error h6 {
-    color: $error-1 !important;
-    padding-top: 6px;
+  .form-field__row--error .form-field__heading-title h6 {
+    color: $error-1;
+
+    & path {
+      fill: $error-1;
+    }
   }
 
   h6 {
@@ -27,8 +29,7 @@
     margin-inline-end: 6px;
   }
 
-  i {
-    color: #dadada;
-    font-size: $font-size-h7;
+  path {
+    fill: #dadada;
   }
 }

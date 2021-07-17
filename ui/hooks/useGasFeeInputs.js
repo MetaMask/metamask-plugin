@@ -13,9 +13,12 @@ import {
   decimalToHex,
 } from '../helpers/utils/conversions.util';
 import { getShouldShowFiat } from '../selectors';
+import { GAS_FORM_ERRORS } from '../helpers/constants/gas';
 import { useCurrencyDisplay } from './useCurrencyDisplay';
 import { useGasFeeEstimates } from './useGasFeeEstimates';
 import { useUserPreferencedCurrency } from './useUserPreferencedCurrency';
+
+const HIGH_FEE_WARNING_MULTIPLIER = 1.5;
 
 /**
  * Opaque string type representing a decimal (base 10) number in GWEI
@@ -271,39 +274,75 @@ export function useGasFeeInputs(defaultEstimateToUse = 'medium') {
     },
   );
 
-  let isMaxPriorityFeeError = false;
-  let isMaxFeeError = false;
+  // Separating errors from warnings so we can know which value problems
+  // are blocking or simply useful information for the users
+  const gasErrors = {};
+  const gasWarnings = {};
+
+  if (gasLimit < 21000 || gasLimit > 7920027) {
+    gasErrors.gasLimit = GAS_FORM_ERRORS.GAS_LIMIT_OUT_OF_BOUNDS;
+  }
 
   switch (gasEstimateType) {
     case GAS_ESTIMATE_TYPES.FEE_MARKET:
-      isMaxPriorityFeeError =
+      if (maxPriorityFeePerGasToUse < 1) {
+        gasErrors.maxPriorityFee = GAS_FORM_ERRORS.MAX_PRIORITY_FEE_ZERO;
+      } else if (
         !isGasEstimatesLoading &&
         maxPriorityFeePerGasToUse <
-          gasFeeEstimates?.low?.suggestedMaxPriorityFeePerGas;
-      isMaxFeeError =
+          gasFeeEstimates?.low?.suggestedMaxPriorityFeePerGas
+      ) {
+        gasErrors.maxPriorityFee = GAS_FORM_ERRORS.MAX_PRIORITY_FEE_TOO_LOW;
+      } else if (
+        gasFeeEstimates?.high &&
+        maxPriorityFeePerGasToUse >
+          gasFeeEstimates.high.suggestedMaxPriorityFeePerGas *
+            HIGH_FEE_WARNING_MULTIPLIER
+      ) {
+        gasWarnings.maxPriorityFee =
+          GAS_FORM_ERRORS.MAX_PRIORITY_FEE_HIGH_WARNING;
+      }
+
+      if (
         !isGasEstimatesLoading &&
-        maxFeePerGasToUse < gasFeeEstimates?.low?.suggestedMaxFeePerGas;
+        maxFeePerGasToUse < gasFeeEstimates?.low?.suggestedMaxFeePerGas
+      ) {
+        gasErrors.maxFee = GAS_FORM_ERRORS.MAX_FEE_TOO_LOW;
+      } else if (
+        gasFeeEstimates?.high &&
+        maxFeePerGasToUse >
+          gasFeeEstimates.high.suggestedMaxFeePerGas *
+            HIGH_FEE_WARNING_MULTIPLIER
+      ) {
+        gasWarnings.maxFee = GAS_FORM_ERRORS.MAX_FEE_HIGH_WARNING;
+      }
       break;
     default:
       break;
   }
 
-  const isGasTooLow = Boolean(isMaxPriorityFeeError || isMaxFeeError);
+  // Determine if we have any errors which should block submission
+  const hasBlockingGasErrors = Boolean(Object.keys(gasErrors).length);
+
+  // Now that we've determined errors that block submission, we can pool the warnings
+  // and errors into one object for easier use within the UI.  This object should have
+  // no effect on whether or not the user can submit the form
+  const errorsAndWarnings = {
+    ...gasErrors,
+    ...gasWarnings,
+  };
 
   return {
     maxFeePerGas: maxFeePerGasToUse,
     maxFeePerGasFiat: showFiat ? maxFeePerGasFiat : '',
     setMaxFeePerGas,
-    isMaxFeeError,
     maxPriorityFeePerGas: maxPriorityFeePerGasToUse,
     maxPriorityFeePerGasFiat: showFiat ? maxPriorityFeePerGasFiat : '',
     setMaxPriorityFeePerGas,
-    isMaxPriorityFeeError,
     gasPrice: gasPriceToUse,
     setGasPrice,
     gasLimit,
     setGasLimit,
-    isGasTooLow,
     estimateToUse,
     setEstimateToUse,
     estimatedMinimumFiat: showFiat ? estimatedMinimumFiat : '',
@@ -313,5 +352,7 @@ export function useGasFeeInputs(defaultEstimateToUse = 'medium') {
     gasFeeEstimates,
     gasEstimateType,
     estimatedGasFeeTimeBounds,
+    gasErrors: errorsAndWarnings,
+    hasGasErrors: hasBlockingGasErrors,
   };
 }

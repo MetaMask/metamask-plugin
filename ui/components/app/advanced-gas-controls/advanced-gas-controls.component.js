@@ -13,6 +13,7 @@ import {
   GAS_ESTIMATE_TYPES,
   GAS_RECOMMENDATIONS,
 } from '../../../../shared/constants/gas';
+import { getGasFormErrorText } from '../../../helpers/constants/gas';
 
 const DEFAULT_ESTIMATES_LEVEL = 'medium';
 
@@ -31,8 +32,7 @@ export default function AdvancedGasControls({
   setGasPrice,
   maxPriorityFeeFiat,
   maxFeeFiat,
-  maxPriorityFeeError,
-  maxFeeError,
+  gasErrors,
 }) {
   const t = useContext(I18nContext);
 
@@ -63,6 +63,11 @@ export default function AdvancedGasControls({
     <div className="advanced-gas-controls">
       <FormField
         titleText={t('gasLimit')}
+        error={
+          gasErrors?.gasLimit
+            ? getGasFormErrorText(gasErrors.gasLimit, t)
+            : null
+        }
         onChange={setGasLimit}
         tooltipText={t('editGasLimitTooltip')}
         value={gasLimit}
@@ -106,7 +111,11 @@ export default function AdvancedGasControls({
                 </>
               )
             }
-            error={maxPriorityFeeError}
+            error={
+              gasErrors?.maxPriorityFee
+                ? getGasFormErrorText(gasErrors.maxPriorityFee, t)
+                : null
+            }
           />
           <FormField
             titleText={t('maxFee')}
@@ -143,7 +152,11 @@ export default function AdvancedGasControls({
                 </>
               )
             }
-            error={maxFeeError}
+            error={
+              gasErrors?.maxFee
+                ? getGasFormErrorText(gasErrors.maxFee, t)
+                : null
+            }
           />
         </>
       ) : (
@@ -216,6 +229,5 @@ AdvancedGasControls.propTypes = {
   setGasPrice: PropTypes.func,
   maxPriorityFeeFiat: PropTypes.string,
   maxFeeFiat: PropTypes.string,
-  maxPriorityFeeError: PropTypes.string,
-  maxFeeError: PropTypes.string,
+  gasErrors: PropTypes.object,
 };

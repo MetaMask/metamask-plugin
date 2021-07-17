@@ -21,6 +21,14 @@
     }
   }
 
+  &__error .info-tooltip {
+    display: inline-block;
+
+    path {
+      fill: $error-1;
+    }
+  }
+
   &__dapp-acknowledgement-warning {
     margin-bottom: 20px;
   }
