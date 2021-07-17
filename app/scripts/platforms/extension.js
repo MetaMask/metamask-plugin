@@ -226,9 +226,9 @@ export default class ExtensionPlatform {
     }
   }
 
-  _viewOnEtherscan(txId) {
-    if (txId.startsWith('https://')) {
-      extension.tabs.create({ url: txId });
+  _viewOnEtherscan(url) {
+    if (url.startsWith('https://')) {
+      extension.tabs.create({ url });
     }
   }
 }

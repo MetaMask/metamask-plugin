@@ -7439,9 +7439,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30000810, caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001097, caniuse-lite@^1.0.30001157:
-  version "1.0.30001162"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001162.tgz#9f83aad1f42539ce9aab58bb177598f2f8e22ec6"
-  integrity sha512-E9FktFxaNnp4ky3ucIGzEXLM+Knzlpuq1oN1sFAU0KeayygabGTmOsndpo8QrL4D9pcThlf4D2pUKaDxPCUmVw==
+  version "1.0.30001241"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001241.tgz#cd3fae47eb3d7691692b406568d7a3e5b23c7598"
+  integrity sha512-1uoSZ1Pq1VpH0WerIMqwptXHNNGfdl7d1cJUFs80CwQ/lVzdhTvsFZCeNFslze7AjsQnb4C85tzclPa1VShbeQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
