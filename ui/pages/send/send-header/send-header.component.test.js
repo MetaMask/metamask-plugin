@@ -21,7 +21,7 @@ jest.mock('react-router-dom', () => {
 
 describe('SendHeader Component', () => {
   describe('Title', () => {
-    it('should render "Add Recipient" for UNINITIALIZED or ADD_RECIPIENT stages', () => {
+    it('should render "Add Recipient" for INACTIVE or ADD_RECIPIENT stages', () => {
       const { getByText, rerender } = renderWithProvider(
         <SendHeader />,
         configureMockStore(middleware)({

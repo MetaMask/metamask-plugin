@@ -111,7 +111,8 @@ const mapStateToProps = (state, ownProps) => {
 
   const {
     hexTransactionAmount,
-    hexTransactionFee,
+    hexMinimumTransactionFee,
+    hexMaximumTransactionFee,
     hexTransactionTotal,
   } = transactionFeeSelector(state, transaction);
 
@@ -158,7 +159,8 @@ const mapStateToProps = (state, ownProps) => {
     toName,
     toNickname,
     hexTransactionAmount,
-    hexTransactionFee,
+    hexMinimumTransactionFee,
+    hexMaximumTransactionFee,
     hexTransactionTotal,
     txData: fullTxData,
     tokenData,

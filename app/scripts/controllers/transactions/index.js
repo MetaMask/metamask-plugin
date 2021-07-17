@@ -309,6 +309,7 @@ export default class TransactionController extends EventEmitter {
    * @returns {txMeta}
    */
   async addUnapprovedTransaction(txParams, origin) {
+    console.log(txParams, origin);
     // validate
     const normalizedTxParams = txUtils.normalizeTxParams(txParams);
 
@@ -671,6 +672,7 @@ export default class TransactionController extends EventEmitter {
       this.txStateManager.setTxStatusApproved(txId);
       // get next nonce
       const txMeta = this.txStateManager.getTransaction(txId);
+      console.log(txMeta);
       const fromAddress = txMeta.txParams.from;
       // wait for a nonce
       let { customNonceValue } = txMeta;

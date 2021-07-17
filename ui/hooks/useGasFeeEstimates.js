@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { GAS_ESTIMATE_TYPES } from '../../shared/constants/gas';
 import {
@@ -7,10 +6,7 @@ import {
   getGasFeeEstimates,
   isEIP1559Network,
 } from '../ducks/metamask/metamask';
-import {
-  disconnectGasFeeEstimatePoller,
-  getGasFeeEstimatesAndStartPolling,
-} from '../store/actions';
+import { useSafeGasEstimatePolling } from './useSafeGasEstimatePolling';
 
 /**
  * @typedef {keyof typeof GAS_ESTIMATE_TYPES} GasEstimateTypes
@@ -43,23 +39,7 @@ export function useGasFeeEstimates() {
   const gasEstimateType = useSelector(getGasEstimateType);
   const gasFeeEstimates = useSelector(getGasFeeEstimates);
   const estimatedGasFeeTimeBounds = useSelector(getEstimatedGasFeeTimeBounds);
-  useEffect(() => {
-    let active = true;
-    let pollToken;
-    getGasFeeEstimatesAndStartPolling().then((newPollToken) => {
-      if (active) {
-        pollToken = newPollToken;
-      } else {
-        disconnectGasFeeEstimatePoller(newPollToken);
-      }
-    });
-    return () => {
-      active = false;
-      if (pollToken) {
-        disconnectGasFeeEstimatePoller(pollToken);
-      }
-    };
-  }, []);
+  useSafeGasEstimatePolling();
 
   // We consider the gas estimate to be loading if the gasEstimateType is
   // 'NONE' or if the current gasEstimateType does not match the type we expect
