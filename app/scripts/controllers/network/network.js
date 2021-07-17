@@ -169,7 +169,8 @@ export default class NetworkController extends EventEmitter {
       return EIPS[1559];
     }
     const latestBlock = await this.getLatestBlock();
-    const supportsEIP1559 = latestBlock.baseFeePerGas !== undefined;
+    const supportsEIP1559 =
+      latestBlock && latestBlock.baseFeePerGas !== undefined;
     this.setNetworkEIPSupport(1559, supportsEIP1559);
     return supportsEIP1559;
   }
